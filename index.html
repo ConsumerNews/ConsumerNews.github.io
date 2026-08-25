@@ -200,6 +200,43 @@ a:hover { text-decoration:underline; }
 .cost-takeaway b { color:var(--accent-deep); }
 
 .footer { text-align:center; color:#9ca3af; font-size:11px; padding:24px; }
+
+/* ===== 财报速递：观点总览加颜色 + 换行结构化 ===== */
+.snap-box { border-radius:10px; padding:13px 16px; margin-bottom:12px; line-height:1.85; font-size:14px; }
+.snap-box.find { background:#eff6ff; border-left:4px solid #1d4ed8; color:#1e3a5f; }
+.snap-box.impl { background:#fff7ed; border-left:4px solid #ea580c; color:#7c2d12; }
+.snap-box .snap-h { font-weight:800; font-size:14.5px; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.snap-box.find .snap-h { color:#1d4ed8; }
+.snap-box.impl .snap-h { color:#ea580c; }
+.nl { margin-top:6px; }
+.nl-i { padding:5px 0; border-bottom:1px dashed #e3ecfd; line-height:1.8; font-size:13.5px; color:#374151; }
+.nl-i:last-child { border-bottom:none; }
+.nl-i .mk { color:var(--accent); font-weight:800; margin-right:7px; }
+.earn-viewpoint b { color:#1d4ed8; }
+.earn-insight b { color:#ea580c; }
+.earn-kpi .kpi .ky { color:var(--accent); }
+
+/* ===== 意见领袖：原话红粗 + 来源链接 ===== */
+.hl-red { color:#dc2626; font-weight:800; }
+.vp-link { color:#2563eb; font-size:11.5px; font-weight:600; margin-left:5px; white-space:nowrap; }
+.vp-link:hover { text-decoration:underline; }
+.person-head { display:flex; align-items:baseline; gap:6px; margin-bottom:6px; }
+
+/* ===== 新品发布解读：子版块四色配色 + 日历公司标色 ===== */
+.prod-summary { font-size:15px; font-weight:600; color:#1f2937; line-height:1.9; }
+.prod-strategy { margin-top:10px; padding:11px 14px; background:#eff6ff; border-left:4px solid #1d4ed8; border-radius:6px; font-size:14px; color:#1e3a5f; line-height:1.85; }
+.prod-strategy b { color:#1d4ed8; }
+.prod-compete { margin-top:8px; padding:11px 14px; background:#f0fdf4; border-left:4px solid #16a34a; border-radius:6px; font-size:14px; color:#14532d; line-height:1.85; }
+.prod-compete b { color:#16a34a; }
+.prod-consumer { margin-top:8px; padding:11px 14px; background:#faf5ff; border-left:4px solid #7c3aed; border-radius:6px; font-size:14px; color:#4c1d95; line-height:1.85; }
+.prod-consumer b { color:#7c3aed; }
+.prod-advice { margin-top:8px; padding:11px 14px; background:#fff7ed; border-left:4px solid #ea580c; border-radius:6px; font-size:14px; color:#7c2d12; line-height:1.85; }
+.prod-advice b { color:#ea580c; }
+.ev-brand { font-weight:800; font-size:12px; }
+.cal-cell .evt { margin-top:4px; color:#374151; font-weight:500; line-height:1.4; }
+
+/* ===== 市场大盘：厂商份额柱状图 ===== */
+.share-chart { width:100%; height:300px; margin-top:10px; }
 </style>
 </head>
 <body>
@@ -324,6 +361,8 @@ a:hover { text-decoration:underline; }
       </div>
       <div class="mkt-tabs" id="mkt-tabs"></div>
       <div class="chart-box" id="mkt-chart"></div>
+      <div class="mkt-sub">厂商份额分布（柱状图） <span class="en" id="mkt-share-chart-note"></span></div>
+      <div class="share-chart" id="mkt-share-chart"></div>
       <div class="mkt-extra">
         <div class="mkt-sub">各厂商竞争份额及变化 <span class="en" id="mkt-share-note"></span></div>
         <table class="data-tbl" id="mkt-shares"></table>
@@ -348,7 +387,7 @@ a:hover { text-decoration:underline; }
 <script>
 /* ===================== 数据层 DATA ===================== */
 const DATA = {
-  updateTime: '2026-08-25 17:05',
+  updateTime: '2026-08-25 17:54',
 
   // ---------- TAB1 今日头条 ----------
   // Tab1-1 今日十大头条观点：站在终端厂商高层经营管理视角，提炼影响"竞争/成本/策略/趋势/资源"的观点（已过滤早先广为人知的旧闻）
@@ -367,29 +406,29 @@ const DATA = {
 
   opinionLeaders: [
     { name:'余承东', role:'华为终端BG董事长', items:[
-      { s:'Mate 90 Pro Max"风驰版"曝光，配备定制主动散热模块，搭载华为首发麒麟2026韬定律芯片，9月23日发布。', l:'泡泡网', u:'https://www.pcpop.com/common/Article_5_005900050_0_0_60.htm' },
-      { s:'余承东手持新机与杨幂、沈腾畅聊享界G9的视频合影，结尾手持新机引发网友推测为三折叠迭代新机Mate XT2。', l:'数码每日快讯', u:'https://new.qq.com/rain/a/20260824A076CO00' }
+      { hl:'Mate 90 Pro Max「风驰版」配定制主动散热模块，首发麒麟2026韬定律芯片', detail:'9月23日发布，以架构创新+工程优化对冲制程封锁', l:'泡泡网', u:'https://www.pcpop.com/common/Article_5_005900050_0_0_60.htm' },
+      { hl:'享界G9与三折叠迭代新机Mate XT2同步造势', detail:'手持新机与杨幂、沈腾合影引发猜测，车机+折叠双线放大生态粘性', l:'数码每日快讯', u:'https://new.qq.com/rain/a/20260824A076CO00' }
     ]},
     { name:'雷军', role:'小米集团创始人', items:[
-      { s:'玄戒三芯齐发——O3/O100(端侧AI加速)/D100(智驾)，国产自研芯片从"单点突围"走向"人车家全生态底座"。', l:'封面新闻', u:'https://new.qq.com/rain/a/20260824A076CO00' },
-      { s:'小米17系列累计销量突破600万台（开售5天破百万），9月4-8日首次亮相柏林IFA推进"人车家全生态"全球化叙事。', l:'IT之家', u:'https://view.inews.qq.com/a/20260824A06IZI00' }
+      { hl:'玄戒三芯齐发：O3/O100/D100，自研芯片从手机SoC扩展至人车家全生态底座', detail:'O3基于3nm/240亿晶体管首发18 Fold', l:'封面新闻', u:'https://new.qq.com/rain/a/20260824A076CO00' },
+      { hl:'小米17系列开售5天破百万、累计破600万台', detail:'9月4-8日首秀柏林IFA推进「人车家全生态」全球化叙事', l:'IT之家', u:'https://view.inews.qq.com/a/20260824A06IZI00' }
     ]},
     { name:'古尔曼', role:'彭博社记者', items:[
-      { s:'苹果本周将官宣9月9日发布会，iPhone 18 Pro/Pro Max/折叠屏iPhone Ultra三款集中亮相；iPhone Ultra为苹果首款阔折叠，起售价有望破万元，史上最贵iPhone。', l:'快科技/网易', u:'https://www.163.com/dy/article/L531TAV20511CPVM.html' }
+      { hl:'苹果9月9日发布iPhone 18 Pro/Pro Max/折叠Ultra三款', detail:'Ultra为苹果首款阔折叠，起售价破万元、史上最贵iPhone', l:'快科技/网易', u:'https://www.163.com/dy/article/L531TAV20511CPVM.html' }
     ]},
     { name:'Greg Brockman', role:'OpenAI总裁', items:[
-      { s:'称"世界长期不会有足够算力"，智能体用户仅约两千万而ChatGPT用户达十亿，需求远未真正开始；透露Codex内部渗透率已接近Slack，每周约2.3亿人用ChatGPT问健康问题。', l:'AI寒武纪', u:'http://view.inews.qq.com/a/20260824A0CLGH00' }
+      { hl:'世界长期不会有足够算力，智能体需求远未真正开始', detail:'智能体用户仅约2000万而ChatGPT达10亿；Codex内部渗透率近Slack，每周2.3亿人用ChatGPT问健康', l:'AI寒武纪', u:'http://view.inews.qq.com/a/20260824A0CLGH00' }
     ]},
     { name:'Sangwook Han', role:'三星DRAM设计团队负责人', items:[
-      { s:'在HotChips2026确认HBM4E已量产，每引脚速率16Gbps、12层堆叠48GB、满血4TB/s带宽；采用1c制程+4nm SF4基础芯片，能效+16%/热阻改善超14%，后续推8层32GB/16层64GB规格。', l:'腾讯网', u:'https://new.qq.com/rain/a/20260824A0702100' }
+      { hl:'HBM4E已量产：16Gbps/12层48GB/满血4TB/s带宽', detail:'1c制程+4nm SF4基础芯片，能效+16%、热阻改善超14%', l:'腾讯网', u:'https://new.qq.com/rain/a/20260824A0702100' }
     ]},
     { name:'吴永辉', role:'字节Seed负责人', items:[
-      { s:'字节大模型部门Seed完成新一轮组织调整，新设预训练数据/强化学习/B端后训练/C端对话四个一级部门，强化"数据—预训练—强化学习—产品后训练"全链路；TRAE/扣子团队并入豆包统一AI办公产品线。', l:'AI日报/罗超频道', u:'https://dy.163.com/article/L54E4L7T05119NA8.html' }
+      { hl:'字节Seed重组：新设预训练数据/强化学习/B端后训练/C端对话四部门', detail:'TRAE/扣子并入豆包统一AI办公产品线，强化全链路', l:'AI日报/罗超频道', u:'https://dy.163.com/article/L54E4L7T05119NA8.html' }
     ]}
   ],
 
   // Tab1-2 主要意见领袖观点·汇总（产业链上下游主要领袖声音的提炼，亮明观点）
-  leadersSummary: '本期意见领袖声音集中于四条经营主线：①技术自主——余承东以Mate 90风驰版+韬定律麒麟宣示主动散热+架构创新对冲制程封锁；②自研生态——雷军以玄戒三芯齐发（O3/O100/D100）将自研芯片从手机SoC扩展至人车家全生态算力底座；③巨头动作——古尔曼确认苹果9/9三款齐发、Greg Brockman喊出"算力永远不够"折射智能体需求远未触顶；④供应链卡位——三星Sangwook Han以HBM4E量产16Gbps抢占AI存储制高点，字节吴永辉重组Seed押注AI办公。总体信号：技术自主（华为韬定律+小米玄戒）与AI算力（HBM4E+智能体需求）双线共振，终端厂须在"自研器件×AI算力×场景变现"上同步配置资源。',
+  leadersSummary: '①余承东（华为终端BG董事长）：以Mate 90风驰版+韬定律麒麟宣示主动散热与架构创新，对冲制程封锁。②雷军（小米创始人）：玄戒三芯齐发（O3/O100/D100），把自研芯片从手机SoC扩展至人车家全生态算力底座。③古尔曼（彭博社）：确认苹果9/9三款齐发、Ultra首款阔折叠起售价破万元。④Greg Brockman（OpenAI总裁）：「算力永远不够」，智能体用户仅约两千万而ChatGPT达十亿，需求远未触顶。⑤Sangwook Han（三星）：HBM4E量产16Gbps抢占AI存储制高点。⑥吴永辉（字节Seed）：重组Seed设四大一级部门、押注AI办公。⑦总体信号：技术自主（华为韬定律+小米玄戒）与AI算力（HBM4E+智能体需求）双线共振，终端厂须在「自研器件×AI算力×场景变现」上同步配置资源。',
 
   institutionViews: [
     { name:'应用材料', items:[
@@ -511,7 +550,10 @@ const DATA = {
     { d:'8/27', c:'英伟达', p:'Q2 FY27（下周财报大考）' }
   ],
   // Tab3 本日财报速递·汇总（关键发现 + 管理层参考与启示）
-  earnSnap: '本期财报/商业数据两条主线最值得管理层关注：①AI应用商业分化——OpenAI因GPT-5.6上线当季年化营收跳升35%破400亿$、企业份额反超Anthropic，而Anthropic旗舰Fable 5发布两月企业支出占比仅11%遇冷，技术领先≠商业成功，定价与生态决定付费意愿；②存储超级周期改写利润表——SK海力士Q2运营利润率76%创历史、三星HBM4E量产16Gbps抢占AI存储制高点，而终端厂小米H1净利-42.8%、日本9月起涨价2万日元，成本传导已蔓延海外。关键发现：上游"赚周期钱"、下游"被周期吃"，终端厂必须靠高端化+自研+长协锁成本穿越。管理启示：①AI应用须设变现KPI，警惕"有用户无收入"被重估；②重估价格体系，敢于高端化；③核心器件自供/长协比例应提升。',
+  earnSnap: {
+    find:'本期财报/商业数据两条主线最值得管理层关注：①AI应用商业分化——OpenAI因GPT-5.6上线当季年化营收跳升35%破400亿$、企业份额反超Anthropic，而Anthropic旗舰Fable 5发布两月企业支出占比仅11%遇冷，技术领先≠商业成功，定价与生态决定付费意愿；②存储超级周期改写利润表——SK海力士Q2运营利润率76%创历史、三星HBM4E量产16Gbps抢占AI存储制高点，而终端厂小米H1净利-42.8%、日本9月起涨价2万日元，成本传导已蔓延海外。③关键发现：上游"赚周期钱"、下游"被周期吃"，终端厂必须靠高端化+自研+长协锁成本穿越。',
+    impl:'管理启示：①AI应用须设变现KPI，警惕"有用户无收入"被重估；②重估价格体系，敢于高端化；③核心器件自供/长协比例应提升。'
+  },
   earnings: [
     { company:'苹果 Apple', code:'AAPL', period:'FY26 Q3 (截至2026/6/27)', color:'#1d1d1f', key:true,
       revenue:'1094.2亿$', revYoy:'+16%', grossProfit:'—', grossMargin:'50.1%',
@@ -648,26 +690,173 @@ const DATA = {
         ]
       }
     },
-    glasses: {
-      name:'智能眼镜',
+    tablet: {
+      name:'平板电脑',
       global: {
-        note:'IDC/Counterpoint 全球预测（出货单位：亿副）',
+        note:'Omdia 全球 Q2 2026（出货单位：亿台）· 总量3557万(-9.9%)；厂商份额 Omdia Q2\'26',
         series:[
-          { label:'2023', shipment:0.03, yoy:'—' },
-          { label:'2024', shipment:0.06, yoy:'+100%' },
-          { label:'2025', shipment:0.096, yoy:'+60%' },
-          { label:'1H26', shipment:0.068, yoy:'+41.4%' },
-          { label:'2026E', shipment:0.136, yoy:'+41.4%' }
+          { label:'2023', shipment:1.45, yoy:'—' },
+          { label:'2024', shipment:1.50, yoy:'+3.4%' },
+          { label:'2025', shipment:1.55, yoy:'+3.3%' },
+          { label:'1Q26', shipment:0.37, yoy:'—' },
+          { label:'2Q26', shipment:0.3557, yoy:'-9.9%' },
+          { label:'2026E', shipment:1.35, yoy:'-13%' }
         ],
-        shares:null,
+        shares:[
+          { brand:'苹果', share:37.8, chg:'+1.0' },
+          { brand:'三星', share:16.3, chg:'-0.6' },
+          { brand:'联想', share:11.1, chg:'+3.3' },
+          { brand:'小米', share:8.0, chg:'+0.3' },
+          { brand:'华为', share:7.7, chg:'-0.5' },
+          { brand:'其他', share:19.1, chg:'-3.4' }
+        ],
         segments:[
-          { name:'高端AR显示眼镜', val:'渗透初期', note:'年增>80%' },
-          { name:'主流AI拍摄/翻译眼镜', val:'占新机60%+', note:'Meta/华为/小米主导' },
-          { name:'入门基础款', val:'走量', note:'性价比定位' }
+          { name:'商用平板(2Q26中国)', val:'需求前置拉高', note:'中国商用同比+67.1%' },
+          { name:'消费平板(2Q26中国)', val:'承压', note:'中国消费同比-9.8%' },
+          { name:'2000-3000元主流价位', val:'竞争最激烈', note:'涨价冲击最大' },
+          { name:'高端(≥3000元级)', val:'华为/苹果主导', note:'MatePad Pro Max / iPad Pro' }
         ]
       },
       china: {
-        note:'中国≈全球35%（估算，单位：亿副）',
+        note:'IDC 中国 Q2 2026（出货单位：亿台）· 总量796万(-4.4%)；厂商份额 IDC',
+        series:[
+          { label:'2023', shipment:0.28, yoy:'—' },
+          { label:'2024', shipment:0.29, yoy:'+3.6%' },
+          { label:'2025', shipment:0.30, yoy:'+3.4%' },
+          { label:'1Q26', shipment:0.21, yoy:'—' },
+          { label:'2Q26', shipment:0.0796, yoy:'-4.4%' },
+          { label:'2026E', shipment:0.27, yoy:'-10%' }
+        ],
+        shares:[
+          { brand:'华为', share:27.1, chg:'+2.1' },
+          { brand:'苹果', share:24.0, chg:'-0.9' },
+          { brand:'联想', share:15.6, chg:'+6.2' },
+          { brand:'小米', share:9.6, chg:'-4.4' },
+          { brand:'荣耀', share:7.2, chg:'-2.4' }
+        ],
+        segments:[
+          { name:'商用平板', val:'需求前置', note:'同比+67.1%（提前备货）' },
+          { name:'消费平板', val:'近两位数下滑', note:'同比-9.8%' },
+          { name:'2000-3000元主流价位', val:'承压最重', note:'涨价冲击最大' },
+          { name:'高端(≥3000元)', val:'华为/苹果', note:'MatePad Pro Max / iPad Pro' }
+        ]
+      }
+    },
+    pc: {
+      name:'PC/笔记本',
+      global: {
+        note:'IDC 全球 Q2 2026（出货单位：亿台）· 总量6820万(-4.9%)；厂商份额 IDC',
+        series:[
+          { label:'2023', shipment:2.60, yoy:'—' },
+          { label:'2024', shipment:2.68, yoy:'+3.1%' },
+          { label:'2025', shipment:2.80, yoy:'+4.5%' },
+          { label:'1Q26', shipment:0.70, yoy:'—' },
+          { label:'2Q26', shipment:0.682, yoy:'-4.9%' },
+          { label:'2026E', shipment:2.55, yoy:'-9%' }
+        ],
+        shares:[
+          { brand:'联想', share:24.4, chg:'+0.7' },
+          { brand:'惠普', share:19.1, chg:'-0.8' },
+          { brand:'戴尔', share:13.6, chg:'0.0' },
+          { brand:'苹果', share:9.9, chg:'+1.4' },
+          { brand:'华硕', share:7.4, chg:'+0.4' },
+          { brand:'其他', share:25.7, chg:'-1.6' }
+        ],
+        segments:[
+          { name:'AI PC', val:'渗透加速', note:'带动换机+ASP上行' },
+          { name:'商用/政府大客', val:'需求稳健', note:'中国商用强劲' },
+          { name:'消费/入门', val:'承压', note:'内存涨价抑制换机' }
+        ]
+      },
+      china: {
+        note:'IDC 中国 Q2 2026（出货单位：亿台）· 总量992万(-1.6%)；厂商细分份额暂缺（联想稳居第一）',
+        series:[
+          { label:'2023', shipment:0.39, yoy:'—' },
+          { label:'2024', shipment:0.40, yoy:'+2.6%' },
+          { label:'2025', shipment:0.41, yoy:'+2.5%' },
+          { label:'1Q26', shipment:0.10, yoy:'—' },
+          { label:'2Q26', shipment:0.0992, yoy:'-1.6%' },
+          { label:'2026E', shipment:0.38, yoy:'-7%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'商用/政企', val:'需求强劲', note:'抵消部分下滑' },
+          { name:'消费/入门', val:'承压', note:'内存涨价抑制' }
+        ]
+      }
+    },
+    foldable: {
+      name:'折叠屏手机',
+      global: {
+        note:'SAG 全球 Q2 2026（出货单位：亿台）· Q2总量340万(-2%)；全年约2700万(+38%)；厂商份额 SAG',
+        series:[
+          { label:'2024', shipment:0.015, yoy:'—' },
+          { label:'2025', shipment:0.0195, yoy:'+30%' },
+          { label:'2026E', shipment:0.027, yoy:'+38%' }
+        ],
+        shares:[
+          { brand:'华为', share:48.0, chg:'+3.0' },
+          { brand:'三星', share:15.0, chg:'0.0' },
+          { brand:'联想', share:13.0, chg:'-5.0' },
+          { brand:'荣耀', share:12.0, chg:'+4.0' },
+          { brand:'OPPO', share:6.0, chg:'0.0' },
+          { brand:'其他', share:6.0, chg:'—' }
+        ],
+        segments:[
+          { name:'左右内折(书本式)', val:'主流', note:'华为Mate X / 三星Fold' },
+          { name:'上下翻盖(竖折)', val:'走量', note:'Galaxy Flip / 摩托Razr' },
+          { name:'三折/阔折叠', val:'新品形态', note:'华为Mate XT / 苹果Ultra在途' }
+        ]
+      },
+      china: {
+        note:'中国为全球折叠屏主战场（估算：华为占六至七成；SAG全球口径）· 厂商份额为估算',
+        series:[
+          { label:'2024', shipment:0.011, yoy:'—' },
+          { label:'2025', shipment:0.014, yoy:'+27%' },
+          { label:'2026E', shipment:0.019, yoy:'+36%' }
+        ],
+        shares:[
+          { brand:'华为', share:65.0, chg:'—' },
+          { brand:'荣耀', share:13.0, chg:'—' },
+          { brand:'三星', share:8.0, chg:'—' },
+          { brand:'OPPO', share:6.0, chg:'—' },
+          { brand:'vivo', share:4.0, chg:'—' },
+          { brand:'其他', share:4.0, chg:'—' }
+        ],
+        segments:[
+          { name:'左右内折(书本式)', val:'主流', note:'华为Mate X系列主导' },
+          { name:'上下翻盖(竖折)', val:'走量', note:'三星/摩托/荣耀' },
+          { name:'三折/阔折叠', val:'新品形态', note:'华为Mate XT引领' }
+        ]
+      }
+    },
+    glasses: {
+      name:'智能眼镜',
+      global: {
+        note:'IDC Q1 2026（出货单位：亿副）· 无屏AI眼镜Q1 +167%至225万；2026全年预计1360万；厂商份额 IDC',
+        series:[
+          { label:'2023', shipment:0.027, yoy:'—' },
+          { label:'2024', shipment:0.06, yoy:'+122%' },
+          { label:'2025', shipment:0.096, yoy:'+60%' },
+          { label:'1H26', shipment:0.068, yoy:'+167%' },
+          { label:'2026E', shipment:0.136, yoy:'+42%' }
+        ],
+        shares:[
+          { brand:'Meta', share:69.2, chg:'—' },
+          { brand:'RayNeo', share:3.4, chg:'—' },
+          { brand:'小米', share:3.1, chg:'—' },
+          { brand:'Viture', share:2.5, chg:'—' },
+          { brand:'XREAL', share:2.0, chg:'—' },
+          { brand:'其他', share:19.8, chg:'—' }
+        ],
+        segments:[
+          { name:'无屏AI眼镜', val:'主力增长', note:'Q1\'26 +167%（Meta Ray-Ban）' },
+          { name:'带屏显示眼镜', val:'+86%', note:'AR/XR显示类' },
+          { name:'均价(2026→2030)', val:'$376→$229', note:'volume扩张压价' }
+        ]
+      },
+      china: {
+        note:'IDC：中国2026预计超491万（全球约45%来自中国厂商）；厂商细分份额暂缺',
         series:[
           { label:'2023', shipment:0.0105, yoy:'—' },
           { label:'2024', shipment:0.021, yoy:'+100%' },
@@ -686,7 +875,7 @@ const DATA = {
     wearable: {
       name:'智能穿戴',
       global: {
-        note:'IDC 全球预测（出货单位：亿台）',
+        note:'Omdia 全球 Q2 2026（出货单位：亿台）· 总量约5000万(-2%)；厂商份额 Omdia',
         series:[
           { label:'2023', shipment:5.0, yoy:'+1.0%' },
           { label:'2024', shipment:5.4, yoy:'+8.0%' },
@@ -694,11 +883,18 @@ const DATA = {
           { label:'1Q26', shipment:1.457, yoy:'+4.3%' },
           { label:'2026E', shipment:6.1, yoy:'+7.0%' }
         ],
-        shares:null,
+        shares:[
+          { brand:'华为', share:18.0, chg:'+1.0' },
+          { brand:'小米', share:17.0, chg:'-2.0' },
+          { brand:'苹果', share:16.0, chg:'+1.0' },
+          { brand:'三星', share:6.0, chg:'0.0' },
+          { brand:'佳明', share:6.0, chg:'0.0' },
+          { brand:'其他', share:37.0, chg:'—' }
+        ],
         segments:[
-          { name:'高端智能手表(>2000元)', val:'占30%', note:'健康/运动主力' },
-          { name:'主流智能手表', val:'占35%', note:'性价比走量' },
-          { name:'手环/入门', val:'占35%', note:'基础健康监测' }
+          { name:'高端智能手表(>2000元)', val:'占约30%', note:'同比+6%（Apple Watch占全球46%）' },
+          { name:'主流智能手表', val:'占约35%', note:'中端承压' },
+          { name:'基础手环/入门', val:'占约35%', note:'基础手环-9%；向两端集中' }
         ]
       },
       china: {
@@ -721,7 +917,7 @@ const DATA = {
     audio: {
       name:'耳戴/音频',
       global: {
-        note:'IDC 全球预测（出货单位：亿副）',
+        note:'SAG 全球 TWS（出货单位：亿副）· 2026年6月厂商份额；高端TWS/OWS分化',
         series:[
           { label:'2023', shipment:3.6, yoy:'+0.5%' },
           { label:'2024', shipment:3.8, yoy:'+5.6%' },
@@ -729,15 +925,20 @@ const DATA = {
           { label:'1Q26', shipment:1.0, yoy:'+4.0%' },
           { label:'2026E', shipment:4.076, yoy:'+4.0%' }
         ],
-        shares:null,
+        shares:[
+          { brand:'苹果', share:23.0, chg:'—' },
+          { brand:'小米', share:11.0, chg:'—' },
+          { brand:'Beats', share:8.0, chg:'—' },
+          { brand:'其他', share:58.0, chg:'—' }
+        ],
         segments:[
           { name:'高端TWS(降噪旗舰)', val:'占35%', note:'苹果/华为/Sony' },
           { name:'主流TWS', val:'占43%', note:'降噪成标配' },
-          { name:'OWS开放式/入门', val:'年增>50%', note:'新增长极' }
+          { name:'OWS开放式/不入耳', val:'年增>50%', note:'耳挂+耳夹新极（华为FreeClip占耳夹第一）' }
         ]
       },
       china: {
-        note:'中国≈全球25%（估算，单位：亿副）',
+        note:'中国无线耳机 2026（出货单位：亿副）· 厂商份额 中研普华',
         series:[
           { label:'2023', shipment:0.9, yoy:'+0.5%' },
           { label:'2024', shipment:0.95, yoy:'+5.6%' },
@@ -745,11 +946,17 @@ const DATA = {
           { label:'1Q26', shipment:0.25, yoy:'+4.0%' },
           { label:'2026E', shipment:1.019, yoy:'+4.0%' }
         ],
-        shares:null,
+        shares:[
+          { brand:'小米', share:22.0, chg:'—' },
+          { brand:'华为', share:15.0, chg:'—' },
+          { brand:'苹果', share:12.0, chg:'—' },
+          { brand:'漫步者', share:9.0, chg:'—' },
+          { brand:'OPPO', share:6.0, chg:'—' }
+        ],
         segments:[
-          { name:'高端TWS(降噪旗舰)', val:'占35%', note:'华为/小米主导' },
+          { name:'高端TWS(降噪旗舰)', val:'占35%', note:'华为/苹果主导' },
           { name:'主流TWS', val:'占43%', note:'标配降噪' },
-          { name:'OWS开放式/入门', val:'年增>50%', note:'新增长极' }
+          { name:'OWS开放式/不入耳', val:'年增>50%', note:'华为FreeClip占耳夹第一' }
         ]
       }
     },
@@ -943,6 +1150,31 @@ function splitSummary(t){
   }).join('')+'</div>';
 }
 
+// 品牌色映射（用于日历 / 财报 / 市场厂商标色加粗）
+const BRAND_COLORS = {
+  '华为':'#c7000b','苹果':'#1d1d1f','小米':'#ff6900','红米':'#ff0000','三星':'#1428a0',
+  '荣耀':'#00b4a0','索尼':'#1d4ed8','OPPO':'#0b8a3d','vivo':'#415fff','联想':'#16a34a',
+  '高通':'#7c3aed','台积电':'#ea580c','SK海力士':'#ea580c','英伟达':'#16a34a','OpenAI':'#0ea5e9',
+  '字节':'#1d4ed8','Meta':'#7c3aed','RayNeo':'#0ea5e9','XREAL':'#7c3aed','华硕':'#d90012'
+};
+function brandColor(b){
+  if(!b) return '#2563eb';
+  for(const k in BRAND_COLORS){ if(b.indexOf(k)>=0) return BRAND_COLORS[k]; }
+  return '#2563eb';
+}
+// 去除观点前缀（关键发现/管理启示/分析观点）后按 ①②③ 换行结构化
+function bodyClean(t){ return (t||'').replace(/^(关键发现|管理启示|分析观点)[：:]\s*/, ''); }
+function numberedLines(t){
+  const s = bodyClean(t);
+  const parts = s.split(/(?=[①②③④⑤⑥⑦⑧⑨⑩])/).map(x=>x.trim()).filter(Boolean);
+  if(parts.length<=1) return s;
+  return '<div class="nl">'+parts.map(p=>{
+    const m = p.match(/^([①②③④⑤⑥⑦⑧⑨⑩])\s*([\s\S]*)$/);
+    const mk = m? m[1] : '·'; const body = m? m[2] : p;
+    return '<div class="nl-i"><span class="mk">'+mk+'</span>'+body+'</div>';
+  }).join('')+'</div>';
+}
+
 // 浏览量（总体统计）：外部计数器 countapi.xyz + 1小时客户端去重（≈ 1个IP/小时计1次观看）
 function loadViews(){
   const NS='consumernews-site', KEY_T='total', KEY_W='week';
@@ -975,16 +1207,18 @@ function renderHeadlines(){
     </div>`).join('');
 }
 function renderLeaders(){
-  el('leaders-summary').innerHTML = '<span class="lbl">意见领袖观点 · 汇总提炼</span>' + splitSummary(DATA.leadersSummary);
-  el('leader-picks').innerHTML = DATA.opinionLeaders.map(p=>{
-    const first = (p.items && p.items[0] && p.items[0].s) ? p.items[0].s : '';
-    const view = first.length > 64 ? first.slice(0,64)+'…' : first;
-    return `<div class="lp-card"><div><span class="lp-name">${p.name}</span><span class="lp-role">${p.role}</span></div><div class="lp-view">${view}</div></div>`;
-  }).join('');
+  el('leaders-summary').innerHTML = '<span class="lbl">意见领袖观点 · 汇总提炼（按人物机构化）</span>' + splitSummary(DATA.leadersSummary);
+  el('leader-picks').innerHTML = DATA.opinionLeaders.map(p=>`
+    <div class="lp-card"><div><span class="lp-name">${p.name}</span><span class="lp-role">${p.role}</span></div>
+    <div class="lp-view">${p.items.length}条原话观点 · 核心红粗标注</div></div>`).join('');
   el('leaders-block').innerHTML = DATA.opinionLeaders.map(p=>`
     <div class="person-block">
-      <div><span class="pname">${p.name}</span><span class="prole">${p.role}</span></div>
-      ${p.items.map(it=>`<div class="vp-item">· ${it.s} <a href="${it.u}" target="_blank">（${it.l} ↗）</a></div>`).join('')}
+      <div class="person-head"><span class="pname">${p.name}</span><span class="prole">${p.role}</span></div>
+      ${p.items.map(it=>`
+        <div class="vp-item">
+          <span class="hl-red">${it.hl}</span>${it.detail? '　'+it.detail : ''}
+          <a class="vp-link" href="${it.u}" target="_blank" rel="noopener">来源：${it.l} ↗</a>
+        </div>`).join('')}
     </div>`).join('');
 }
 function renderInsts(){
@@ -1009,11 +1243,8 @@ function renderNews(){
 
 // TAB2
 function renderCalendar(){
-  const days = ['一','二','三','四','五','六','日'];
-  let html = days.map(d=>`<div class="cal-cell"><div class="d">周${d}</div></div>`).join('');
-  // 简单以事件卡片覆盖：这里直接列出事件卡（按周布局）
   el('cal-grid').innerHTML = DATA.launchCalendar.map(e=>`
-    <div class="cal-cell ev"><div class="d">${e.d}</div><div class="evt">${e.brand}<br>${e.evt}</div></div>`).join('');
+    <div class="cal-cell ev"><div class="d">${e.d}</div><div class="evt"><span class="ev-brand" style="color:${brandColor(e.brand)}">${e.brand}</span><br>${e.evt}</div></div>`).join('');
 }
 function renderProducts(){
   el('products-summary').innerHTML = '<span class="lbl">新品发布 · 汇总提炼（面向集团高层）</span>' + splitSummary(DATA.productsSummary);
@@ -1029,8 +1260,8 @@ function renderProducts(){
       <div class="prod-body">
         <div class="prod-summary">${p.summary}</div>
         <div class="prod-strategy"><b>战略意图：</b>${p.strategy}</div>
-        <div class="prod-sub"><b>竞争力点：</b>${p.compete}</div>
-        <div class="prod-sub"><b>消费者选择视角：</b>${p.consumer}</div>
+        <div class="prod-compete"><b>竞争力点：</b>${p.compete}</div>
+        <div class="prod-consumer"><b>消费者选择视角：</b>${p.consumer}</div>
         <div class="prod-advice"><b>给管理层的建议：</b>${p.advice}</div>
         <div class="spec-grid">${p.specs.map(s=>`<div class="spec-item"><div class="k">${s.k}</div><div class="v">${s.v}</div></div>`).join('')}</div>
       </div>
@@ -1040,10 +1271,12 @@ function renderProducts(){
 // TAB3
 function renderEarnCal(){
   el('earn-cal').innerHTML = `<div class="kpi-row">${DATA.earningsCalendar.map(e=>`
-    <div class="kpi" style="text-align:left"><div class="kv" style="font-size:13px">${e.d}</div><div class="kl">${e.c} · ${e.p}</div></div>`).join('')}</div>`;
+    <div class="kpi" style="text-align:left"><div class="kv" style="font-size:13px">${e.d}</div><div class="kl"><span style="color:${brandColor(e.c)};font-weight:800">${e.c}</span> · ${e.p}</div></div>`).join('')}</div>`;
 }
 function renderEarnSnap(){
-  el('earn-snap').innerHTML = `<div class="earn-insight">${DATA.earnSnap}</div>`;
+  el('earn-snap').innerHTML =
+    '<div class="snap-box find"><div class="snap-h">🔍 关键发现</div>'+numberedLines(DATA.earnSnap.find)+'</div>'+
+    '<div class="snap-box impl"><div class="snap-h">💡 管理层启示</div>'+numberedLines(DATA.earnSnap.impl)+'</div>';
 }
 function renderEarnings(){
   el('earn-block').innerHTML = DATA.earnings.map(e=>`
@@ -1060,13 +1293,13 @@ function renderEarnings(){
         <div class="kpi"><div class="kv" style="font-size:12px">${e.inventory}</div><div class="kl">存货</div></div>
         <div class="kpi"><div class="kv" style="font-size:12px">${e.shipments}</div><div class="kl">发货量 ${e.shipmentsChg||''}</div></div>
       </div>
-      <div class="earn-viewpoint"><b>分析观点与关键发现：</b>${e.viewpoint}</div>
-      <div class="earn-insight"><b>对经营管理启示：</b>${e.insight}</div>
+      <div class="earn-viewpoint"><b>分析观点与关键发现</b>${numberedLines(e.viewpoint)}</div>
+      <div class="earn-insight"><b>对经营管理启示</b>${numberedLines(e.insight)}</div>
     </div>`).join('');
 }
 
 // TAB4
-let mktChart, mktCurrent='phone', mktGC='global';
+let mktChart, mktShareChart, mktCurrent='phone', mktGC='global';
 function renderMarketView(){
   el('market-view').innerHTML = '<span class="lbl">主流机构大盘观点 · 汇总提炼</span>' + splitSummary(DATA.marketView);
 }
@@ -1136,6 +1369,57 @@ function drawMkt(){
   const tbl = el('mkt-tbl');
   tbl.innerHTML = `<tr><th>周期</th><th>出货量(亿)</th><th>同比</th></tr>` +
     d.series.map(s=>`<tr><td>${s.label}</td><td>${s.shipment}</td><td>${s.yoy}</td></tr>`).join('');
+  // 厂商份额可视化（柱状图）
+  drawMktShare();
+}
+function drawMktShare(){
+  const d = DATA.marketData[mktCurrent][mktGC];
+  const note = el('mkt-share-chart-note');
+  const box = el('mkt-share-chart');
+  if(!d.shares || !d.shares.length){
+    note.textContent = '（该品类' + (mktGC==='global'?'全球':'中国') + '暂无分厂商份额可视化数据，仅呈现出货与品类结构）';
+    box.innerHTML = '<div style="color:#9ca3af;text-align:center;padding:46px 0;font-size:13px">该品类暂无分厂商份额可视化数据</div>';
+    if(mktShareChart){ try{ mktShareChart.dispose(); }catch(e){} mktShareChart=null; }
+    return;
+  }
+  note.textContent = '（' + (mktGC==='global'?'全球':'中国') + '厂商份额 · ' + (d.note||'') + '）';
+  const brands = d.shares.map(s=>s.brand);
+  const shares = d.shares.map(s=>s.share);
+  const chgList = d.shares.map(s=>(s.chg!==undefined && s.chg!==null ? String(s.chg) : ''));
+  if(!mktShareChart) mktShareChart = echarts.init(box);
+  mktShareChart.setOption({
+    title:{ text:d.name+'（'+(mktGC==='global'?'全球':'中国')+'）厂商份额与同比变化', left:'center', textStyle:{fontSize:13,color:'#1f2937'} },
+    tooltip:{ trigger:'axis', axisPointer:{type:'shadow'}, formatter:function(p){
+      const i = p[0].dataIndex;
+      let s = '<b>'+brands[i]+'</b><br/>份额：'+shares[i]+'%';
+      if(chgList[i] && chgList[i]!=='—') s += '<br/>同比变化：'+chgList[i]+' pp';
+      return s;
+    }},
+    grid:{ left:46, right:24, top:46, bottom:28 },
+    xAxis:{ type:'category', data:brands, axisLabel:{interval:0, fontSize:11} },
+    yAxis:{ type:'value', name:'%', axisLabel:{formatter:'{value}'}, splitLine:{lineStyle:{color:'#eef2f7'}} },
+    series:[{
+      type:'bar',
+      barWidth:'52%',
+      data: d.shares.map((s,idx)=>{
+        const c = chgList[idx];
+        let chgColor = '#9ca3af';
+        if(c){ if(c.indexOf('+')===0) chgColor='#dc2626'; else if(c.indexOf('−')===0 || c.indexOf('-')===0) chgColor='#16a34a'; }
+        return {
+          value:s.share,
+          itemStyle:{ color: brandColor(s.brand), borderRadius:[4,4,0,0] },
+          label:{
+            show:true, position:'top', fontSize:11,
+            formatter: function(p){ return '{a|'+p.value+'%}' + (c && c!=='—' ? '\n{b|'+c+'}' : ''); },
+            rich:{
+              a:{ color:'#1f2937', fontWeight:700, fontSize:11 },
+              b:{ color: chgColor, fontSize:10, fontWeight:700, padding:[2,0,0,0] }
+            }
+          }
+        };
+      })
+    }]
+  }, true);
 }
 function bindMktToggle(){
   el('mkt-toggle').addEventListener('click',()=>{
@@ -1295,6 +1579,7 @@ function bindTabs(){
       document.querySelectorAll('.tabpane').forEach(p=>p.classList.remove('active'));
       el(id).classList.add('active');
       if(id==='t4' && mktChart) setTimeout(()=>mktChart.resize(),50);
+      if(id==='t4' && mktShareChart) setTimeout(()=>mktShareChart.resize(),50);
       if(id==='t5' && aiChart) setTimeout(()=>aiChart.resize(),50);
     });
   });
