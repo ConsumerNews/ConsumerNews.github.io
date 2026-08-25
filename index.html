@@ -387,7 +387,7 @@ a:hover { text-decoration:underline; }
 <script>
 /* ===================== 数据层 DATA ===================== */
 const DATA = {
-  updateTime: '2026-08-25 17:54',
+  updateTime: '2026-08-25 18:35',
 
   // ---------- TAB1 今日头条 ----------
   // Tab1-1 今日十大头条观点：站在终端厂商高层经营管理视角，提炼影响"竞争/成本/策略/趋势/资源"的观点（已过滤早先广为人知的旧闻）
@@ -1209,8 +1209,7 @@ function renderHeadlines(){
 function renderLeaders(){
   el('leaders-summary').innerHTML = '<span class="lbl">意见领袖观点 · 汇总提炼（按人物机构化）</span>' + splitSummary(DATA.leadersSummary);
   el('leader-picks').innerHTML = DATA.opinionLeaders.map(p=>`
-    <div class="lp-card"><div><span class="lp-name">${p.name}</span><span class="lp-role">${p.role}</span></div>
-    <div class="lp-view">${p.items.length}条原话观点 · 核心红粗标注</div></div>`).join('');
+    <div class="lp-card"><div><span class="lp-name">${p.name}</span><span class="lp-role">${p.role}</span></div></div>`).join('');
   el('leaders-block').innerHTML = DATA.opinionLeaders.map(p=>`
     <div class="person-block">
       <div class="person-head"><span class="pname">${p.name}</span><span class="prole">${p.role}</span></div>
