@@ -1,4 +1,0 @@
-# 仅保留看板本体；忽略本地环境/缓存
-.DS_Store
-Thumbs.db
-*.log
