@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2C 行业头条看板</title>
+<script src="./echarts.min.js"></script>
+<script>if(!window.echarts){var __ec=document.createElement('script');__ec.src='https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js';document.head.appendChild(__ec);}</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { --accent:#2563eb; --accent-deep:#1d4ed8; --accent-soft:#eff6ff; --accent-tint:#dbeafe; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:#f0f2f5; color:#1f2937; font-size:14.5px; line-height:1.6; }
+a { color:#2563eb; text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* Header */
+.header { background:linear-gradient(135deg,#1d4ed8 0%,#2563eb 55%,#0ea5e9 100%); color:#fff; padding:18px 28px 14px; position:sticky; top:0; z-index:100; box-shadow:0 4px 18px rgba(37,99,235,0.35); border-bottom:3px solid rgba(255,255,255,.6); }
+.header-top { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+.header h1 { font-size:22px; font-weight:800; letter-spacing:1px; }
+.header .sub { font-size:11px; opacity:.82; margin-top:3px; }
+.header-right { text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+.view-counter { display:flex; gap:10px; }
+.view-box { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); border-radius:8px; padding:6px 12px; text-align:center; min-width:96px; }
+.view-box .num { font-size:18px; font-weight:800; line-height:1.1; }
+.view-box .lbl { font-size:10px; opacity:.85; }
+.header .badge { display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.3); padding:3px 10px; border-radius:20px; font-size:10px; }
+.badge::before { content:''; display:inline-block; width:6px; height:6px; background:#4ade80; border-radius:50%; margin-right:5px; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* Category nav（一级切换项，主色调贯穿其下五大板块） */
+.catnav { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.cat-item { padding:8px 22px; font-size:13px; font-weight:800; color:#dbeafe; cursor:pointer; border-radius:20px; border:1.5px solid rgba(255,255,255,.45); background:rgba(255,255,255,.08); transition:all .2s; white-space:nowrap; }
+.cat-item:hover { background:rgba(255,255,255,.22); color:#fff; }
+.cat-item.active { background:#fff; color:var(--accent); border-color:#fff; box-shadow:0 2px 10px rgba(0,0,0,.25); }
+
+/* Tabs */
+.tabnav { background:#fff; padding:0 28px; display:flex; gap:4px; border-bottom:2px solid #e5e7eb; box-shadow:0 1px 4px rgba(0,0,0,.04); overflow-x:auto; }
+.tab-item { padding:13px 20px; font-size:14px; font-weight:700; color:#6b7280; cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap; transition:all .2s; }
+.tab-item:hover { color:var(--accent); background:var(--accent-soft); }
+.tab-item.active { color:var(--accent); border-bottom-color:var(--accent); }
+.tab-item .tn { display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%; font-size:11px; margin-right:6px; background:var(--accent); color:#fff; }
+
+/* Container */
+.container { max-width:1400px; margin:0 auto; padding:22px 28px 60px; }
+.tabpane { display:none; }
+.tabpane.active { display:block; }
+
+/* Section titles */
+.section-title { font-size:20px; font-weight:800; color:#1f2937; margin:8px 0 16px; padding-left:14px; border-left:4px solid var(--accent); display:flex; align-items:center; gap:8px; }
+.section-title .en { font-size:11px; color:#9ca3af; font-weight:400; }
+.card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:18px; box-shadow:0 2px 8px rgba(0,0,0,.03); }
+.muted { color:#6b7280; font-size:12px; }
+.hl { color:var(--accent); font-weight:700; }
+
+/* Tab1 headline */
+.headline-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+@media(max-width:1000px){ .headline-grid { grid-template-columns:1fr; } }
+.hl-card { border:1px solid #f0f0f0; border-radius:10px; padding:14px 16px; background:linear-gradient(180deg,#fffaf9,#fff); border-left:4px solid var(--accent); }
+.hl-rank { display:inline-block; width:24px; height:24px; line-height:24px; text-align:center; background:var(--accent); color:#fff; border-radius:6px; font-weight:800; font-size:13px; margin-right:8px; }
+.hl-card h4 { font-size:15px; font-weight:700; display:inline; }
+.hl-support { font-size:14.5px; color:#4b5563; margin-top:9px; line-height:1.7; }
+.hl-link { font-size:11px; margin-top:6px; }
+
+.person-block { border:1px solid #e5e7eb; border-radius:10px; padding:14px 16px; margin-bottom:12px; }
+.person-block .pname { font-size:15px; font-weight:800; color:#1f2937; }
+.person-block .prole { font-size:11px; color:#9ca3af; margin-left:6px; }
+.vp-item { font-size:14px; color:#374151; padding:9px 0; border-bottom:1px dashed #f0f0f0; line-height:1.7; }
+.vp-item:last-child { border-bottom:none; }
+
+.news-row { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid #f3f4f6; }
+.news-rank { flex-shrink:0; width:22px; height:22px; line-height:22px; text-align:center; border-radius:5px; background:var(--accent-soft); color:var(--accent); font-weight:800; font-size:12px; }
+.news-main { flex:1; }
+.news-title { font-size:15px; font-weight:600; color:#1f2937; }
+.news-meta { font-size:11px; color:#9ca3af; margin-top:2px; }
+
+/* Tab2 products */
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
+@media(max-width:900px){ .cal-grid { grid-template-columns:repeat(3,1fr); } }
+.cal-cell { border:1px solid #e5e7eb; border-radius:8px; padding:8px; min-height:90px; background:#fff; font-size:11px; }
+.cal-cell .d { font-weight:800; color:#374151; }
+.cal-cell.ev { background:var(--accent-soft); border-color:var(--accent-tint); }
+.cal-cell .evt { margin-top:4px; color:var(--accent); font-weight:600; line-height:1.35; }
+.prod-block { border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-bottom:16px; }
+.prod-head { display:flex; align-items:center; gap:10px; padding:14px 18px; color:#fff; }
+.prod-head .b { font-size:16px; font-weight:800; }
+.prod-head .tag { font-size:11px; background:rgba(255,255,255,.25); padding:2px 8px; border-radius:4px; }
+.prod-body { padding:16px 18px; }
+.prod-summary { font-size:15px; color:#374151; line-height:1.8; }
+.prod-strategy { margin-top:10px; padding:11px 14px; background:#f9fafb; border-left:3px solid var(--accent); border-radius:6px; font-size:14.5px; color:#4b5563; line-height:1.8; }
+.prod-strategy b { color:var(--accent); }
+.spec-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; margin-top:12px; }
+.spec-item { border:1px solid #f0f0f0; border-radius:8px; padding:8px 10px; background:#fafafa; }
+.spec-item .k { font-size:10px; color:#9ca3af; }
+.spec-item .v { font-size:12.5px; font-weight:700; color:#1f2937; }
+.prod-links { margin-top:10px; font-size:11px; }
+
+/* Tab3 earnings */
+.earn-card { border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:16px; }
+.earn-top { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; }
+.earn-company { font-size:17px; font-weight:800; }
+.earn-code { font-size:11px; color:#9ca3af; margin-left:8px; }
+.earn-period { font-size:11px; color:#6b7280; background:#f3f4f6; padding:3px 10px; border-radius:20px; }
+.kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:14px 0; }
+@media(max-width:900px){ .kpi-row { grid-template-columns:repeat(2,1fr); } }
+.kpi { border:1px solid #f0f0f0; border-radius:8px; padding:10px; text-align:center; }
+.kpi .kv { font-size:16px; font-weight:800; color:#1f2937; }
+.kpi .kl { font-size:10px; color:#9ca3af; margin-top:2px; }
+.kpi .ky { font-size:11px; font-weight:700; }
+.up { color:#dc2626; } .down { color:#16a34a; }
+.earn-insight { font-size:15px; color:#4b5563; line-height:1.85; }
+.vp-summary { background:#eef4ff; border:1px solid #d6e4ff; border-left:4px solid #1d4ed8; border-radius:8px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:#1e3a5f; line-height:1.75; }
+.vp-summary b { color:#1d4ed8; }
+.prod-sub { margin-top:8px; padding:9px 12px; background:#f9fafb; border-radius:6px; font-size:12.5px; color:#374151; line-height:1.65; }
+.prod-sub b { color:#1f2937; }
+.prod-advice { margin-top:8px; padding:10px 12px; background:#fff7ed; border-left:3px solid #ea580c; border-radius:6px; font-size:12.5px; color:#7c2d12; line-height:1.65; }
+.prod-advice b { color:#ea580c; }
+.earn-viewpoint { margin-top:10px; padding:10px 12px; background:#f0f9ff; border-radius:6px; font-size:12.5px; color:#374151; line-height:1.7; }
+.earn-viewpoint b { color:#0369a1; }
+.ai-advice { margin-top:8px; padding:9px 12px; background:#f0fdf4; border-left:3px solid #16a34a; border-radius:6px; font-size:12px; color:#14532d; line-height:1.6; }
+.mkt-extra { margin-top:14px; }
+.mkt-sub { font-size:13px; font-weight:700; color:#1f2937; margin:14px 0 6px; }
+.mkt-sub .en { font-size:11px; color:#9ca3af; font-weight:400; }
+.up { color:#16a34a; font-weight:700; }
+.down { color:#dc2626; font-weight:700; }
+
+/* Tab4 market */
+.mkt-tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
+.mkt-tab { padding:6px 14px; border:1px solid #e5e7eb; border-radius:20px; font-size:12px; font-weight:600; cursor:pointer; background:#fff; color:#6b7280; }
+.mkt-tab.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+.chart-box { width:100%; height:340px; }
+.toggle-tbl { font-size:11px; color:var(--accent); cursor:pointer; font-weight:600; }
+.data-tbl { width:100%; border-collapse:collapse; font-size:12px; margin-top:10px; display:none; }
+.data-tbl.show { display:table; }
+.data-tbl th, .data-tbl td { border:1px solid #e5e7eb; padding:7px 8px; text-align:left; }
+.data-tbl th { background:#f9fafb; font-weight:700; }
+
+/* Tab5 AI */
+.ai-stat-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; margin-bottom:16px; }
+.ai-stat { border:1px solid #e5e7eb; border-radius:10px; padding:14px; background:linear-gradient(180deg,#eef2ff,#fff); }
+.ai-stat .num { font-size:22px; font-weight:800; color:#3730a3; }
+.ai-stat .lbl { font-size:11px; color:#6b7280; margin-top:2px; }
+
+/* ===== 汇总提炼页：分行条理 + 大字体 + 观点直接 ===== */
+.summary-box { background:#eef4ff; border:1px solid #d6e4ff; border-left:4px solid var(--accent); border-radius:10px; padding:16px 20px; margin-bottom:16px; font-size:15px; line-height:1.95; color:#1e3a5f; }
+.summary-box .lbl { font-weight:800; color:var(--accent-deep); display:block; margin-bottom:10px; font-size:15.5px; }
+.summary-lines > div { padding:6px 0; border-bottom:1px dashed #e3ecfd; }
+.summary-lines > div:last-child { border-bottom:none; }
+.summary-lines .mk { color:var(--accent); font-weight:800; margin-right:7px; }
+
+/* 领袖核心观点速览（按人物一行一观点） */
+.leader-picks { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:14px 0 6px; }
+@media(max-width:900px){ .leader-picks{ grid-template-columns:1fr; } }
+.lp-card { border:1px solid #e5e7eb; border-left:3px solid var(--accent); border-radius:8px; padding:11px 14px; background:#fafcff; }
+.lp-card .lp-name { font-weight:800; font-size:14px; color:#1f2937; }
+.lp-card .lp-role { font-size:10.5px; color:#9ca3af; margin-left:6px; }
+.lp-card .lp-view { font-size:13.5px; color:#374151; margin-top:5px; line-height:1.65; }
+
+/* 全球/中国切换 */
+.gc-toggle { display:inline-flex; gap:6px; margin-bottom:14px; }
+.gc-btn { padding:6px 18px; border:1px solid #e5e7eb; border-radius:20px; font-size:13px; font-weight:700; cursor:pointer; background:#fff; color:#6b7280; transition:all .15s; }
+.gc-btn:hover { color:var(--accent); background:var(--accent-soft); }
+.gc-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+/* 存储价格曲线（持续刷新跟踪） */
+.storage-note { font-size:11.5px; color:#6b7280; margin-top:8px; line-height:1.6; }
+.price-chart { width:100%; height:330px; }
+/* 实际价格曲线（绝对数值）· 权限门禁 */
+.pg-divider { height:1px; background:linear-gradient(90deg,#e5e7eb,transparent); margin:18px 0 14px; }
+.pg-head { margin-bottom:8px; }
+.pg-title { font-size:14.5px; font-weight:700; color:#1f2937; }
+.pg-sub { font-size:11.5px; color:#6b7280; margin-left:6px; }
+.price-lock { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:34px 16px; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:12px; }
+.pl-icon { font-size:30px; }
+.pl-txt { font-size:14px; color:#64748b; font-weight:600; }
+.pl-btn { padding:9px 20px; border:none; border-radius:8px; background:var(--accent); color:#fff; font-size:13.5px; font-weight:600; cursor:pointer; transition:.15s; }
+.pl-btn:hover { filter:brightness(1.08); }
+.pl-hint { font-size:11px; color:#94a3b8; margin-top:2px; text-align:center; max-width:340px; line-height:1.5; }
+
+/* 上下游成本结构化部件卡 */
+.cost-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:12px; }
+.cost-card { border:1px solid #e5e7eb; border-radius:10px; padding:14px 16px; background:#fff; }
+.cost-card .cc-name { font-size:14.5px; font-weight:800; color:#1f2937; display:flex; align-items:center; gap:8px; }
+.cost-card .cc-dir { font-size:11px; font-weight:800; padding:2px 9px; border-radius:10px; white-space:nowrap; }
+.cc-up { background:#fdecec; color:#dc2626; } .cc-down { background:#e7f6ec; color:#16a34a; } .cc-flat{ background:#eef2f7; color:#6b7280; }
+.cost-card .cc-change { font-size:13px; color:#374151; margin-top:9px; line-height:1.65; }
+.cost-card .cc-impact { margin-top:9px; padding:9px 11px; background:#f9fafb; border-left:3px solid var(--accent); border-radius:6px; font-size:12.5px; color:#4b5563; line-height:1.65; }
+.cost-card .cc-impact b { color:var(--accent-deep); }
+.cost-takeaway { margin-top:14px; padding:12px 16px; background:#eef4ff; border:1px solid #d6e4ff; border-radius:10px; font-size:14px; color:#1e3a5f; line-height:1.8; }
+.cost-takeaway b { color:var(--accent-deep); }
+
+.footer { text-align:center; color:#9ca3af; font-size:11px; padding:24px; }
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-top">
+    <div>
+      <h1>2C 行业头条看板</h1>
+      <div class="sub">2C Industry Headline Dashboard · 面向管理者的每日产业速览与深度追踪</div>
+    </div>
+    <div class="header-right">
+      <div class="view-counter">
+        <div class="view-box"><div class="num" id="vc-total">—</div><div class="lbl">总计浏览量</div></div>
+        <div class="view-box"><div class="num" id="vc-week">—</div><div class="lbl">本周浏览量</div></div>
+      </div>
+      <div class="badge" id="update-badge">更新中…</div>
+    </div>
+  </div>
+  <nav class="catnav" id="catnav">
+    <div class="cat-item active" data-cat="terminal">终端</div>
+    <div class="cat-item" data-cat="auto">汽车</div>
+    <div class="cat-item" data-cat="internet">互联网</div>
+    <div class="cat-item" data-cat="chip">芯片与器件</div>
+  </nav>
+</header>
+
+<nav class="tabnav" id="tabnav">
+  <div class="tab-item active" data-tab="t1"><span class="tn">1</span>行业今日头条</div>
+  <div class="tab-item" data-tab="t2"><span class="tn">2</span>新产品发布解读</div>
+  <div class="tab-item" data-tab="t3"><span class="tn">3</span>最新财报解读</div>
+  <div class="tab-item" data-tab="t4"><span class="tn">4</span>市场大盘追踪</div>
+  <div class="tab-item" data-tab="t5"><span class="tn">5</span>AI 及存储产业链跟踪</div>
+</nav>
+
+<div class="container" id="cat-body">
+
+  <!-- ===================== TAB 1: 今日头条 ===================== -->
+  <section class="tabpane active" id="t1">
+    <div class="card">
+      <div class="section-title">一、今日十大头条观点 <span class="en">Top 10 Headline Viewpoints · 高度精炼 · 附支撑与链接</span></div>
+      <div class="headline-grid" id="headline-grid"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">二、主要意见领袖观点 <span class="en">Opinion Leaders · 汇总提炼 · 核心观点速览 · 按人物展开</span></div>
+      <div class="summary-box" id="leaders-summary"></div>
+      <div class="leader-picks" id="leader-picks"></div>
+      <div id="leaders-block"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">三、中外主流机构观点 <span class="en">Institutions · 先汇总 · 按机构展开</span></div>
+      <div class="summary-box" id="insts-summary"></div>
+      <div id="insts-block"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">四、今日十大新闻头条 <span class="en">Top 10 News · 先汇总 · 按新闻展开 · 附链接</span></div>
+      <div class="summary-box" id="news-summary"></div>
+      <div id="news-block"></div>
+    </div>
+  </section>
+
+  <!-- ===================== TAB 2: 新产品发布解读 ===================== -->
+  <section class="tabpane" id="t2">
+    <div class="card">
+      <div class="section-title">本月新品发布日历 <span class="en">Launch Calendar · 厂商新品排期一览</span></div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="muted" style="margin-top:10px;">注：9月为近年旗舰发布最密集月份，六场以上发布会集中在约30天内；排期以厂商公开信息与媒体爆料综合整理。</div>
+    </div>
+    <div class="card">
+      <div class="section-title">新品速览汇总表 <span class="en">Product Summary · 卖点 / 战略意图 / 管理启示</span></div>
+      <table class="data-tbl" id="prod-summary"></table>
+    </div>
+    <div class="card">
+      <div class="section-title">本周新品发布解读 <span class="en">New Product Deep-dive · 按厂商解读 · 速览+战略意图+竞争力+管理建议</span></div>
+      <div id="prod-block"></div>
+    </div>
+  </section>
+
+  <!-- ===================== TAB 3: 最新财报解读 ===================== -->
+  <section class="tabpane" id="t3">
+    <div class="card">
+      <div class="section-title">本周财报日历 <span class="en">Earnings Calendar · 主要公司财报发布节点</span></div>
+      <div id="earn-cal"></div>
+    </div>
+    <div class="card">
+      <div class="section-title">本日财报速递 <span class="en">Earnings Snapshot · 关键发现 + 管理层启示</span></div>
+      <div id="earn-snap"></div>
+    </div>
+    <div class="section-title">按公司维度财报分析 <span class="en">By Company</span></div>
+    <div id="earn-block"></div>
+  </section>
+
+  <!-- ===================== TAB 4: 市场大盘追踪 ===================== -->
+  <section class="tabpane" id="t4">
+    <div class="card">
+      <div class="section-title">大盘观点 <span class="en">Market View · 年度 / 月度变化 · 全球与中国</span></div>
+      <div class="summary-box" id="market-view"></div>
+    </div>
+    <div class="card">
+      <div class="section-title">各品类大盘追踪 <span class="en">Market Big-board · 全球 / 中国 · 柱状图 + 厂商份额 + 分类变化</span></div>
+      <div class="gc-toggle" id="mkt-gc">
+        <div class="gc-btn active" data-gc="global">全球</div>
+        <div class="gc-btn" data-gc="china">中国</div>
+      </div>
+      <div class="mkt-tabs" id="mkt-tabs"></div>
+      <div class="chart-box" id="mkt-chart"></div>
+      <div class="mkt-extra">
+        <div class="mkt-sub">各厂商竞争份额及变化 <span class="en" id="mkt-share-note"></span></div>
+        <table class="data-tbl" id="mkt-shares"></table>
+        <div class="mkt-sub">分类变化 <span class="en">Segments · 按主流机构口径：折叠屏 / 高端 / 中端 / 低端</span></div>
+        <table class="data-tbl" id="mkt-segments"></table>
+      </div>
+      <div style="margin-top:8px;"><span class="toggle-tbl" id="mkt-toggle">▸ 显示总量数据表格</span></div>
+      <table class="data-tbl" id="mkt-tbl"></table>
+    </div>
+  </section>
+
+  <!-- ===================== TAB 5: AI及存储产业链跟踪 ===================== -->
+  <section class="tabpane" id="t5">
+    <div class="card">
+      <div class="section-title">AI产业链纵览 <span class="en">Overview · 本日主要观点与信息汇总</span></div>
+      <div id="ai-overview" class="earn-insight"></div>
+    </div>
+    <div class="card">
+      <div class="section-title">① 存储价格跟踪 <span class="en">DRAM / HBM / NAND / 手机套片 · 价格变化曲线</span></div>
+      <div class="price-chart" id="storage-chart"></div>
+      <div class="storage-note">↑ 价格为各品类综合合约价指数（基准=100，2026年3月），随每次数据更新持续刷新跟踪；最新月为 <b>2026-08</b>。曲线呈「先陡升后趋稳」的 K 型走势，反映长协封顶后涨幅收敛。</div>
+      <div class="pg-divider"></div>
+      <div class="pg-head"><span class="pg-title">实际价格曲线（绝对数值）· 2025Q1–2026Q3</span><span class="pg-sub">DRAM / NAND / HBM 实际合约价（美元），来源 TrendForce / DRAMeXchange</span></div>
+      <div class="price-lock" id="price-lock">
+        <div class="pl-icon">🔒</div>
+        <div class="pl-txt">该价格曲线当前未开放查看权限</div>
+        <button class="pl-btn" id="price-unlock-btn">开放查看权限</button>
+        <div class="pl-hint">点击后仅本浏览器开放；如需全站开放，请在源码置 PRICE_UNLOCK_OVERRIDE=true 并重新部署</div>
+      </div>
+      <div class="price-chart" id="price-chart" style="display:none;"></div>
+      <div class="storage-note" id="price-src" style="display:none;"></div>
+      <div id="ai-storage"></div>
+    </div>
+    <div class="card">
+      <div class="section-title">② 上下游成本变化 <span class="en">分部件结构化 · 变化方式 + 对上下游影响</span></div>
+      <div class="cost-grid" id="ai-cost"></div>
+      <div class="cost-takeaway" id="cost-takeaway"></div>
+    </div>
+    <div class="card">
+      <div class="section-title">③ AI订阅用户跟踪 <span class="en">Subscription & MAU · 曲线与排行</span></div>
+      <div class="ai-stat-row" id="ai-stats"></div>
+      <div class="chart-box" id="ai-chart" style="height:320px;"></div>
+      <div class="mkt-extra">
+        <div class="mkt-sub">主要AI助手月活排行 <span class="en">Top AI Assistants by MAU</span></div>
+        <table class="data-tbl" id="ai-subs-tbl" style="display:table"></table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">④ 产业链技术变化综合研判 <span class="en">Tech & Signal Synthesis</span></div>
+      <div id="ai-views"></div>
+    </div>
+  </section>
+
+  <div class="footer">2C 行业头条看板 · 数据来源：IDC / Counterpoint / Omdia / TrendForce / 各公司财报 / 主流媒体公开报道，仅供研究参考</div>
+</div>
+
+<div class="container" id="cat-empty" style="display:none">
+  <div class="card">
+    <div class="section-title">栏目建设中 <span class="en">Coming Soon</span></div>
+    <div class="earn-insight">【汽车 / 互联网 / 芯片与器件】栏目正在建设中，敬请期待。当前开放栏目：<b>终端</b>（含行业今日头条 / 新产品发布 / 最新财报 / 市场大盘 / AI及存储产业链 五大板块）。</div>
+  </div>
+</div>
+
+<script>
+/* ===================== 数据层 DATA ===================== */
+const DATA = {
+  updateTime: '2026-08-25 06:00',
+
+  // ---------- TAB1 今日头条 ----------
+  // Tab1-1 今日十大头条观点：站在终端厂商高层经营管理视角，提炼影响"竞争/成本/策略/趋势/资源"的观点（已过滤早先广为人知的旧闻）
+  headlineViewpoints: [
+    { tag:'产品/竞争', t:'苹果发布会本周官宣：iPhone 18 Pro/Pro Max/折叠Ultra三款9/9齐发，起售价破万元', s:'iPhone Ultra为苹果首款阔折叠（5.5"外屏/7.8"内屏4:3/单边4.5mm），A20 Pro 2nm/12GB内存/4800万双摄无长焦/砍Face ID改侧边指纹/iOS 27分屏；iPhone 18 Pro 6.3" Pro Max 6.9" LTPO+/灵动岛-35%/可变光圈三摄/樱桃红配色。对经营含义：苹果以折叠新品类+涨价推高均价，旗舰定价天花板继续上探，9月成高端决战窗口。', l:'快科技/网易', u:'https://www.163.com/dy/article/L531TAV20511CPVM.html' },
+    { tag:'技术/供应链', t:'三星HBM4E量产落地（16Gbps/12层48GB/4TB/s），三巨头HotChips2026亮HBM路线图', s:'三星zHBM垂直堆叠GPU功耗-70%/带宽+230%；SK海力士攻20层混合键合+引入英特尔EMIB；美光指内存墙仍在（算力每两年3倍 vs HBM带宽<2倍）。对经营含义：HBM成AI算力绝对主角，先进封装与存储协同进化，终端厂须把算力/存储采购纳入供应链安全配置。', l:'腾讯网/今日头条', u:'https://www.toutiao.com/article/7677540957071376942/' },
+    { tag:'自研/策略', t:'小米玄戒三芯齐发：O3/O100/D100覆盖"人车家"全生态算力底座', s:'玄戒O3基于3nm/240亿晶体管，首发小米18 Fold折叠屏9月上市；O100主攻端侧AI加速、D100主攻智能驾驶。对经营含义：小米自研芯片从单点手机SoC迈向全场景AI算力布局，国产自研从"单点突围"走向"全生态底座"，与华为韬定律形成国产双线。', l:'手机中国/封面新闻', u:'https://new.qq.com/rain/a/20260824A065XA00' },
+    { tag:'市场/份额', t:'小米17系列销量突破600万台，第33周国内份额18.2%逼近华为', s:'截至第33周小米17系列累计破600万（Ultra约24.3万/中端17T约42.1万）；红米K100 Pro两款进TOP10。对经营含义：小米靠性价比旗舰+高端Ultra双线放量，份额向头部集中加速，中端与高端双线作战成生存线。', l:'IT之家/数评时代', u:'https://view.inews.qq.com/a/20260824A06IZI00' },
+    { tag:'成本/定价', t:'小米日本上调手机平板售价（部分涨2万日元），存储成本向终端持续传导', s:'9月1日起涉小米17T Pro/POCO X8 Pro等机型涨价，主因内存及元器件成本上涨难消化；同期Q2小米手机营收同比降7.5%/出货跌26.5%。对经营含义：存储超级周期成本已实质压向终端毛利，海外涨价是国内涨价的预演，终端厂须重估价格体系与国产替代比例。', l:'手机中国', u:'http://view.inews.qq.com/a/20260824A05YTI00' },
+    { tag:'技术/趋势', t:'先进封装爆发：2026全球DRAM设备市场388亿美元(+39%)，先进封装收入增速超70%', s:'应用材料判断2026-2027全球晶圆设备八成增长来自先进逻辑/高性能DRAM/先进封装；SEMI预测2026全球DRAM设备市场+39%/2027继续+27.4%。对经营含义：AI设备投资周期从"制造更快计算芯片"转向"让数据配得上算力"，存储/封装协同成新增长引擎，国产设备厂应跟进。', l:'求是缘半导体/腾讯网', u:'https://new.qq.com/rain/a/20260824A03N3M00' },
+    { tag:'AI/竞争', t:'Anthropic旗舰Fable 5遇冷（企业支出仅11%），OpenAI反攻年化营收破400亿$', s:'Fable 5发布两月企业支出占比仅11%，客户转向平价替代；同期OpenAI因GPT-5.6上线当季年化营收跳升35%破400亿$，企业份额反超Anthropic。对经营含义：AI应用端技术领先≠商业成功，定价与生态决定付费意愿，IPO前商业化落地是估值叙事关键。', l:'华尔街见闻/界面新闻', u:'http://view.inews.qq.com/a/20260824A0B1LW00' },
+    { tag:'AI/应用', t:'国产AI御三家梭哈Work：字节豆包工作/阿里千问办公/腾讯WorkBuddy集中资源', s:'字节将TRAE/扣子并入豆包，最快本周推独立办公产品"豆包工作"；阿里整合Qoder/悟空/MuleRun为"千问办公"；腾讯明确AI所有资源向WorkBuddy集中；金山WPS AI月活破8000万。对经营含义：AI办公成巨头必争之地，终端厂应把智能体作为独立变现单元运营，而非免费附赠。', l:'罗超频道/网易', u:'https://dy.163.com/article/L54E4L7T05119NA8.html' },
+    { tag:'AI/估值', t:'小鹏机器人首轮估值63亿美元，具身智能资本热浪再起', s:'小鹏机器人首轮融资估值63亿美元；同期Hugging Face寻求出售估值或超130亿$；OpenAI顶尖研究员Luke Metz离职加盟Meta超级智能实验室。对经营含义：具身智能资本狂欢但商用鸿沟仍在，高估值需场景兑现，终端厂布局机器人应警惕泡沫风险与人才争夺。', l:'AI日报/智能AI百宝箱', u:'https://new.qq.com/rain/a/20260824A06UDJ00' },
+    { tag:'政策/资源', t:'第三批数码国补续档625亿，3C数码15%直补覆盖29省市', s:'2026年第三批625亿消费品换新补贴续期，3C数码享15%直补、单件封顶500元，覆盖全国29省市；高考生凭录取通知书可免学籍认证叠加京东返校季权益。对经营含义：国补续档是下半年换新需求托底，终端厂应把握补贴窗口优化促销节奏与渠道资源匹配。', l:'牡丹晚报', u:'https://view.inews.qq.com/a/20260824A04ZXQ00' }
+  ],
+
+  opinionLeaders: [
+    { name:'余承东', role:'华为终端BG董事长', items:[
+      { s:'Mate 90 Pro Max"风驰版"曝光，配备定制主动散热模块，搭载华为首发麒麟2026韬定律芯片（逻辑折叠/晶体管密度+53.5%/能效+41%/等效3nm），9月23日发布。', l:'泡泡网', u:'https://www.pcpop.com/common/Article_5_005900050_0_0_60.htm' },
+      { s:'余承东手持新机与杨幂、沈腾畅聊享界G9的视频合影，结尾手持新机引发网友推测为三折叠迭代新机Mate XT2。', l:'数码每日快讯', u:'https://new.qq.com/rain/a/20260824A076CO00' }
+    ]},
+    { name:'雷军', role:'小米集团创始人', items:[
+      { s:'玄戒三芯齐发——O3(3nm/240亿晶体管/首发18 Fold)/O100(端侧AI加速)/D100(智驾)，国产自研芯片从"单点突围"走向"人车家全生态底座"。', l:'封面新闻', u:'https://new.qq.com/rain/a/20260824A076CO00' },
+      { s:'小米17系列累计销量突破600万台（开售5天破百万），9月4-8日首次亮相柏林IFA推进"人车家全生态"全球化叙事。', l:'IT之家', u:'https://view.inews.qq.com/a/20260824A06IZI00' }
+    ]},
+    { name:'古尔曼', role:'彭博社记者', items:[
+      { s:'苹果本周将官宣9月9日发布会，iPhone 18 Pro/Pro Max/折叠屏iPhone Ultra三款集中亮相；iPhone Ultra为苹果首款阔折叠（5.5"外屏/7.8"内屏4:3），起售价有望破万元，史上最贵iPhone。', l:'快科技/网易', u:'https://www.163.com/dy/article/L531TAV20511CPVM.html' }
+    ]},
+    { name:'Greg Brockman', role:'OpenAI总裁', items:[
+      { s:'称"世界长期不会有足够算力"，智能体用户仅约两千万而ChatGPT用户达十亿，需求远未真正开始；透露Codex内部渗透率已接近Slack，每周约2.3亿人用ChatGPT问健康问题。', l:'AI寒武纪', u:'http://view.inews.qq.com/a/20260824A0CLGH00' }
+    ]},
+    { name:'Sangwook Han', role:'三星DRAM设计团队负责人', items:[
+      { s:'在HotChips2026确认HBM4E已量产，每引脚速率16Gbps、12层堆叠48GB、满血4TB/s带宽；采用1c制程+4nm SF4基础芯片，能效+16%/热阻改善超14%，后续推8层32GB/16层64GB规格。', l:'腾讯网', u:'https://new.qq.com/rain/a/20260824A0702100' }
+    ]},
+    { name:'吴永辉', role:'字节Seed负责人', items:[
+      { s:'字节大模型部门Seed完成新一轮组织调整，新设预训练数据/强化学习/B端后训练/C端对话四个一级部门，强化"数据—预训练—强化学习—产品后训练"全链路；TRAE/扣子团队并入豆包统一AI办公产品线。', l:'AI日报/罗超频道', u:'https://dy.163.com/article/L54E4L7T05119NA8.html' }
+    ]}
+  ],
+
+  // Tab1-2 主要意见领袖观点·汇总（产业链上下游主要领袖声音的提炼，亮明观点）
+  leadersSummary: '本期意见领袖声音集中于四条经营主线：①技术自主——余承东以Mate 90风驰版+韬定律麒麟宣示主动散热+架构创新对冲制程封锁；②自研生态——雷军以玄戒三芯齐发（O3/O100/D100）将自研芯片从手机SoC扩展至人车家全生态算力底座；③巨头动作——古尔曼确认苹果9/9三款齐发、Greg Brockman喊出"算力永远不够"折射智能体需求远未触顶；④供应链卡位——三星Sangwook Han以HBM4E量产16Gbps抢占AI存储制高点，字节吴永辉重组Seed押注AI办公。总体信号：技术自主（华为韬定律+小米玄戒）与AI算力（HBM4E+智能体需求）双线共振，终端厂须在"自研器件×AI算力×场景变现"上同步配置资源。',
+
+  institutionViews: [
+    { name:'应用材料', items:[
+      { s:'判断2026-2027年全球晶圆制造设备市场约80%增长来自先进逻辑、高性能DRAM及先进封装三大板块，其中先进封装业务2026年全年收入增速预计突破70%；6月推出增强版Centura Prime Epi外延系统进入HBM和高端DDR产线。', l:'应用材料/腾讯网', u:'https://new.qq.com/rain/a/20260824A03N3M00' }
+    ]},
+    { name:'SEMI', items:[
+      { s:'7月更新预测：2026年全球DRAM设备市场规模将达388亿美元（同比+39%），2027年继续维持27.4%高增速，核心驱动力为HBM需求爆发与DRAM节点迭代升级。', l:'SEMI/腾讯网', u:'https://new.qq.com/rain/a/20260824A03N3M00' }
+    ]},
+    { name:'HotChips2026（三巨头HBM路线）', items:[
+      { s:'三星三阶段HBM路线（标准HBM→定制cHBM→终极zHBM垂直堆叠GPU，功耗-70%/带宽+230%/每DRAM模组省100W）；SK海力士攻20层混合键合凸点间距18微米/热阻-35%并引入英特尔EMIB；美光指内存墙仍在（算力每两年3倍 vs HBM带宽<2倍）。', l:'今日头条/腾讯网', u:'https://www.toutiao.com/article/7677540957071376942/' }
+    ]},
+    { name:'TrendForce', items:[
+      { s:'服务器DRAM占比逼近53%、NAND 37%正式超越手机33%；HBM占DRAM投片22%→30%但有效位元仅9%→13%，供需缺口被动放大。Q3 DRAM合约价环比涨幅从Q2的58-63%收窄至13-18%，长协封顶效应。', l:'TrendForce/与非网', u:'https://www.eefocus.com/article/2070123.html' }
+    ]},
+    { name:'IDC', items:[
+      { s:'2026全球DRAM供应同比仅增16%、NAND增17%，远低于45%/38%需求增速；DRAM供需缺口4.9%/NAND 4.2%，近十五年最严重短缺。Q2全球手机出货2.775亿部(-6.7%)，华为中国份额22.6%登顶。', l:'IDC', u:'https://www.163.com/dy/article/L42N134U0550B1DU.html' }
+    ]},
+    { name:'Ramp', items:[
+      { s:'数据显示OpenAI在美国企业AI市场份额重回领先，7月近40%反超Anthropic（5月曾落后）；企业AI付费渗透率从3月超50%升至7月近56%，整体支出仍扩张。同期Anthropic旗舰Fable 5发布两月企业支出占比仅11%。', l:'华尔街见闻/Ramp', u:'http://view.inews.qq.com/a/20260824A0B1LW00' }
+    ]},
+    { name:'日经/Weights&Biases', items:[
+      { s:'联合发布全球生成式AI实力调查报告，中国月之暗面Kimi K3综合排名跃升至全球第6，超越谷歌与SpaceX AI模型；智谱GLM-5.2、稀宇M3、阿里云跻身前列，开源低成本成核心优势。', l:'手机中国/日经', u:'https://view.inews.qq.com/a/20260824A05IZ600' }
+    ]}
+  ],
+
+  // Tab1-3 中外主流机构观点·汇总（分析师机构、排名机构、智库的主流观点提炼）
+  instsSummary: '主流研究机构对2026下半年AI产业链形成一致判断：①先进封装成新增长引擎——应用材料指2026-2027全球晶圆设备八成增长来自先进逻辑/高性能DRAM/先进封装、先进封装收入增速超70%，SEMI预测2026全球DRAM设备市场388亿美元(+39%)；②HBM成AI算力绝对主角——HotChips2026三巨头亮路线图（三星zHBM垂直堆叠/SK海力士20层混合键合/美光警示内存墙），三星HBM4E已量产16Gbps；③AI应用商业分化——Ramp数据显示OpenAI企业份额反超Anthropic（Fable 5企业支出仅11%），日经调查Kimi K3全球第6彰显中国模型性价比优势。对管理层含义：AI投资从"算力峰值"转向"每瓦Token/存储带宽协同"，资源应向先进封装、HBM生态、国产算力（韬定律+长鑫7%）与可变现AI应用倾斜。',
+
+  topNews: [
+    { t:'苹果发布会本周官宣：iPhone 18 Pro/Pro Max/折叠Ultra三款9/9齐发，起售价破万元', s:'快科技/网易 · 08-24', u:'https://www.163.com/dy/article/L531TAV20511CPVM.html' },
+    { t:'小米玄戒三芯齐发：O3/O100/D100覆盖人车家全生态，O3首发18 Fold 9月上市', s:'手机中国/封面新闻 · 08-24', u:'https://new.qq.com/rain/a/20260824A065XA00' },
+    { t:'三星HBM4E量产落地：16Gbps引脚速率/12层48GB/满血4TB/s带宽', s:'腾讯网 · 08-24', u:'https://new.qq.com/rain/a/20260824A0702100' },
+    { t:'三巨头HotChips2026亮HBM路线图：三星zHBM/SK海力士20层混合键合/美光警示内存墙', s:'今日头条 · 08-24', u:'https://www.toutiao.com/article/7677540957071376942/' },
+    { t:'小米17系列销量突破600万台，玄戒技术沟通会公布最新进展', s:'IT之家 · 08-24', u:'https://view.inews.qq.com/a/20260824A06IZI00' },
+    { t:'小米日本上调手机平板售价，部分涨2万日元（内存及元器件成本上涨）', s:'手机中国 · 08-24', u:'http://view.inews.qq.com/a/20260824A05YTI00' },
+    { t:'华为Mate 90 Pro Max风驰版曝光：主动散热拉满麒麟2026韬定律性能', s:'泡泡网 · 08-24', u:'https://www.pcpop.com/common/Article_5_005900050_0_0_60.htm' },
+    { t:'Anthropic旗舰Fable 5遇冷企业支出仅11%，OpenAI年化营收破400亿$反超', s:'华尔街见闻 · 08-24', u:'http://view.inews.qq.com/a/20260824A0B1LW00' },
+    { t:'国产AI御三家梭哈Work：字节豆包工作/阿里千问办公/腾讯WorkBuddy', s:'罗超频道/网易 · 08-24', u:'https://dy.163.com/article/L54E4L7T05119NA8.html' },
+    { t:'vivo X500系列代号"灭霸500"9月发布，首发蔡司蓝图光御900主摄', s:'快科技/泡泡网 · 08-24', u:'https://view.inews.qq.com/a/20260824A045LG00' }
+  ],
+
+  // Tab1-4 今日十大新闻头条·汇总（媒体热议、热点关注、主流平台声音提炼）
+  newsSummary: '今日媒体热议焦点高度集中于"巨头新品定档+AI算力竞速+成本传导"三件事：苹果9/9三款齐发与小米玄戒三芯齐发构成9月旗舰与自研芯片双线预热；三星HBM4E量产+三巨头HotChips路线图+先进封装爆发构成AI算力硬件竞速主线；小米日本涨价+Anthropic Fable 5遇冷+OpenAI反攻构成成本与AI商业分化对照。对经营管理的提示：本周行业情绪由"9月混战预热"转向"AI算力与自研双线卡位"，成本端涨价已蔓延至海外，需在定价、自研器件、AI变现节奏上快速决策。',
+
+  // ---------- TAB2 新产品 ----------
+  launchCalendar: [
+    { d:'8/24', brand:'荣耀', evt:'Magic V6 菲律宾发布（AI+耐用性折叠旗舰）' },
+    { d:'8/25', brand:'索尼', evt:'Xperia 10 VIII 新机发布' },
+    { d:'8/27', brand:'红米', evt:'Note 17 Pro Max 发布（10000mAh/6.83"AMOLED）' },
+    { d:'8/27', brand:'三星', evt:'Galaxy S26 FE 发布（Exynos 2500/4900mAh）' },
+    { d:'8/28', brand:'华为', evt:'Pura X View 预售（阔直板/16:9.5/7000mAh）' },
+    { d:'9/9', brand:'苹果', evt:'iPhone 18 Pro / Ultra 折叠屏发布' },
+    { d:'9/15', brand:'vivo', evt:'X500 系列 + 天玑9600 发布' },
+    { d:'9/23', brand:'华为/OPPO', evt:'Mate 90 / Find X10 同天发布' },
+    { d:'9/24', brand:'小米', evt:'小米18系列 + 雷军年度演讲' },
+    { d:'9/28', brand:'荣耀', evt:'Magic9 系列发布' }
+  ],
+  // Tab2 新品汇总表（卖点 / 战略意图 / 管理启示）——位于发布日历之下
+  productSummary: [
+    { brand:'华为', product:'Mate 90 / Pura X View', selling:'韬定律逻辑折叠芯片+阔直板新品类+鸿蒙7智能体', intent:'以架构创新绕开EUV，重夺芯片与屏幕定义权', insight:'自主架构替代路线可复制，应加快国产器件导入与生态绑定' },
+    { brand:'苹果', product:'iPhone 18 Pro / Ultra', selling:'A20 Pro 2nm+折叠屏新品类+涨价控成本', intent:'以高端化与折叠屏推高均价对冲存储涨价', insight:'标准版延后释放信号：资源聚焦高毛利SKU，慎铺全档' },
+    { brand:'小米', product:'MIX Fold5 / 18系列', selling:'玄戒O3自研+阔折叠对位Ultra+IFA首秀', intent:'自研芯片+折叠屏双线对标苹果，全球化叙事', insight:'自研SoC爬坡期质量与盈利需同步治理（召回警示）' },
+    { brand:'三星', product:'Galaxy S26 FE', selling:'Exynos 2500+4900mAh Si/C中端机', intent:'挽回中端口碑，但本土化不足', insight:'全球统一策略难适配中国，差异化定位决定份额' },
+    { brand:'荣耀', product:'Magic V6 / Magic9', selling:'机器人技术反哺+双2亿影像+大电池', intent:'工业级可靠性下沉消费旗舰，差异化技术叙事', insight:'极限场景验证的技术可转化为高端信任背书' },
+    { brand:'红米', product:'Note 17 Pro Max', selling:'10000mAh超大电池+1.5K屏', intent:'性价比电池旗舰抢下沉用户', insight:'续航等单点极致仍是最稳的下沉抓手' }
+  ],
+  newProducts: [
+    { brand:'华为', color:'#c7000b', tag:'韬定律芯片 / 阔直板 / 鸿蒙智行',
+      summary:'Mate 90系列9/23定档首发"韬定律"逻辑折叠芯片（双层垂直堆叠/晶体管密度+53.5%/以时间缩微替代几何缩微）；Pura X View阔直板8/28预售（16:9.5/7000mAh/麒麟9030s/三50MP）；MateBook Fold非凡大师24999元起开售（18"OLED折叠/麒麟X90 Plus/首支持手写笔）。',
+      strategy:'战略意图：韬定律绕开EUV光刻依赖，用逻辑折叠架构实现制程替代，重构芯片竞争底层逻辑；阔直板+折叠PC+鸿蒙智行五界齐发形成全场景生态护城河。',
+      compete:'竞争力点：①芯片自主——逻辑折叠架构不依赖EUV，国产终端核心器件可控；②品类创新——阔直板以直板形态做折叠屏阔屏体验，避开主流价格战；③生态协同——鸿蒙智行车端150万辆放大终端粘性。',
+      consumer:'消费者选择视角：高端用户看中"自主可控+阔屏生产力"，商务人群被车机互联吸引；价格带覆盖4999-24999形成梯度，但阔直板产能与到手价是关键决策因子。',
+      advice:'给管理层的建议：①将华为"架构替代"视为中长期技术路线标杆，加快自有核心器件与操作系统绑定；②阔直板新品类证明屏幕比例差异化可重夺直板高端话语权，旗舰定义应预留比例创新空间；③车端交付数据已成最强信任背书，跨终端用户运营边际成本最低，应优先复用。',
+      specs:[{k:'芯片',v:'韬定律逻辑折叠麒麟（9/23首发）'},{k:'阔直板',v:'Pura X View 16:9.5 / 7000mAh'},{k:'折叠PC',v:'MateBook Fold 18" OLED / 24999元起'},{k:'汽车',v:'享界G9 42.98万 / 智界RX 29.98万预售'},{k:'系统',v:'HarmonyOS 7.0.0.102 SP8'},{k:'销量',v:'Pura X Max破71万台 / 鸿蒙智行150万辆'}] },
+    { brand:'苹果', color:'#1d1d1f', tag:'涨价 / 折叠屏 / 裁员重组',
+      summary:'古尔曼称iPhone 18系列计划涨价100美元（Pro至1199美元/+9%），苹果自行消化部分内存成本；iPhone 18标准版缺席9月场延至2027春；iPhone Ultra折叠屏9/9发布（超2000美元/Touch ID/无长焦/美国首发）；裁员200人重组Vision Pro/Siri/AI团队。',
+      strategy:'战略意图：以涨价+折叠屏新品类推高均价应对存储短缺；标准版延后集中资源保Pro/Ultra高端；裁员重组聚焦AI与空间计算战略转向。',
+      compete:'竞争力点：①品牌溢价——涨价仍被接受，Pro均价上探至1199美元；②折叠屏新品类——Ultra开辟2万+超高端；③生态锁客——iOS+服务收入对冲硬件波动。',
+      consumer:'消费者选择视角：果粉对涨价容忍度较高，但标准版延后使入门用户空窗半年；Ultra超2万定位极客/商务，量小但拉高品牌天花板。',
+      advice:'给管理层的建议：①苹果"涨均价+砍低配"印证高端化是存储涨价期最优解，可参考其SKU收敛逻辑；②其标准版延后说明资源聚焦高毛利机型，避免全档铺货摊薄利润；③裁员重组提醒：空间计算/AI投入需设ROI红线，警惕无效铺张。',
+      specs:[{k:'涨价',v:'Pro +100美元至1199美元（+9%）'},{k:'芯片',v:'A20 Pro 2nm GAA (+18%)'},{k:'折叠屏',v:'Ultra 9/9发布 / 超2000美元'},{k:'标准版',v:'iPhone 18延至2027春'},{k:'裁员',v:'200人（Vision Pro 100人）'},{k:'配色',v:'深樱桃红/远峰蓝回归'}] },
+    { brand:'小米', color:'#ff6900', tag:'阔折叠 / 召回 / IFA首秀',
+      summary:'MIX Fold5阔折叠真机曝光（雷军手握红色新机/首发玄戒O3/回归透明版）；9企召回427万辆涉隐藏式门把手隐患；澎程N70/N90成都车展亮相9月交付；首次参展柏林IFA（9/4-8）；18 Ultra或取消由Pro Max顶替。',
+      strategy:'战略意图：MIX Fold5对位苹果iPhone Ultra；纯电+增程双动力补齐汽车产品线；IFA首秀推进"人车家全生态"全球化叙事。',
+      compete:'竞争力点：①自研芯片——玄戒O3全大核主频破4GHz对位骁龙8E6；②折叠屏——阔折叠透明版差异化设计；③生态——人车家全场景。',
+      consumer:'消费者选择视角：极客与品牌粉丝为自研芯片+透明版买单；汽车召回短期冲击信任，但SU7续航口碑仍在。',
+      advice:'给管理层的建议：①自研SoC是必须走的长期投入，但爬坡期质量门（电池/门把手）会放大品牌风险，需设独立性质量红线；②MIX Fold5对位Ultra说明折叠屏已成旗舰必争，应保证产能与定价竞争力；③IFA首秀意在全球化，海外渠道需匹配高端定位。',
+      specs:[{k:'新机',v:'MIX Fold5 阔折叠 / 玄戒O3'},{k:'召回',v:'9企427万辆（小米在列）'},{k:'汽车',v:'澎程N70/N90 9月交付'},{k:'展会',v:'柏林IFA 9/4-8首秀'},{k:'电视',v:'TV S Pro RGB-Mini LED盲订'},{k:'续航',v:'SU7川渝700km实测夺冠'}] },
+    { brand:'三星', color:'#1428a0', tag:'S26 FE / 冰火两重天 / 全球第一',
+      summary:'Galaxy S26 FE 8/27发布（6.7"AMOLED/Exynos 2500/4900mAh Si/C/50MP+12MP+8MP）；全球出货第一但中国份额0.1%；折叠屏遭华为/小米/苹果围剿；2026 H1营收305.37万亿韩元(+98.67%)/归母净利118.37万亿(+813.18%)。',
+      strategy:'战略意图：S26 FE中端机型挽回口碑，但国内中端赛道已被红米/荣耀占据；全球统一产品策略难以适配中国特殊需求，本土化大改抬升研发成本。',
+      compete:'竞争力点：①半导体赚钱——DS利润率68.3%补贴DX；②影像/屏幕传统强项；③全球渠道广。',
+      consumer:'消费者选择视角：中国用户对三星中端机感知弱化，更倾向红米/荣耀性价比与华为高端；折叠屏被三国围剿。',
+      advice:'给管理层的建议：①三星"全球第一、中国0.1%"是本土化失效反面教材，统一产品策略须配区域差异化；②其DS利润反哺DX的模式说明半导体自供是终端底气，应重视核心器件自供能力；③中端机需单点突破而非全配。',
+      specs:[{k:'S26 FE',v:'6.7" AMOLED / Exynos 2500'},{k:'电池',v:'4900mAh Si/C'},{k:'影像',v:'50MP+12MP+8MP'},{k:'H1营收',v:'305.37万亿韩元(+98.67%)'},{k:'H1净利',v:'118.37万亿韩元(+813.18%)'},{k:'中国份额',v:'0.1% / 折叠屏遭围剿'}] },
+    { brand:'荣耀', color:'#00b4a0', tag:'Magic V6 / 机器人反哺',
+      summary:'Magic V6 8/24菲律宾发布（AI+耐用性折叠旗舰）；"闪电"机器人百米9秒32破人类纪录，技术将下沉至9月Magic9系列（骁龙8E6+双2亿+ARRI+8000/9000mAh）。',
+      strategy:'战略意图：用工业级极限场景验证过的续航/散热/可靠性反哺消费旗舰，形成"机器人手机"技术叙事差异化；Magic V6海外先行推进全球化。',
+      compete:'竞争力点：①技术叙事——机器人极限验证背书消费旗舰可靠性；②影像——双2亿+ARRI联名；③电池——8000/9000mAh领先。',
+      consumer:'消费者选择视角：摄影爱好者与极客为双2亿+大电池买单；机器人背书增强"耐用"信任。',
+      advice:'给管理层的建议：①荣耀用工业级场景反哺消费旗舰，是"技术信任"差异化的低成本打法，可借鉴其跨品类技术迁移；②Magic V6海外先行说明其全球化以折叠为尖刀，国内应防份额被头部挤压（Q2已降至11.3%）。',
+      specs:[{k:'Magic V6',v:'8/24菲律宾发布 / AI+耐用性'},{k:'机器人',v:'闪电9秒32破百米纪录'},{k:'Magic9',v:'9/28 / 骁龙8E6+双2亿+ARRI'},{k:'电池',v:'8000/9000mAh'}] },
+    { brand:'红米', color:'#ff0000', tag:'10000mAh / 大电池旗舰',
+      summary:'Redmi Note 17 Pro Max 8/27发布（6.83"AMOLED 1.5K/10000mAh超大电池），延续红米大电池性价比路线，与三星S26 FE同日发布形成中端对决。',
+      strategy:'战略意图：以10000mAh超大电池+1.5K屏切入中端性价比市场，与三星S26 FE同日对位，抢占下沉用户。',
+      compete:'竞争力点：①单点极致——10000mAh续航碾压同级；②性价比——1.5K屏下探中端；③节奏——与三星同日发布抢声量。',
+      consumer:'消费者选择视角：下沉市场与重度续航用户为10000mAh直接转化；价格敏感型首选。',
+      advice:'给管理层的建议：①红米证明"单点极致+性价比"仍是下沉最稳抓手，中端战不必全配堆料，抓一个刚需爆点即可；②与三星同日对位显示中端定价权已向中国品牌转移，应敢于正面抢量。',
+      specs:[{k:'屏幕',v:'6.83" AMOLED 1.5K'},{k:'电池',v:'10000mAh'},{k:'发布',v:'8/27'},{k:'对位',v:'三星S26 FE同日'}] }
+  ],
+
+  // ---------- TAB3 财报 ----------
+  earningsCalendar: [
+    { d:'7/15', c:'华为', p:'2026 H1' },{ d:'7/17', c:'台积电', p:'Q2' },{ d:'7/30', c:'三星 / 高通', p:'Q2 / Q3 FY26' },
+    { d:'7/31', c:'苹果', p:'FY26 Q3' },{ d:'8/13', c:'联想', p:'FY27 Q1' },{ d:'8/14', c:'三星', p:'2026 H1半年报' },
+    { d:'8/17', c:'SK海力士', p:'Q2' },{ d:'8/18', c:'小米', p:'Q2' },{ d:'8/23', c:'小米', p:'2026 H1 半年报' },
+    { d:'8/27', c:'英伟达', p:'Q2 FY27（下周财报大考）' }
+  ],
+  // Tab3 本日财报速递·汇总（关键发现 + 管理层参考与启示）
+  earnSnap: '本期财报/商业数据两条主线最值得管理层关注：①AI应用商业分化——OpenAI因GPT-5.6上线当季年化营收跳升35%破400亿$、企业份额反超Anthropic，而Anthropic旗舰Fable 5发布两月企业支出占比仅11%遇冷，技术领先≠商业成功，定价与生态决定付费意愿；②存储超级周期改写利润表——SK海力士Q2运营利润率76%创历史、三星HBM4E量产16Gbps抢占AI存储制高点，而终端厂小米H1净利-42.8%、日本9月起涨价2万日元，成本传导已蔓延海外。关键发现：上游"赚周期钱"、下游"被周期吃"，终端厂必须靠高端化+自研+长协锁成本穿越。管理启示：①AI应用须设变现KPI，警惕"有用户无收入"被重估；②重估价格体系，敢于高端化；③核心器件自供/长协比例应提升。',
+  earnings: [
+    { company:'苹果 Apple', code:'AAPL', period:'FY26 Q3 (截至6/27)', revenue:'1094.2亿$', revYoy:'+16%', profit:'297.9亿$', phoneBiz:'iPhone 542.5亿 (49.6%)',
+      viewpoint:'关键发现：iPhone营收+22%创新高，中国Q2出货1240万(+24%)份额19%创Q2新高，逆势增长靠"品牌溢价+高端化"而非放量；存储涨价下靠涨价转嫁而非吞利，毛利管理优于安卓同行。',
+      insight:'管理启示：①涨价被市场接受证明高端化是存储涨价期最优解，可参考其SKU收敛（标准版延后）逻辑保利润；②服务收入对冲硬件波动，终端厂应加速软件/订阅变现；③iPhone 18 Pro 9/9、Ultra超2万，旗舰定价天花板继续上探，国行9999元起形成对标锚点。' },
+    { company:'三星电子 Samsung', code:'005930.KS', period:'Q2 2026 / H1半年报', revenue:'H1 305.37万亿韩元(+98.67%)', revYoy:'+99%', profit:'H1归母净利118.37万亿韩元(+813.18%)', phoneBiz:'Q2 DX首次季度亏损7030亿韩元，中国份额0.1%',
+      viewpoint:'关键发现：DS（半导体）利润率68.3% vs DX（终端）仅2.1%，"左右手互搏"极致化；DX员工3500人集会抗议薪酬差距；中国份额0.1%显示本土化失效；代工涨价4nm/5nm最高15%。',
+      insight:'管理启示：①半导体自供是终端利润底气，DS反哺DX模式值得借鉴，但内部利润分配机制会引发组织风险，需提前设计；②"全球第一、中国0.1%"是统一策略不适配区域的正面教训，差异化定位比全配更重要；③存储短缺至2028年、60-70%产能锁长协，终端厂应同步锁成本。' },
+    { company:'小米集团 Xiaomi', code:'1810.HK', period:'H1 2026', revenue:'2080.63亿元', revYoy:'-8.4%', profit:'经调整净利122.91亿(-42.8%)', phoneBiz:'Q2出货3120万(-26.5%)，ASP 1351元(+25.9%)',
+      viewpoint:'关键发现：营收-8.4%但ASP+25.9%创历史新高，量跌价升——靠结构升级对冲总量下滑；H1净利-42.8%主因汽车/芯片投入与召回计提；大模型收入首入财报、Q2研发92亿(+18.9%)。8/24玄戒三芯齐发（O3/O100/D100），O3基于3nm/240亿晶体管首发18 Fold；小米17系列累计破600万台；日本9月起手机平板涨价（部分涨2万日元）传导存储成本。',
+      insight:'管理启示：①"量跌价升"是穿越周期的正确姿势，应坚持高端化而非价格战；②自研玄戒O3是长期必投，但爬坡期质量门（召回427万辆）会放大品牌风险，须设独立性质量红线；③AI收入单独核算释放信号：应用端变现需设KPI，不急于短期ROI但要可追踪；④日本涨价是国内涨价的预演，须重估价格体系与国产替代比例。' },
+    { company:'台积电 TSMC', code:'TSM', period:'Q2 2026', revenue:'402亿$', revYoy:'+33.7%', profit:'毛利率67.7%', phoneBiz:'2nm量产爬坡',
+      viewpoint:'关键发现：Q3毛利率指引65-67%本轮周期首次下调，2nm稀释3-4pp；2026 capex 600-640亿$、美国厂追加1000亿总投资2650亿，"赚钱逻辑变了"——先进制程产能即战略资产。',
+      insight:'管理启示：①先进制程产能是稀缺战略资源，终端厂需通过长协/股权绑定锁定供给；②台积电靠资本开支构筑壁垒，印证"重资产+技术"路线的确定性，国产供应链投入应具有同等战略耐心。' },
+    { company:'SK海力士 SK Hynix', code:'000660.KS', period:'Q2 2026', revenue:'79.32万亿韩元(+257%)', revYoy:'+257%', profit:'运营利润60.54万亿(+557%)，利润率76%', phoneBiz:'存储超级周期最大赢家',
+      viewpoint:'关键发现：Q2运营利润率76%创历史新高，HBM先发+产能倾斜使其成为周期最大赢家；三星半导体主管称今年利润将超过去四十年总和；8/19公告40万亿韩元回购注销。',
+      insight:'管理启示：①上游"赚周期钱"的暴利来自结构性短缺与HBM卡位，终端厂处于被传导端，应在采购端与国产替代上主动配置（长鑫DRAM 7%份额）；②HBM/企业级是高确定性赛道，投资与合作优先级应高于通用DRAM。' },
+    { company:'联想集团 Lenovo', code:'0992.HK', period:'FY27 Q1 (截至6/30)', revenue:'1834亿元', revYoy:'+43%', profit:'经调整净利73亿(+176%)', phoneBiz:'PC全球份额24.2%，AI服务器订单3600亿',
+      viewpoint:'关键发现：AI相关收入634亿(+60%)占总营收35%，ISG基础设施营收579亿(+98%)成新利润引擎，AI服务器订单储备3600亿(+157%)；杨元庆称本财年营收有望达1000亿美元。',
+      insight:'管理启示：①"AI不是泡沫"的实证来自收入占比35%，终端厂应把AI从成本中心转为收入中心，单独核算AI业务线；②PC基本盘+AI基础设施双轮，说明传统硬件厂可借AI服务器二次增长，跨界协同值得参考。' },
+    { company:'华为 Huawei', code:'未上市', period:'2026 H1', revenue:'4175亿元', revYoy:'+34.3%', profit:'--', phoneBiz:'中国份额22.6%登顶，Mate80累计845.57万，Pura X Max破71万，鸿蒙6破8000万',
+      viewpoint:'关键发现：H1 +34.3%逆势高增，终端靠韬定律芯片+鸿蒙生态+车端150万辆三引擎；第33周中国份额20.6%稳居第一；鸿蒙中国份额19%超iOS 17%；Mate 90 9/23首发逻辑折叠麒麟重构竞争底层，8/24曝光Pro Max"风驰版"配定制主动散热模块，麒麟2026韬定律晶体管密度+53.5%/能效+41%等效3nm。',
+      insight:'管理启示：①"自主架构+自有OS+车端生态"三位一体是穿越封锁的增长范式，核心器件与系统绑定应作为头等战略；②车端交付数据已成最强信任背书，跨终端用户运营边际成本最低，应优先复用；③阔直板新品类证明屏幕比例差异化可重夺高端话语权；④主动散热+韬定律组合显示华为正以"架构创新+工程优化"对冲制程封锁。' },
+    { company:'高通 Qualcomm', code:'QCOM', period:'Q3 FY26', revenue:'--', revYoy:'--', profit:'--', phoneBiz:'9月起全线芯片涨价两位数%',
+      viewpoint:'关键发现：9/1起全产品线涨价两位数百分比，覆盖手机/PC/平板/物联网/汽车，存储涨价向SoC层传导，手机BOM压力进一步加剧。',
+      insight:'管理启示：①SoC涨价叠存储涨价，终端整机成本双杀，必须重估价格体系或提升自研器件比例；②对依赖外购芯片的厂商，供应链成本对冲（自研/长协/国产替代）紧迫性上升。' },
+    { company:'OpenAI', code:'未上市', period:'2026年化营收', revenue:'约400亿$', revYoy:'+35%（当季跳升）', profit:'--', phoneBiz:'ChatGPT周活约2.3亿问健康/Codex渗透率近Slack',
+      viewpoint:'关键发现：因GPT-5.6上线当季年化营收跳升35%破400亿美元，企业AI市场份额7月近40%反超Anthropic（5月曾落后）；企业AI付费渗透率7月近56%。但Codex被曝"偷额度"引发付费用户集体查账，前沿模型因达网络安全能力阈值已暂停RL训练两周。',
+      insight:'管理启示：①AI应用端收入增速验证变现可行性，但定价权与稳定性是留存关键，"偷额度"事件警示产品稳定性掉链子会反噬付费意愿；②前沿模型达安全阈值主动放缓训练，说明AI安全从理论转向实际威胁，终端厂布局AI须同步建防御能力；③企业AI付费渗透率过半，应用端从免费走向收费的窗口已开。' }
+  ],
+
+  // ---------- TAB4 市场大盘 ----------
+  marketView: '主流机构（IDC/Counterpoint/TrendForce/摩根大通/瑞银）对2026下半年大盘形成三点共识：①总量下行、结构性分化——IDC预计全球手机出货-13.9%、Counterpoint -14.3%，复苏推至2028年；但华为凭韬定律+国产供应链逆势+8%、苹果靠高端化稳份额，行业从"总量红利"转入"结构分化红利"。②成本重估改写竞争——服务器DRAM占比53%/NAND 37%超手机，存储"K型复苏"（HBM/企业级赢家 vs 消费级承压），三巨头签五年长约锁死价格底线至2028年，终端厂BOM双杀。③新品类成增量主引擎——智能眼镜(+41%)、新能源车(+21%)、CPE(+15%)增速显著高于手机(-14%)，AI穿戴/音频稳健。对经营管理的影响：资源应向逆势增长品类（高端旗舰、AI服务器链、国产存储、智能眼镜/车）倾斜；份额竞争从"走量"转向"高端+生态"，各厂商份额与品类结构变化见下。以下各品类采用主流机构数据，手机以IDC为主，并附各厂商竞争份额及变化。',
+  marketData: {
+    phone: {
+      name:'智能手机',
+      global: {
+        note:'IDC/Counterpoint 全球 2026（出货单位：亿部）',
+        series:[
+          { label:'2023', shipment:11.7, yoy:-3.2 },
+          { label:'2024', shipment:12.2, yoy:+1.0 },
+          { label:'2025', shipment:12.7, yoy:+4.0 },
+          { label:'1Q26', shipment:3.16, yoy:-4.1 },
+          { label:'2Q26', shipment:2.78, yoy:-6.7 },
+          { label:'2026E', shipment:10.9, yoy:-13.9 }
+        ],
+        shares:[
+          { brand:'三星', share:19.0, chg:'+0.8' },
+          { brand:'苹果', share:16.5, chg:'-0.3' },
+          { brand:'小米', share:14.2, chg:'+0.9' },
+          { brand:'OPPO', share:8.2, chg:'-0.4' },
+          { brand:'vivo', share:8.0, chg:'-0.3' },
+          { brand:'传音', share:6.8, chg:'+0.3' },
+          { brand:'荣耀', share:3.6, chg:'+0.2' },
+          { brand:'其他', share:23.7, chg:'-1.0' }
+        ],
+        segments:[
+          { name:'折叠屏(全球年出货)', val:'约4500万台', note:'同比+12%' },
+          { name:'高端(≥600美元)占比', val:'约28%', note:'同比+2pp' },
+          { name:'中端(200-600美元)占比', val:'约52%', note:'同比-1pp' },
+          { name:'低端(<200美元)占比', val:'约20%', note:'同比-1pp' },
+          { name:'5G手机占比', val:'92%', note:'同比+5pp' }
+        ]
+      },
+      china: {
+        note:'IDC 中国 Q2 2026（出货单位：亿部）',
+        series:[
+          { label:'2023', shipment:2.89, yoy:-5.0 },
+          { label:'2024', shipment:2.86, yoy:-1.0 },
+          { label:'2025', shipment:2.95, yoy:+3.0 },
+          { label:'1Q26', shipment:0.69, yoy:-3.0 },
+          { label:'2Q26', shipment:0.66, yoy:-4.3 },
+          { label:'2026E', shipment:2.55, yoy:-13.0 }
+        ],
+        shares:[
+          { brand:'华为', share:22.6, chg:'+2.1' },
+          { brand:'苹果', share:19.0, chg:'+0.5' },
+          { brand:'小米', share:14.5, chg:'+0.9' },
+          { brand:'vivo', share:12.5, chg:'-0.6' },
+          { brand:'OPPO', share:12.0, chg:'-0.5' },
+          { brand:'荣耀', share:11.3, chg:'-1.2' },
+          { brand:'其他', share:8.1, chg:'-0.2' }
+        ],
+        segments:[
+          { name:'折叠屏(中国年出货)', val:'约1100万台', note:'同比+18%' },
+          { name:'高端(>6000元)占比', val:'28%', note:'同比+4pp' },
+          { name:'中端(2000-6000元)占比', val:'约45%', note:'同比-1pp' },
+          { name:'低端(<2000元)占比', val:'约27%', note:'同比-3pp' },
+          { name:'5G手机占比', val:'92%', note:'同比+5pp' }
+        ]
+      }
+    },
+    glasses: {
+      name:'智能眼镜',
+      global: {
+        note:'IDC/Counterpoint 全球预测（出货单位：亿副）',
+        series:[
+          { label:'2023', shipment:0.03, yoy:'—' },
+          { label:'2024', shipment:0.06, yoy:'+100%' },
+          { label:'2025', shipment:0.096, yoy:'+60%' },
+          { label:'1H26', shipment:0.068, yoy:'+41.4%' },
+          { label:'2026E', shipment:0.136, yoy:'+41.4%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'高端AR显示眼镜', val:'渗透初期', note:'年增>80%' },
+          { name:'主流AI拍摄/翻译眼镜', val:'占新机60%+', note:'Meta/华为/小米主导' },
+          { name:'入门基础款', val:'走量', note:'性价比定位' }
+        ]
+      },
+      china: {
+        note:'中国≈全球35%（估算，单位：亿副）',
+        series:[
+          { label:'2023', shipment:0.0105, yoy:'—' },
+          { label:'2024', shipment:0.021, yoy:'+100%' },
+          { label:'2025', shipment:0.0336, yoy:'+60%' },
+          { label:'1H26', shipment:0.0238, yoy:'+41.4%' },
+          { label:'2026E', shipment:0.0476, yoy:'+41.4%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'高端AR显示眼镜', val:'渗透初期', note:'华为/小米领跑' },
+          { name:'主流AI拍摄/翻译眼镜', val:'占新机60%+', note:'本土品牌主导' },
+          { name:'入门基础款', val:'走量', note:'性价比定位' }
+        ]
+      }
+    },
+    wearable: {
+      name:'智能穿戴',
+      global: {
+        note:'IDC 全球预测（出货单位：亿台）',
+        series:[
+          { label:'2023', shipment:5.0, yoy:'+1.0%' },
+          { label:'2024', shipment:5.4, yoy:'+8.0%' },
+          { label:'2025', shipment:5.7, yoy:'+5.6%' },
+          { label:'1Q26', shipment:1.457, yoy:'+4.3%' },
+          { label:'2026E', shipment:6.1, yoy:'+7.0%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'高端智能手表(>2000元)', val:'占30%', note:'健康/运动主力' },
+          { name:'主流智能手表', val:'占35%', note:'性价比走量' },
+          { name:'手环/入门', val:'占35%', note:'基础健康监测' }
+        ]
+      },
+      china: {
+        note:'中国≈全球30%（估算，单位：亿台）',
+        series:[
+          { label:'2023', shipment:1.5, yoy:'+1.0%' },
+          { label:'2024', shipment:1.62, yoy:'+8.0%' },
+          { label:'2025', shipment:1.71, yoy:'+5.6%' },
+          { label:'1Q26', shipment:0.437, yoy:'+4.3%' },
+          { label:'2026E', shipment:1.83, yoy:'+7.0%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'高端智能手表(>2000元)', val:'占30%', note:'华为/苹果主导' },
+          { name:'主流智能手表', val:'占35%', note:'小米/荣耀领跑' },
+          { name:'手环/入门', val:'占35%', note:'性价比定位' }
+        ]
+      }
+    },
+    audio: {
+      name:'耳戴/音频',
+      global: {
+        note:'IDC 全球预测（出货单位：亿副）',
+        series:[
+          { label:'2023', shipment:3.6, yoy:'+0.5%' },
+          { label:'2024', shipment:3.8, yoy:'+5.6%' },
+          { label:'2025', shipment:3.92, yoy:'+3.2%' },
+          { label:'1Q26', shipment:1.0, yoy:'+4.0%' },
+          { label:'2026E', shipment:4.076, yoy:'+4.0%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'高端TWS(降噪旗舰)', val:'占35%', note:'苹果/华为/Sony' },
+          { name:'主流TWS', val:'占43%', note:'降噪成标配' },
+          { name:'OWS开放式/入门', val:'年增>50%', note:'新增长极' }
+        ]
+      },
+      china: {
+        note:'中国≈全球25%（估算，单位：亿副）',
+        series:[
+          { label:'2023', shipment:0.9, yoy:'+0.5%' },
+          { label:'2024', shipment:0.95, yoy:'+5.6%' },
+          { label:'2025', shipment:0.98, yoy:'+3.2%' },
+          { label:'1Q26', shipment:0.25, yoy:'+4.0%' },
+          { label:'2026E', shipment:1.019, yoy:'+4.0%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'高端TWS(降噪旗舰)', val:'占35%', note:'华为/小米主导' },
+          { name:'主流TWS', val:'占43%', note:'标配降噪' },
+          { name:'OWS开放式/入门', val:'年增>50%', note:'新增长极' }
+        ]
+      }
+    },
+    smartScreen: {
+      name:'智慧屏',
+      global: {
+        note:'洛图/奥维 全球预测（出货单位：亿台）',
+        series:[
+          { label:'2023', shipment:0.36, yoy:'-12%' },
+          { label:'2024', shipment:0.34, yoy:'-5.6%' },
+          { label:'2025', shipment:0.33, yoy:'-2.9%' },
+          { label:'1H26', shipment:0.17, yoy:'+1.5%' },
+          { label:'2026E', shipment:0.35, yoy:'+6.0%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'Mini LED', val:'占35%', note:'同比+12pp' },
+          { name:'OLED TV(高端)', val:'占18%', note:'高端化' },
+          { name:'75寸+大屏', val:'占40%', note:'同比+8pp' }
+        ]
+      },
+      china: {
+        note:'中国≈全球40%（估算，单位：亿台）',
+        series:[
+          { label:'2023', shipment:0.144, yoy:'-12%' },
+          { label:'2024', shipment:0.136, yoy:'-5.6%' },
+          { label:'2025', shipment:0.132, yoy:'-2.9%' },
+          { label:'1H26', shipment:0.068, yoy:'+1.5%' },
+          { label:'2026E', shipment:0.14, yoy:'+6.0%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'Mini LED', val:'占35%', note:'同比+12pp' },
+          { name:'OLED TV(高端)', val:'占18%', note:'高端化' },
+          { name:'75寸+大屏', val:'占40%', note:'同比+8pp' }
+        ]
+      }
+    },
+    cpe: {
+      name:'CPE/路由器',
+      global: {
+        note:'行业预测（出货单位：亿台）',
+        series:[
+          { label:'2023', shipment:0.22, yoy:'-8%' },
+          { label:'2024', shipment:0.24, yoy:'+9%' },
+          { label:'2025', shipment:0.26, yoy:'+8%' },
+          { label:'1H26', shipment:0.14, yoy:'+10%' },
+          { label:'2026E', shipment:0.30, yoy:'+15%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'Wi-Fi 7路由(高端)', val:'占比快速升', note:'换代驱动' },
+          { name:'5G CPE', val:'海外需求旺', note:'新兴市场' },
+          { name:'入门家用路由', val:'基本盘', note:'平稳' }
+        ]
+      },
+      china: {
+        note:'中国≈全球30%（估算，单位：亿台）',
+        series:[
+          { label:'2023', shipment:0.066, yoy:'-8%' },
+          { label:'2024', shipment:0.072, yoy:'+9%' },
+          { label:'2025', shipment:0.078, yoy:'+8%' },
+          { label:'1H26', shipment:0.042, yoy:'+10%' },
+          { label:'2026E', shipment:0.09, yoy:'+15%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'Wi-Fi 7路由(高端)', val:'占比快速升', note:'换代驱动' },
+          { name:'5G CPE', val:'海外需求旺', note:'新兴市场' },
+          { name:'入门家用路由', val:'基本盘', note:'平稳' }
+        ]
+      }
+    },
+    auto: {
+      name:'新能源汽车',
+      global: {
+        note:'全球 NEV 预测（出货单位：亿辆）',
+        series:[
+          { label:'2023', shipment:1.42, yoy:'+35%' },
+          { label:'2024', shipment:1.70, yoy:'+20%' },
+          { label:'2025', shipment:1.95, yoy:'+15%' },
+          { label:'1H26', shipment:1.05, yoy:'+18%' },
+          { label:'2026E', shipment:2.25, yoy:'+15%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'纯电 BEV', val:'占55%', note:'增速放缓至18%' },
+          { name:'插混/增程 PHEV', val:'占45%', note:'同比+9pp' },
+          { name:'L2+智驾渗透', val:'占60%', note:'同比+15pp' }
+        ]
+      },
+      china: {
+        note:'乘联会 中国预测（单位：亿辆）',
+        series:[
+          { label:'2023', shipment:0.095, yoy:'+37%' },
+          { label:'2024', shipment:0.128, yoy:'+35%' },
+          { label:'2025', shipment:0.165, yoy:'+29%' },
+          { label:'1H26', shipment:0.094, yoy:'+22%' },
+          { label:'2026E', shipment:0.20, yoy:'+21%' }
+        ],
+        shares:null,
+        segments:[
+          { name:'插混/增程', val:'占45%', note:'同比+9pp' },
+          { name:'纯电', val:'占55%', note:'增速放缓至22%' },
+          { name:'L2+智驾渗透', val:'占60%', note:'同比+15pp' }
+        ]
+      }
+    }
+  },
+
+  // ---------- TAB5 AI产业链 ----------
+  aiOverview: '对终端产业而言，AI是当前最大的产品形态与商业模式变量：①产品形态——端侧AI（华为鸿蒙7智能体、小米玄戒O3端侧AI加速、苹果A20 Pro端侧模型）正把手机从"硬件"重定义为"智能体入口"，折叠形态/大电池均服务于AI生产力场景；②商业模式——AI办公成巨头必争之地，字节豆包工作整合TRAE/扣子、阿里千问办公、腾讯WorkBuddy集中资源、金山WPS AI月活8000万，应用端从免费走向收费，终端厂须把AI收入单独核算；③竞争焦点——AI应用商业分化加剧（OpenAI年化营收破400亿$反超Anthropic，而Fable 5企业支出仅11%遇冷），HBM成AI算力绝对主角（三星HBM4E量产16Gbps/三巨头HotChips路线图），国产算力（韬定律+昇腾950+长鑫DRAM 7%份额）与应用端（Kimi K3全球第6）更具确定性。对高层经营管理启示：AI非全局泡沫，但商品化与商业分化已现，端侧AI差异化窗口期收窄，应加速自有模型/智能体落地、设AI变现KPI、并把算力与存储采购纳入供应链安全配置。',
+  aiStats: [
+    { num:'16Gbps', lbl:'三星HBM4E引脚速率（12层48GB/满血4TB/s）' },
+    { num:'400亿$', lbl:'OpenAI年化营收（当季跳升35%）' },
+    { num:'11%', lbl:'Anthropic Fable 5企业AI支出占比（遇冷）' },
+    { num:'+39%', lbl:'2026全球DRAM设备市场规模增速（388亿$）' },
+    { num:'600万', lbl:'小米17系列累计销量（第33周）' },
+    { num:'第6', lbl:'Kimi K3全球AI大模型实力排名（日经/W&B）' }
+  ],
+  storageTrend: {
+    months: ['26-03','26-04','26-05','26-06','26-07','26-08'],
+    dram: [100, 118, 140, 162, 170, 178],
+    nand: [100, 112, 126, 140, 150, 158],
+    hbm:  [100, 110, 124, 150, 168, 182]
+  },
+  storagePrice: {
+    quarters: ['25Q1','25Q2','25Q3','25Q4','26Q1','26Q2','26Q3'],
+    dram: [1.55, 1.50, 1.75, 3.60, 7.00, 16.00, 21.00],
+    nand: [1.45, 1.20, 1.40, 2.10, 3.40, 4.50, 4.85],
+    hbm:  [13.8, 14.0, 14.1, 14.2, 14.5, 14.7, 14.8],
+    unit: { 'DRAM(DDR4 8Gb)':' 美元/颗', 'NAND(512Gb TLC)':' 美元/片', 'HBM(ASP/GB)':' 美元/GB' },
+    sources: '数据来源（实际价格绝对值，非相对指数）：DRAM 取 DRAMeXchange 2026-07-31 合约价 DDR4 8Gb(1Gx8) 均价 $21.00/颗（季度峰值）；1Q25 一般型 DRAM 季跌 8~13% 见底。NAND 取 512Gb TLC 晶圆合约价 $2.10(2025-12)→$4.85(2026-07)（electroniccomponent.com / TrendForce），1Q26 NAND 合约季涨 55~60%、Q2 再涨 70~75%。HBM 取 TrendForce ASP：2025 $1.76/Gb（≈$14.1/GB）、2026 $1.84/Gb（≈$14.7/GB）。中间季度依据 TrendForce 季度涨跌幅指引插值，单位与口径以图例标注为准。'
+  },
+
+  aiStorage: [
+    { name:'DRAM', trend:'Q3合约价环比+13~18%（Q2为+58~63%），长协封顶效应显现；服务器DRAM占比53%正式超越手机33%，供需缺口被动放大。', l:'TrendForce/与非网', u:'https://www.eefocus.com/article/2070123.html' },
+    { name:'HBM', trend:'三星HBM4E量产（16Gbps引脚/12层48GB/满血4TB/s，能效+16%）；三巨头HotChips 2026亮路线图（三星zHBM/SK海力士20层混合键合/美光警示内存墙）；HBM占DRAM投片22%→30%。', l:'腾讯网/今日头条', u:'https://new.qq.com/rain/a/20260824A0702100' },
+    { name:'NAND', trend:'服务器NAND占比37%超手机33%，企业级SSD成K型复苏赢家；IDC测算NAND供需缺口4.2%近十五年最严重。', l:'TrendForce/IDC', u:'https://www.eefocus.com/article/2070123.html' },
+    { name:'手机套片(SoC)', trend:'高通9/1起全产品线涨价两位数%，覆盖手机/PC/平板/物联网/汽车，存储涨价向SoC层传导，整机BOM双杀。', l:'手机中国', u:'http://view.inews.qq.com/a/20260824A05YTI00' }
+  ],
+
+  aiCost: [
+    { name:'SoC/手机套片', dir:'up', change:'高通9月起全产品线涨价两位数%（手机/PC/平板/物联网/汽车）；联发科、三星同步跟涨，存储涨价向 SoC 层传导，整机 BOM 双杀。', impact:'<b>上游</b>：芯片厂借供不应求修复毛利、量价齐升；<b>下游</b>：终端整机成本双杀，被迫重估价格体系或提升自研/国产替代比例，低毛利机型首当其冲。', l:'手机中国/快科技', u:'https://www.163.com/dy/article/L531TAV20511CPVM.html' },
+    { name:'代工(晶圆)', dir:'up', change:'台积电2nm量产爬坡，Q3毛利率指引65-67%本轮周期首次下调（2nm稀释3-4pp）；2026 capex 600-640亿$、美国厂追加1000亿总投资2650亿$，先进制程产能即战略资产。', impact:'<b>上游</b>：代工龙头凭资本开支构筑壁垒、议价权强化；<b>下游</b>：先进制程供给稀缺，终端厂需长协/股权绑定锁定产能，自研芯片流片成本与排期压力上升。', l:'IT之家', u:'https://www.ithome.com/0/993/129.htm' },
+    { name:'存储(DRAM/NAND/HBM)', dir:'up', change:'DRAM Q2合约价环比+58~63%、Q3收敛至+13~18%；HBM占DRAM投片22%→30%；服务器DRAM占比53%超手机33%，K型复苏（HBM/企业级赢家 vs 消费级承压）。', impact:'<b>上游</b>：三星/海力士/美光赚"周期钱"、运营利润率创历史；<b>下游</b>：消费级存储成本被长协与产能倾斜推高，终端厂须以长协+国产替代（长鑫7%份额）对冲。', l:'TrendForce/IDC', u:'https://www.eefocus.com/article/2070123.html' },
+    { name:'显示面板(OLED/折叠屏)', dir:'up', change:'折叠屏/阔直板新品类集中释放（华为阔直板+苹果折叠Ultra+小米阔折叠）推高新形态面板需求与良率成本；但柔性 OLED 整体因产能扩张价格承压（部分品类下行），国产屏份额提升可对冲。', impact:'<b>上游</b>：面板厂稼动率回升、折叠/高端 OLED 价格企稳，普通柔性 OLED 价格承压；<b>下游</b>：新形态屏幕 BOM 占比上升，但国产屏导入可降本，屏幕比例创新需平衡良率与成本。', l:'快科技', u:'https://www.163.com/dy/article/L531TAV20511CPVM.html' },
+    { name:'CIS/射频前端', dir:'up', change:'影像军备竞赛（双2亿像素/ARRI联名）推高CIS成本；射频前端受先进封装与代工涨价连带，旗舰BOM结构性上行。', impact:'<b>上游</b>：CIS/射频供应商量价受益；<b>下游</b>：旗舰影像与通信成本抬升，中端机须取舍堆料、控制整机毛利。', l:'泡泡网', u:'https://www.pcpop.com/common/Article_5_005900050_0_0_60.htm' },
+    { name:'材料/先进封装', dir:'up', change:'先进封装成新增长引擎：应用材料指2026-2027全球晶圆设备八成增长来自先进封装，收入增速超70%；ABF载板、封装材料、硅片需求旺。', impact:'<b>上游</b>：设备/材料厂进入高景气，HBM与CoWoS产能受限；<b>下游</b>：AI算力芯片供应链瓶颈向外溢，终端厂算力/存储采购须纳入供应链安全配置。', l:'应用材料/腾讯网', u:'https://new.qq.com/rain/a/20260824A03N3M00' }
+  ],
+  aiCostTakeaway: '综合研判：2026下半年成本端呈"上游强、下游弱"的 K 型传导——芯片、存储、代工、面板、CIS、材料全线涨价，利润向上游集中（SK海力士运营利润率76%、三星DS 68.3%），而终端厂处于被传导端（小米H1净利-42.8%、日本9月起涨价）。对经营管理的核心启示：①价格体系必须重估，高端化+自研器件是穿越周期的最优解；②以长协+国产替代（长鑫DRAM 7%、长存NAND 6.8%）锁定成本底线；③把算力与存储采购纳入供应链安全配置，避免被 HBM/先进封装产能卡脖子。',
+
+  aiSubs: {
+    headers: ['排名','AI助手','所属公司','区域','7月MAU(百万)','环比','3个月趋势','订阅/付费'],
+    rows: [
+      { rank:1, name:'ChatGPT', company:'OpenAI', region:'全球', mau:1000, mom:'+0.59%', trend:'↑ 突破10亿', sub:'Plus $20/月' },
+      { rank:2, name:'豆包', company:'字节跳动', region:'中国', mau:317, mom:'-0.22%', trend:'↓ 流失1865万', sub:'专业版收费中' },
+      { rank:3, name:'千问', company:'阿里巴巴', region:'中国', mau:260, mom:'+3.65%', trend:'↑ 增2660万', sub:'免费策略' },
+      { rank:4, name:'DeepSeek', company:'深度求索', region:'出海', mau:133, mom:'--', trend:'↑ 海外第一', sub:'开源免费' },
+      { rank:5, name:'腾讯元宝', company:'腾讯', region:'中国', mau:100, mom:'-3.19%', trend:'↓ 调整中', sub:'--' },
+      { rank:6, name:'Gemini', company:'Google', region:'全球', mau:350, mom:'+8.2%', trend:'↑ 集成生态', sub:'Advanced $19.99' },
+      { rank:7, name:'Claude', company:'Anthropic', region:'全球', mau:80, mom:'+12.5%', trend:'↑ 收入反超', sub:'Pro $20/月' },
+      { rank:8, name:'Kimi', company:'月之暗面', region:'中国', mau:26.2, mom:'+15.53%', trend:'↑ K3开源反弹', sub:'--' },
+      { rank:9, name:'WorkBuddy', company:'腾讯', region:'中国', mau:2.17, mom:'+397.5%', trend:'↑↑ 全球增速第一', sub:'马化腾点名' }
+    ],
+    monthly: {
+      months: ['3月','4月','5月','6月','7月'],
+      domestic: { '豆包':[335.7,333.8,333.2,332.6,331.9], '千问':[220,230,240,250.8,260], '腾讯元宝':[103,104,103.5,103.3,100], 'Kimi':[18,20,22,22.7,26.2] },
+      global: { 'ChatGPT':[970,985,990,994,1000], 'Gemini':[280,300,320,335,350], 'Claude':[55,60,68,72,80] }
+    }
+  },
+  aiViews: [
+    { t:'AI应用商业分化：OpenAI反攻年化营收破400亿$，Anthropic Fable 5遇冷', s:'OpenAI因GPT-5.6上线当季年化营收跳升35%破400亿美元，企业市场份额反超Anthropic；同期Anthropic旗舰Fable 5发布两月企业支出占比仅11%，客户转向平价替代。Ramp数据显示企业AI付费渗透率7月近56%。', advice:'对终端启示：AI应用端技术领先≠商业成功，定价与生态决定付费意愿，终端厂推进自有模型应先想清变现路径（订阅/服务），设AI变现KPI避免"有用户无收入"被重估。', l:'华尔街见闻/Ramp', u:'http://view.inews.qq.com/a/20260824A0B1LW00' },
+    { t:'算力侧：三星HBM4E量产16Gbps，三巨头HotChips2026亮HBM路线图', s:'三星HBM4E每引脚16Gbps/12层48GB/满血4TB/s，能效+16%热阻改善14%；三星zHBM垂直堆叠GPU功耗-70%/带宽+230%，SK海力士攻20层混合键合+引入英特尔EMIB，美光警示内存墙仍在（算力每两年3倍 vs HBM带宽<2倍）。', advice:'对终端启示：HBM成AI算力绝对主角，先进封装与存储协同进化，终端厂须把算力/存储采购纳入供应链安全配置，国产替代（长鑫7%份额）优先级提升。', l:'腾讯网/今日头条', u:'https://new.qq.com/rain/a/20260824A0702100' },
+    { t:'应用侧：国产AI御三家梭哈Work，AI办公成巨头必争之地', s:'字节将TRAE/扣子并入豆包，最快本周推独立办公产品"豆包工作"；阿里整合Qoder/悟空/MuleRun为"千问办公"；腾讯明确AI所有资源向WorkBuddy集中；金山WPS AI月活破8000万。字节Seed同步完成组织重组，新设预训练/强化学习等四个一级部门。', advice:'对终端启示：AI助手正从"功能"独立为"产品/收费点"，终端厂应把智能体作为独立变现单元运营，而非免费附赠；智能体入口竞争白热化。', l:'罗超频道/网易', u:'https://dy.163.com/article/L54E4L7T05119NA8.html' },
+    { t:'自研侧：小米玄戒三芯齐发，国产自研芯片迈向"全生态底座"', s:'玄戒O3(3nm/240亿晶体管/首发18 Fold)/O100(端侧AI加速)/D100(智能驾驶)三芯齐发，覆盖人车家全生态；标志国产自研芯片从"单点手机SoC突围"走向"全生态AI算力布局"，与华为韬定律形成国产双线。', advice:'对终端启示：自研芯片是长期必投，但爬坡期需防"重蹈澎湃覆辙"，应先看量产上车再说；端侧AI算力应走"自研+逻辑优化"路线。', l:'封面新闻/手机中国', u:'https://new.qq.com/rain/a/20260824A076CO00' },
+    { t:'估值侧：小鹏机器人首轮估值63亿美元，具身智能资本热浪与泡沫并存', s:'小鹏机器人首轮融资估值63亿美元；Hugging Face寻求出售估值或超130亿$；OpenAI顶尖研究员Luke Metz离职加盟Meta超级智能实验室；宇树推进物理AI自进化。资本狂欢但人形机器人商用鸿沟仍在。', advice:'对终端启示：具身智能资本热浪再起但高估值需场景兑现，终端厂布局机器人应警惕泡沫风险与人才争夺，以场景落地而非估值讲故事。', l:'AI日报/智能AI百宝箱', u:'https://new.qq.com/rain/a/20260824A06UDJ00' },
+    { t:'国产模型：Kimi K3全球第6超越谷歌，开源低成本重塑全球格局', s:'日经与Weights&Biases联合发布全球生成式AI实力调查，中国月之暗面Kimi K3综合排名跃升至全球第6，超越谷歌与SpaceX AI模型；智谱GLM-5.2、稀宇M3、阿里云跻身前列，开源低成本成核心优势。', advice:'对终端启示：中国模型性价比正重塑全球定价与排名，终端厂应优先拥抱国产模型降本、并把端侧推理能力作为差异化护城河，减少对外购API依赖。', l:'手机中国/日经', u:'https://view.inews.qq.com/a/20260824A05IZ600' }
+  ]
+};
+
+/* ===================== 渲染逻辑 ===================== */
+function el(id){ return document.getElementById(id); }
+function splitSummary(t){
+  const parts = (t||'').split(/(?=[①②③④⑤⑥⑦⑧⑨⑩])/).map(s=>s.trim()).filter(Boolean);
+  return '<div class="summary-lines">'+parts.map(p=>{
+    const m = p.match(/^([①②③④⑤⑥⑦⑧⑨⑩])\s*([\s\S]*)$/);
+    const mk = m? m[1] : '·';
+    const body = m? m[2] : p;
+    return '<div><span class="mk">'+mk+'</span>'+body+'</div>';
+  }).join('')+'</div>';
+}
+
+// 浏览量（全局计数）：POST /api/views 自增并返回最新值
+function loadViews(){
+  fetch('/api/views', { method: 'POST' }).then(r=>r.json()).then(d=>{
+    el('vc-total').textContent = d.total != null ? d.total.toLocaleString() : '—';
+    el('vc-week').textContent  = d.week  != null ? d.week.toLocaleString()  : '—';
+  }).catch(()=>{
+    // 静态托管降级：用 localStorage 估算本机浏览
+    let t = parseInt(localStorage.getItem('cd_total')||'0',10)+1;
+    let w = parseInt(localStorage.getItem('cd_week')||'0',10)+1;
+    localStorage.setItem('cd_total',t); localStorage.setItem('cd_week',w);
+    el('vc-total').textContent = t.toLocaleString();
+    el('vc-week').textContent  = w.toLocaleString();
+  });
+}
+
+// 更新时间
+function setUpdate(){
+  el('update-badge').textContent = '更新于 ' + DATA.updateTime;
+}
+
+// TAB1
+function renderHeadlines(){
+  const g = el('headline-grid');
+  g.innerHTML = DATA.headlineViewpoints.map((h,i)=>`
+    <div class="hl-card">
+      <div><span class="hl-rank">${i+1}</span><h4>${h.t}</h4></div>
+      <div class="hl-support">${h.s}</div>
+      <div class="hl-link"><a href="${h.u}" target="_blank">${h.l} ↗</a></div>
+    </div>`).join('');
+}
+function renderLeaders(){
+  el('leaders-summary').innerHTML = '<span class="lbl">意见领袖观点 · 汇总提炼</span>' + splitSummary(DATA.leadersSummary);
+  el('leader-picks').innerHTML = DATA.opinionLeaders.map(p=>{
+    const first = (p.items && p.items[0] && p.items[0].s) ? p.items[0].s : '';
+    const view = first.length > 64 ? first.slice(0,64)+'…' : first;
+    return `<div class="lp-card"><div><span class="lp-name">${p.name}</span><span class="lp-role">${p.role}</span></div><div class="lp-view">${view}</div></div>`;
+  }).join('');
+  el('leaders-block').innerHTML = DATA.opinionLeaders.map(p=>`
+    <div class="person-block">
+      <div><span class="pname">${p.name}</span><span class="prole">${p.role}</span></div>
+      ${p.items.map(it=>`<div class="vp-item">· ${it.s} <a href="${it.u}" target="_blank">（${it.l} ↗）</a></div>`).join('')}
+    </div>`).join('');
+}
+function renderInsts(){
+  el('insts-summary').innerHTML = '<span class="lbl">机构观点 · 汇总提炼</span>' + splitSummary(DATA.instsSummary);
+  el('insts-block').innerHTML = DATA.institutionViews.map(p=>`
+    <div class="person-block">
+      <div><span class="pname">${p.name}</span><span class="prole">机构</span></div>
+      ${p.items.map(it=>`<div class="vp-item">· ${it.s} <a href="${it.u}" target="_blank">（${it.l} ↗）</a></div>`).join('')}
+    </div>`).join('');
+}
+function renderNews(){
+  el('news-summary').innerHTML = '<span class="lbl">新闻头条 · 汇总提炼</span>' + splitSummary(DATA.newsSummary);
+  el('news-block').innerHTML = DATA.topNews.map((n,i)=>`
+    <div class="news-row">
+      <div class="news-rank">${i+1}</div>
+      <div class="news-main">
+        <div class="news-title"><a href="${n.u}" target="_blank">${n.t}</a></div>
+        <div class="news-meta">${n.s}</div>
+      </div>
+    </div>`).join('');
+}
+
+// TAB2
+function renderCalendar(){
+  const days = ['一','二','三','四','五','六','日'];
+  let html = days.map(d=>`<div class="cal-cell"><div class="d">周${d}</div></div>`).join('');
+  // 简单以事件卡片覆盖：这里直接列出事件卡（按周布局）
+  el('cal-grid').innerHTML = DATA.launchCalendar.map(e=>`
+    <div class="cal-cell ev"><div class="d">${e.d}</div><div class="evt">${e.brand}<br>${e.evt}</div></div>`).join('');
+}
+function renderProducts(){
+  // 新品速览汇总表
+  el('prod-summary').innerHTML = `<tr><th>厂商</th><th>产品</th><th>核心卖点</th><th>战略意图</th><th>管理启示</th></tr>` +
+    DATA.productSummary.map(r=>`<tr><td><b>${r.brand}</b></td><td>${r.product}</td><td>${r.selling}</td><td>${r.intent}</td><td>${r.insight}</td></tr>`).join('');
+  // 按厂商深度解读
+  el('prod-block').innerHTML = DATA.newProducts.map(p=>`
+    <div class="prod-block">
+      <div class="prod-head" style="background:${p.color}">
+        <span class="b">${p.brand}</span><span class="tag">${p.tag}</span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-summary">${p.summary}</div>
+        <div class="prod-strategy"><b>战略意图：</b>${p.strategy}</div>
+        <div class="prod-sub"><b>竞争力点：</b>${p.compete}</div>
+        <div class="prod-sub"><b>消费者选择视角：</b>${p.consumer}</div>
+        <div class="prod-advice"><b>给管理层的建议：</b>${p.advice}</div>
+        <div class="spec-grid">${p.specs.map(s=>`<div class="spec-item"><div class="k">${s.k}</div><div class="v">${s.v}</div></div>`).join('')}</div>
+      </div>
+    </div>`).join('');
+}
+
+// TAB3
+function renderEarnCal(){
+  el('earn-cal').innerHTML = `<div class="kpi-row">${DATA.earningsCalendar.map(e=>`
+    <div class="kpi" style="text-align:left"><div class="kv" style="font-size:13px">${e.d}</div><div class="kl">${e.c} · ${e.p}</div></div>`).join('')}</div>`;
+}
+function renderEarnSnap(){
+  el('earn-snap').innerHTML = `<div class="earn-insight">${DATA.earnSnap}</div>`;
+}
+function renderEarnings(){
+  el('earn-block').innerHTML = DATA.earnings.map(e=>`
+    <div class="earn-card">
+      <div class="earn-top">
+        <div><span class="earn-company">${e.company}</span><span class="earn-code">${e.code}</span></div>
+        <span class="earn-period">${e.period}</span>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kv">${e.revenue}</div><div class="kl">营收 ${e.revYoy}</div></div>
+        <div class="kpi"><div class="kv">${e.profit}</div><div class="kl">利润</div></div>
+        <div class="kpi"><div class="kv" style="font-size:12px">${e.phoneBiz}</div><div class="kl">终端业务</div></div>
+        <div class="kpi"><div class="kv" style="font-size:12px">${e.period}</div><div class="kl">报告期</div></div>
+      </div>
+      <div class="earn-viewpoint"><b>分析观点与关键发现：</b>${e.viewpoint}</div>
+      <div class="earn-insight"><b>对经营管理启示：</b>${e.insight}</div>
+    </div>`).join('');
+}
+
+// TAB4
+let mktChart, mktCurrent='phone', mktGC='global';
+function renderMarketView(){
+  el('market-view').innerHTML = '<span class="lbl">主流机构大盘观点 · 汇总提炼</span>' + splitSummary(DATA.marketView);
+}
+function renderMktTabs(){
+  const keys = Object.keys(DATA.marketData);
+  el('mkt-tabs').innerHTML = keys.map((k,i)=>`<div class="mkt-tab ${i===0?'active':''}" data-k="${k}">${DATA.marketData[k].name}</div>`).join('');
+  el('mkt-tabs').querySelectorAll('.mkt-tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      el('mkt-tabs').querySelectorAll('.mkt-tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      mktCurrent = t.dataset.k;
+      drawMkt();
+    });
+  });
+}
+function bindMktGC(){
+  el('mkt-gc').querySelectorAll('.gc-btn').forEach(t=>{
+    t.addEventListener('click',()=>{
+      el('mkt-gc').querySelectorAll('.gc-btn').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      mktGC = t.dataset.gc;
+      drawMkt();
+    });
+  });
+}
+function drawMkt(){
+  const d = DATA.marketData[mktCurrent][mktGC];
+  const labels = d.series.map(s=>s.label);
+  const vals = d.series.map(s=>s.shipment);
+  const yoy = d.series.map(s=> (typeof s.yoy==='number'? s.yoy : null));
+  if(!mktChart) mktChart = echarts.init(el('mkt-chart'));
+  mktChart.setOption({
+    title:{ text:d.name+'（'+(mktGC==='global'?'全球':'中国')+'）出货大盘 · '+d.note, left:'center', textStyle:{fontSize:14,color:'#1f2937'} },
+    tooltip:{ trigger:'axis', formatter:function(p){
+      let s = p[0].axisValue+'<br>';
+      p.forEach(x=>{ s += x.seriesName+': '+x.value+(x.seriesName==='出货'?' 亿':'%')+'<br>'; });
+      return s;
+    }},
+    legend:{ data:['出货','同比YoY'], bottom:0 },
+    grid:{ left:50, right:50, top:50, bottom:50 },
+    xAxis:{ type:'category', data:labels },
+    yAxis:[
+      { type:'value', name:'亿', axisLabel:{formatter:'{value}'} },
+      { type:'value', name:'%', axisLabel:{formatter:'{value}'} }
+    ],
+    series:[
+      { name:'出货', type:'bar', data:vals, itemStyle:{color:'#2563eb'}, barWidth:'45%',
+        label:{show:true,position:'top',formatter:'{c}'} },
+      { name:'同比YoY', type:'line', yAxisIndex:1, data:yoy, itemStyle:{color:'#1d4ed8'}, symbolSize:8,
+        label:{show:true,position:'bottom',formatter:function(p){ return p.value==null?'—':p.value+'%'; }} }
+    ]
+  }, true);
+  // 各厂商竞争份额及变化（全球/中国分栏）
+  const sh = el('mkt-shares');
+  if(d.shares){
+    el('mkt-share-note').textContent = '（' + (d.note||'') + ' · ' + (mktGC==='global'?'全球厂商份额':'中国厂商份额') + '）';
+    sh.innerHTML = `<tr><th>厂商</th><th>份额(%)</th><th>同比变化(pp)</th></tr>` +
+      d.shares.map(s=>`<tr><td><b>${s.brand}</b></td><td>${s.share}</td><td class="${s.chg.indexOf('+')===0?'up':'down'}">${s.chg}</td></tr>`).join('');
+  } else { sh.innerHTML=''; el('mkt-share-note').textContent='（该品类暂无分厂商份额数据，仅呈现出货与品类结构 · '+(mktGC==='global'?'全球':'中国')+'）'; }
+  // 分类变化（按主流机构口径：折叠屏 / 高端 / 中端 / 低端）
+  const seg = el('mkt-segments');
+  if(d.segments){
+    seg.innerHTML = `<tr><th>分类</th><th>数值</th><th>说明</th></tr>` +
+      d.segments.map(s=>`<tr><td>${s.name}</td><td><b>${s.val}</b></td><td>${s.note}</td></tr>`).join('');
+  } else seg.innerHTML='';
+  // 总量数据表
+  const tbl = el('mkt-tbl');
+  tbl.innerHTML = `<tr><th>周期</th><th>出货量(亿)</th><th>同比</th></tr>` +
+    d.series.map(s=>`<tr><td>${s.label}</td><td>${s.shipment}</td><td>${s.yoy}</td></tr>`).join('');
+}
+function bindMktToggle(){
+  el('mkt-toggle').addEventListener('click',()=>{
+    const t = el('mkt-tbl');
+    t.classList.toggle('show');
+    el('mkt-toggle').textContent = t.classList.contains('show') ? '▾ 隐藏数据表格' : '▸ 显示数据表格';
+  });
+}
+
+// TAB5
+let aiChart;
+function renderAiOverview(){ el('ai-overview').textContent = DATA.aiOverview; }
+function renderAiStats(){
+  el('ai-stats').innerHTML = DATA.aiStats.map(s=>`<div class="ai-stat"><div class="num">${s.num}</div><div class="lbl">${s.lbl}</div></div>`).join('');
+}
+function drawAi(){
+  const m = DATA.aiSubs.monthly;
+  const allKeys = Object.keys(m.domestic).concat(Object.keys(m.global));
+  const series = allKeys.map(k=>{
+    const data = m.domestic[k] ? m.domestic[k] : m.global[k];
+    const isGlobal = !!m.global[k];
+    return { name:k, type:'line', data:data, smooth:true, symbolSize:6,
+      lineStyle:{width:isGlobal?2.5:1.8}, itemStyle:{color:isGlobal?'#1d4ed8':'#2563eb'} };
+  });
+  if(!aiChart) aiChart = echarts.init(el('ai-chart'));
+  aiChart.setOption({
+    title:{ text:'主要AI助手月活趋势（百万）', left:'center', textStyle:{fontSize:14,color:'#1f2937'} },
+    tooltip:{ trigger:'axis' },
+    legend:{ type:'scroll', bottom:0, textStyle:{fontSize:11} },
+    grid:{ left:50, right:30, top:50, bottom:50 },
+    xAxis:{ type:'category', data:m.months },
+    yAxis:{ type:'value', name:'百万MAU' },
+    series:series
+  }, true);
+}
+function renderAiViews(){
+  el('ai-views').innerHTML = DATA.aiViews.map(v=>`
+    <div class="person-block">
+      <div class="pname" style="font-size:14px">${v.t}</div>
+      <div class="vp-item" style="border:none;padding-top:6px">${v.s} <a href="${v.u}" target="_blank">（${v.l} ↗）</a></div>
+      <div class="ai-advice">${v.advice}</div>
+    </div>`).join('');
+}
+
+// 一级栏目切换（终端/汽车/互联网/芯片与器件，主色调贯穿其下五大板块）
+const CAT_COLORS = { terminal:'#2563eb', auto:'#16a34a', internet:'#7c3aed', chip:'#ea580c' };
+const CAT_DEEP   = { terminal:'#1d4ed8', auto:'#15803d', internet:'#6d28d9', chip:'#c2410c' };
+function setCategory(cat){
+  const c = CAT_COLORS[cat] || '#2563eb';
+  const d = CAT_DEEP[cat] || '#1d4ed8';
+  document.documentElement.style.setProperty('--accent', c);
+  document.documentElement.style.setProperty('--accent-deep', d);
+  document.querySelectorAll('.cat-item').forEach(x=>x.classList.toggle('active', x.dataset.cat===cat));
+  const isTerminal = cat==='terminal';
+  el('cat-body').style.display = isTerminal ? '' : 'none';
+  el('cat-empty').style.display = isTerminal ? 'none' : '';
+}
+function bindCatnav(){
+  el('catnav').querySelectorAll('.cat-item').forEach(t=>{
+    t.addEventListener('click',()=> setCategory(t.dataset.cat));
+  });
+}
+let storageChart;
+let priceChart;
+let priceUnlocked = false;
+const PRICE_UNLOCK_OVERRIDE = false;
+function drawStorage(){
+  const t = DATA.storageTrend;
+  if(!storageChart) storageChart = echarts.init(el('storage-chart'));
+  storageChart.setOption({
+    title:{ text:'存储综合合约价指数（基准=100，2026-03）', left:'center', textStyle:{fontSize:14,color:'#1f2937'} },
+    tooltip:{ trigger:'axis' },
+    legend:{ bottom:0 },
+    grid:{ left:50, right:30, top:50, bottom:50 },
+    xAxis:{ type:'category', data:t.months },
+    yAxis:{ type:'value', name:'指数' },
+    series:[
+      { name:'DRAM', type:'line', data:t.dram, smooth:true, symbolSize:7, lineStyle:{width:3}, itemStyle:{color:'#2563eb'} },
+      { name:'NAND', type:'line', data:t.nand, smooth:true, symbolSize:7, lineStyle:{width:2.5}, itemStyle:{color:'#7c3aed'} },
+      { name:'HBM', type:'line', data:t.hbm, smooth:true, symbolSize:7, lineStyle:{width:2.5,type:'dashed'}, itemStyle:{color:'#ea580c'} }
+    ]
+  }, true);
+}
+function drawPriceCurve(){
+  const t = DATA.storagePrice;
+  if(!priceChart) priceChart = echarts.init(el('price-chart'));
+  priceChart.setOption({
+    title:{ text:'存储实际合约价（绝对数值 · 美元） 2025Q1–2026Q3', left:'center', textStyle:{fontSize:13,color:'#1f2937'} },
+    tooltip:{ trigger:'axis', formatter:function(ps){ let s='<b>'+ps[0].axisValue+'</b><br/>'; ps.forEach(p=>{ s+=p.marker+p.seriesName+'：<b>'+p.value+'</b>'+(t.unit[p.seriesName]||'')+'<br/>'; }); return s; } },
+    legend:{ bottom:0 },
+    grid:{ left:55, right:30, top:48, bottom:48 },
+    xAxis:{ type:'category', data:t.quarters, axisLabel:{fontSize:11} },
+    yAxis:{ type:'value', name:'美元', nameTextStyle:{fontSize:11} },
+    series:[
+      { name:'DRAM(DDR4 8Gb)', type:'line', data:t.dram, smooth:true, symbolSize:7, lineStyle:{width:3}, itemStyle:{color:'#2563eb'} },
+      { name:'NAND(512Gb TLC)', type:'line', data:t.nand, smooth:true, symbolSize:7, lineStyle:{width:2.5}, itemStyle:{color:'#7c3aed'} },
+      { name:'HBM(ASP/GB)', type:'line', data:t.hbm, smooth:true, symbolSize:7, lineStyle:{width:2.5,type:'dashed'}, itemStyle:{color:'#ea580c'} }
+    ]
+  }, true);
+}
+function renderPriceCurve(){
+  const override = (typeof PRICE_UNLOCK_OVERRIDE!=='undefined' && PRICE_UNLOCK_OVERRIDE);
+  const stored = (localStorage.getItem('cd_price_unlock')==='1');
+  if(override || priceUnlocked || stored){
+    priceUnlocked = true;
+    el('price-lock').style.display='none';
+    el('price-chart').style.display='block';
+    el('price-src').style.display='block';
+    el('price-src').innerHTML = DATA.storagePrice.sources;
+    drawPriceCurve();
+  } else {
+    el('price-lock').style.display='flex';
+    el('price-chart').style.display='none';
+    el('price-src').style.display='none';
+  }
+}
+function bindPriceUnlock(){
+  const btn = document.getElementById('price-unlock-btn');
+  if(btn) btn.addEventListener('click', ()=>{
+    priceUnlocked = true;
+    try{ localStorage.setItem('cd_price_unlock','1'); }catch(e){}
+    renderPriceCurve();
+    if(priceChart) priceChart.resize();
+  });
+}
+function renderAiStorage(){
+  el('ai-storage').innerHTML = DATA.aiStorage.map(x=>`
+    <div class="vp-item" style="border-bottom:1px dashed #eef2ff">· <b style="color:var(--accent)">${x.name}：</b>${x.trend} <a href="${x.u}" target="_blank">（${x.l} ↗）</a></div>`).join('');
+}
+function renderAiCost(){
+  el('ai-cost').innerHTML = DATA.aiCost.map(x=>`
+    <div class="cost-card">
+      <div class="cc-name">${x.name} <span class="cc-dir ${x.dir==='up'?'cc-up':x.dir==='down'?'cc-down':'cc-flat'}">${x.dir==='up'?'↑ 涨':x.dir==='down'?'↓ 跌':'→ 平'}</span></div>
+      <div class="cc-change"><b>变化方式：</b>${x.change}</div>
+      <div class="cc-impact"><b>对上下游影响：</b>${x.impact}</div>
+      <div class="hl-link" style="margin-top:8px"><a href="${x.u}" target="_blank">${x.l} ↗</a></div>
+    </div>`).join('');
+  el('cost-takeaway').innerHTML = '<b>综合研判与经营启示：</b>' + DATA.aiCostTakeaway;
+}
+function renderAiSubs(){
+  const s = DATA.aiSubs;
+  el('ai-subs-tbl').innerHTML = '<tr>'+s.headers.map(h=>'<th>'+h+'</th>').join('')+'</tr>' +
+    s.rows.map(r=>{
+      const m = r.mom||'';
+      const cls = m==='--' ? '' : (m.indexOf('-')===0 ? 'down' : 'up');
+      return '<tr><td>'+r.rank+'</td><td><b>'+r.name+'</b></td><td>'+r.company+'</td><td>'+r.region+'</td><td>'+r.mau+'</td><td class="'+cls+'">'+r.mom+'</td><td>'+r.trend+'</td><td>'+r.sub+'</td></tr>';
+    }).join('');
+}
+
+// Tab 切换
+function bindTabs(){
+  el('tabnav').querySelectorAll('.tab-item').forEach(t=>{
+    t.addEventListener('click',()=>{
+      el('tabnav').querySelectorAll('.tab-item').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      const id = t.dataset.tab;
+      document.querySelectorAll('.tabpane').forEach(p=>p.classList.remove('active'));
+      el(id).classList.add('active');
+      if(id==='t4' && mktChart) setTimeout(()=>mktChart.resize(),50);
+      if(id==='t5' && aiChart) setTimeout(()=>aiChart.resize(),50);
+    });
+  });
+}
+
+// 初始化
+function init(){
+  setUpdate(); loadViews(); bindTabs(); bindCatnav(); setCategory('terminal');
+  renderHeadlines(); renderLeaders(); renderInsts(); renderNews();
+  renderCalendar(); renderProducts();
+  renderEarnCal(); renderEarnSnap(); renderEarnings();
+  renderMarketView(); renderMktTabs(); bindMktGC(); drawMkt(); bindMktToggle();
+  renderAiOverview(); renderAiStats(); drawAi(); renderAiViews();
+  drawStorage(); renderAiStorage(); renderAiCost(); renderAiSubs();
+  renderPriceCurve(); bindPriceUnlock();
+}
+document.addEventListener('DOMContentLoaded', init);
+window.addEventListener('resize',()=>{ if(mktChart)mktChart.resize(); if(aiChart)aiChart.resize(); if(storageChart)storageChart.resize(); if(priceChart)priceChart.resize(); });
+</script>
+</body>
+</html>
