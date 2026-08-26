@@ -262,9 +262,10 @@ a:hover { text-decoration:underline; }
     </div>
     <div class="header-right">
       <div class="view-counter">
-        <div class="view-box"><div class="num" id="vc-total">—</div><div class="lbl">总浏览量</div></div>
-        <div class="view-box"><div class="num" id="vc-week">—</div><div class="lbl">本周浏览量</div></div>
+        <div class="view-box"><div class="num"><span id="busuanzi_value_site_pv">—</span></div><div class="lbl">总浏览量</div></div>
+        <div class="view-box"><div class="num"><span id="busuanzi_value_site_uv">—</span></div><div class="lbl">独立访客</div></div>
       </div>
+      <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" onerror="var b=document.createElement('script');b.async=true;b.src='https://busuanzi.9420.ltd/busuanzi.pure.mini.js';document.head.appendChild(b);"></script>
       <div class="badge" id="update-badge">更新中…</div>
     </div>
   </div>
@@ -2320,7 +2321,6 @@ function renderAll(){
   document.querySelectorAll('.tab-item').forEach(x=>x.classList.remove('active'));
   document.querySelector('.tab-item[data-tab="t1"]').classList.add('active');
   setUpdate();
-  loadViews();
 }
 
 /* ---------------- TAB1 行业今日头条 ---------------- */
@@ -2629,24 +2629,7 @@ function renderChip(m){
   }
 }
 
-/* ---------------- 访问计数（服务端 IP 去重 + 持久叠加，降级 localStorage） ---------------- */
-function loadViews(){
-  const show=(id,v)=>{ if(v!=null && !isNaN(v)) el(id).textContent = Number(v).toLocaleString(); };
-  // 优先调用 EdgeOne Pages Function（/api/visit），同一 IP 1 小时内多次访问仅计 1 次，全局持久累加
-  fetch('/api/visit', { cache:'no-store' }).then(r=>{ if(!r.ok) throw 0; return r.json(); }).then(d=>{
-    show('vc-total', d.total); show('vc-week', d.week);
-  }).catch(()=>{
-    // 降级：GitHub Pages 无函数时，用本地持久计数近似（每浏览器 1 小时去重）
-    try{
-      const kT='cd_visits_total', kW='cd_visits_week', kL='cd_visits_last', WK='cd_visits_weekstart';
-      const now=Date.now(); let t=parseInt(localStorage.getItem(kT)||'0',10), w=parseInt(localStorage.getItem(kW)||'0',10);
-      const last=parseInt(localStorage.getItem(kL)||'0',10), wkStart=parseInt(localStorage.getItem(WK)||'0',10);
-      if(now-wkStart > 7*864e5){ w=0; localStorage.setItem(WK, now); }
-      if(now-last > 3600*1000){ t++; w++; localStorage.setItem(kT,t); localStorage.setItem(kW,w); localStorage.setItem(kL,now); }
-      show('vc-total', t); show('vc-week', w);
-    }catch(e){}
-  });
-}
+/* ---------------- 访问计数：由不蒜子(busuanzi)前端脚本自动填充，GitHub Pages 静态托管即可，无需服务端函数 ---------------- */
 
 function setUpdate(){ el('update-badge').textContent = '更新于 ' + (cur.updateTime || DATA.terminal.updateTime || ''); }
 
