@@ -68,8 +68,11 @@ a:hover { text-decoration:underline; }
 .person-block { border:1px solid #e5e7eb; border-radius:10px; padding:14px 16px; margin-bottom:12px; }
 .person-block .pname { font-size:15px; font-weight:800; color:#1f2937; }
 .person-block .prole { font-size:11px; color:#9ca3af; margin-left:6px; }
-.vp-item { font-size:14px; color:#374151; padding:9px 0; border-bottom:1px dashed #f0f0f0; line-height:1.7; }
+.vp-item { font-size:14px; color:#374151; padding:11px 0; border-bottom:1px dashed #f0f0f0; line-height:1.7; }
 .vp-item:last-child { border-bottom:none; }
+.vp-hl { font-size:15px; line-height:1.7; margin-bottom:6px; }
+.vp-hl .hl-red { font-size:15px; }
+.vp-detail { font-size:13.5px; color:#374151; line-height:1.9; margin:1px 0 8px; padding-left:2px; }
 
 .news-row { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid #f3f4f6; }
 .news-rank { flex-shrink:0; width:22px; height:22px; line-height:22px; text-align:center; border-radius:5px; background:var(--accent-soft); color:var(--accent); font-weight:800; font-size:12px; }
@@ -157,13 +160,6 @@ a:hover { text-decoration:underline; }
 .summary-lines > div { padding:6px 0; border-bottom:1px dashed #e3ecfd; }
 .summary-lines > div:last-child { border-bottom:none; }
 .summary-lines .mk { color:var(--accent); font-weight:800; margin-right:7px; }
-
-/* 领袖核心观点速览（按人物一行一观点） */
-.leader-picks { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:14px 0 6px; }
-@media(max-width:900px){ .leader-picks{ grid-template-columns:1fr; } }
-.lp-card { border:1px solid #e5e7eb; border-left:3px solid var(--accent); border-radius:8px; padding:11px 14px; background:#fafcff; }
-.lp-card .lp-name { font-weight:800; font-size:14px; color:#1f2937; }
-.lp-card .lp-role { font-size:10.5px; color:#9ca3af; margin-left:6px; }
 
 
 /* 全球/中国切换 */
@@ -6072,7 +6068,7 @@ function renderTab1(){
     '<div class="card"><div class="section-title">一、今日十大头条观点 <span class="en">Top 10 Headline Viewpoints · 集团高层经营决策视角</span></div>'+
       '<div class="headline-grid" id="h-grid"></div></div>'+
     '<div class="card"><div class="section-title">二、意见领袖观点 <span class="en">Opinion Leaders · 按人物展开</span></div>'+
-      '<div class="summary-box" id="l-summary"></div><div id="l-picks"></div><div id="l-block"></div></div>'+
+      '<div class="summary-box" id="l-summary"></div><div id="l-block"></div></div>'+
     '<div class="card"><div class="section-title">三、主流机构观点 <span class="en">Institutions · 先汇总 · 按机构展开</span></div>'+
       '<div class="summary-box" id="i-summary"></div><div id="i-block"></div></div>'+
     '<div class="card"><div class="section-title">四、今日十大新闻头条 <span class="en">Top 10 News · 附链接</span></div>'+
@@ -6082,16 +6078,18 @@ function renderTab1(){
     '<div class="hl-support">'+esc(h.s)+'</div>'+
     '<div class="hl-link"><a href="'+(h.u||'#')+'" target="_blank">'+esc(h.l)+' ↗</a></div></div>').join('');
   el('l-summary').innerHTML = '<span class="lbl">意见领袖观点 · 汇总提炼（按人物机构化）</span>'+splitSummary(cur.leadersSummary||'');
-  el('l-picks').innerHTML = (cur.opinionLeaders||[]).map(p=>
-    '<div class="lp-card"><div><span class="lp-name">'+esc(p.name)+'</span><span class="lp-role">'+esc(p.role)+'</span></div></div>').join('');
   el('l-block').innerHTML = (cur.opinionLeaders||[]).map(p=>
     '<div class="person-block"><div class="person-head"><span class="pname">'+esc(p.name)+'</span><span class="prole">'+esc(p.role)+'</span></div>'+
-    p.items.map(it=>'<div class="vp-item"><span class="hl-red">'+esc(it.hl)+'</span>'+(it.detail?esc(it.detail):'')+
+    p.items.map(it=>'<div class="vp-item">'+
+      '<div class="vp-hl"><span class="hl-red">'+esc(it.hl)+'</span></div>'+
+      (it.detail?'<div class="vp-detail">'+esc(it.detail)+'</div>':'')+
       '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">来源：'+esc(it.l)+' ↗</a></div>').join('')+'</div>').join('');
   el('i-summary').innerHTML = '<span class="lbl">机构观点 · 汇总提炼</span>'+splitSummary(cur.instsSummary||'');
   el('i-block').innerHTML = (cur.institutionViews||[]).map(p=>
     '<div class="person-block"><div><span class="pname">'+esc(p.name)+'</span><span class="prole">机构</span></div>'+
-    p.items.map(it=>'<div class="vp-item">· '+esc(it.s)+' <a href="'+(it.u||'#')+'" target="_blank">（'+esc(it.l)+' ↗）</a></div>').join('')+'</div>').join('');
+    p.items.map(it=>'<div class="vp-item">'+
+      '<div class="vp-hl"><span class="hl-red">'+esc(it.s)+'</span></div>'+
+      '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">（'+esc(it.l)+' ↗）</a></div>').join('')+'</div>').join('');
   el('n-summary').innerHTML = '<span class="lbl">新闻头条 · 汇总提炼</span>'+splitSummary(cur.newsSummary||'');
   el('n-block').innerHTML = (cur.topNews||[]).map((n,i)=>
     '<div class="news-row"><div class="news-rank">'+(i+1)+'</div><div class="news-main">'+
