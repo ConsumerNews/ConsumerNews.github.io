@@ -235,6 +235,24 @@ a:hover { text-decoration:underline; }
 .share-chart { width:100%; height:300px; margin-top:10px; }
 
 
+
+.ab-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:20px;}
+.ab-kpi{background:#fff;border:1px solid #e5e7eb;border-left:4px solid var(--accent);border-radius:12px;padding:14px 16px;}
+.ab-v{font-size:24px;font-weight:800;color:var(--accent);}
+.ab-u{font-size:12px;font-weight:700;color:#6b7280;margin-left:3px;}
+.ab-l{font-size:12px;color:#6b7280;margin-top:4px;}
+.ab-d{font-size:12px;margin-top:6px;font-weight:700;}
+.ab-up{color:#dc2626;} .ab-down{color:#16a34a;}
+.ab-grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.ab-grid2 .card{margin-bottom:18px;}
+.ab-tall{height:420px;}
+.ab-note{font-size:12px;color:#6b7280;line-height:1.7;margin-top:8px;}
+.ab-tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11.5px;font-weight:700;}
+.ab-tag.up{background:#fdecec;color:#dc2626;} .ab-tag.down{background:#e7f6ec;color:#16a34a;}
+.ab-src{font-size:11.5px;color:#9ca3af;margin-top:8px;}
+.ab-foot{text-align:center;color:#9ca3af;font-size:11.5px;padding:18px;}
+@media(max-width:900px){.ab-grid2{grid-template-columns:1fr;}}
+
 </style>
 </head>
 <body>
@@ -288,7 +306,7 @@ a:hover { text-decoration:underline; }
 </div>
 <script>const DATA = {
   "terminal": {
-    "updateTime": "2026-08-26 21:45",
+    "updateTime": "2026-08-27 10:38",
     "headlineViewpoints": [
       {
         "tag": "竞争格局",
@@ -2282,6 +2300,7 @@ a:hover { text-decoration:underline; }
     }
   },
   "auto": {
+    "updateTime": "2026-08-27 10:38",
     "headlineViewpoints": [
       {
         "tag": "小米YU7",
@@ -3577,10 +3596,11 @@ a:hover { text-decoration:underline; }
           ]
         }
       ]
-    }
+    },
+    "autoBoard": {"pt_dates": ["2020-01", "2020-02", "2020-03", "2020-04", "2020-05", "2020-06", "2020-07", "2020-08", "2020-09", "2020-10", "2020-11", "2020-12", "2021-01", "2021-02", "2021-03", "2021-04", "2021-05", "2021-06", "2021-07", "2021-08", "2021-09", "2021-10", "2021-11", "2021-12", "2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06", "2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12", "2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07"], "pt_total": [1852695, 197323, 1029952, 1342603, 1519816, 1570860, 1578152, 1672546, 1918014, 1874056, 1945747, 2577564, 2277700, 1256239, 1691110, 1581588, 1629666, 1623402, 1579211, 1545928, 1659642, 1639476, 1713436, 2206013, 2188915, 1136391, 1434202, 973787, 1283141, 1880594, 1735751, 1829687, 1810751, 1612814, 1574076, 2472668, 1246724, 1251109, 1600451, 1562043, 1714614, 1922005, 1738025, 1874534, 1919461, 1914687, 1917879, 2461157, 2149871, 1074324, 1543290, 1518232, 1663125, 1727468, 1770279, 1936766, 2130551, 2297790, 2380323, 2726421, 1790860, 1308009, 1858451, 1675909, 1845013, 2119876, 1869269, 1962280, 2227319, 2085710, 2004790, 2278099, 1519151, 1122935, 1453810, 1355308, 1482480, 1673067, 1458294], "nev_pen": [2.35, 5.04, 4.97, 4.06, 4.31, 4.91, 5.58, 5.51, 5.85, 6.68, 9.13, 8.75, 6.43, 7.52, 11.13, 10.52, 10.9, 13.43, 13.53, 14.77, 19.55, 17.75, 21.29, 21.82, 14.29, 21.67, 31.0, 26.97, 25.24, 26.61, 25.32, 26.18, 29.78, 27.67, 33.85, 28.53, 23.34, 31.53, 33.63, 31.38, 32.66, 33.85, 35.0, 36.04, 36.46, 37.51, 40.03, 35.97, 30.66, 34.54, 45.66, 45.22, 47.74, 47.98, 49.99, 52.22, 51.97, 51.37, 51.96, 47.4, 39.34, 50.56, 52.56, 52.36, 52.66, 52.71, 52.83, 56.2, 58.12, 57.3, 61.01, 58.57, 37.23, 38.36, 55.32, 60.95, 62.18, 60.2, 63.43], "tier_dates": ["2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06", "2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12", "2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06"], "tier": {"一线城市": [143286, 58681, 87359, 56451, 53715, 113058, 122225, 131630, 131400, 114611, 131400, 155950, 60089, 67343, 94929, 104468, 100875, 124994, 104463, 105062, 114294, 100523, 106134, 141644, 144200, 35037, 72213, 76707, 76537, 84756, 81230, 81614, 89163, 83023, 93665, 116052, 89582, 37351, 66672, 71491, 67014, 85776], "二线城市": [620483, 313822, 369970, 258169, 355583, 504576, 468383, 482717, 445554, 408505, 445554, 631495, 314465, 319728, 415793, 412735, 426008, 480771, 430618, 444684, 458282, 431305, 424410, 566719, 538771, 231137, 319563, 316900, 321921, 338424, 323649, 334562, 380234, 396080, 403528, 510730, 370535, 226868, 336678, 301151, 326770, 381231], "三线城市": [571752, 271161, 287476, 208037, 303143, 432581, 387168, 416279, 404798, 384757, 404798, 523157, 273231, 246894, 296897, 301718, 346978, 367334, 322965, 357420, 356550, 366307, 343359, 466944, 423814, 209207, 239610, 238105, 260632, 263280, 260851, 274688, 305470, 350232, 352098, 435087, 315362, 187545, 249361, 223182, 252924, 286021], "四线城市": [331441, 150915, 146114, 111739, 146608, 204458, 196148, 204559, 184366, 166843, 184366, 268968, 189035, 132765, 150814, 155284, 171130, 182829, 166241, 180130, 176426, 183329, 168967, 242423, 234456, 142369, 125187, 123064, 128074, 131042, 134468, 144509, 153785, 177326, 180086, 226508, 192711, 116384, 134931, 120459, 134986, 150484], "五线城市": [209101, 95538, 98624, 76769, 100231, 125413, 122373, 115441, 105401, 91860, 105401, 187714, 118969, 89948, 103809, 97639, 109681, 115193, 105406, 111666, 114025, 115109, 107372, 158258, 149476, 85486, 82094, 76883, 82019, 81084, 85078, 90033, 94751, 110719, 96144, 145718, 118120, 78587, 94035, 82166, 91675, 99020]}, "noa_h_dates": ["2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06", "2022-07", "2022-08", "2022-09", "2022-10", "2022-11", "2022-12", "2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05"], "noa_h": [2.33, 3.85, 6.59, 1.8, 2.89, 6.08, 2.34, 3.64, 6.37, 3.48, 7.4, 4.51, 5.43, 6.45, 8.2, 6.33, 6.13, 7.79, 6.7, 8.09, 7.21, 6.97, 9.17, 8.36, 7.59, 9.9, 12.19, 11.41, 13.07, 15.21, 14.37, 13.68, 14.69, 13.12, 15.27, 15.72, 14.81, 15.95, 17.78, 24.41, 28.5, 29.9, 30.55, 33.37, 35.2, 33.84, 38.94, 40.09, 31.23, 32.62, 40.11, 43.37, 45.23], "noa_u_dates": ["2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12", "2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05"], "noa_u": [4.31, 4.95, 6.88, 4.76, 4.56, 5.57, 3.91, 5.52, 4.37, 3.91, 5.99, 5.64, 4.31, 4.95, 6.88, 4.76, 4.56, 5.57, 3.91, 5.52, 4.37, 3.91, 5.99, 5.64, 5.18, 6.95, 8.32, 7.39, 8.85, 10.18, 9.45, 8.88, 9.95, 8.4, 10.11, 10.2, 8.91, 9.43, 10.9, 11.21, 13.28, 13.28, 14.1, 14.8, 16.31, 16.64, 21.05, 23.43, 18.02, 18.57, 21.34, 23.49, 28.0], "domestic": [{"name": "比亚迪汽车（含腾势）", "ytd26": 1202663, "ytd25": 1835105, "share26": 11.95, "share25": 14.72, "share_chg": -2.77}, {"name": "吉利汽车（含极氪）", "ytd26": 1118011, "ytd25": 1174239, "share26": 11.11, "share25": 9.42, "share_chg": 1.69}, {"name": "长安汽车", "ytd26": 609997, "ytd25": 778781, "share26": 6.06, "share25": 6.25, "share_chg": -0.19}, {"name": "奇瑞汽车", "ytd26": 526274, "ytd25": 728829, "share26": 5.23, "share25": 5.85, "share_chg": -0.62}, {"name": "零跑汽车", "ytd26": 323113, "ytd25": 218621, "share26": 3.21, "share25": 1.75, "share_chg": 1.46}, {"name": "长城汽车", "ytd26": 307457, "ytd25": 367120, "share26": 3.05, "share25": 2.94, "share_chg": 0.11}, {"name": "广汽乘用车", "ytd26": 240494, "ytd25": 329983, "share26": 2.39, "share25": 2.65, "share_chg": -0.26}, {"name": "上汽乘用车", "ytd26": 232389, "ytd25": 152664, "share26": 2.31, "share25": 1.22, "share_chg": 1.09}, {"name": "理想汽车", "ytd26": 221679, "ytd25": 239901, "share26": 2.2, "share25": 1.92, "share_chg": 0.28}, {"name": "蔚来汽车", "ytd26": 212341, "ytd25": 125833, "share26": 2.11, "share25": 1.01, "share_chg": 1.1}], "soc": [{"rank": 1, "name": "英伟达Orin-N", "share": 15.88}, {"rank": 2, "name": "地平线J6M", "share": 7.11}, {"rank": 3, "name": "海思昇腾1951", "share": 7.06}, {"rank": 4, "name": "特斯拉二代FSD（AI4三星代工）", "share": 6.83}, {"rank": 5, "name": "英伟达Orin-X", "share": 5.96}, {"rank": 6, "name": "英伟达Thor-U", "share": 4.89}, {"rank": 7, "name": "英伟达Thor-U+高通8 Gen3", "share": 4.64}, {"rank": 8, "name": "地平线J3", "share": 3.71}, {"rank": 9, "name": "高通8650+高通8295", "share": 3.45}, {"rank": 10, "name": "瑞萨V4H", "share": 2.73}, {"rank": 11, "name": "蔚来神玑NX9031+高通8295", "share": 2.58}], "sup": [{"rank": 1, "name": "比亚迪", "share": 22.6}, {"rank": 2, "name": "华为", "share": 9.96}, {"rank": 3, "name": "德赛西威", "share": 7.14}, {"rank": 4, "name": "广达/和硕（代工）", "share": 6.96}, {"rank": 5, "name": "德赛西威/小米", "share": 4.73}, {"rank": 6, "name": "华锐捷", "share": 4.4}, {"rank": 7, "name": "智华科技", "share": 3.72}, {"rank": 8, "name": "德赛西威/Flex（代工）", "share": 3.64}, {"rank": 9, "name": "航盛", "share": 3.1}, {"rank": 10, "name": "Aptiv（代工）", "share": 2.83}, {"rank": 11, "name": "Denso", "share": 2.78}], "kpi": {"tot26": 1006.5, "tot25": 1246.7, "yoy": -19.3, "nev_last": 63.43, "noa_h": 45.2, "noa_u": 28.0, "last_m": 7}, "harmony": {"cum_delivery": "148万+", "cum_date": "2026-08-04", "h1_2026": "约28.6万辆", "wenjie_share": "超七成", "note": "鸿蒙智行“五界”矩阵：问界(赛力斯)25-60万家用SUV主力、智界(奇瑞)22-40万年轻运动、享界(北汽)行政/硬派、尊界(江淮)65-120万超豪华、尚界(上汽)15-25万走量；五界共享华为乾崑ADS高阶智驾+鸿蒙座舱+途灵底盘，累计辅助驾驶里程超121亿公里。", "src": "腾讯新闻《累计交付148万辆！余承东重申鸿蒙智行：五界齐发》2026-08-05；读特/新京报 2026-05-27"}}
   },
   "internet": {
-    "updateTime": "2026-08-27 06:20",
+    "updateTime": "2026-08-27 10:38",
     "headlineViewpoints": [
       {
         "tag": "产品战略",
@@ -4922,7 +4942,7 @@ a:hover { text-decoration:underline; }
     }
   },
   "chip": {
-    "updateTime": "2026-08-27 06:30",
+    "updateTime": "2026-08-27 10:38",
     "headlineViewpoints": [
       {
         "tag": "存储",
@@ -6302,6 +6322,7 @@ function renderTab4(){
   if(cur.marketData) renderCategoryMarket();
   if(cur.storageTrend || cur.storagePrice) renderTerminalExtra();
   if(cur.market) renderMarket(cur.market);
+  renderAutoBoard();
 }
 
 /* 终端：各品类（手机/平板/PC/折叠屏/眼镜/穿戴/音频/智慧屏/CPE/新能源） */
@@ -6491,6 +6512,65 @@ function renderMarket(m){
   if(m.type==='internet'){ renderInternet(m); return; }
   if(m.type==='chip'){ renderChip(m); return; }
   if(m.cards){ renderCards(m.cards); }
+}
+
+
+/* ===== 汽车大盘看板（基于用户 Excel 底稿，静态快照） ===== */
+function abLine(cats, series, pct){return {tooltip:{trigger:'axis',valueFormatter:function(v){return v==null?'-':(pct?(v+'%'):v);}},legend:{top:0},grid:{left:56,right:20,top:34,bottom:30},xAxis:{type:'category',data:cats,axisLabel:{fontSize:11}},yAxis:{type:'value',axisLabel:{formatter: pct?'{value}%':'{value}'}},series:series};}
+function abBar(series, horiz){return {tooltip:{trigger:'axis'},grid:{left:horiz?120:54,right:30,top:30,bottom:30},xAxis:horiz?{type:'value',axisLabel:{formatter:'{value}%'}}:{type:'category'},yAxis:horiz?{type:'category'}:{type:'value',axisLabel:{formatter:'{value}%'}},series:series};}
+function abMk(id, opt){ if(charts[id]){try{charts[id].dispose();}catch(e){} } charts[id]=echarts.init(el(id)); charts[id].setOption(opt); }
+function abCard(title, sub, id, tall, tableHtml){
+  return '<div class="card"><div class="section-title">'+title+' <span class="en">'+sub+'</span></div><div class="chart-box'+(tall?' ab-tall':'')+'" id="'+id+'"></div>'+(tableHtml||'')+'</div>';
+}
+function abGrid2(a,b){ return '<div class="ab-grid2">'+a+b+'</div>'; }
+function abDomTable(rows){
+  var dm=rows.slice().sort(function(a,b){return b.ytd26-a.ytd26;});
+  return '<table class="data-tbl show"><thead><tr><th>品牌</th><th>2026YTD(万辆)</th><th>份额%</th><th>份额变化(pp)</th></tr></thead><tbody>'+dm.map(function(x){var chg=x.share_chg; var tag=chg==null?'':(chg>=0?'<span class="ab-tag up">+'+chg+'</span>':'<span class="ab-tag down">'+chg+'</span>'); return '<tr><td><b>'+x.name+'</b></td><td>'+(x.ytd26/10000).toFixed(1)+'</td><td>'+x.share26+'</td><td>'+tag+'</td></tr>';}).join('')+'</tbody></table><div class="ab-note">注：自主品牌按车企口径归类（含腾势/极氪/埃安等子品牌）；合资/外资品牌已剔除。</div>';
+}
+function renderAutoBoard(){
+  if(cur !== DATA.auto) return;
+  const D = DATA.auto.autoBoard;
+  if(!D) return;
+  const k = D.kpi;
+  const kpis = [
+    {v:k.tot26, u:'万辆', l:'乘用车大盘 2026YTD(1-'+k.last_m+'月)', d:(k.yoy>=0?'+':'')+k.yoy+'% 同比', cls:k.yoy>=0?'up':'down'},
+    {v:k.nev_last, u:'%', l:'新能源渗透率(最新)', d:'2026-'+k.last_m, cls:''},
+    {v:k.noa_h, u:'%', l:'高速NOA渗透率(2026-05)', d:'标配口径', cls:''},
+    {v:k.noa_u, u:'%', l:'城区NOA渗透率(2026-05)', d:'标配口径', cls:''},
+    {v:D.harmony.cum_delivery, u:'辆', l:'鸿蒙智行累计交付', d:D.harmony.cum_date, cls:''}
+  ];
+  let html = '<div class="ab-kpis">'+kpis.map(function(x){return '<div class="ab-kpi"><div class="ab-v">'+x.v+'<span class="ab-u">'+x.u+'</span></div><div class="ab-l">'+x.l+'</div><div class="ab-d ab-'+x.cls+'">'+x.d+'</div></div>';}).join('')+'</div>';
+  html += abCard('一、乘用车大盘（终端销量）','月度终端销量（万辆）·2020年起','ab_c_total', false, '');
+  html += abCard('二、新能源渗透率','NEV 上险量 ÷ 乘用车终端销量（%）','ab_c_nev', false, '');
+  html += abCard('三、自主品牌当年累计销量与份额变化','2026年1-'+k.last_m+'月累计（辆），变化=较2025同期(pp)','ab_c_dom', true, abDomTable(D.domestic));
+  html += abGrid2(
+    abCard('四、高速NOA渗透率','高速NOA标配渗透率（%）','ab_c_nh', false, ''),
+    abCard('五、城区NOA渗透率','城区NOA标配渗透率（%）','ab_c_nu', false, '')
+  );
+  html += abCard('六、分线级城市新能源渗透率','各线城市 NEV 渗透率（%）','ab_c_tier', false, '');
+  html += abGrid2(
+    abCard('七、智驾域控制器芯片格局','域控SoC 2026年5月占有率排名（%）','ab_c_soc', true, ''),
+    abCard('八、智驾域控供应商格局','域控制器供应商 2026年5月占有率排名（%）','ab_c_sup', true, '')
+  );
+  html += '<div class="card"><div class="section-title">九、鸿蒙执行（公开补录） <span class="en">'+D.harmony.cum_date+'</span></div><div class="summary-box">累计交付 <b>'+D.harmony.cum_delivery+'辆</b>；2026年上半年 '+D.harmony.h1_2026+'，其中问界贡献'+D.harmony.wenjie_share+'。'+D.harmony.note+'<div class="ab-src">来源：'+D.harmony.src+'</div></div></div>';
+  html += '<div class="ab-foot">本看板基于用户提供的 Excel 底稿（广发证券乘用车交强险数据库 260823、国信汽车智能化数据底稿 2026-05）+ 公开补录（鸿蒙智行），为静态快照，刷新需另行告知。</div>';
+  const wrap = document.createElement('div');
+  wrap.innerHTML = html;
+  el('t4').appendChild(wrap);
+
+  abMk('ab_c_total', abLine(D.pt_dates,[{name:'终端销量(万辆)',type:'line',smooth:true,data:D.pt_total.map(function(v){return v==null?null:+(v/10000).toFixed(1);}),itemStyle:{color:'#2563eb'},areaStyle:{color:'rgba(37,99,235,.08)'}}],false));
+  abMk('ab_c_nev', abLine(D.pt_dates,[{name:'新能源渗透率',type:'line',smooth:true,data:D.nev_pen,itemStyle:{color:'#16a34a'},areaStyle:{color:'rgba(22,163,74,.08)'}}],true));
+  var dm=D.domestic.slice().sort(function(a,b){return b.ytd26-a.ytd26;});
+  abMk('ab_c_dom', abBar([{type:'bar',data:dm.map(function(x){return +(x.ytd26/10000).toFixed(1);}),itemStyle:{color:'#2563eb'},label:{show:true,position:'right',formatter:'{c}万'}}],true));
+  abMk('ab_c_nh', abLine(D.noa_h_dates,[{name:'高速NOA',type:'line',smooth:true,data:D.noa_h,itemStyle:{color:'#2563eb'},areaStyle:{color:'rgba(37,99,235,.08)'}}],true));
+  abMk('ab_c_nu', abLine(D.noa_u_dates,[{name:'城区NOA',type:'line',smooth:true,data:D.noa_u,itemStyle:{color:'#7c3aed'},areaStyle:{color:'rgba(124,58,237,.08)'}}],true));
+  var tcolors=['#0ea5e9','#0d9488','#f59e0b','#db2777','#64748b'];
+  var tseries=Object.keys(D.tier).map(function(nm,i){return {name:nm,type:'line',smooth:true,data:D.tier[nm],itemStyle:{color:tcolors[i%tcolors.length]}};});
+  abMk('ab_c_tier', abLine(D.tier_dates,tseries,true));
+  var soc=D.soc.slice().sort(function(a,b){return a.share-b.share;});
+  abMk('ab_c_soc', abBar([{type:'bar',data:soc.map(function(x){return x.share;}),itemStyle:{color:'#2563eb'},label:{show:true,position:'right',formatter:'{c}%'}}],true));
+  var sup=D.sup.slice().sort(function(a,b){return a.share-b.share;});
+  abMk('ab_c_sup', abBar([{type:'bar',data:sup.map(function(x){return x.share;}),itemStyle:{color:'#7c3aed'},label:{show:true,position:'right',formatter:'{c}%'}}],true));
 }
 
 function renderInternet(m){
