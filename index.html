@@ -6319,10 +6319,10 @@ function renderTab4(){
   if(cur.marketView) html += '<div class="card"><div class="section-title">大盘观点 <span class="en">Market View</span></div><div class="summary-box">'+splitSummary(cur.marketView)+'</div></div>';
   if(cur.marketData) html += '<div class="card"><div class="section-title">各品类大盘追踪 <span class="en">Market Big-board · 全球 / 中国</span></div><div id="mkt-gc" class="gc-toggle"></div><div id="mkt-tabs" class="mkt-tabs"></div><div class="chart-box" id="mkt-chart"></div><div class="mkt-sub">厂商份额分布（柱状图） <span class="en" id="mkt-share-chart-note"></span></div><div class="share-chart" id="mkt-share-chart"></div><div class="mkt-extra"><div class="mkt-sub">各厂商竞争份额及变化 <span class="en" id="mkt-share-note"></span></div><table class="data-tbl show" id="mkt-shares"></table><div class="mkt-sub">分类变化 <span class="en">Segments</span></div><table class="data-tbl show" id="mkt-segments"></table></div><div style="margin-top:8px"><span class="toggle-tbl" id="mkt-toggle">▸ 显示总量数据表格</span></div><table class="data-tbl" id="mkt-tbl"></table></div>';
   c.innerHTML = html;
-  if(cur.marketData) renderCategoryMarket();
-  if(cur.storageTrend || cur.storagePrice) renderTerminalExtra();
-  if(cur.market) renderMarket(cur.market);
-  renderAutoBoard();
+  try{ if(cur.marketData) renderCategoryMarket(); }catch(e){ console.error('renderCategoryMarket', e); }
+  try{ if(cur.storageTrend || cur.storagePrice) renderTerminalExtra(); }catch(e){ console.error('renderTerminalExtra', e); }
+  try{ if(cur.market) renderMarket(cur.market); }catch(e){ console.error('renderMarket', e); }
+  try{ renderAutoBoard(); }catch(e){ console.error('renderAutoBoard', e); }
 }
 
 /* 终端：各品类（手机/平板/PC/折叠屏/眼镜/穿戴/音频/智慧屏/CPE/新能源） */
@@ -6557,20 +6557,34 @@ function renderAutoBoard(){
   const wrap = document.createElement('div');
   wrap.innerHTML = html;
   el('t4').appendChild(wrap);
+  // 图表延迟到 t4 可见时再画，避免隐藏容器 init 拿到 0 尺寸导致空白
+  abChartsPending = true;
+  drawAutoBoardCharts();
+}
 
-  abMk('ab_c_total', abLine(D.pt_dates,[{name:'终端销量(万辆)',type:'line',smooth:true,data:D.pt_total.map(function(v){return v==null?null:+(v/10000).toFixed(1);}),itemStyle:{color:'#2563eb'},areaStyle:{color:'rgba(37,99,235,.08)'}}],false));
-  abMk('ab_c_nev', abLine(D.pt_dates,[{name:'新能源渗透率',type:'line',smooth:true,data:D.nev_pen,itemStyle:{color:'#16a34a'},areaStyle:{color:'rgba(22,163,74,.08)'}}],true));
-  var dm=D.domestic.slice().sort(function(a,b){return b.ytd26-a.ytd26;});
-  abMk('ab_c_dom', abBar([{type:'bar',data:dm.map(function(x){return +(x.ytd26/10000).toFixed(1);}),itemStyle:{color:'#2563eb'},label:{show:true,position:'right',formatter:'{c}万'}}],true));
-  abMk('ab_c_nh', abLine(D.noa_h_dates,[{name:'高速NOA',type:'line',smooth:true,data:D.noa_h,itemStyle:{color:'#2563eb'},areaStyle:{color:'rgba(37,99,235,.08)'}}],true));
-  abMk('ab_c_nu', abLine(D.noa_u_dates,[{name:'城区NOA',type:'line',smooth:true,data:D.noa_u,itemStyle:{color:'#7c3aed'},areaStyle:{color:'rgba(124,58,237,.08)'}}],true));
-  var tcolors=['#0ea5e9','#0d9488','#f59e0b','#db2777','#64748b'];
-  var tseries=Object.keys(D.tier).map(function(nm,i){return {name:nm,type:'line',smooth:true,data:D.tier[nm],itemStyle:{color:tcolors[i%tcolors.length]}};});
-  abMk('ab_c_tier', abLine(D.tier_dates,tseries,true));
-  var soc=D.soc.slice().sort(function(a,b){return a.share-b.share;});
-  abMk('ab_c_soc', abBar([{type:'bar',data:soc.map(function(x){return x.share;}),itemStyle:{color:'#2563eb'},label:{show:true,position:'right',formatter:'{c}%'}}],true));
-  var sup=D.sup.slice().sort(function(a,b){return a.share-b.share;});
-  abMk('ab_c_sup', abBar([{type:'bar',data:sup.map(function(x){return x.share;}),itemStyle:{color:'#7c3aed'},label:{show:true,position:'right',formatter:'{c}%'}}],true));
+let abChartsPending = false;
+function drawAutoBoardCharts(){
+  if(cur !== DATA.auto) return;
+  if(!abChartsPending) return;
+  if(!el('t4') || !el('t4').classList.contains('active')) return; // 等 t4 可见再画
+  const D = DATA.auto.autoBoard;
+  if(!D) return;
+  abChartsPending = false;
+  try{
+    abMk('ab_c_total', abLine(D.pt_dates,[{name:'终端销量(万辆)',type:'line',smooth:true,data:D.pt_total.map(function(v){return v==null?null:+(v/10000).toFixed(1);}),itemStyle:{color:'#2563eb'},areaStyle:{color:'rgba(37,99,235,.08)'}}],false));
+    abMk('ab_c_nev', abLine(D.pt_dates,[{name:'新能源渗透率',type:'line',smooth:true,data:D.nev_pen,itemStyle:{color:'#16a34a'},areaStyle:{color:'rgba(22,163,74,.08)'}}],true));
+    var dm=D.domestic.slice().sort(function(a,b){return b.ytd26-a.ytd26;});
+    abMk('ab_c_dom', abBar([{type:'bar',data:dm.map(function(x){return +(x.ytd26/10000).toFixed(1);}),itemStyle:{color:'#2563eb'},label:{show:true,position:'right',formatter:'{c}万'}}],true));
+    abMk('ab_c_nh', abLine(D.noa_h_dates,[{name:'高速NOA',type:'line',smooth:true,data:D.noa_h,itemStyle:{color:'#2563eb'},areaStyle:{color:'rgba(37,99,235,.08)'}}],true));
+    abMk('ab_c_nu', abLine(D.noa_u_dates,[{name:'城区NOA',type:'line',smooth:true,data:D.noa_u,itemStyle:{color:'#7c3aed'},areaStyle:{color:'rgba(124,58,237,.08)'}}],true));
+    var tcolors=['#0ea5e9','#0d9488','#f59e0b','#db2777','#64748b'];
+    var tseries=Object.keys(D.tier).map(function(nm,i){return {name:nm,type:'line',smooth:true,data:D.tier[nm],itemStyle:{color:tcolors[i%tcolors.length]}};});
+    abMk('ab_c_tier', abLine(D.tier_dates,tseries,true));
+    var soc=D.soc.slice().sort(function(a,b){return a.share-b.share;});
+    abMk('ab_c_soc', abBar([{type:'bar',data:soc.map(function(x){return x.share;}),itemStyle:{color:'#2563eb'},label:{show:true,position:'right',formatter:'{c}%'}}],true));
+    var sup=D.sup.slice().sort(function(a,b){return a.share-b.share;});
+    abMk('ab_c_sup', abBar([{type:'bar',data:sup.map(function(x){return x.share;}),itemStyle:{color:'#7c3aed'},label:{show:true,position:'right',formatter:'{c}%'}}],true));
+  }catch(e){ console.error('drawAutoBoardCharts', e); }
 }
 
 function renderInternet(m){
@@ -6637,7 +6651,7 @@ function bindTabs(){
     const id=t.dataset.tab;
     document.querySelectorAll('.tabpane').forEach(p=>p.classList.remove('active'));
     el(id).classList.add('active');
-    if(id==='t4'){ setTimeout(()=>{ for(const k in charts){ try{ charts[k].resize(); }catch(e){} } },60); }
+    if(id==='t4'){ setTimeout(()=>{ for(const k in charts){ try{ charts[k].resize(); }catch(e){} } if(cur===DATA.auto) drawAutoBoardCharts(); },60); }
   }));
 }
 function bindCatnav(){
