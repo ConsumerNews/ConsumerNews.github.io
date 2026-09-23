@@ -528,7 +528,8 @@ function renderTab2(){
     (p.advice?'<div class="prod-advice"><b>给管理层的建议：</b>'+esc(p.advice)+'</div>':'')+
     ((function(sp){return sp.length?'<div class="spec-grid">'+sp.map(s=>'<div class="spec-item"><div class="k">'+esc(s.k)+'</div><div class="v">'+esc(s.v)+'</div></div>').join('')+'</div>':''})(Array.isArray(p.specs)?p.specs:(typeof p.specs==='string'&&p.specs?[{k:'核心规格',v:p.specs}]:[])))+
     '</div></div>').join('');
-}  if(cur.launchRadar) renderLaunchRadar(cur.launchRadar);
+  if(cur.launchRadar) renderLaunchRadar(cur.launchRadar);
+}
 
 function renderLaunchRadar(lr){
   // ① 周度变化（本周 vs 上周）卡片
