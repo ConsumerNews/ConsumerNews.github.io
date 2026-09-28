@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>意见反馈 · 2C行业今日观点看板</title>
+<!-- 反馈提交端点：部署 Cloudflare Worker 后填入其 URL（如 https://fb.consumernews.workers.dev/feedback）
+     留空则自动降级为「GitHub Issue / 邮件」两种备用提交方式，页面照样可用 -->
+<meta name="feedback-endpoint" content="">
+<meta name="feedback-repo" content="ConsumerNews/ConsumerNews.github.io">
+<meta name="feedback-mail" content="416167998@qq.com">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --accent:#2563eb; --accent-deep:#1d4ed8; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+         background:#f0f2f5; color:#1f2937; font-size:15px; line-height:1.6; }
+  .header { background:linear-gradient(135deg,#0b2a6b 0%,#1d4ed8 48%,#2563eb 100%); color:#fff;
+            padding:22px 22px 18px; }
+  .header h1 { font-size:21px; font-weight:900; letter-spacing:1px; }
+  .header .sub { font-size:12.5px; color:#cbd5e1; margin-top:6px; }
+  .wrap { max-width:680px; margin:0 auto; padding:22px 18px 60px; }
+  .card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:22px 20px;
+          box-shadow:0 2px 10px rgba(0,0,0,.04); }
+  .lead { font-size:14px; color:#4b5563; margin-bottom:18px; }
+  .lead b { color:var(--accent-deep); }
+  .field { margin-bottom:16px; }
+  .field label { display:block; font-size:13px; font-weight:700; color:#374151; margin-bottom:7px; }
+  .field .hint { font-weight:400; color:#9ca3af; font-size:11.5px; margin-left:6px; }
+  select, textarea, input[type=text], input[type=email] {
+    width:100%; padding:11px 12px; border:1.5px solid #e5e7eb; border-radius:10px;
+    font-size:14.5px; font-family:inherit; color:#1f2937; background:#fff; transition:border .15s; }
+  select:focus, textarea:focus, input:focus { outline:none; border-color:var(--accent); }
+  textarea { resize:vertical; min-height:120px; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:520px){ .row2 { grid-template-columns:1fr; } }
+  .check { display:flex; align-items:center; gap:8px; font-size:13px; color:#374151; }
+  .check input { width:16px; height:16px; accent-color:var(--accent); }
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  button.submit { width:100%; margin-top:6px; padding:13px; border:none; border-radius:11px;
+    background:linear-gradient(135deg,#1d4ed8,#2563eb); color:#fff; font-size:15.5px; font-weight:800;
+    cursor:pointer; box-shadow:0 4px 14px rgba(37,99,235,.35); transition:transform .1s; }
+  button.submit:active { transform:translateY(1px); }
+  #result { margin-top:16px; }
+  .msg { padding:13px 15px; border-radius:10px; font-size:13.5px; line-height:1.65; }
+  .msg.ok { background:#f0fdf4; border:1px solid #bbf7d0; color:#14532d; }
+  .msg.err { background:#fef2f2; border:1px solid #fecaca; color:#7f1d1d; }
+  .msg.warn { background:#fffbeb; border:1px solid #fde68a; color:#78350f; }
+  .msg.info { background:#eff6ff; border:1px solid #bfdbfe; color:#1e3a5f; }
+  .msg a.btn { display:inline-block; margin:8px 8px 0 0; padding:9px 14px; border-radius:9px;
+    background:var(--accent); color:#fff; font-weight:700; text-decoration:none; font-size:13px; }
+  .msg a.btn:hover { text-decoration:none; opacity:.92; }
+  .foot { text-align:center; margin-top:20px; font-size:12px; color:#9ca3af; }
+  .foot a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header class="header">
+  <h1>📣 意见反馈</h1>
+  <div class="sub">2C行业今日观点看板 · 你的每条反馈都会进入后台，并在下一次看板 / 日报迭代中被回应</div>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <p class="lead">我们有哪里可以做得更好？发现错误、想要的功能、缺失的数据，都欢迎告诉我们。<b>提交后管理员会在后台看到，并纳入下一轮更新。</b></p>
+    <form id="fb-form" autocomplete="off">
+      <div class="row2">
+        <div class="field">
+          <label>所属板块</label>
+          <select name="category">
+            <option value="整体">整体 / 全站</option>
+            <option value="终端">终端（手机/PC/穿戴…）</option>
+            <option value="汽车">汽车（鸿蒙智行等）</option>
+            <option value="互联网">互联网</option>
+            <option value="芯片半导体">芯片半导体</option>
+            <option value="宏观经济">宏观经济</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>反馈类型</label>
+          <select name="type">
+            <option value="纠错">内容纠错</option>
+            <option value="建议">功能 / 内容建议</option>
+            <option value="补数据">补充数据 / 线索</option>
+            <option value="其他">其他</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>反馈内容 <span class="hint">必填，5–2000 字</span></label>
+        <textarea name="content" placeholder="例如：终端板块 9/26 那条 Mate 90 的预约页闪撤信息，来源链接好像打不开了；或者：希望能加一个「环比上周」的对比视图…"></textarea>
+      </div>
+
+      <div class="field">
+        <label>联系方式 <span class="hint">选填，仅用于回访，不会公开</span></label>
+        <input type="email" name="contact" placeholder="邮箱 / 微信（选填）">
+      </div>
+
+      <div class="field">
+        <label class="check"><input type="checkbox" name="pub" checked> 允许在「读者反馈墙」公开这条反馈（不含联系方式）</label>
+      </div>
+
+      <!-- 蜜罐：正常用户看不到、不填；机器人常会填 -->
+      <div class="hp"><label>请勿填写此项<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <button type="submit" class="submit">提交反馈</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <div class="foot">
+    <a href="./index.html">← 返回看板</a> · <a href="./feedback-viewer.html">管理员后台（反馈列表）</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var ENDPOINT = (document.querySelector('meta[name=feedback-endpoint]')||{}).getAttribute('content') || '';
+  var REPO = (document.querySelector('meta[name=feedback-repo]')||{}).getAttribute('content') || 'ConsumerNews/ConsumerNews.github.io';
+  var MAIL = (document.querySelector('meta[name=feedback-mail]')||{}).getAttribute('content') || '';
+  var form = document.getElementById('fb-form');
+  var result = document.getElementById('result');
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function ghIssueUrl(title, body){
+    return 'https://github.com/'+REPO+'/issues/new?title='+encodeURIComponent(title)
+         +'&body='+encodeURIComponent(body)+'&labels=feedback';
+  }
+  function showFallback(title, body){
+    var gh = ghIssueUrl(title, body);
+    var mail = MAIL ? '<a class="btn" href="mailto:'+MAIL+'?subject='+encodeURIComponent(title)+'&body='+encodeURIComponent(body)+'">② 发邮件给管理员</a>' : '';
+    result.innerHTML = '<div class="msg warn">反馈通道（Worker）尚未配置，可任选一种方式提交：<br>'
+      + '<a class="btn" href="'+gh+'" target="_blank" rel="noopener">① 在 GitHub 提交（需登录）</a>'+mail+'</div>';
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var category = form.category.value;
+    var type = form.type.value;
+    var content = form.content.value.trim();
+    var contact = form.contact.value.trim();
+    var pub = form.pub.checked;
+    var hp = form.website.value;
+
+    if(hp){ return; }                       // 蜜罐命中：静默丢弃（机器人）
+    if(content.length < 5){ result.innerHTML='<div class="msg err">请至少填写 5 个字的内容</div>'; return; }
+    if(content.length > 2000){ result.innerHTML='<div class="msg err">内容过长，请控制在 2000 字以内</div>'; return; }
+
+    var title = '[反馈]['+category+']['+type+'] '+content.slice(0,28);
+    var body = '板块: '+category+'\n类型: '+type+'\n联系方式: '+(contact||'(未提供)')+'\n是否公开: '+(pub?'是':'否')+'\n\n内容:\n'+content;
+    var payload = { category:category, type:type, content:content, contact:contact,
+                    public:pub, ts:new Date().toISOString(), ua:navigator.userAgent };
+
+    if(!ENDPOINT){ showFallback(title, body); return; }
+
+    result.innerHTML = '<div class="msg info">提交中…</div>';
+    fetch(ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'},
+                      body: JSON.stringify(payload) })
+      .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, d:d||{}}; }); })
+      .then(function(x){
+        if(x.ok && x.d.ok){
+          result.innerHTML = '<div class="msg ok">✓ 已收到！我们会尽快在看板 / 日报中回应。'
+            + (x.d.issue ? '<br><a href="'+esc(x.d.issue)+'" target="_blank" rel="noopener">查看提交记录 →</a>' : '')
+            + '</div>';
+          form.reset(); form.pub.checked = true;
+        } else {
+          result.innerHTML = '<div class="msg err">提交失败：'+esc(x.d.error||'未知错误')+'。可改用下方备用方式。</div>';
+          showFallback(title, body);
+        }
+      })
+      .catch(function(){ result.innerHTML='<div class="msg err">网络异常，提交失败。</div>'; showFallback(title, body); });
+  });
+})();
+</script>
+</body>
+</html>

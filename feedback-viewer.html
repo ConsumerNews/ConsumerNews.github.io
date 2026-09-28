@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>反馈后台 · 2C行业今日观点看板</title>
+<meta name="feedback-repo" content="ConsumerNews/ConsumerNews.github.io">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root { --accent:#2563eb; --accent-deep:#1d4ed8; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+         background:#f0f2f5; color:#1f2937; font-size:14px; line-height:1.6; }
+  .header { background:linear-gradient(135deg,#0b2a6b,#1d4ed8 48%,#2563eb); color:#fff; padding:18px 22px; }
+  .header h1 { font-size:19px; font-weight:900; }
+  .header .sub { font-size:12px; color:#cbd5e1; margin-top:5px; }
+  .wrap { max-width:1080px; margin:0 auto; padding:20px 18px 60px; }
+  .toolbar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+  .toolbar .stat { font-size:13px; color:#4b5563; margin-right:auto; }
+  .fbtn { padding:7px 14px; border:1px solid #e5e7eb; background:#fff; border-radius:20px;
+          font-size:13px; font-weight:700; color:#6b7280; cursor:pointer; }
+  .fbtn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .fbtn.refresh { background:#1f2937; color:#fff; border-color:#1f2937; }
+  table { width:100%; border-collapse:collapse; background:#fff; border:1px solid #e5e7eb;
+          border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,.04); }
+  th, td { text-align:left; padding:11px 12px; border-bottom:1px solid #f1f3f5; font-size:13px; vertical-align:top; }
+  th { background:#f8fafc; font-weight:700; color:#374151; white-space:nowrap; }
+  tr:last-child td { border-bottom:none; }
+  .tag { display:inline-block; padding:2px 9px; border-radius:10px; font-size:11px; font-weight:700; }
+  .tag.cat { background:#eff6ff; color:var(--accent-deep); }
+  .tag.typ { background:#f1f5f9; color:#475569; }
+  .st-pending { background:#fef3c7; color:#92400e; }
+  .st-answered { background:#dcfce7; color:#166534; }
+  .st-other { background:#e5e7eb; color:#374151; }
+  .content { color:#374151; max-width:420px; }
+  .empty { text-align:center; color:#9ca3af; padding:40px; }
+  .err { background:#fef2f2; border:1px solid #fecaca; color:#7f1d1d; padding:14px; border-radius:10px; }
+  .foot { text-align:center; margin-top:18px; font-size:12px; color:#9ca3af; }
+  .foot a { color:var(--accent); }
+  a.issuelink { color:var(--accent); }
+</style>
+</head>
+<body>
+<header class="header">
+  <h1>🗂 用户反馈后台</h1>
+  <div class="sub">来源：GitHub Issues（label=feedback）· 公开仓库可被本页直接读取</div>
+</header>
+<div class="wrap">
+  <div class="toolbar">
+    <span class="stat" id="stat">加载中…</span>
+    <button class="fbtn active" data-filter="all">全部</button>
+    <button class="fbtn" data-filter="pending">待处理</button>
+    <button class="fbtn" data-filter="answered">已回复</button>
+    <button class="fbtn refresh" id="refresh">↻ 刷新</button>
+  </div>
+  <div id="board"></div>
+  <div class="foot"><a href="./index.html">← 返回看板</a> · <a href="./feedback.html">去提交反馈</a></div>
+</div>
+
+<script>
+var REPO = (document.querySelector('meta[name=feedback-repo]')||{}).getAttribute('content') || 'ConsumerNews/ConsumerNews.github.io';
+var API = 'https://api.github.com/repos/'+REPO+'/issues?labels=feedback&state=all&per_page=100&sort=created&direction=desc';
+var current = 'all';
+
+function parseBody(b){
+  var cat='', typ='', c='';
+  (b||'').split('\n').forEach(function(line){
+    if(/^板块\s*[:：]/.test(line)) cat = line.replace(/^板块\s*[:：]/,'').trim();
+    else if(/^类型\s*[:：]/.test(line)) typ = line.replace(/^类型\s*[:：]/,'').trim();
+    else if(/^内容\s*[:：]/.test(line)) c = line.replace(/^内容\s*[:：]/,'').trim();
+    else if(line.trim()) c += (c?'\n':'') + line; // 内容多行
+  });
+  return { cat:cat, typ:typ, content:c };
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function fmtDate(s){ try{ var d=new Date(s); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }catch(e){ return s; } }
+
+function render(list){
+  var board = document.getElementById('board');
+  var issues = (list||[]).filter(function(i){ return !i.pull_request; });
+  var pending = issues.filter(function(i){ return !i.labels.some(function(l){return l.name==='feedback-answered';}); }).length;
+  document.getElementById('stat').textContent = '共 '+issues.length+' 条 · 待处理 '+pending+' · 已回复 '+(issues.length-pending);
+
+  var view = issues.filter(function(i){
+    var answered = i.labels.some(function(l){return l.name==='feedback-answered';});
+    if(current==='pending') return !answered;
+    if(current==='answered') return answered;
+    return true;
+  });
+
+  if(!view.length){ board.innerHTML = '<div class="empty">暂无反馈。去 <a href="./feedback.html">feedback.html</a> 提交第一条吧。</div>'; return; }
+
+  var rows = view.map(function(i){
+    var p = parseBody(i.body);
+    var answered = i.labels.some(function(l){return l.name==='feedback-answered';});
+    var st = answered ? '<span class="tag st-answered">已回复</span>'
+                      : '<span class="tag st-pending">待处理</span>';
+    return '<tr>'
+      + '<td>#'+i.number+'</td>'
+      + '<td>'+st+'</td>'
+      + '<td><span class="tag cat">'+esc(p.cat||'—')+'</span></td>'
+      + '<td><span class="tag typ">'+esc(p.typ||'—')+'</span></td>'
+      + '<td class="content">'+esc(p.content||i.title)+'</td>'
+      + '<td>'+fmtDate(i.created_at)+'</td>'
+      + '<td><a class="issuelink" href="'+esc(i.html_url)+'" target="_blank" rel="noopener">打开↗</a></td>'
+      + '</tr>';
+  }).join('');
+
+  board.innerHTML = '<table><thead><tr>'
+    + '<th>#</th><th>状态</th><th>板块</th><th>类型</th><th>内容</th><th>日期</th><th>链接</th>'
+    + '</tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+function load(){
+  document.getElementById('board').innerHTML = '<div class="empty">加载中…</div>';
+  fetch(API, { headers:{'Accept':'application/vnd.github+json'} })
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(render)
+    .catch(function(e){
+      document.getElementById('board').innerHTML = '<div class="err">读取失败：'+esc(e.message)
+        + '。请确认仓库已开启 Issues（Settings → General → Features → Issues），或稍后重试（GitHub 未登录读取有频率限制）。</div>';
+    });
+}
+
+document.querySelectorAll('.fbtn[data-filter]').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.fbtn[data-filter]').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active'); current = b.getAttribute('data-filter'); load();
+  });
+});
+document.getElementById('refresh').addEventListener('click', load);
+load();
+</script>
+</body>
+</html>
