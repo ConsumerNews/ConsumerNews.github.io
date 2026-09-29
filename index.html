@@ -640,6 +640,19 @@ function renderTab1(){
 /* ---------------- TAB2 新产品发布解读 ---------------- */
 const BRAND_CAL_PRIORITY = ['华为','苹果','小米','三星','荣耀','vivo','OPPO','高通','iQOO'];
 function calCondense(t){ t=String(t==null?'':t); const cut=t.split(/[。；]/)[0]; return cut.length<t.length ? cut+'…' : t; }
+// 把发布点压成"一句话"：按显示宽度(CJK=1/其他=0.5)截断，并去掉 ** 标记，超长加 …；悬停看全文由调用方用 title 提供
+function calClip(t, max){
+  t = String(t==null?'':t).replace(/\*\*/g,'');
+  if(!t) return t;
+  let units=0, out='';
+  for(let i=0;i<t.length;i++){
+    const ch=t[i];
+    const w = ch.charCodeAt(0) > 255 ? 1 : 0.5;
+    if(units + w > max && out){ out += '…'; break; }
+    out += ch; units += w;
+  }
+  return out;
+}
 function renderTab2(){
   const c = el('t2');
   let html = '';
@@ -703,9 +716,10 @@ function renderTab2(){
       evs.forEach(function(e){
         const product = e.product || '';
         const point = e.point || (e.evt ? calCondense(e.evt) : '');
+        const ptShort = calClip(point, 18);
         h += '<div class="evt"><span class="eb" style="color:'+brandColor(e.brand)+'">'+esc(e.brand)+'</span>'
           + (product ? ' <span class="ep">'+esc(product)+'</span>' : '')
-          + '<div class="epoint">'+redify(point)+'</div></div>';
+          + '<div class="epoint"'+((point&&point!==ptShort)?(' title="'+esc(point)+'"'):'')+'>'+esc(ptShort)+'</div></div>';
       });
       h += '</div>';
     }
@@ -717,10 +731,11 @@ function renderTab2(){
       others.forEach(function(e){
         const product = e.product || '';
         const point = e.point || (e.evt ? calCondense(e.evt) : '');
+        const ptShort = calClip(point, 28);
         const dl = e.d ? '<span class="ud-d">'+esc(e.d)+'</span>' : '';
         h += '<div class="cal-ud-item">'+dl+'<span class="eb" style="color:'+brandColor(e.brand)+'">'+esc(e.brand)+'</span>'
           + (product ? ' <span class="ep">'+esc(product)+'</span>' : '')
-          + '<span class="epoint">'+redify(point)+'</span></div>';
+          + '<span class="epoint"'+((point&&point!==ptShort)?(' title="'+esc(point)+'"'):'')+'>'+esc(ptShort)+'</span></div>';
       });
       h += '</div></div>';
     }
