@@ -453,6 +453,33 @@ function splitSummary(t){
     return '<div><span class="mk">'+mk+'</span>'+redify(body)+'</div>';
   }).join('')+'</div>';
 }
+/* 凝练式汇总：超过 limit 条时只展示前 limit 条，其余折叠（用于市场观点防堆叠回归，与 launchCalendar 同思路） */
+function summaryCollapsible(t, limit){
+  limit = limit || 3;
+  const raw = String(t==null?'':t);
+  const parts = raw.split(/(?=[①②③④⑤⑥⑦⑧⑨⑩])/).map(s=>s.trim()).filter(Boolean);
+  const render = arr => '<div class="summary-lines">'+arr.map(p=>{
+    const m = p.match(/^([①②③④⑤⑥⑦⑧⑨⑩])\s*([\s\S]*)$/);
+    const mk = m? m[1] : '·'; const body = m? m[2] : p;
+    return '<div><span class="mk">'+mk+'</span>'+redify(body)+'</div>';
+  }).join('')+'</div>';
+  if(parts.length<=limit) return render(parts);
+  const id = 'mvf'+(++autoCardSeq);
+  return render(parts.slice(0,limit))+
+    '<div class="cal-more"><span class="toggle-tbl mv-tog" data-rid="'+id+'" data-n="'+parts.length+'">▸ 展开全部 '+parts.length+' 条观点</span></div>'+
+    '<div class="mv-rest" id="'+id+'" style="display:none">'+render(parts.slice(limit))+'</div>';
+}
+function wireCollapse(root){
+  if(!root) return;
+  root.querySelectorAll('.mv-tog').forEach(function(tg){
+    tg.addEventListener('click', function(){
+      const r = el(tg.dataset.rid); if(!r) return;
+      const on = r.style.display==='none';
+      r.style.display = on?'block':'none';
+      tg.textContent = (on?'▾ 收起':'▸ 展开全部 '+tg.dataset.n+' 条观点');
+    });
+  });
+}
 const BRAND_COLORS = {
   '华为':'#c7000b','苹果':'#1d1d1f','小米':'#ff6900','红米':'#ff0000','三星':'#1428a0',
   '荣耀':'#00b4a0','索尼':'#1d4ed8','OPPO':'#0b8a3d','vivo':'#415fff','联想':'#16a34a',
@@ -734,9 +761,10 @@ function renderTab4(){
   const c = el('t4');
   autoCardSeq = 0;
   let html = '';
-  if(cur.marketView) html += '<div class="card"><div class="section-title">大盘观点 <span class="en">Market View</span></div><div class="summary-box">'+splitSummary(cur.marketView)+'</div></div>';
+  if(cur.marketView) html += '<div class="card"><div class="section-title">大盘观点 <span class="en">Market View</span></div><div class="summary-box">'+summaryCollapsible(cur.marketView,3)+'</div></div>';
   if(cur.marketData) html += '<div class="card"><div class="section-title">各品类大盘追踪 <span class="en">Market Big-board · 全球 / 中国</span></div><div id="mkt-gc" class="gc-toggle"></div><div id="mkt-tabs" class="mkt-tabs"></div><div class="chart-box" id="mkt-chart"></div><div class="mkt-sub">厂商份额分布（柱状图） <span class="en" id="mkt-share-chart-note"></span></div><div class="share-chart" id="mkt-share-chart"></div><div class="mkt-extra"><div class="mkt-sub">各厂商竞争份额及变化 <span class="en" id="mkt-share-note"></span></div><table class="data-tbl show" id="mkt-shares"></table><div class="mkt-sub">分类变化 <span class="en">Segments</span></div><table class="data-tbl show" id="mkt-segments"></table></div><div style="margin-top:8px"><span class="toggle-tbl" id="mkt-toggle">▸ 显示总量数据表格</span></div><table class="data-tbl" id="mkt-tbl"></table></div>';
   c.innerHTML = html;
+  wireCollapse(c);
   try{ if(cur.marketData) renderCategoryMarket(); }catch(e){ console.error('renderCategoryMarket', e); }
   try{ if(cur.storageTrend || cur.storagePrice) renderTerminalExtra(); }catch(e){ console.error('renderTerminalExtra', e); }
   try{ if(cur.market) renderMarket(cur.market); }catch(e){ console.error('renderMarket', e); }
@@ -1272,10 +1300,11 @@ function renderMacroT3(){
 
 /* ---------------- 宏观 T4 宏观指标大盘（三级子页签） ---------------- */
 function renderMacroT4(){
+  autoCardSeq = 0;
   const c = el('t4');
   const subs = (cur.market && cur.market.subs) || [];
   let h = '<div class="card"><div class="section-title">口径与导读 <span class="en">Reading Guide · 四个维度看什么</span></div>'+
-    '<div class="summary-box">'+splitSummary(cur.marketView||'')+'</div>'+
+    '<div class="summary-box">'+summaryCollapsible(cur.marketView||'',3)+'</div>'+
     '<div class="mc-asof">'+esc((cur.asOf&&cur.asOf.note)||'')+'</div></div>';
   h += '<div class="card"><div id="msub-tabs" class="mkt-tabs"></div><div id="msub-body"></div></div>';
   if(cur.sources && cur.sources.length){
@@ -1285,6 +1314,7 @@ function renderMacroT4(){
       }).join('')+'</div></div>';
   }
   c.innerHTML = h;
+  wireCollapse(c);
   el('msub-tabs').innerHTML = subs.map(function(s,i){
     return '<div class="mkt-tab '+(i===0?'active':'')+'" data-k="'+s.k+'">'+esc(s.label)+'</div>';}).join('');
   el('msub-tabs').querySelectorAll('.mkt-tab').forEach(function(t){
@@ -1376,7 +1406,20 @@ function mcOpt(cfg){
 
 /* ---------------- 访问计数：由不蒜子(busuanzi)前端脚本自动填充，GitHub Pages 静态托管即可，无需服务端函数 ---------------- */
 
-function setUpdate(){ el('update-badge').textContent = '更新于 ' + (cur.updateTime || DATA.terminal.updateTime || ''); }
+function setUpdate(){
+  const ut = cur.updateTime || DATA.terminal.updateTime || '';
+  let txt = ut, dot = '#16a34a';
+  const dm = String(ut).match(/(\d{4}-\d{2}-\d{2})/);
+  if(dm){
+    const days = Math.floor((Date.now() - new Date(dm[1]+'T00:00:00').getTime())/86400000);
+    if(days<=0){ dot='#16a34a'; txt='今日更新 · '+ut; }
+    else if(days<=2){ dot='#16a34a'; txt=days+' 天前更新 · '+ut; }
+    else if(days<=7){ dot='#e0a106'; txt=days+' 天前更新 · '+ut; }
+    else { dot='#dc2626'; txt=days+' 天前更新 · '+ut; }
+  }
+  const b = el('update-badge');
+  if(b) b.innerHTML = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:'+dot+';margin-right:6px;vertical-align:middle"></span>'+esc(txt);
+}
 
 function bindTabs(){
   /* 事件委托：tabnav 的 innerHTML 会随一级板块重写，逐个绑定会导致切换后监听失效 */
