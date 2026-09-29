@@ -130,6 +130,38 @@ a:hover { text-decoration:underline; }
 .spec-item .k { font-size:10px; color:#9ca3af; }
 .spec-item .v { font-size:12.5px; font-weight:700; color:#1f2937; }
 .prod-links { margin-top:10px; font-size:11px; }
+/* 月度新品发布日历（按日期分组，不折叠） */
+.cal-date-h { display:flex; align-items:center; gap:10px; margin:14px 0 8px; padding-bottom:6px; border-bottom:2px solid #eef1f6; }
+.cal-date-h:first-child { margin-top:4px; }
+.cal-date-badge { font-size:15px; font-weight:800; color:#1f2937; background:#f1f5f9; padding:3px 12px; border-radius:8px; }
+.cal-date-cnt { font-size:11px; color:#9aa7bc; font-weight:600; }
+.cal-month-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px; }
+.cal-entry { border:1px solid #e8edf4; border-left:4px solid #c7d2e8; border-radius:10px; padding:10px 12px; background:#fff; }
+.cal-entry-top { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px; }
+.cal-brand { font-size:14px; font-weight:800; }
+.cal-prod { font-size:13px; font-weight:700; color:#1f2937; }
+.cal-tag { font-size:10px; color:#6b7280; background:#f3f4f6; padding:1px 7px; border-radius:10px; }
+.cal-point { font-size:12.5px; color:#4b5563; line-height:1.6; }
+/* 分厂商结构化新品卡片 */
+.np-card { border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-bottom:18px; background:#fff; }
+.np-head { display:flex; align-items:center; gap:10px; padding:13px 18px; color:#fff; }
+.np-brand { font-size:16px; font-weight:800; }
+.np-tag { font-size:11px; background:rgba(255,255,255,.25); padding:2px 8px; border-radius:4px; }
+.np-date { font-size:11px; margin-left:auto; background:rgba(255,255,255,.2); padding:2px 8px; border-radius:4px; }
+.np-body { padding:16px 18px; }
+.np-summary { font-size:14.5px; color:#1f2937; line-height:1.8; background:#f8fafc; border:1px solid #eef1f6; border-radius:8px; padding:10px 12px; margin-bottom:12px; }
+.np-sec-title { font-size:12px; font-weight:800; color:#2563eb; margin:14px 0 7px; padding-left:8px; border-left:3px solid #2563eb; }
+.np-chart { width:100%; height:260px; margin:4px 0 6px; }
+.dim-tbl { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:2px; }
+.dim-tbl td { border:1px solid #eef1f6; padding:7px 10px; vertical-align:top; }
+.dim-tbl .dk { width:96px; font-weight:700; color:#6b7280; background:#f9fafb; white-space:nowrap; }
+.dim-tbl .dv { color:#1f2937; line-height:1.65; }
+.np-line { padding:7px 0; border-bottom:1px dashed #eef1f6; font-size:13px; color:#374151; line-height:1.75; }
+.np-line:last-child { border-bottom:none; }
+.np-line b { color:#1d4ed8; }
+/* Launch Radar 头部 */
+.lr-head { font-size:11.5px; color:#4b5563; background:#eef4ff; border:1px solid #d6e4ff; border-radius:8px; padding:8px 12px; margin-bottom:8px; line-height:1.6; }
+.lr-sub { font-size:11px; color:#9aa7bc; margin-bottom:6px; }
 
 /* Tab3 earnings */
 .earn-card { border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:16px; }
@@ -607,7 +639,10 @@ function renderTab2(){
   const c = el('t2');
   let html = '';
   if(cur.launchRadar && cur.launchRadar.products && cur.launchRadar.products.length){
-    html += '<div class="card"><div class="section-title">新品首销横纵对比 · 周度 <span class="en">Launch Radar</span></div>'+
+    const lr = cur.launchRadar;
+    html += '<div class="card"><div class="section-title">新品首销横纵对比 · 周度 <span class="en">Launch Radar · 管理层实时首销看板</span></div>'+
+      '<div class="lr-head">数据更新：'+esc(lr.week||'')+'（截至 '+esc(lr.weekEnd||'')+'）· 来源：京东/酷安/微博抓取 + 第三方零售口径（RD观测/桑拓）· 指标：'+esc(lr.metric||'首销')+'（'+esc(lr.unit||'')+'）</div>'+
+      '<div class="lr-sub">纵向（上代→本代首销）见下方合并柱图；横向（同代机型首销）随各机型首销披露持续补全</div>'+
       '<div id="lr-wow" style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0"></div>'+
       '<div id="lr-combo" style="width:100%;height:300px"></div>'+
       '<div id="lr-chips" style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0"></div>'+
@@ -616,7 +651,7 @@ function renderTab2(){
       '</div>';
   }
   if(cur.launchCalendar && cur.launchCalendar.length){
-    html += '<div class="card"><div class="section-title">本月新品发布日历 <span class="en">Launch Calendar</span></div><div class="cal-grid" id="cal-grid"></div></div>';
+    html += '<div class="card"><div class="section-title">本月新品发布日历 <span class="en">Launch Calendar · 谁发布 / 发布什么 / 核心发布点</span></div><div id="cal-grid"></div></div>';
   }
   if(cur.productSummary && cur.productSummary.length){
     html += '<div class="card"><div class="section-title">新品速览汇总表 <span class="en">Product Summary · 卖点 / 战略意图 / 管理启示</span></div><table class="data-tbl show" id="prod-summary"></table></div>';
@@ -625,22 +660,26 @@ function renderTab2(){
     html += '<div class="card"><div class="section-title">本周新品发布解读 <span class="en">New Product Deep-dive</span></div><div class="summary-box">'+splitSummary(cur.productsSummary)+'</div><div id="prod-block"></div></div>';
   }
   c.innerHTML = html;
-  // —— 本月新品发布日历：凝练为「重点 3 款」+ 可展开全部，避免 15 条杂陈
+  // —— 本月新品发布日历：按日期分组的月度日历，显示 厂商 / 发布什么 / 核心发布点（不折叠，全部展示）
   if(cur.launchCalendar && cur.launchCalendar.length){
-    const items = cur.launchCalendar;
-    const calScore = e => ((BRAND_CAL_PRIORITY.indexOf(e.brand)>=0)?2:0) + (/发布会|发布即开售|开售|样机|预约|陈列|官宣/.test(e.evt||'')?1:0);
-    const order = items.map((e,i)=>({e,i,s:calScore(e)})).sort((a,b)=> (b.s-a.s) || (a.i-b.i));
-    const top = order.slice(0,3).sort((a,b)=>a.i-b.i);
-    const rest = order.slice(3).sort((a,b)=>a.i-b.i);
-    const calCell = x => '<div class="cal-cell ev"><div class="d">'+esc(x.d)+'</div><div class="evt"><span class="ev-brand" style="color:'+brandColor(x.brand)+'">'+esc(x.brand)+'</span> · '+calCondense(x.evt)+'</div></div>';
-    let html = top.map(calCell).join('');
-    if(rest.length){
-      html += '<div class="cal-more"><span class="toggle-tbl" id="cal-toggle">▸ 展开全部 '+items.length+' 场发布 / 开售</span></div>'+
-              '<div class="cal-rest cal-grid" id="cal-rest" style="display:none">'+rest.map(calCell).join('')+'</div>';
-    }
-    el('cal-grid').innerHTML = html;
-    const tg = el('cal-toggle');
-    if(tg) tg.addEventListener('click', ()=>{ const r=el('cal-rest'); const on=r.style.display==='none'; r.style.display=on?'block':'none'; tg.textContent=(on?'▾ 收起':'▸ 展开全部 '+items.length+' 场发布 / 开售'); });
+    const items = cur.launchCalendar.slice().sort((a,b)=>String(a.d||'').localeCompare(String(b.d||'')));
+    const groups = {};
+    items.forEach(e=>{ const k=e.d||'待定'; (groups[k]=groups[k]||[]).push(e); });
+    const dates = Object.keys(groups).sort((a,b)=>a.localeCompare(b));
+    let h = '';
+    dates.forEach(d=>{
+      h += '<div class="cal-date-h"><span class="cal-date-badge">'+esc(d)+'</span><span class="cal-date-cnt">'+groups[d].length+' 场</span></div><div class="cal-month-row">';
+      h += groups[d].map(e=>{
+        const product = e.product || e.brand;
+        const point = e.point || (e.evt ? calCondense(e.evt) : '');
+        return '<div class="cal-entry"><div class="cal-entry-top"><span class="cal-brand" style="color:'+brandColor(e.brand)+'">'+esc(e.brand)+'</span>'
+          + (e.product ? '<span class="cal-prod">'+esc(e.product)+'</span>' : '')
+          + (e.tag ? '<span class="cal-tag">'+esc(e.tag)+'</span>' : '')
+          + '</div><div class="cal-point">'+redify(point)+'</div></div>';
+      }).join('');
+      h += '</div>';
+    });
+    el('cal-grid').innerHTML = h;
   }
   // —— 新品速览汇总表：关键信息标红加粗（** 生效）+ 重点行浅红底
   if(cur.productSummary) el('prod-summary').innerHTML = '<tr><th>厂商</th><th>产品</th><th>核心卖点</th><th>战略意图</th><th>管理启示</th></tr>'+
@@ -653,16 +692,43 @@ function renderTab2(){
         '<td>'+redify(r.intent)+'</td>'+
         '<td style="font-weight:700;color:#dc2626">'+redify(r.insight)+'</td></tr>';
     }).join('');
-  // —— 本周厂商新品解读：分行结构化 + 关键信息红粗（** 生效，修复字面星号）
-  if(cur.newProducts) el('prod-block').innerHTML = cur.newProducts.map(p=>
-    '<div class="prod-block"><div class="prod-head" style="background:'+(p.color||'#2563eb')+'"><span class="b">'+redify(p.brand)+'</span><span class="tag">'+esc(p.tag||'')+'</span></div>'+
-    '<div class="prod-body"><div class="prod-summary">'+redify(p.summary)+'</div>'+
-    (p.strategy?'<div class="prod-strategy"><b>战略意图：</b>'+redify(p.strategy)+'</div>':'')+
-    (p.compete?'<div class="prod-compete"><b>竞争力点：</b>'+redify(p.compete)+'</div>':'')+
-    (p.consumer?'<div class="prod-consumer"><b>消费者选择视角：</b>'+redify(p.consumer)+'</div>':'')+
-    (p.advice?'<div class="prod-advice"><b>给管理层的建议：</b>'+redify(p.advice)+'</div>':'')+
-    ((function(sp){return sp.length?'<div class="spec-grid">'+sp.map(s=>'<div class="spec-item"><div class="k">'+esc(s.k)+'</div><div class="v">'+redify(s.v)+'</div></div>').join('')+'</div>':''})(Array.isArray(p.specs)?p.specs:(typeof p.specs==='string'&&p.specs?[{k:'核心规格',v:p.specs}]:[])))+
-    '</div></div>').join('');
+  // —— 本周厂商新品解读：结构化卡片（头部 + 核心总结 + 关键参数数据表 + 可选对比图 + 分类深度解读）
+  if(cur.newProducts){
+    const slug = s => String(s||'').replace(/[^a-zA-Z0-9一-龥]/g,'_');
+    el('prod-block').innerHTML = cur.newProducts.map(function(p){
+      const rows = (p.table && p.table.rows) ? p.table.rows : (Array.isArray(p.specs)?p.specs:(typeof p.specs==='string'&&p.specs?[{k:'核心规格',v:p.specs}]:[]));
+      const dimTbl = rows.length ? '<table class="dim-tbl"><tbody>'+rows.map(function(r){return '<tr><td class="dk">'+esc(r.k)+'</td><td class="dv">'+redify(r.v)+'</td></tr>';}).join('')+'</tbody></table>' : '';
+      let analysis;
+      if(p.analysis){ analysis = splitSummary(p.analysis); }
+      else {
+        analysis = [['战略意图',p.strategy],['竞争力点',p.compete],['消费者视角',p.consumer],['管理层建议',p.advice]].filter(function(x){return x[1];}).map(function(x){return '<div class="np-line"><b>'+x[0]+'：</b>'+redify(x[1])+'</div>';}).join('');
+      }
+      const showChart = !!(p.compare && window.echarts);
+      return '<div class="np-card"><div class="np-head" style="background:'+(p.color||'#2563eb')+'"><span class="np-brand">'+redify(p.brand)+'</span>'
+        + (p.tag?'<span class="np-tag">'+esc(p.tag)+'</span>':'')
+        + (p.date?'<span class="np-date">'+esc(p.date)+'</span>':'')
+        + '</div><div class="np-body">'
+        + '<div class="np-summary">'+redify(p.summary)+'</div>'
+        + (dimTbl?'<div class="np-sec-title">关键参数 · 数据表</div>'+dimTbl:'')
+        + (showChart?'<div class="np-sec-title">'+(p.compare.title||'对比')+'</div><div class="np-chart" id="np-chart-'+slug(p.brand)+'"></div>':'')
+        + '<div class="np-sec-title">深度解读 · 分类</div>'+(analysis||'')
+        + '</div></div>';
+    }).join('');
+    cur.newProducts.forEach(function(p){
+      if(p.compare && window.echarts){
+        const elc = el('np-chart-'+slug(p.brand)); if(!elc) return;
+        const c = p.compare; const ch = echarts.init(elc); charts['np-'+slug(p.brand)] = ch;
+        ch.setOption({
+          grid:{left:46,right:16,top:34,bottom:24},
+          legend:{top:2,right:6,itemWidth:12,itemHeight:12,textStyle:{fontSize:11}},
+          tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+          xAxis:{type:'category',data:c.cats,axisLabel:{fontSize:11,fontWeight:600},axisLine:{lineStyle:{color:'#E6EAF1'}}},
+          yAxis:{type:'value',name:c.unit||'',nameTextStyle:{fontSize:11,color:'#7A8AA3'},splitLine:{lineStyle:{color:'#EEF1F6'}},axisLabel:{fontSize:11}},
+          series:c.series.map(function(s,i){return {name:s.name,type:'bar',barWidth:26,data:s.data,label:{show:true,position:'top',fontSize:11,color:'#1B2433',formatter:function(o){return o.value==null?'—':o.value;}},itemStyle:{color:['#9AA7BC','#2563eb','#c7000b','#1FA971'][i]||'#2563eb',borderRadius:[4,4,0,0]}};})
+        });
+      }
+    });
+  }
   if(cur.launchRadar) renderLaunchRadar(cur.launchRadar);
 }
 
