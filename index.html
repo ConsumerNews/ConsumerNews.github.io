@@ -12,8 +12,31 @@
 <meta property="og:site_name" content="2C行业今日观点">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://consumernews.github.io/">
-<script src="./echarts.min.js"></script>
-<script>if(!window.echarts){var __ec=document.createElement('script');__ec.src='https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js';document.head.appendChild(__ec);}</script>
+<link rel="alternate" type="application/rss+xml" title="2C行业今日观点" href="rss.xml">
+<!-- echarts 懒加载：不阻塞首屏，本地优先，国内可达 CDN 兜底（jsdelivr 国内常被墙） -->
+<script>
+(function(){
+  var sources = [
+    './echarts.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/echarts/5.5.0/echarts.min.js',
+    'https://lib.baomitu.com/echarts/5.5.0/echarts.min.js',
+    'https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js'
+  ];
+  window.__echartsReady = new Promise(function(resolve){
+    var i = 0;
+    function tryNext(){
+      if(i >= sources.length){ resolve(false); return; }
+      var s = document.createElement('script');
+      s.src = sources[i++];
+      s.onload = function(){ resolve(true); };
+      s.onerror = function(){ tryNext(); };
+      document.head.appendChild(s);
+    }
+    tryNext();
+  });
+  window.ensureECharts = function(){ return window.__echartsReady; };
+})();
+</script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 :root { --accent:#2563eb; --accent-deep:#1d4ed8; --accent-soft:#eff6ff; --accent-tint:#dbeafe; }
@@ -302,6 +325,30 @@ a:hover { text-decoration:underline; }
 .mc-src-c li{font-size:12.8px;color:#4b5563;padding:3px 0 3px 14px;position:relative;}
 .mc-src-c li::before{content:'·';position:absolute;left:3px;color:var(--accent);font-weight:900;}
 @media(max-width:900px){.mc-grid2{grid-template-columns:1fr;}.mb-impl{grid-template-columns:1fr;}}
+/* 启动遮罩 / 反馈入口 / 读者反馈 */
+#boot { min-height:52vh; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; color:#6b7280; font-size:15px; }
+#boot .spin { width:34px; height:34px; border:4px solid #dbeafe; border-top-color:#2563eb; border-radius:50%; animation:bootspin 1s linear infinite; }
+@keyframes bootspin { to{transform:rotate(360deg)} }
+.hdr-link { display:inline-block; margin-top:5px; font-size:11px; color:#dbeafe; text-decoration:none; border:1px solid rgba(255,255,255,.3); padding:3px 9px; border-radius:14px; }
+.hdr-link:hover { background:rgba(255,255,255,.15); text-decoration:none; }
+.feedback-fab { position:fixed; right:18px; bottom:22px; z-index:200; background:#2563eb; color:#fff; padding:11px 17px; border-radius:26px; font-size:13px; font-weight:700; box-shadow:0 8px 24px rgba(37,99,235,.45); text-decoration:none; }
+.feedback-fab:hover { background:#1d4ed8; text-decoration:none; }
+.fb-wrap { padding:8px 4px; }
+.fb-cta { margin:6px 0 16px; }
+.fb-btn { display:inline-block; background:#2563eb; color:#fff; padding:10px 18px; border-radius:22px; font-weight:700; font-size:14px; text-decoration:none; }
+.fb-btn:hover { background:#1d4ed8; }
+.fb-card { background:#fff; border:1px solid #e5e7eb; border-left:4px solid #2563eb; border-radius:10px; padding:14px 16px; margin-bottom:12px; box-shadow:0 1px 4px rgba(0,0,0,.04); }
+.fb-meta { display:flex; gap:8px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+.fb-cat { background:#eff6ff; color:#1d4ed8; font-size:11px; font-weight:700; padding:2px 9px; border-radius:11px; }
+.fb-type { background:#f3f4f6; color:#6b7280; font-size:11px; padding:2px 9px; border-radius:11px; }
+.fb-id { color:#9ca3af; font-size:11px; }
+.fb-q { font-size:14px; margin-bottom:6px; }
+.fb-a { font-size:14px; color:#374151; }
+.fb-a b { color:#16a34a; }
+.fb-empty { color:#9ca3af; font-size:14px; padding:24px; text-align:center; }
+.fb-updated { color:#9ca3af; font-size:11px; margin-top:10px; text-align:right; }
+.cat-item[data-cat="feedback"] { background:#fef3c7; color:#92400e; border:1px solid #fcd34d; }
+.cat-item[data-cat="feedback"].active { background:#f59e0b; color:#fff; border-color:#f59e0b; }
 </style>
 </head>
 <body data-page-node-id="LoGzjJpmyP1LZPUCJn2ElF">
@@ -330,6 +377,8 @@ a:hover { text-decoration:underline; }
       </div>
       <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" onerror="var b=document.createElement('script');b.async=true;b.src='https://busuanzi.9420.ltd/busuanzi.pure.mini.js';document.head.appendChild(b);"></script>
       <div class="badge" id="update-badge" data-page-node-id="uEwyCHaj4lKT5ev5OA8MnR">更新中…</div>
+      <a class="hdr-link" href="rss.xml" target="_blank">📰 RSS 订阅</a>
+      <a class="hdr-link" href="feedback.html" target="_blank">💬 我要反馈</a>
     </div>
   </div>
   <nav class="catnav" id="catnav" data-page-node-id="CGCCEXNxVWtiBrAIHmIgCR">
@@ -338,6 +387,7 @@ a:hover { text-decoration:underline; }
     <div class="cat-item" data-cat="internet" data-page-node-id="OzIrWkJkhPVdVfm5hiCo5r">互联网</div>
     <div class="cat-item" data-cat="chip" data-page-node-id="tfwFhjHN46fPoWoOyMDV5H">芯片半导体</div>
     <div class="cat-item" data-cat="macro" data-page-node-id="fVnHrkkuJXFWrF6kTA5UK3">宏观经济</div>
+    <div class="cat-item" data-cat="feedback" data-page-node-id="fbCatNav">读者反馈</div>
   </nav>
 </header>
 
@@ -349,12 +399,15 @@ a:hover { text-decoration:underline; }
 </nav>
 
 <div class="container" id="app" data-page-node-id="3LvLhgZb6cAg7LiJG0tMVd">
+  <div id="boot"><div class="spin"></div><div>正在加载看板数据…</div></div>
   <div id="macroBrief" data-page-node-id="PxnBaDtIFAn3rNThSjbhWn"></div>
   <section class="tabpane active" id="t1" data-page-node-id="6UbR5vsBYTgzXlqVwnMSsM"></section>
   <section class="tabpane" id="t2" data-page-node-id="9OOqm6NMm1gixuaa4nAQbX"></section>
   <section class="tabpane" id="t3" data-page-node-id="n2GzKTQFnAMoF8vKCrNBGg"></section>
   <section class="tabpane" id="t4" data-page-node-id="WvaYr2bQujgdn2pRNCFocM"></section>
+  <section class="tabpane" id="feedback-pane"></section>
 </div>
+<a class="feedback-fab" href="feedback.html" target="_blank">💬 我要反馈</a>
 
 <script>'use strict';
 
@@ -373,7 +426,7 @@ async function loadData(){
   }catch(e){
     console.error('[loadData] 失败:', e);
     const app=document.getElementById('app');
-    if(app) app.innerHTML='<div style="padding:40px;color:#b91c1c;font-size:16px">数据加载失败，请检查网络或 data/ 目录是否存在。<br>错误：'+esc(String((e&&e.message)||e))+'</div>';
+    if(app) app.innerHTML='<div style="padding:48px 24px;text-align:center;color:#b91c1c;font-size:16px;line-height:1.9">⚠️ 数据加载失败，请检查网络连接后刷新页面。<br>若反复失败，可<a href="feedback.html" style="color:#2563eb;text-decoration:underline">反馈给主理人</a>。<br><span style="font-size:13px;color:#9ca3af">错误：'+esc(String((e&&e.message)||e))+'</span></div>';
     return false;
   }
 }
@@ -459,8 +512,11 @@ function renderTabNav(){
 }
 
 function setCategory(cat){
+  if(cat==='feedback'){ showFeedback(); return; }  // 读者反馈独立视图，不走 DATA 渲染
   curCat = cat;
   cur = DATA[cat] || DATA.terminal;
+  var fp = el('feedback-pane'); if(fp) fp.classList.remove('active');
+  var mb = el('macroBrief'); if(mb) mb.style.display = '';
   const c = CAT_COLORS[cat] || '#2563eb';
   const d = CAT_DEEP[cat] || '#1d4ed8';
   document.documentElement.style.setProperty('--accent', c);
@@ -599,7 +655,7 @@ function renderLaunchRadar(lr){
   el('lr-table').innerHTML = '<tr><th>产品</th><th>接受度解读（Pull）</th><th>好评率</th><th>差评率</th><th>抓取平台</th><th>状态</th></tr>' + rows;
   // ④ 横向+纵向合并柱状图（同图：灰=上代，蓝=本代）
   const real = lr.products.filter(function(p){ return p.prevGen != null && p.currentGen != null; });
-  if(real.length){
+  if(real.length && window.echarts){
     const ch = echarts.init(el('lr-combo'));
     charts['lr'] = ch;
     ch.setOption({
@@ -785,15 +841,18 @@ function renderCards(cards){
   });
 }
 function drawLine(id, card){
+  if(!window.echarts) return;
   const inst = echarts.init(el(id)); charts[id]=inst;
   inst.setOption({ title:{text:card.title,left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis'}, legend:{bottom:0,type:'scroll'}, grid:{left:55,right:30,top:46,bottom:54}, xAxis:{type:'category',data:card.months,axisLabel:{fontSize:11}}, yAxis:{type:'value',name:card.unit||''}, series:card.series.map(s=>({name:s.name,type:'line',data:s.data,smooth:true,symbolSize:6,lineStyle:{width:2.4},itemStyle:{color:s.color||'#2563eb'}})) }, true);
 }
 function drawBar(id, card){
+  if(!window.echarts) return;
   const inst = echarts.init(el(id)); charts[id]=inst;
   const items = card.items||[];
   inst.setOption({ title:{text:card.title,left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis',axisPointer:{type:'shadow'}}, grid:{left:90,right:30,top:46,bottom:30}, xAxis:{type:'value',name:card.unit||''}, yAxis:{type:'category',data:items.map(i=>i.label).reverse(),axisLabel:{fontSize:11}}, series:[{type:'bar',data:items.slice().reverse().map(i=>({value:i.value,itemStyle:{color:i.color||'#2563eb',borderRadius:[0,4,4,0]}})), label:{show:true,position:'right',fontSize:11,formatter:'{c}'}}] }, true);
 }
 function drawPie(id, card){
+  if(!window.echarts) return;
   const inst = echarts.init(el(id)); charts[id]=inst;
   inst.setOption({ title:{text:card.title,left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'}, legend:{bottom:0,type:'scroll'}, series:[{type:'pie',radius:['38%','66%'],data:(card.items||[]).map(i=>({name:i.label,value:i.value,itemStyle:{color:i.color}})), label:{formatter:'{b}\n{c}%',fontSize:11}}] }, true);
 }
@@ -801,6 +860,7 @@ function drawTable(id, card){
   el(id).innerHTML = '<tr>'+card.headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr>'+(card.rows||[]).map(r=>'<tr>'+r.map((x,i)=>{ const cls=(card.cls&&card.cls[i])?(' class="'+card.cls[i]+'"'):''; return '<td'+cls+'>'+esc(x)+'</td>'; }).join('')+'</tr>').join('');
 }
 function drawCombo(id, card){
+  if(!window.echarts) return;
   const inst = echarts.init(el(id)); charts[id]=inst;
   inst.setOption({
     title:{text:card.title,left:'center',textStyle:{fontSize:13,color:'#1f2937'}},
@@ -867,7 +927,7 @@ function abPie(data, title){
       itemStyle:{borderColor:'#fff', borderWidth:1}}]
   };
 }
-function abMk(id, opt){ if(charts[id]){try{charts[id].dispose();}catch(e){} } charts[id]=echarts.init(el(id)); charts[id].setOption(opt); }
+function abMk(id, opt){ if(!window.echarts) return; if(charts[id]){try{charts[id].dispose();}catch(e){} } charts[id]=echarts.init(el(id)); charts[id].setOption(opt); }
 function abCard(title, sub, id, tall, tableHtml){
   return '<div class="card"><div class="section-title">'+title+' <span class="en">'+sub+'</span></div><div class="chart-box'+(tall?' ab-tall':'')+'" id="'+id+'"></div>'+(tableHtml||'')+'</div>';
 }
@@ -918,6 +978,7 @@ function renderAutoBoard(){
 
 let abChartsPending = false;
 function drawAutoBoardCharts(){
+  if(!window.echarts) return;
   if(cur !== DATA.auto) return;
   if(!abChartsPending) return;
   if(!el('t4') || !el('t4').classList.contains('active')) return; // 等 t4 可见再画
@@ -1230,7 +1291,7 @@ function macDraw(){
     charts[box.id].setOption(mcOpt(cfg), true);
   });
 }
-function drawMacroCharts(){ macDraw(); }
+function drawMacroCharts(){ if(!window.echarts) return; macDraw(); }
 function mcOpt(cfg){
   const AX = {color:'#6b7280', fontSize:11};
   if(cfg.type==='line'){
@@ -1318,9 +1379,39 @@ function bindTabs(){
 function bindCatnav(){
   document.querySelectorAll('.cat-item').forEach(t=>t.addEventListener('click',()=>setCategory(t.dataset.cat)));
 }
+
+/* ---------------- 读者反馈独立视图 ---------------- */
+function showFeedback(){
+  curCat = 'feedback'; cur = null; disposeCharts();
+  var mb = el('macroBrief'); if(mb) mb.style.display = 'none';
+  document.querySelectorAll('.tabpane').forEach(p=>p.classList.remove('active'));
+  el('tabnav').innerHTML = '<div class="tab-item active"><span class="tn">✦</span>读者反馈</div>';
+  var pane = el('feedback-pane'); pane.classList.add('active');
+  pane.innerHTML = '<div id="fb-box" class="fb-wrap"><div class="fb-cta"><a class="fb-btn" href="feedback.html" target="_blank">➕ 我要反馈 / 提建议</a></div><div class="fb-empty">⏳ 正在加载读者反馈…</div></div>';
+  fetch('data/feedback_response.json', {cache:'no-cache'}).then(function(r){ return r.json(); }).then(function(d){ renderFeedback(d); })
+    .catch(function(){ renderFeedback(null); });
+}
+function renderFeedback(d){
+  var box = el('fb-box'); if(!box) return;
+  var items = (d && d.items) || [];
+  var html = '<div class="fb-cta"><a class="fb-btn" href="feedback.html" target="_blank">➕ 我要反馈 / 提建议</a></div>';
+  if(!items.length){
+    html += '<div class="fb-empty">暂无公开反馈。欢迎成为第一位留言的读者 🌟</div>';
+  } else {
+    html += '<div class="fb-list">' + items.map(function(it){
+      return '<div class="fb-card"><div class="fb-meta"><span class="fb-cat">'+esc(it.category||'')+'</span><span class="fb-type">'+esc(it.type||'')+'</span>'+(it.id?'<span class="fb-id">'+esc(it.id)+'</span>':'')+'</div>'
+        + '<div class="fb-q"><b>读者：</b>'+esc(it.question||'')+'</div>'
+        + '<div class="fb-a"><b>主理人回应：</b>'+esc(it.response||'（已收到，处理中）')+'</div></div>';
+    }).join('') + '</div>';
+  }
+  if(d && d.updatedAt) html += '<div class="fb-updated">最近更新：'+esc(d.updatedAt)+'</div>';
+  box.outerHTML = '<div id="fb-box" class="fb-wrap">'+html+'</div>';
+}
 async function init(){
   const ok = await loadData();
-  if(!ok) return;
+  if(!ok){ var b0=el('boot'); if(b0) b0.remove(); return; }
+  await ensureECharts();   // 懒加载 echarts 就绪后再画图表
+  var b=el('boot'); if(b) b.remove();
   bindTabs(); bindCatnav(); setCategory('terminal');
   const hh=document.querySelector('.header').offsetHeight;
   document.documentElement.style.setProperty('--hh', hh+'px');
