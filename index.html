@@ -111,12 +111,18 @@ a:hover { text-decoration:underline; }
 .news-meta { font-size:11px; color:#9ca3af; margin-top:2px; }
 
 /* Tab2 products */
-.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
-@media(max-width:900px){ .cal-grid { grid-template-columns:repeat(3,1fr); } }
-.cal-cell { border:1px solid #e5e7eb; border-radius:8px; padding:8px; min-height:90px; background:#fff; font-size:11px; }
-.cal-cell .d { font-weight:800; color:#374151; }
-.cal-cell.ev { background:var(--accent-soft); border-color:var(--accent-tint); }
-.cal-cell .evt { margin-top:4px; color:var(--accent); font-weight:600; line-height:1.35; }
+.cal-scroll { overflow-x:auto; padding-bottom:4px; }
+.cal-grid { display:grid; grid-template-columns:repeat(7,minmax(92px,1fr)); gap:5px; min-width:680px; }
+.cal-wd { text-align:center; font-size:12px; font-weight:700; color:#6b7280; padding:6px 0; background:#f8fafc; border-radius:6px; }
+.cal-cell { border:1px solid #e8edf4; border-radius:8px; padding:6px 7px; min-height:74px; background:#fff; font-size:11px; vertical-align:top; }
+.cal-cell.empty { background:#fafbfc; border-color:#f1f3f7; }
+.cal-cell .d { font-weight:800; color:#374151; font-size:12px; line-height:1.3; }
+.cal-cell.ev { border-color:#c7d2fe; box-shadow:inset 3px 0 0 var(--accent); }
+.cal-cell.ev .d { color:var(--accent-deep); }
+.cal-cell .evt { margin-top:4px; }
+.cal-cell .eb { font-weight:800; font-size:11px; }
+.cal-cell .ep { font-weight:700; color:#1f2937; font-size:11px; }
+.cal-cell .epoint { color:#6b7280; font-size:10.5px; line-height:1.35; margin-top:1px; word-break:break-word; }
 .prod-block { border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-bottom:16px; }
 .prod-head { display:flex; align-items:center; gap:10px; padding:14px 18px; color:#fff; }
 .prod-head .b { font-size:16px; font-weight:800; }
@@ -130,18 +136,17 @@ a:hover { text-decoration:underline; }
 .spec-item .k { font-size:10px; color:#9ca3af; }
 .spec-item .v { font-size:12.5px; font-weight:700; color:#1f2937; }
 .prod-links { margin-top:10px; font-size:11px; }
-/* 月度新品发布日历（按日期分组，不折叠） */
-.cal-date-h { display:flex; align-items:center; gap:10px; margin:14px 0 8px; padding-bottom:6px; border-bottom:2px solid #eef1f6; }
-.cal-date-h:first-child { margin-top:4px; }
-.cal-date-badge { font-size:15px; font-weight:800; color:#1f2937; background:#f1f5f9; padding:3px 12px; border-radius:8px; }
-.cal-date-cnt { font-size:11px; color:#9aa7bc; font-weight:600; }
-.cal-month-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px; }
-.cal-entry { border:1px solid #e8edf4; border-left:4px solid #c7d2e8; border-radius:10px; padding:10px 12px; background:#fff; }
-.cal-entry-top { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px; }
-.cal-brand { font-size:14px; font-weight:800; }
-.cal-prod { font-size:13px; font-weight:700; color:#1f2937; }
-.cal-tag { font-size:10px; color:#6b7280; background:#f3f4f6; padding:1px 7px; border-radius:10px; }
-.cal-point { font-size:12.5px; color:#4b5563; line-height:1.6; }
+/* 月度新品发布日历 · 月标题 + 其他档期 */
+.cal-month-title { font-size:14px; font-weight:800; color:#1f2937; margin:2px 0 10px; }
+.cal-month-title .en { font-size:11px; color:#9aa7bc; font-weight:600; margin-left:6px; }
+.cal-undated { margin-top:14px; border-top:1px dashed #e5e7eb; padding-top:10px; }
+.cal-ud-title { font-size:12px; font-weight:700; color:#6b7280; margin-bottom:7px; }
+.cal-ud-list { display:flex; flex-wrap:wrap; gap:8px; }
+.cal-ud-item { border:1px solid #e8edf4; border-radius:8px; padding:6px 10px; background:#fff; font-size:11.5px; max-width:340px; line-height:1.5; }
+.cal-ud-item .ud-d { display:inline-block; font-size:10px; font-weight:700; color:#9aa7bc; background:#f3f4f6; padding:1px 6px; border-radius:8px; margin-right:5px; }
+.cal-ud-item .eb { font-weight:800; }
+.cal-ud-item .ep { font-weight:700; color:#1f2937; }
+.cal-ud-item .epoint { color:#6b7280; font-size:11px; display:block; margin-top:2px; }
 /* 分厂商结构化新品卡片 */
 .np-card { border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-bottom:18px; background:#fff; }
 .np-head { display:flex; align-items:center; gap:10px; padding:13px 18px; color:#fff; }
@@ -651,7 +656,7 @@ function renderTab2(){
       '</div>';
   }
   if(cur.launchCalendar && cur.launchCalendar.length){
-    html += '<div class="card"><div class="section-title">本月新品发布日历 <span class="en">Launch Calendar · 谁发布 / 发布什么 / 核心发布点</span></div><div id="cal-grid"></div></div>';
+    html += '<div class="card"><div class="section-title">新品发布日历 <span class="en">Launch Calendar</span></div><div id="cal-grid"></div></div>';
   }
   if(cur.productSummary && cur.productSummary.length){
     html += '<div class="card"><div class="section-title">新品速览汇总表 <span class="en">Product Summary · 卖点 / 战略意图 / 管理启示</span></div><table class="data-tbl show" id="prod-summary"></table></div>';
@@ -660,25 +665,65 @@ function renderTab2(){
     html += '<div class="card"><div class="section-title">本周新品发布解读 <span class="en">New Product Deep-dive</span></div><div class="summary-box">'+splitSummary(cur.productsSummary)+'</div><div id="prod-block"></div></div>';
   }
   c.innerHTML = html;
-  // —— 本月新品发布日历：按日期分组的月度日历，显示 厂商 / 发布什么 / 核心发布点（不折叠，全部展示）
+  // —— 新品发布日历：真正的 7 列月历网格（周一起始），主月放格子，其余档期/待定放下方列表
   if(cur.launchCalendar && cur.launchCalendar.length){
-    const items = cur.launchCalendar.slice().sort((a,b)=>String(a.d||'').localeCompare(String(b.d||'')));
-    const groups = {};
-    items.forEach(e=>{ const k=e.d||'待定'; (groups[k]=groups[k]||[]).push(e); });
-    const dates = Object.keys(groups).sort((a,b)=>a.localeCompare(b));
-    let h = '';
-    dates.forEach(d=>{
-      h += '<div class="cal-date-h"><span class="cal-date-badge">'+esc(d)+'</span><span class="cal-date-cnt">'+groups[d].length+' 场</span></div><div class="cal-month-row">';
-      h += groups[d].map(e=>{
-        const product = e.product || e.brand;
-        const point = e.point || (e.evt ? calCondense(e.evt) : '');
-        return '<div class="cal-entry"><div class="cal-entry-top"><span class="cal-brand" style="color:'+brandColor(e.brand)+'">'+esc(e.brand)+'</span>'
-          + (e.product ? '<span class="cal-prod">'+esc(e.product)+'</span>' : '')
-          + (e.tag ? '<span class="cal-tag">'+esc(e.tag)+'</span>' : '')
-          + '</div><div class="cal-point">'+redify(point)+'</div></div>';
-      }).join('');
-      h += '</div>';
+    function parseLaunchDate(d){
+      if(d==null) return null;
+      var s=String(d).trim();
+      var iso=s.match(/(\d{4})-(\d{1,2})-(\d{1,2})/); if(iso) return {y:+iso[1],m:+iso[2],day:+iso[3]};
+      var ymd=s.match(/(\d{4})\/(\d{1,2})\/(\d{1,2})/); if(ymd) return {y:+ymd[1],m:+ymd[2],day:+ymd[3]};
+      var md=s.match(/^(\d{1,2})\/(\d{1,2})/); if(md) return {y:new Date().getFullYear(),m:+md[1],day:+md[2]};
+      return null;
+    }
+    const items = cur.launchCalendar.slice();
+    const parsed = items.map(function(e){ return {e:e, p:parseLaunchDate(e.d)}; });
+    const cnt = {};
+    parsed.forEach(function(x){ if(x.p){ var k=x.p.y+'-'+x.p.m; cnt[k]=(cnt[k]||0)+1; } });
+    const keys = Object.keys(cnt);
+    const now = new Date();
+    const defKey = now.getFullYear()+'-'+(now.getMonth()+1);
+    const primaryKey = keys.length ? keys.reduce(function(a,b){ return cnt[a]>=cnt[b]?a:b; }, keys[0]) : defKey;
+    const pk = primaryKey.split('-'); const py=+pk[0], pm=+pk[1];
+    const inMonth=[], others=[];
+    parsed.forEach(function(x){
+      if(x.p && x.p.y===py && x.p.m===pm) inMonth.push(x.e); else others.push(x.e);
     });
+    const byDay = {};
+    inMonth.forEach(function(e){ const p=parseLaunchDate(e.d); if(p && p.day){ (byDay[p.day]=byDay[p.day]||[]).push(e); } });
+    const firstDow = (new Date(py,pm-1,1).getDay()+6)%7; // 周一为起始列
+    const daysInMonth = new Date(py,pm,0).getDate();
+    const wd = ['一','二','三','四','五','六','日'];
+    let h = '<div class="cal-month-title">'+py+' 年 '+pm+' 月 · 新品发布日历 <span class="en">Launch Calendar</span></div>';
+    h += '<div class="cal-scroll"><div class="cal-grid">';
+    wd.forEach(function(w){ h += '<div class="cal-wd">'+w+'</div>'; });
+    for(let i=0;i<firstDow;i++) h += '<div class="cal-cell empty"></div>';
+    for(let day=1; day<=daysInMonth; day++){
+      const evs = byDay[day] || [];
+      h += '<div class="cal-cell'+(evs.length?' ev':'')+'"><div class="d">'+day+'</div>';
+      evs.forEach(function(e){
+        const product = e.product || '';
+        const point = e.point || (e.evt ? calCondense(e.evt) : '');
+        h += '<div class="evt"><span class="eb" style="color:'+brandColor(e.brand)+'">'+esc(e.brand)+'</span>'
+          + (product ? ' <span class="ep">'+esc(product)+'</span>' : '')
+          + '<div class="epoint">'+redify(point)+'</div></div>';
+      });
+      h += '</div>';
+    }
+    const tail = (7 - ((firstDow + daysInMonth) % 7)) % 7;
+    for(let i=0;i<tail;i++) h += '<div class="cal-cell empty"></div>';
+    h += '</div></div>';
+    if(others.length){
+      h += '<div class="cal-undated"><div class="cal-ud-title">其他档期 / 待定（'+others.length+' 项）</div><div class="cal-ud-list">';
+      others.forEach(function(e){
+        const product = e.product || '';
+        const point = e.point || (e.evt ? calCondense(e.evt) : '');
+        const dl = e.d ? '<span class="ud-d">'+esc(e.d)+'</span>' : '';
+        h += '<div class="cal-ud-item">'+dl+'<span class="eb" style="color:'+brandColor(e.brand)+'">'+esc(e.brand)+'</span>'
+          + (product ? ' <span class="ep">'+esc(product)+'</span>' : '')
+          + '<span class="epoint">'+redify(point)+'</span></div>';
+      });
+      h += '</div></div>';
+    }
     el('cal-grid').innerHTML = h;
   }
   // —— 新品速览汇总表：关键信息标红加粗（** 生效）+ 重点行浅红底
