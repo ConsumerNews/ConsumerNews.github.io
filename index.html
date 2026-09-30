@@ -147,6 +147,14 @@ a:hover { text-decoration:underline; }
 .cal-ud-item .eb { font-weight:800; }
 .cal-ud-item .ep { font-weight:700; color:#1f2937; }
 .cal-ud-item .epoint { color:#6b7280; font-size:11px; display:block; margin-top:2px; }
+/* 宏观月历条目（数据发布 / 政策窗口）：紧凑、关键词、标粗 */
+.mcal-ev { margin-top:4px; line-height:1.3; }
+.mcal-ev > b { font-size:10.5px; font-weight:800; color:#1f2937; display:block; }
+.mcal-sub { font-size:10px; color:#6b7280; display:block; margin-top:1px; word-break:break-word; }
+.cal-st { display:inline-block; font-size:9px; font-weight:700; padding:0 5px; border-radius:7px; background:#fff7ed; color:#c2410c; margin-top:2px; }
+.cal-st.done { background:#ecfdf5; color:#059669; }
+.cal-more { font-size:10px; font-weight:700; color:#9aa7bc; margin-top:3px; }
+
 /* 分厂商结构化新品卡片 */
 .np-card { border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; margin-bottom:18px; background:#fff; }
 .np-head { display:flex; align-items:center; gap:10px; padding:13px 18px; color:#fff; }
@@ -653,6 +661,40 @@ function calClip(t, max){
   }
   return out;
 }
+// 解析中文日期 "9 月 10 日" / "9月10日 15:00" / "9 月 10 日前后" → {y,m,day}
+function parseCnDate(d){
+  if(d==null) return null;
+  var s=String(d).trim();
+  var ym=s.match(/(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
+  if(ym) return {y:+ym[1],m:+ym[2],day:+ym[3]};
+  var m=s.match(/(\d{1,2})\s*月\s*(\d{1,2})\s*日/);
+  if(m) return {y:new Date().getFullYear(),m:+m[1],day:+m[2]};
+  return null;
+}
+// 月历网格通用壳：返回 {gridHtml, overflow}。renderEntry(item) 产出单条紧凑 HTML（≤2 行）
+function calMonthShell(py, pm, byDay, renderEntry, maxPerCell){
+  maxPerCell = maxPerCell || 3;
+  const firstDow = (new Date(py,pm-1,1).getDay()+6)%7; // 周一为起始列
+  const daysInMonth = new Date(py,pm,0).getDate();
+  const wd = ['一','二','三','四','五','六','日'];
+  let h = '<div class="cal-scroll"><div class="cal-grid">';
+  wd.forEach(function(w){ h += '<div class="cal-wd">'+w+'</div>'; });
+  for(let i=0;i<firstDow;i++) h += '<div class="cal-cell empty"></div>';
+  const overflow = [];
+  for(let day=1; day<=daysInMonth; day++){
+    const evs = byDay[day] || [];
+    h += '<div class="cal-cell'+(evs.length?' ev':'')+'"><div class="d">'+day+'</div>';
+    const vis = evs.slice(0,maxPerCell);
+    const rest = evs.slice(maxPerCell);
+    vis.forEach(function(e){ h += renderEntry(e); });
+    if(rest.length){ h += '<div class="cal-more">+'+(rest.length)+' 项</div>'; rest.forEach(function(e){ overflow.push(e); }); }
+    h += '</div>';
+  }
+  const tail = (7 - ((firstDow + daysInMonth) % 7)) % 7;
+  for(let i=0;i<tail;i++) h += '<div class="cal-cell empty"></div>';
+  h += '</div></div>';
+  return { gridHtml:h, overflow:overflow };
+}
 function renderTab2(){
   const c = el('t2');
   let html = '';
@@ -716,7 +758,7 @@ function renderTab2(){
       evs.forEach(function(e){
         const product = e.product || '';
         const point = e.point || (e.evt ? calCondense(e.evt) : '');
-        const ptShort = calClip(point, 18);
+        const ptShort = calClip(point, 12);
         h += '<div class="evt"><span class="eb" style="color:'+brandColor(e.brand)+'">'+esc(e.brand)+'</span>'
           + (product ? ' <span class="ep">'+esc(product)+'</span>' : '')
           + '<div class="epoint"'+((point&&point!==ptShort)?(' title="'+esc(point)+'"'):'')+'>'+esc(ptShort)+'</div></div>';
@@ -731,7 +773,7 @@ function renderTab2(){
       others.forEach(function(e){
         const product = e.product || '';
         const point = e.point || (e.evt ? calCondense(e.evt) : '');
-        const ptShort = calClip(point, 28);
+        const ptShort = calClip(point, 18);
         const dl = e.d ? '<span class="ud-d">'+esc(e.d)+'</span>' : '';
         h += '<div class="cal-ud-item">'+dl+'<span class="eb" style="color:'+brandColor(e.brand)+'">'+esc(e.brand)+'</span>'
           + (product ? ' <span class="ep">'+esc(product)+'</span>' : '')
@@ -983,7 +1025,7 @@ function renderTerminalExtra(){
   if(cur.storagePrice){
     charts.exPrice = echarts.init(el('ex-price'));
     const t=cur.storagePrice;
-    el('ex-price-src').textContent = t.sources||'';
+    el('ex-price-src').innerHTML = (t.note||t.sources||'').split('\n').map(function(l){return redify(l);}).join('<br/>');
     charts.exPrice.setOption({ title:{text:'存储实际合约价（绝对数值 · 美元）',left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis',formatter:function(ps){ let s='<b>'+ps[0].axisValue+'</b><br/>'; ps.forEach(p=>{ s+=p.marker+p.seriesName+'：<b>'+p.value+'</b>'+(t.unit[p.seriesName]||'')+'<br/>'; }); return s; }}, legend:{bottom:0}, grid:{left:55,right:30,top:46,bottom:46}, xAxis:{type:'category',data:t.quarters,axisLabel:{fontSize:11}}, yAxis:{type:'value',name:'美元'}, series:[
       {name:'DRAM(DDR4 8Gb)',type:'line',data:t.dram,smooth:true,symbolSize:7,lineStyle:{width:3},itemStyle:{color:'#2563eb'}},
       {name:'NAND(512Gb TLC)',type:'line',data:t.nand,smooth:true,symbolSize:7,lineStyle:{width:2.5},itemStyle:{color:'#7c3aed'}},
@@ -1236,17 +1278,21 @@ function drawHimaCharts(H){
 }
 
 function renderInternet(m){
-  // 资本开支曲线
+  // 资本开支：分公司逐年柱状图（美国 / 国内 分开）
   if(m.capex){
-    const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
-    wrap.innerHTML='<div class="section-title">互联网公司资本开支曲线 <span class="en">Capex 中/美/欧/全球 2023–2026E</span></div><div class="chart-box" id="'+id+'"></div><div class="storage-note">'+(m.capex.note||'单位：亿美元，含云与 AI 基建；口径见各公司财报')+'</div>';
-    el('t4').appendChild(wrap);
-    const inst=echarts.init(el(id)); charts[id]=inst;
-    inst.setOption({ title:{text:'互联网/云 Capex 年度对比',left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis'}, legend:{bottom:0}, grid:{left:60,right:30,top:46,bottom:46}, xAxis:{type:'category',data:m.capex.months}, yAxis:{type:'value',name:'亿美元'}, series:[
-      {name:'美国',type:'line',data:m.capex.us,smooth:true,symbolSize:7,lineStyle:{width:3},itemStyle:{color:'#2563eb'}},
-      {name:'中国',type:'line',data:m.capex.cn,smooth:true,symbolSize:7,lineStyle:{width:3},itemStyle:{color:'#16a34a'}},
-      {name:'欧洲',type:'line',data:m.capex.eu,smooth:true,symbolSize:7,lineStyle:{width:2.5},itemStyle:{color:'#7c3aed'}},
-      {name:'全球',type:'line',data:m.capex.global,smooth:true,symbolSize:7,lineStyle:{width:2.5,type:'dashed'},itemStyle:{color:'#ea580c'}} ] }, true);
+    const cap = m.capex;
+    const years = cap.years || ['2023','2024','2025','2026E','2027E'];
+    function capexCard(title, en, companies, unit){
+      const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
+      wrap.innerHTML='<div class="section-title">'+title+' <span class="en">'+en+'</span></div><div class="chart-box" id="'+id+'"></div>';
+      el('t4').appendChild(wrap);
+      const inst=echarts.init(el(id)); charts[id]=inst;
+      inst.setOption({ title:{text:title,left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis',valueFormatter:function(v){return (v==null?'—':v)+' '+unit;}}, legend:{bottom:0,type:'scroll'}, grid:{left:55,right:24,top:46,bottom:54}, xAxis:{type:'category',data:years,axisLabel:{fontSize:11}}, yAxis:{type:'value',name:unit}, series: companies.map(function(c){ return {name:c.name,type:'bar',data:c.data,itemStyle:{color:c.color,borderRadius:[3,3,0,0]},barMaxWidth:24,label:{show:true,position:'top',fontSize:9,formatter:function(p){return p.value;}}}; }) }, true);
+    }
+    if(cap.usCompanies && cap.usCompanies.length) capexCard('美国主要云厂资本开支（分公司）','US Hyperscaler Capex · 单位：十亿美元', cap.usCompanies, '十亿美元');
+    if(cap.cnCompanies && cap.cnCompanies.length) capexCard('国内主要互联网公司资本开支（分公司·估算）','China Internet Capex · 单位：十亿元', cap.cnCompanies, '十亿元');
+    const capNote=(cap.note||'').split('\n').map(function(l){return redify(l);}).join('<br/>');
+    if(capNote){ const nid='ac'+(autoCardSeq++); const nw=document.createElement('div'); nw.className='card'; nw.innerHTML='<div class="storage-note" style="padding:10px 14px">'+capNote+'</div>'; el('t4').appendChild(nw); }
   }
   if(m.subs){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
     wrap.innerHTML='<div class="section-title">AI 助手月活 / 订阅 <span class="en">AI Assistants · MAU</span></div><table class="data-tbl show" id="'+id+'"></table>'; el('t4').appendChild(wrap);
@@ -1271,7 +1317,9 @@ function renderChip(m){
       {name:'NAND',type:'line',data:t.nand,smooth:true,symbolSize:7,lineStyle:{width:2.5},itemStyle:{color:'#7c3aed'}},
       {name:'HBM',type:'line',data:t.hbm,smooth:true,symbolSize:7,lineStyle:{width:2.5,type:'dashed'},itemStyle:{color:'#ea580c'}} ] }, true); }
   if(m.storagePrice){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
-    wrap.innerHTML='<div class="section-title">存储实际合约价（绝对数值 · 美元） <span class="en">2025Q1–2026Q3</span></div><div class="chart-box" id="'+id+'"></div><div class="storage-note">'+(m.storagePrice.sources||'')+'</div>'; el('t4').appendChild(wrap);
+    const sp=m.storagePrice;
+    const spNote=(sp.note||sp.sources||'').split('\n').map(function(l){return redify(l);}).join('<br/>');
+    wrap.innerHTML='<div class="section-title">存储实际合约价（绝对数值 · 美元） <span class="en">2025Q1–2026Q3</span></div><div class="chart-box" id="'+id+'"></div><div class="storage-note">'+spNote+'</div>'; el('t4').appendChild(wrap);
     const t=m.storagePrice; const inst=echarts.init(el(id)); charts[id]=inst;
     inst.setOption({ title:{text:'存储实际合约价（绝对数值 · 美元）',left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis',formatter:function(ps){ let s='<b>'+ps[0].axisValue+'</b><br/>'; ps.forEach(p=>{ s+=p.marker+p.seriesName+'：<b>'+p.value+'</b>'+(t.unit[p.seriesName]||'')+'<br/>'; }); return s; }}, legend:{bottom:0}, grid:{left:55,right:30,top:46,bottom:46}, xAxis:{type:'category',data:t.quarters,axisLabel:{fontSize:11}}, yAxis:{type:'value',name:'美元'}, series:[
       {name:'DRAM(DDR4 8Gb)',type:'line',data:t.dram,smooth:true,symbolSize:7,lineStyle:{width:3},itemStyle:{color:'#2563eb'}},
@@ -1382,22 +1430,60 @@ function renderMacroT1(){
 function renderMacroT2(){
   const c = el('t2');
   let h = '';
-  if(cur.releaseCalendar && cur.releaseCalendar.length)
-    h += '<div class="card"><div class="section-title">一、数据发布日历 <span class="en">Release Calendar · 未来 30 天</span></div><table class="data-tbl show" id="m-rel"></table></div>';
-  if(cur.policyCalendar && cur.policyCalendar.length)
-    h += '<div class="card"><div class="section-title">二、重要会议与政策窗口 <span class="en">Policy Window</span></div><table class="data-tbl show" id="m-pol"></table></div>';
+  // 自动选取数据最集中的月份作为主月（数据发布日历优先；否则取当前月）
+  var REL_Y=2026, REL_M=9;
+  if(cur.releaseCalendar && cur.releaseCalendar.length){
+    const mcCnt={};
+    (cur.releaseCalendar).forEach(function(r){ const p=parseCnDate(r.d); if(p){ const k=p.y+'-'+p.m; mcCnt[k]=(mcCnt[k]||0)+1; } });
+    const mk=Object.keys(mcCnt).sort(function(a,b){ return mcCnt[b]-mcCnt[a]; })[0];
+    if(mk){ const mp=mk.split('-'); REL_Y=+mp[0]; REL_M=+mp[1]; }
+  }
+  // 一、数据发布日历（月历网格）
+  if(cur.releaseCalendar && cur.releaseCalendar.length){
+    const byDay={}, outMonth=[];
+    (cur.releaseCalendar).forEach(function(r){
+      const p=parseCnDate(r.d);
+      if(p && p.m===REL_M && p.y===REL_Y && p.day){ (byDay[p.day]=byDay[p.day]||[]).push(r); }
+      else { outMonth.push(r); }
+    });
+    const sh=calMonthShell(REL_Y,REL_M,byDay,function(r){
+      const done=(r.status&&r.status.indexOf('已发布')>=0);
+      const st=done?'<span class="cal-st done">已发布</span>':'<span class="cal-st">待发布</span>';
+      return '<div class="mcal-ev"><b>'+redify(r.item)+'</b>'+st+'<span class="mcal-sub">'+esc(calClip(r.focus||'',18))+'</span></div>';
+    }, 3);
+    h += '<div class="card"><div class="section-title">一、数据发布日历 <span class="en">Release Calendar · '+REL_Y+' 年 '+REL_M+' 月</span></div>'+sh.gridHtml;
+    const relOver=sh.overflow.concat(outMonth);
+    if(relOver.length){
+      h += '<div class="cal-undated"><div class="cal-ud-title">其他档期 / 后续（'+relOver.length+' 项）</div><div class="cal-ud-list">'+
+        relOver.map(function(r){ return '<div class="cal-ud-item"><span class="ud-d">'+esc(r.d)+'</span><b>'+redify(r.item)+'</b><span class="epoint">'+esc(calClip(r.focus||'',22))+'</span></div>'; }).join('')+
+        '</div></div>';
+    }
+    h += '</div>';
+  }
+  // 二、重要会议与政策窗口（月历 · 与数据发布同主月；周期性窗口单列）
+  if(cur.policyCalendar && cur.policyCalendar.length){
+    const POL_Y=REL_Y, POL_M=REL_M;
+    function policyDay(d){ var s=String(d||''); var md=s.match(/每月\s*(\d{1,2})\s*日/); if(md) return +md[1]; if(s.indexOf('月中')>=0) return 15; return null; }
+    const byDay={}, period=[];
+    (cur.policyCalendar).forEach(function(r){
+      const day=policyDay(r.d);
+      if(day){ (byDay[day]=byDay[day]||[]).push(r); } else { period.push(r); }
+    });
+    const sh=calMonthShell(POL_Y,POL_M,byDay,function(r){
+      return '<div class="mcal-ev"><b>'+redify(r.name)+'</b><span class="mcal-sub">'+esc(calClip(r.note||'',18))+'</span></div>';
+    }, 3);
+    h += '<div class="card"><div class="section-title">二、重要会议与政策窗口 <span class="en">Policy Window · '+POL_Y+' 年 '+POL_M+' 月</span></div>'+sh.gridHtml;
+    if(period.length){
+      h += '<div class="cal-undated"><div class="cal-ud-title">周期性政策窗口（'+period.length+' 项）</div><div class="cal-ud-list">'+
+        period.map(function(r){ return '<div class="cal-ud-item"><span class="ud-d">'+esc(r.d)+'</span><b>'+redify(r.name)+'</b><span class="epoint">'+esc(calClip(r.note||'',24))+'</span></div>'; }).join('')+
+        '</div></div>';
+    }
+    h += '</div>';
+  }
+  // 三、政策要点速览（表格）
   if(cur.policyDigest && cur.policyDigest.length)
     h += '<div class="card"><div class="section-title">三、政策要点速览 <span class="en">Policy Digest · 内容 / 影响 / 启示</span></div><table class="data-tbl show" id="m-dig"></table></div>';
   c.innerHTML = h;
-  if(cur.releaseCalendar) el('m-rel').innerHTML = '<tr><th>预计时间</th><th>发布内容</th><th>本板块关注点</th><th>状态</th></tr>'+
-    cur.releaseCalendar.map(function(r){
-      const cls = (r.status==='已发布')?'down':'up';
-      return '<tr><td><b>'+esc(r.d)+'</b></td><td>'+esc(r.item)+'</td><td>'+esc(r.focus||'')+'</td><td class="'+cls+'">'+esc(r.status||'')+'</td></tr>';
-    }).join('');
-  if(cur.policyCalendar) el('m-pol').innerHTML = '<tr><th>时间</th><th>会议 / 事项</th><th>说明</th></tr>'+
-    cur.policyCalendar.map(function(r){
-      return '<tr><td><b>'+esc(r.d)+'</b></td><td>'+esc(r.name)+'</td><td>'+esc(r.note||'')+'</td></tr>';
-    }).join('');
   if(cur.policyDigest) el('m-dig').innerHTML = '<tr><th>发布机构</th><th>政策 / 事项</th><th>核心内容</th><th>对 2C 产业影响</th><th>管理启示</th></tr>'+
     cur.policyDigest.map(function(r){
       return '<tr><td><b>'+esc(r.org)+'</b></td><td>'+esc(r.policy)+'</td><td>'+esc(r.content)+'</td><td>'+esc(r.impact)+'</td><td>'+esc(r.insight)+'</td></tr>';
