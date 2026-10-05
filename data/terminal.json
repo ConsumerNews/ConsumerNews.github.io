@@ -10,7 +10,7 @@
       "tracked": 9,
       "disclosed": 5,
       "cumFirstSale": 99.08,
-      "wowNetNew": 38.6
+      "wowNetNew": 100.0
     },
     "products": [
       {
@@ -22,10 +22,10 @@
         "currentGen": 28.2,
         "genDeltaPct": null,
         "wow": {
-          "lastWeek": 18,
-          "thisWeek": 28.2,
+          "lastWeek": 28.2,
+          "thisWeek": 37.57,
           "badge": "wait",
-          "note": "首周激活28.2万登顶W37全品牌单品第一，华为周份额27%创2020年来新高"
+          "note": "W38零售口径累计37.57万,首周后5天日均1.31万为预购释放后的常规回落;红色与256GB仍缺货,第三方加价300-500元"
         },
         "reviews": {
           "goodRate": 97,
@@ -33,7 +33,7 @@
           "source": "京东金榜91分/天猫",
           "status": "scraped_example"
         },
-        "acceptance": "首周激活28.2万登顶W37全品牌第一；约30%用户来自苹果阵营；阔直板开辟新赛道，OPPO等已在评估跟进；5999元起售填补直板与折叠屏空白区间",
+        "acceptance": "W38累计37.57万,对应零售规模约22.5亿元;首周28.2万登顶W37全品牌第一;约30%用户来自苹果阵营;阔直板开辟新赛道,荣耀已立项跟进、阔折叠排期2027Q1",
         "pullStatus": "green",
         "dataStatus": "real"
       },
@@ -46,10 +46,10 @@
         "currentGen": 32.28,
         "genDeltaPct": 30,
         "wow": {
-          "lastWeek": 32.28,
-          "thisWeek": 176.0,
+          "lastWeek": 176.0,
+          "thisWeek": 250.0,
           "badge": "up",
-          "note": "W39 首销周累计约 176 万台，国庆期间单日平均激活超 10 万台"
+          "note": "W40预估累计约250万台(第三方零售渠道口径),两机型单品激活均破100万;Pro Max占55.5%,勃艮第酒红为选配TOP1;国庆单日激活超10万"
         },
         "reviews": {
           "goodRate": 95,
@@ -57,7 +57,7 @@
           "source": "京东金榜94分",
           "status": "scraped_example"
         },
-        "acceptance": "W39 累计约 176 万台，远超国产三家首销周总和；首销三天较 17 Pro 首周增 12%；第 38 周以 33% 份额登顶中国；Pro Max 占 55.5%；全行业普涨下到手价稳定凸显性价比",
+        "acceptance": "首发两周累计约250万台创近三年同期新高;Pro Max占55.5%;勃艮第酒红成最火配色;节后电商已破发900元,双11或进一步下行",
         "pullStatus": "green",
         "dataStatus": "real"
       },
@@ -69,12 +69,12 @@
         "prevGen": null,
         "currentGen": null,
         "genDeltaPct": null,
-        "qualitative": "首批30万台开售即秒售罄；锦紫溢价最高3500元；16GB+2TB版9/23延后开售；麒麟9050 Pro性能+42%",
+        "qualitative": "余承东10/1国庆发布会公示首销累计破100万台;京东第三方16+512报25499元、16+1TB报29088元,锦紫溢价持续;首批30万秒罄后持续缺货",
         "wow": {
           "lastWeek": null,
-          "thisWeek": null,
-          "badge": "wait",
-          "note": "开售即罄持续缺货，第二批补货待定"
+          "thisWeek": 100.0,
+          "badge": "up",
+          "note": "余承东10/1公示首销累计破100万台(门槛披露,精确值未公布)"
         },
         "reviews": {
           "goodRate": 95,
@@ -82,7 +82,7 @@
           "source": "京东/酷安",
           "status": "scraped_example"
         },
-        "acceptance": "首批30万秒罄；锦紫溢价最高3500元；展翼三折叠改U型双内折；灵盾防窥屏首次落地折叠机型",
+        "acceptance": "首销累计破100万台(余承东公示);锦紫溢价最高3500元;展翼三折叠改U型双内折;灵盾防窥屏首次落地折叠机型;麒麟9050 Pro性能+42%",
         "pullStatus": "green",
         "dataStatus": "qualitative"
       },
@@ -94,12 +94,12 @@
         "prevGen": null,
         "currentGen": null,
         "genDeltaPct": null,
-        "qualitative": "9/16开售一秒销售额破亿，京东预约37万+；起售5499元（国补后）；AI跨应用暂限字节生态，第三方App权限壁垒未破",
+        "qualitative": "9/16开售首日销售额一秒破亿(官方战报);京东预约37万+;整体备货约20万台、首批<10万;9/27王者荣耀触发风控强制下线事件;MCP/A2A协议直连第三方接口非模拟点击",
         "wow": {
           "lastWeek": null,
           "thisWeek": null,
           "badge": "warn",
-          "note": "开售一秒破亿但真实转化待观察"
+          "note": "一秒破亿为销售额口径非激活量,AI跨应用仍限字节生态,9/27游戏风控冲突暴露端侧Agent与第三方安全机制的边界矛盾"
         },
         "reviews": {
           "goodRate": null,
@@ -107,7 +107,7 @@
           "source": "待抓取",
           "status": "pending"
         },
-        "acceptance": "开售一秒破亿热度高但AI跨应用能力受限字节生态；MCP协议替代模拟点击但仍需App厂商开放；罗永浩已自费下单实测",
+        "acceptance": "首销一秒破亿热度高但为销售额口径;AI跨应用能力受限字节生态;9/27王者荣耀风控冲突暴露端侧Agent与第三方安全机制的边界矛盾;罗永浩已自费下单实测",
         "pullStatus": "yellow",
         "dataStatus": "qualitative"
       },
@@ -119,12 +119,12 @@
         "prevGen": null,
         "currentGen": 7.4,
         "genDeltaPct": null,
-        "qualitative": "W39 首销周激活约 7.4 万台，两款机型单款均值不足 4 万台，受大杯 X500 Pro 上市偏晚拖累",
+        "qualitative": "W39首销周激活约7.4万台,两款机型单款均值不足4万台,受大杯X500 Pro 9/29延后开售拖累",
         "wow": {
           "lastWeek": null,
           "thisWeek": 7.4,
-          "badge": "warn",
-          "note": "首销周 7.4 万台，大杯上市节奏拖累整体"
+          "badge": "wait",
+          "note": "首销周7.4万台口径维持(10/4数码闲聊站),W40二周数据待节后披露;大杯上市偏晚拖累"
         },
         "reviews": {
           "goodRate": null,
@@ -132,7 +132,7 @@
           "source": "待抓取",
           "status": "pending"
         },
-        "acceptance": "首销周 7.4 万台居三家之末；蔡司影像口碑稳定但转化遇到瓶颈；苹果降价与华为回归双重挤压",
+        "acceptance": "首销周7.4万台居三家之末;蔡司影像口碑稳定但转化遇瓶颈;X500 Pro 9/29延后开售;苹果降价与华为回归双重挤压",
         "pullStatus": "yellow",
         "dataStatus": "real"
       },
@@ -144,12 +144,12 @@
         "prevGen": null,
         "currentGen": 10.9,
         "genDeltaPct": null,
-        "qualitative": "W39 首销周激活约 10.9 万台，三款机型分摊单款约 3.6 万台，为国产三家最低",
+        "qualitative": "W39首销周激活约10.9万台,三款机型分摊单款约3.6万台,为国产三家最低",
         "wow": {
           "lastWeek": null,
           "thisWeek": 10.9,
-          "badge": "warn",
-          "note": "首销周 10.9 万台，多 SKU 未转化为单款效率"
+          "badge": "wait",
+          "note": "首销周10.9万台口径维持(10/4数码闲聊站),W40二周数据待节后披露;多SKU未转化为单款效率"
         },
         "reviews": {
           "goodRate": null,
@@ -157,7 +157,7 @@
           "source": "待抓取",
           "status": "pending"
         },
-        "acceptance": "首销周 10.9 万台、单款均值 3.6 万台最低；影像硬件下放到 5499 元标准版；16GB 占比偏高显示结构上移",
+        "acceptance": "首销周10.9万台,单款均值3.6万台最低;影像硬件下放到5499元标准版;16GB占比偏高显示结构上移",
         "pullStatus": "yellow",
         "dataStatus": "real"
       },
@@ -169,12 +169,12 @@
         "prevGen": null,
         "currentGen": 20.3,
         "genDeltaPct": null,
-        "qualitative": "W39 首销周激活约 20.3 万台居国产第一，单款均值破 10 万台；首销日仅上代三成，周维度修复明显；卢伟冰称内存涨价或延续至 2028 年",
+        "qualitative": "W39首销周激活约20.3万台居国产第一,单款均值破10万台;首销日仅上代三成,周维度修复明显;卢伟冰称内存涨价或延续至2028年",
         "wow": {
           "lastWeek": null,
           "thisWeek": 20.3,
-          "badge": "new",
-          "note": "首销周口径 20.3 万台，较首销日口径大幅修复"
+          "badge": "wait",
+          "note": "首销周20.3万台口径维持(10/4数码闲聊站),W40二周数据待节后披露;首销日仅上代三成,周维度修复"
         },
         "reviews": {
           "goodRate": null,
@@ -182,7 +182,7 @@
           "source": "待抓取",
           "status": "pending"
         },
-        "acceptance": "首销周 20.3 万台居国产第一但首销日仅上代三成；口袋徕卡影像口碑成立；标准版预计 5499 元起与 Pro 价差收窄",
+        "acceptance": "首销周20.3万台居国产第一但首销日仅上代三成;口袋徕卡影像口碑成立;标准版预计5499元起与Pro价差收窄",
         "pullStatus": "yellow",
         "dataStatus": "real"
       },
@@ -194,12 +194,12 @@
         "prevGen": null,
         "currentGen": null,
         "genDeltaPct": null,
-        "qualitative": "发布第三天用户激活量较上代同期增超 70%，首销次日同比翻倍；Pro Max 占比约 50%、标准版约 38%、超能版约 12%；热门版本缺货、发货排至 10 月下旬",
+        "qualitative": "首销第三天激活同比上代+70%,次日翻倍;第五天(10/3)仍居安卓旗舰激活第一;Pro Max占约50%,标准版约38%,超能版约12%;国产五家旗舰唯一正增长(+39%);Pro Max缺货发货排至10月下旬",
         "wow": {
           "lastWeek": null,
           "thisWeek": null,
           "badge": "up",
-          "note": "第三天激活同比 +70%，反向定价被真实开机数据验证"
+          "note": "第三天激活同比+70%,次日翻倍,反向定价(涨幅<800元)被真实开机数据验证;精确首销量待节后第三方披露"
         },
         "reviews": {
           "goodRate": null,
@@ -207,7 +207,7 @@
           "source": "待抓取",
           "status": "pending"
         },
-        "acceptance": "第三天激活同比增超七成、次日翻倍；Pro Max 占比约五成为最畅销机型；反向定价与阿莱双 2 亿构成双重驱动",
+        "acceptance": "第三天激活同比增超七成,次日翻倍;Pro Max占约五成为最畅销机型;反向定价与阿莱双2亿构成双重驱动;为国产旗舰唯一正增长品牌",
         "pullStatus": "green",
         "dataStatus": "qualitative"
       },
@@ -219,12 +219,12 @@
         "prevGen": null,
         "currentGen": null,
         "genDeltaPct": null,
-        "qualitative": "10/1 12:08 开售当日标准版与 Pro 小内存有少量现货，1TB、Pro Max 与 RS 全部售罄；渠道首批线下备货同比上代增 142%，标准版与 Pro 合计约占 65%；极客湾实测 Pro Max 运行原神 890P 满帧整机功耗仅 4.2W；渠道估算标准版销量同比下滑约 85%、Pro 版增长约 208%",
+        "qualitative": "10/1 12:08发布即开售;京东10/2观察标准版约9000台,Pro超2万台,Pro Max约9000台,典藏版约200台;渠道估算标准版同比-85%,Pro+208%(未官方确认);鸿蒙首日装机新增40万(Mate80首销日23.5万);Pro Max,RS一机难求,发货排至10月25日后",
         "wow": {
           "lastWeek": null,
           "thisWeek": null,
           "badge": "up",
-          "note": "高配当日售罄，Pro 版成绝对主力，三日激活量待第三方披露"
+          "note": "高配当日售罄,Pro成绝对主力,标准版遇冷;鸿蒙首日装机40万为系统级口径非Mate90专属;精确三日激活量待第三方披露"
         },
         "reviews": {
           "goodRate": null,
@@ -232,7 +232,7 @@
           "source": "待抓取",
           "status": "pending"
         },
-        "acceptance": "起售价较 Mate 80 涨 1300 元仍当日售罄；标准版遇冷 Pro 版暴增；睿影 Z10 模块相机需单独购买；Pro Max 首发四卡三待",
+        "acceptance": "起售价较Mate80涨1300元仍当日售罄;标准版遇冷Pro版暴增;睿影Z10模块相机需单独购买;Pro Max首发四卡三待;全系搭载韬定律τ架构麒麟处理器(9030/9035/9050/9050 Pro)",
         "pullStatus": "green",
         "dataStatus": "qualitative"
       }
