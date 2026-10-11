@@ -362,6 +362,15 @@ a:hover { text-decoration:underline; }
 .mc-to{background:#fff7ed;color:#ea580c;border:1px solid #fed7aa;}
 .mc-tb{background:var(--accent-soft);color:var(--accent);border:1px solid #bfdbfe;}
 .mc-asof{font-size:12px;color:#6b7280;margin-top:10px;line-height:1.7;}
+.mgmt-box{background:#f6fdfb;border:1px solid #cce8e2;border-left:4px solid var(--accent);border-radius:10px;padding:12px 15px;margin:12px 0;}
+.mgmt-box .mgmt-h{font-size:13px;font-weight:800;color:var(--accent-deep);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.mgmt-box .mgmt-h::before{content:'管';display:inline-block;background:var(--accent);color:#fff;width:18px;height:18px;line-height:18px;text-align:center;border-radius:5px;font-size:11px;font-weight:800;}
+.mgmt-box ul{list-style:none;margin:0;}
+.mgmt-box li{font-size:13.6px;color:#374151;line-height:1.78;padding:5px 0 5px 16px;position:relative;}
+.mgmt-box li::before{content:'';position:absolute;left:2px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--accent);}
+.mgmt-one{font-size:13.8px;color:#374151;line-height:1.82;}
+.mgmt-cell{color:var(--accent-deep);font-weight:600;}
+.hl-impl{font-size:12.8px;color:var(--accent-deep);background:#f6fdfb;border-left:3px solid var(--accent);padding:7px 10px;border-radius:6px;margin-top:8px;line-height:1.7;}
 .mc-src{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;}
 .mc-src-c{border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;background:#fbfdff;}
 .mc-src-c .h{font-size:13.5px;font-weight:800;color:#1f2937;margin-bottom:5px;}
@@ -1392,6 +1401,15 @@ function mcSection(sec){
 function mcVerdict(t){
   return t? '<div class="vp-summary"><b>核心判断</b><br>'+redify(t)+'</div>' : '';
 }
+function mcMgmt(list, title){
+  if(!list || !list.length) return '';
+  const items = list.map(function(t){ return '<li>'+redify(t)+'</li>'; }).join('');
+  return '<div class="mgmt-box"><div class="mgmt-h">'+(title||'管理启示')+'</div><ul>'+items+'</ul></div>';
+}
+function mcMgmtOne(text, title){
+  if(!text) return '';
+  return '<div class="mgmt-box"><div class="mgmt-h">'+(title||'管理含义')+'</div><div class="mgmt-one">'+redify(text)+'</div></div>';
+}
 
 /* ---------------- 宏观 T1 要闻与部委观点 ---------------- */
 function renderMacroT1(){
@@ -1404,6 +1422,7 @@ function renderMacroT1(){
   el('mh-grid').innerHTML = (cur.headlineViewpoints||[]).map(function(h,i){
     return '<div class="hl-card"><div><span class="hl-rank">'+(i+1)+'</span><h4>'+redify(h.t)+'</h4></div>'+
       '<div class="hl-support">'+redify(h.s)+'</div>'+
+      (h.impl?'<div class="hl-impl">'+redify(h.impl)+'</div>':'')+
       '<div class="hl-link"><a href="'+(h.u||'#')+'" target="_blank" rel="noopener">'+esc(h.l)+' ↗</a></div></div>';
   }).join('');
   el('ml-block').innerHTML = (cur.opinionLeaders||[]).map(function(p){
@@ -1437,6 +1456,10 @@ function renderMacroT2(){
     (cur.releaseCalendar).forEach(function(r){ const p=parseCnDate(r.d); if(p){ const k=p.y+'-'+p.m; mcCnt[k]=(mcCnt[k]||0)+1; } });
     const mk=Object.keys(mcCnt).sort(function(a,b){ return mcCnt[b]-mcCnt[a]; })[0];
     if(mk){ const mp=mk.split('-'); REL_Y=+mp[0]; REL_M=+mp[1]; }
+  }
+  // 管理行动窗口（关键发布前的经营动作，先于日历展示）
+  if(cur.releaseActions && cur.releaseActions.length){
+    h += '<div class="card"><div class="section-title">管理行动窗口 <span class="en">Action Window · 关键发布前的经营动作</span></div><table class="data-tbl show" id="ma-act"></table></div>';
   }
   // 一、数据发布日历（月历网格）
   if(cur.releaseCalendar && cur.releaseCalendar.length){
@@ -1484,6 +1507,10 @@ function renderMacroT2(){
   if(cur.policyDigest && cur.policyDigest.length)
     h += '<div class="card"><div class="section-title">三、政策要点速览 <span class="en">Policy Digest · 内容 / 影响 / 启示</span></div><table class="data-tbl show" id="m-dig"></table></div>';
   c.innerHTML = h;
+  if(cur.releaseActions) el('ma-act').innerHTML = '<tr><th>时间</th><th>关键发布 / 窗口</th><th>关注什么</th><th>经营动作</th></tr>'+
+    cur.releaseActions.map(function(a){
+      return '<tr><td><b>'+esc(a.d)+'</b></td><td>'+esc(a.item)+'</td><td>'+esc(a.watch)+'</td><td class="mgmt-cell">'+redify(a.action)+'</td></tr>';
+    }).join('');
   if(cur.policyDigest) el('m-dig').innerHTML = '<tr><th>发布机构</th><th>政策 / 事项</th><th>核心内容</th><th>对 2C 产业影响</th><th>管理启示</th></tr>'+
     cur.policyDigest.map(function(r){
       return '<tr><td><b>'+esc(r.org)+'</b></td><td>'+esc(r.policy)+'</td><td>'+esc(r.content)+'</td><td>'+esc(r.impact)+'</td><td>'+esc(r.insight)+'</td></tr>';
@@ -1495,11 +1522,11 @@ function renderMacroT3(){
   const c = el('t3');
   const s = cur.industryProfit || {};
   let h = '<div class="card"><div class="section-title">一、规模以上工业企业利润 <span class="en">Industrial Profits · '+esc((cur.asOf&&cur.asOf.profit)||'')+'</span></div>'+
-    mcVerdict(s.verdict)+ mcSection(s) +'</div>';
+    mcVerdict(s.verdict)+ mcMgmt(s.mgmt)+ mcSection(s) +'</div>';
   if(cur.electronicsMfg){
     const e = cur.electronicsMfg;
     h += '<div class="card"><div class="section-title">二、电子信息制造业运行 <span class="en">Electronics Manufacturing · 工信部口径</span></div>'+
-      mcVerdict(e.verdict)+ mcSection(e) +'</div>';
+      mcVerdict(e.verdict)+ mcMgmt(e.mgmt)+ mcSection(e) +'</div>';
   }
   if(cur.earnSnap){
     h += '<div class="card"><div class="section-title">三、关键发现与管理启示 <span class="en">Findings / Implications</span></div>'+
@@ -1519,6 +1546,9 @@ function renderMacroT4(){
     '<div class="summary-box">'+summaryCollapsible(cur.marketView||'',3)+'</div>'+
     '<div class="mc-asof">'+esc((cur.asOf&&cur.asOf.note)||'')+'</div></div>';
   h += '<div class="card"><div id="msub-tabs" class="mkt-tabs"></div><div id="msub-body"></div></div>';
+  if(cur.market && cur.market.mgmtSummary){
+    h += '<div class="card" style="border:2px solid var(--accent);background:linear-gradient(180deg,#f6fdfb,#fff);"><div class="section-title">综合研判与管理建议 <span class="en">Synthesis · 经营主线</span></div>'+mcMgmtOne(cur.market.mgmtSummary,'综合研判与管理建议')+'</div>';
+  }
   if(cur.sources && cur.sources.length){
     h += '<div class="card"><div class="section-title">数据来源 <span class="en">Sources · 官方发布</span></div><div class="mc-src">'+
       cur.sources.map(function(g){
@@ -1543,7 +1573,7 @@ function renderMacroSub(){
   const subs = (cur.market && cur.market.subs) || [];
   const s = subs.filter(function(x){return x.k===curMacroSub;})[0];
   if(!s){ body.innerHTML=''; return; }
-  body.innerHTML = mcVerdict(s.verdict) + mcSection(s);
+  body.innerHTML = mcVerdict(s.verdict) + mcMgmtOne(s.mgmt) + mcSection(s);
 }
 
 /* ---------------- 宏观图表绘制 ---------------- */
