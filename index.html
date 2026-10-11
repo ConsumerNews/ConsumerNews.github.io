@@ -235,6 +235,14 @@ a:hover { text-decoration:underline; }
 .summary-lines > div { padding:6px 0; border-bottom:1px dashed #e3ecfd; }
 .summary-lines > div:last-child { border-bottom:none; }
 .summary-lines .mk { color:var(--accent); font-weight:800; margin-right:7px; }
+.prose { line-height:1.9; color:#334155; }
+.prose-lead { font-weight:800; color:#0f172a; margin-right:4px; }
+.prose-rest { color:#475569; }
+.seg-lead { font-weight:800; color:#0f172a; }
+.seg-rest { color:#475569; }
+.collapse-note { font-size:12px; line-height:1.7; color:#475569; margin-top:4px; }
+.collapse-note .cn-head { color:#64748b; }
+.collapse-note .cn-rest { margin-top:8px; padding:9px 12px; background:#f8fafc; border-left:3px solid #cbd5e1; border-radius:6px; font-size:12px; line-height:1.85; }
 
 
 /* 全球/中国切换 */
@@ -503,8 +511,8 @@ function splitSummary(t){
   if(!parts.length) return redify(t||'');
   return '<div class="summary-lines">'+parts.map(p=>{
     const m = p.match(/^([①②③④⑤⑥⑦⑧⑨⑩])\s*([\s\S]*)$/);
-    const mk = m? m[1] : '·'; const body = m? m[2] : p;
-    return '<div><span class="mk">'+mk+'</span>'+redify(body)+'</div>';
+    const mk = m? m[1] : '·'; const body = m? m[2] : p; const sl = segLead(body);
+    return '<div><span class="mk">'+mk+'</span><b class="seg-lead">'+redify(sl.lead)+'</b>'+(sl.rest?'<span class="seg-rest">'+redify(sl.rest)+'</span>':'')+'</div>';
   }).join('')+'</div>';
 }
 /* 凝练式汇总：超过 limit 条时只展示前 limit 条，其余折叠（用于市场观点防堆叠回归，与 launchCalendar 同思路） */
@@ -514,8 +522,8 @@ function summaryCollapsible(t, limit){
   const parts = raw.split(/(?=[①②③④⑤⑥⑦⑧⑨⑩])/).map(s=>s.trim()).filter(Boolean);
   const render = arr => '<div class="summary-lines">'+arr.map(p=>{
     const m = p.match(/^([①②③④⑤⑥⑦⑧⑨⑩])\s*([\s\S]*)$/);
-    const mk = m? m[1] : '·'; const body = m? m[2] : p;
-    return '<div><span class="mk">'+mk+'</span>'+redify(body)+'</div>';
+    const mk = m? m[1] : '·'; const body = m? m[2] : p; const sl = segLead(body);
+    return '<div><span class="mk">'+mk+'</span><b class="seg-lead">'+redify(sl.lead)+'</b>'+(sl.rest?'<span class="seg-rest">'+redify(sl.rest)+'</span>':'')+'</div>';
   }).join('')+'</div>';
   if(parts.length<=limit) return render(parts);
   const id = 'mvf'+(++autoCardSeq);
@@ -533,6 +541,14 @@ function wireCollapse(root){
       tg.textContent = (on?'▾ 收起':'▸ 展开全部 '+tg.dataset.n+' 条观点');
     });
   });
+  root.querySelectorAll('.cn-tog').forEach(function(tg){
+    tg.addEventListener('click', function(){
+      const r = el(tg.dataset.rid); if(!r) return;
+      const on = r.style.display==='none';
+      r.style.display = on?'block':'none';
+      tg.textContent = (on?'▾ 收起全文':'▸ 展开全文');
+    });
+  });
 }
 const BRAND_COLORS = {
   '华为':'#c7000b','苹果':'#1d1d1f','小米':'#ff6900','红米':'#ff0000','三星':'#1428a0',
@@ -546,6 +562,28 @@ const BRAND_COLORS = {
 };
 function brandColor(b){ if(!b) return '#2563eb'; for(const k in BRAND_COLORS){ if(b.indexOf(k)>=0) return BRAND_COLORS[k]; } return '#2563eb'; }
 function bodyClean(t){ return (t||'').replace(/^(关键发现|管理启示|分析观点)[：:]\s*/, ''); }
+function segLead(t){
+  t = String(t==null?'':t).replace(/\s+/g,' ').trim();
+  const m = t.match(/^([^。；：\n]{2,40}[。：；]?)/);
+  const lead = m? m[1].replace(/[：:]\s*$/,'') : t.slice(0,40);
+  let rest = t.slice(m? m[1].length:40).replace(/^\s*[:：]\s*/,'');
+  return {lead: lead, rest: rest};
+}
+function proseBlock(t){
+  t = String(t==null?'':t);
+  if(/[①②③④⑤⑥⑦⑧⑨⑩]/.test(t)) return splitSummary(t);
+  const sl = segLead(t);
+  if(!sl.rest) return '<div class="prose">'+redify(sl.lead)+'</div>';
+  return '<div class="prose"><b class="prose-lead">'+redify(sl.lead)+'</b><span class="prose-rest">'+redify(sl.rest)+'</span></div>';
+}
+function collapseNote(text, label){
+  const t = String(text==null?'':text).trim();
+  if(t.length<=160) return redify(t);
+  const id='cn'+(++autoCardSeq);
+  const head=t.slice(0,150).replace(/\s+/g,' ');
+  return '<div class="collapse-note"><div class="cn-head">'+redify(head)+'…</div><div class="cal-more"><span class="toggle-tbl cn-tog" data-rid="'+id+'">▸ '+label+'（全文 '+t.length+' 字）</span></div><div class="cn-rest" id="'+id+'" style="display:none">'+redify(t)+'</div></div>';
+}
+
 function numberedLines(t){
   const s = bodyClean(t);
   const parts = s.split(/(?=[①②③④⑤⑥⑦⑧⑨⑩])/).map(x=>x.trim()).filter(Boolean);
@@ -553,7 +591,8 @@ function numberedLines(t){
   return '<div class="nl">'+parts.map(p=>{
     const m = p.match(/^([①②③④⑤⑥⑦⑧⑨⑩])\s*([\s\S]*)$/);
     const mk = m? m[1] : '·'; const body = m? m[2] : p;
-    return '<div class="nl-i"><span class="mk">'+mk+'</span>'+redify(body)+'</div>';
+    const sl = segLead(body);
+    return '<div class="nl-i"><span class="mk">'+mk+'</span><b class="seg-lead">'+redify(sl.lead)+'</b>'+(sl.rest?'<span class="seg-rest">'+redify(sl.rest)+'</span>':'')+'</div>';
   }).join('')+'</div>';
 }
 
@@ -638,14 +677,14 @@ function renderTab1(){
   el('l-block').innerHTML = (cur.opinionLeaders||[]).map(p=>
     '<div class="person-block"><div class="person-head"><span class="pname">'+esc(p.name)+'</span><span class="prole">'+esc(p.role)+'</span></div>'+
     p.items.map(it=>'<div class="vp-item">'+
-      '<div class="vp-hl"><span class="hl-red">'+esc(it.hl)+'</span></div>'+
-      (it.detail?'<div class="vp-detail">'+esc(it.detail)+'</div>':'')+
+      '<div class="vp-hl"><span class="hl-red">'+redify(it.hl)+'</span></div>'+
+      (it.detail?'<div class="vp-detail">'+redify(it.detail)+'</div>':'')+
       '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">来源：'+esc(it.l)+' ↗</a></div>').join('')+'</div>').join('');
   el('i-summary').innerHTML = '<span class="lbl">机构观点 · 汇总提炼</span>'+splitSummary(cur.instsSummary||'');
   el('i-block').innerHTML = (cur.institutionViews||[]).map(p=>
     '<div class="person-block"><div><span class="pname">'+esc(p.name)+'</span><span class="prole">机构</span></div>'+
     p.items.map(it=>'<div class="vp-item">'+
-      '<div class="vp-hl"><span class="hl-red">'+esc(it.s)+'</span></div>'+
+      '<div class="vp-hl"><span class="hl-red">'+redify(it.s)+'</span></div>'+
       '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">（'+esc(it.l)+' ↗）</a></div>').join('')+'</div>').join('');
   el('n-summary').innerHTML = '<span class="lbl">新闻头条 · 汇总提炼</span>'+splitSummary(cur.newsSummary||'');
   el('n-block').innerHTML = (cur.topNews||[]).map((n,i)=>
@@ -819,7 +858,7 @@ function renderTab2(){
         + (p.tag?'<span class="np-tag">'+esc(p.tag)+'</span>':'')
         + (p.date?'<span class="np-date">'+esc(p.date)+'</span>':'')
         + '</div><div class="np-body">'
-        + '<div class="np-summary">'+redify(p.summary)+'</div>'
+        + '<div class="np-summary">'+proseBlock(p.summary)+'</div>'
         + (dimTbl?'<div class="np-sec-title">关键参数 · 数据表</div>'+dimTbl:'')
         + (showChart?'<div class="np-sec-title">'+(p.compare.title||'对比')+'</div><div class="np-chart" id="np-chart-'+slug(p.brand)+'"></div>':'')
         + '<div class="np-sec-title">深度解读 · 分类</div>'+(analysis||'')
@@ -856,7 +895,7 @@ function renderLaunchRadar(lr){
       '<div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700"><span>' + esc(p.vendor) + ' ' + esc(p.product) + '</span>' +
       '<span style="font-size:10px;font-weight:700;color:' + bc + ';background:' + bg + ';padding:1px 6px;border-radius:5px">' + badge + '</span></div>' +
       '<div style="margin-top:6px;font-size:12px;color:#7A8AA3"><b style="color:#1B2433">' + last + '</b> → <b style="color:#1B2433">' + now + '</b></div>' +
-      '<div style="font-size:11px;color:#7A8AA3;margin-top:4px">' + esc(w.note || '') + '</div></div>';
+      '<div style="font-size:11px;color:#7A8AA3;margin-top:4px">' + redify(w.note || '') + '</div></div>';
   }).join('');
   el('lr-wow').innerHTML = wow;
   // ② 其余机型定性芯片（无精确首销值）
@@ -990,7 +1029,7 @@ function drawMkt(key){
     sh.innerHTML = '<tr><th>厂商</th><th>份额(%)</th><th>同比变化(pp)</th></tr>'+d.shares.map(s=>'<tr><td><b>'+esc(s.brand)+'</b></td><td>'+s.share+'</td><td class="'+(s.chg.indexOf('+')===0?'up':'down')+'">'+esc(s.chg)+'</td></tr>').join('');
   } else { sh.innerHTML=''; el('mkt-share-note').textContent='（该品类暂无分厂商份额数据 · '+(mktGC==='global'?'全球':'中国')+'）'; }
   const seg = el('mkt-segments');
-  seg.innerHTML = d.segments? '<tr><th>分类</th><th>数值</th><th>说明</th></tr>'+d.segments.map(s=>'<tr><td>'+esc(s.name)+'</td><td><b>'+esc(s.val)+'</b></td><td>'+esc(s.note)+'</td></tr>').join('') : '';
+  seg.innerHTML = d.segments? '<tr><th>分类</th><th>数值</th><th>说明</th></tr>'+d.segments.map(s=>'<tr><td>'+esc(s.name)+'</td><td><b>'+esc(s.val)+'</b></td><td>'+redify(s.note)+'</td></tr>').join('') : '';
   const tbl = el('mkt-tbl');
   tbl.innerHTML = '<tr><th>周期</th><th>出货量(亿)</th><th>同比</th></tr>'+d.series.map(s=>'<tr><td>'+esc(s.label)+'</td><td>'+s.shipment+'</td><td>'+esc(s.yoy)+'</td></tr>').join('');
   drawMktShare(key);
@@ -1034,7 +1073,7 @@ function renderTerminalExtra(){
   if(cur.storagePrice){
     charts.exPrice = echarts.init(el('ex-price'));
     const t=cur.storagePrice;
-    el('ex-price-src').innerHTML = (t.note||t.sources||'').split('\n').map(function(l){return redify(l);}).join('<br/>');
+    el('ex-price-src').innerHTML = collapseNote(t.note||t.sources||'', '数据来源与口径');
     charts.exPrice.setOption({ title:{text:'存储实际合约价（绝对数值 · 美元）',left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis',formatter:function(ps){ let s='<b>'+ps[0].axisValue+'</b><br/>'; ps.forEach(p=>{ s+=p.marker+p.seriesName+'：<b>'+p.value+'</b>'+(t.unit[p.seriesName]||'')+'<br/>'; }); return s; }}, legend:{bottom:0}, grid:{left:55,right:30,top:46,bottom:46}, xAxis:{type:'category',data:t.quarters,axisLabel:{fontSize:11}}, yAxis:{type:'value',name:'美元'}, series:[
       {name:'DRAM(DDR4 8Gb)',type:'line',data:t.dram,smooth:true,symbolSize:7,lineStyle:{width:3},itemStyle:{color:'#2563eb'}},
       {name:'NAND(512Gb TLC)',type:'line',data:t.nand,smooth:true,symbolSize:7,lineStyle:{width:2.5},itemStyle:{color:'#7c3aed'}},
@@ -1044,9 +1083,9 @@ function renderTerminalExtra(){
     const s=cur.aiSubs;
     el('ex-subs').innerHTML = '<tr>'+s.headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr>'+s.rows.map(r=>{ const m=r.mom||''; const cls=m==='--'?'':(m.indexOf('-')===0?'down':'up'); return '<tr><td>'+r.rank+'</td><td><b>'+esc(r.name)+'</b></td><td>'+esc(r.company)+'</td><td>'+esc(r.region)+'</td><td>'+r.mau+'</td><td class="'+cls+'">'+esc(r.mom)+'</td><td>'+esc(r.trend)+'</td><td>'+esc(r.sub)+'</td></tr>'; }).join('');
   }
-  if(cur.aiStorage) el('ex-storage-news').innerHTML = cur.aiStorage.map(x=>'<div class="vp-item" style="border-bottom:1px dashed #eef2ff">· <b style="color:var(--accent)">'+esc(x.name)+'：</b>'+esc(x.trend)+' <a href="'+(x.u||'#')+'" target="_blank">（'+esc(x.l)+' ↗）</a></div>').join('');
+  if(cur.aiStorage) el('ex-storage-news').innerHTML = cur.aiStorage.map(x=>'<div class="vp-item" style="border-bottom:1px dashed #eef2ff">· <b style="color:var(--accent)">'+esc(x.name)+':</b>'+redify(x.trend)+' <a href="'+(x.u||'#')+'" target="_blank">（'+esc(x.l)+' ↗）</a></div>').join('');
   if(cur.aiCost){
-    el('ex-cost').innerHTML = cur.aiCost.map(x=>'<div class="cost-card"><div class="cc-name">'+esc(x.name)+' <span class="cc-dir '+(x.dir==='up'?'cc-up':x.dir==='down'?'cc-down':'cc-flat')+'">'+(x.dir==='up'?'↑ 涨':x.dir==='down'?'↓ 跌':'→ 平')+'</span></div><div class="cc-change"><b>变化方式：</b>'+esc(x.change)+'</div><div class="cc-impact"><b>对上下游影响：</b>'+esc(x.impact)+'</div><div class="hl-link" style="margin-top:8px"><a href="'+(x.u||'#')+'" target="_blank">'+esc(x.l)+' ↗</a></div></div>').join('');
+    el('ex-cost').innerHTML = cur.aiCost.map(x=>'<div class="cost-card"><div class="cc-name">'+esc(x.name)+' <span class="cc-dir '+(x.dir==='up'?'cc-up':x.dir==='down'?'cc-down':'cc-flat')+'">'+(x.dir==='up'?'↑ 涨':x.dir==='down'?'↓ 跌':'→ 平')+'</span></div><div class="cc-change"><b>变化方式：</b>'+redify(x.change)+'</div><div class="cc-impact"><b>对上下游影响：</b>'+redify(x.impact)+'</div><div class="hl-link" style="margin-top:8px"><a href="'+(x.u||'#')+'" target="_blank">'+esc(x.l)+' ↗</a></div></div>').join('');
     if(cur.aiCostTakeaway) el('ex-cost-take').innerHTML = '<b>综合研判与经营启示：</b>'+esc(cur.aiCostTakeaway);
   }
 }
@@ -1086,7 +1125,7 @@ function drawPie(id, card){
   inst.setOption({ title:{text:card.title,left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'}, legend:{bottom:0,type:'scroll'}, series:[{type:'pie',radius:['38%','66%'],data:(card.items||[]).map(i=>({name:i.label,value:i.value,itemStyle:{color:i.color}})), label:{formatter:'{b}\n{c}%',fontSize:11}}] }, true);
 }
 function drawTable(id, card){
-  el(id).innerHTML = '<tr>'+card.headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr>'+(card.rows||[]).map(r=>'<tr>'+r.map((x,i)=>{ const cls=(card.cls&&card.cls[i])?(' class="'+card.cls[i]+'"'):''; return '<td'+cls+'>'+esc(x)+'</td>'; }).join('')+'</tr>').join('');
+  el(id).innerHTML = '<tr>'+card.headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr>'+(card.rows||[]).map(r=>'<tr>'+r.map((x,i)=>{ const cls=(card.cls&&card.cls[i])?(' class="'+card.cls[i]+'"'):''; return '<td'+cls+'>'+redify(x)+'</td>'; }).join('')+'</tr>').join('');
 }
 function drawCombo(id, card){
   if(!window.echarts) return;
@@ -1308,13 +1347,13 @@ function renderInternet(m){
     el(id).innerHTML='<tr>'+m.subs.headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr>'+m.subs.rows.map(r=>{ const mm=r.mom||''; const cls=mm==='--'?'':(mm.indexOf('-')===0?'down':'up'); return '<tr><td>'+r.rank+'</td><td><b>'+esc(r.name)+'</b></td><td>'+esc(r.company)+'</td><td>'+esc(r.region)+'</td><td>'+r.mau+'</td><td class="'+cls+'">'+esc(r.mom)+'</td><td>'+esc(r.trend)+'</td><td>'+esc(r.sub)+'</td></tr>'; }).join(''); }
   if(m.openrouter){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
     wrap.innerHTML='<div class="section-title">OpenRouter 平台调用量 Top 模型 <span class="en">聚合平台 · 周调用 Tokens</span></div><table class="data-tbl show" id="'+id+'"></table>'; el('t4').appendChild(wrap);
-    el(id).innerHTML='<tr><th>模型</th><th>厂商</th><th>周调用(十亿 Token)</th><th>说明</th></tr>'+m.openrouter.map(r=>'<tr><td><b>'+esc(r.model)+'</b></td><td>'+esc(r.vendor)+'</td><td>'+esc(r.weeklyTokens)+'</td><td>'+esc(r.note)+'</td></tr>').join(''); }
+    el(id).innerHTML='<tr><th>模型</th><th>厂商</th><th>周调用(十亿 Token)</th><th>说明</th></tr>'+m.openrouter.map(r=>'<tr><td><b>'+esc(r.model)+'</b></td><td>'+esc(r.vendor)+'</td><td>'+esc(r.weeklyTokens)+'</td><td>'+redify(r.note)+'</td></tr>').join(''); }
   if(m.hfModels){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
     wrap.innerHTML='<div class="section-title">Hugging Face 下载榜 Top 模型 <span class="en">开源模型 · 累计下载</span></div><table class="data-tbl show" id="'+id+'"></table>'; el('t4').appendChild(wrap);
-    el(id).innerHTML='<tr><th>模型</th><th>下载量</th><th>说明</th></tr>'+m.hfModels.map(r=>'<tr><td><b>'+esc(r.model)+'</b></td><td>'+esc(r.downloads)+'</td><td>'+esc(r.note)+'</td></tr>').join(''); }
+    el(id).innerHTML='<tr><th>模型</th><th>下载量</th><th>说明</th></tr>'+m.hfModels.map(r=>'<tr><td><b>'+esc(r.model)+'</b></td><td>'+esc(r.downloads)+'</td><td>'+redify(r.note)+'</td></tr>').join(''); }
   if(m.aiProductStats){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
     wrap.innerHTML='<div class="section-title">AI 产品关键指标 <span class="en">Product Metrics</span></div><div class="cost-grid" id="'+id+'"></div>'; el('t4').appendChild(wrap);
-    el(id).innerHTML=m.aiProductStats.map(s=>'<div class="cost-card"><div class="cc-name">'+esc(s.name)+'</div><div class="cc-change"><b>'+esc(s.metric)+'：</b>'+esc(s.value)+'</div><div class="cc-impact">'+esc(s.note)+'</div></div>').join(''); }
+    el(id).innerHTML=m.aiProductStats.map(s=>'<div class="cost-card"><div class="cc-name">'+esc(s.name)+'</div><div class="cc-change"><b>'+esc(s.metric)+'：</b>'+esc(s.value)+'</div><div class="cc-impact">'+redify(s.note)+'</div></div>').join(''); }
 }
 
 function renderChip(m){
@@ -1327,7 +1366,7 @@ function renderChip(m){
       {name:'HBM',type:'line',data:t.hbm,smooth:true,symbolSize:7,lineStyle:{width:2.5,type:'dashed'},itemStyle:{color:'#ea580c'}} ] }, true); }
   if(m.storagePrice){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
     const sp=m.storagePrice;
-    const spNote=(sp.note||sp.sources||'').split('\n').map(function(l){return redify(l);}).join('<br/>');
+    const spNote=collapseNote(sp.note||sp.sources||'', '数据来源与口径');
     wrap.innerHTML='<div class="section-title">存储实际合约价（绝对数值 · 美元） <span class="en">2025Q1–2026Q3</span></div><div class="chart-box" id="'+id+'"></div><div class="storage-note">'+spNote+'</div>'; el('t4').appendChild(wrap);
     const t=m.storagePrice; const inst=echarts.init(el(id)); charts[id]=inst;
     inst.setOption({ title:{text:'存储实际合约价（绝对数值 · 美元）',left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis',formatter:function(ps){ let s='<b>'+ps[0].axisValue+'</b><br/>'; ps.forEach(p=>{ s+=p.marker+p.seriesName+'：<b>'+p.value+'</b>'+(t.unit[p.seriesName]||'')+'<br/>'; }); return s; }}, legend:{bottom:0}, grid:{left:55,right:30,top:46,bottom:46}, xAxis:{type:'category',data:t.quarters,axisLabel:{fontSize:11}}, yAxis:{type:'value',name:'美元'}, series:[
@@ -1336,12 +1375,12 @@ function renderChip(m){
       {name:'HBM(ASP/GB)',type:'line',data:t.hbm,smooth:true,symbolSize:7,lineStyle:{width:2.5,type:'dashed'},itemStyle:{color:'#ea580c'}} ] }, true); }
   if(m.procSpec){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
     wrap.innerHTML='<div class="section-title">手机 / 终端处理器规格排名 <span class="en">SoC Spec Ranking</span></div><table class="data-tbl show" id="'+id+'"></table>'; el('t4').appendChild(wrap);
-    el(id).innerHTML='<tr><th>排名</th><th>处理器</th><th>厂商</th><th>制程</th><th>CPU</th><th>GPU</th><th>NPU</th><th>搭载机型</th><th>说明</th></tr>'+m.procSpec.map(r=>'<tr><td>'+r.rank+'</td><td><b>'+esc(r.soc)+'</b></td><td>'+esc(r.vendor)+'</td><td>'+esc(r.process)+'</td><td>'+esc(r.cpu)+'</td><td>'+esc(r.gpu)+'</td><td>'+esc(r.npu)+'</td><td>'+esc(r.usedIn)+'</td><td>'+esc(r.note)+'</td></tr>').join(''); }
+    el(id).innerHTML='<tr><th>排名</th><th>处理器</th><th>厂商</th><th>制程</th><th>CPU</th><th>GPU</th><th>NPU</th><th>搭载机型</th><th>说明</th></tr>'+m.procSpec.map(r=>'<tr><td>'+r.rank+'</td><td><b>'+esc(r.soc)+'</b></td><td>'+esc(r.vendor)+'</td><td>'+esc(r.process)+'</td><td>'+esc(r.cpu)+'</td><td>'+esc(r.gpu)+'</td><td>'+esc(r.npu)+'</td><td>'+esc(r.usedIn)+'</td><td>'+redify(r.note)+'</td></tr>').join(''); }
   if(m.shareRank){
     const groups={}; m.shareRank.forEach(r=>{ (groups[r.cat]=groups[r.cat]||[]).push(r); });
     Object.keys(groups).forEach(cat=>{ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
       wrap.innerHTML='<div class="section-title">'+esc(cat)+' 份额排名 <span class="en">Share Ranking</span></div><table class="data-tbl show" id="'+id+'"></table>'; el('t4').appendChild(wrap);
-      el(id).innerHTML='<tr><th>厂商</th><th>份额(%)</th><th>说明</th></tr>'+groups[cat].map(r=>'<tr><td><b>'+esc(r.name)+'</b></td><td>'+esc(r.share)+'</td><td>'+esc(r.note)+'</td></tr>').join(''); });
+      el(id).innerHTML='<tr><th>厂商</th><th>份额(%)</th><th>说明</th></tr>'+groups[cat].map(r=>'<tr><td><b>'+esc(r.name)+'</b></td><td>'+esc(r.share)+'</td><td>'+redify(r.note)+'</td></tr>').join(''); });
   }
 }
 
@@ -1365,7 +1404,7 @@ function renderMacroBrief(){
     '<div class="mb-gauge">'+(b.gauge||[]).map(function(g){
       const col = g.p>=70?'#dc2626':(g.p<40?'#16a34a':'#ea580c');
       return '<div class="mb-g"><div class="n">'+esc(g.n)+' <span style="color:'+col+'">'+esc(g.v)+'</span></div>'+
-        '<div class="s">'+esc(g.s)+'</div><div class="mb-bar"><div class="mk" style="left:'+g.p+'%"></div></div>'+
+        '<div class="s">'+redify(g.s)+'</div><div class="mb-bar"><div class="mk" style="left:'+g.p+'%"></div></div>'+
         '<div class="mb-scale"><span>冷</span><span>温</span><span>热</span></div></div>';}).join('')+'</div></div>';
 }
 
@@ -1386,7 +1425,7 @@ function mcChartsHtml(list){
   if(!list||!list.length) return '';
   list.forEach(function(cc){ MC_CHART_MAP[cc.id]=cc; });
   return '<div class="mc-grid2">'+list.map(function(cc){
-    return '<div class="mc-chartcard"><div class="mc-ct">'+esc(cc.title)+'</div><div class="mc-cs">'+esc(cc.note||'')+'</div>'+
+    return '<div class="mc-chartcard"><div class="mc-ct">'+esc(cc.title)+'</div><div class="mc-cs">'+redify(cc.note||'')+'</div>'+
       '<div class="mc-chart" id="'+cc.id+'"></div></div>';
   }).join('')+'</div>';
 }
@@ -1399,7 +1438,7 @@ function mcSection(sec){
   return h;
 }
 function mcVerdict(t){
-  return t? '<div class="vp-summary"><b>核心判断</b><br>'+redify(t)+'</div>' : '';
+  return t? '<div class="vp-summary"><b>核心判断</b><br>'+proseBlock(t)+'</div>' : '';
 }
 function mcMgmt(list, title){
   if(!list || !list.length) return '';
@@ -1428,15 +1467,15 @@ function renderMacroT1(){
   el('ml-block').innerHTML = (cur.opinionLeaders||[]).map(function(p){
     return '<div class="person-block"><div class="person-head"><span class="pname">'+esc(p.name)+'</span><span class="prole">'+esc(p.role)+'</span></div>'+
       p.items.map(function(it){
-        return '<div class="vp-item"><div class="vp-hl"><span class="hl-red">'+esc(it.hl)+'</span></div>'+
-          (it.detail?'<div class="vp-detail">'+esc(it.detail)+'</div>':'')+
+        return '<div class="vp-item"><div class="vp-hl"><span class="hl-red">'+redify(it.hl)+'</span></div>'+
+          (it.detail?'<div class="vp-detail">'+redify(it.detail)+'</div>':'')+
           '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">来源：'+esc(it.l)+' ↗</a></div>';
       }).join('')+'</div>';
   }).join('');
   el('mi-block').innerHTML = '<tr><th>指标</th><th>发布机构</th><th>频率</th><th>最新值</th><th>对 2C 产业的影响</th></tr>'+
     (cur.metricNotes||[]).map(function(r){
       return '<tr><td><b>'+esc(r.metric)+'</b></td><td>'+esc(r.org)+'</td><td>'+esc(r.freq)+'</td>'+
-        '<td>'+esc(r.latest)+'</td><td>'+esc(r.imp||'')+'</td></tr>';
+        '<td>'+esc(r.latest)+'</td><td>'+redify(r.imp||'')+'</td></tr>';
     }).join('');
   el('mn-block').innerHTML = (cur.topNews||[]).map(function(n,i){
     return '<div class="news-row"><div class="news-rank">'+(i+1)+'</div><div class="news-main">'+
@@ -1509,11 +1548,11 @@ function renderMacroT2(){
   c.innerHTML = h;
   if(cur.releaseActions) el('ma-act').innerHTML = '<tr><th>时间</th><th>关键发布 / 窗口</th><th>关注什么</th><th>经营动作</th></tr>'+
     cur.releaseActions.map(function(a){
-      return '<tr><td><b>'+esc(a.d)+'</b></td><td>'+esc(a.item)+'</td><td>'+esc(a.watch)+'</td><td class="mgmt-cell">'+redify(a.action)+'</td></tr>';
+      return '<tr><td><b>'+esc(a.d)+'</b></td><td>'+esc(a.item)+'</td><td>'+redify(a.watch)+'</td><td class="mgmt-cell">'+redify(a.action)+'</td></tr>';
     }).join('');
   if(cur.policyDigest) el('m-dig').innerHTML = '<tr><th>发布机构</th><th>政策 / 事项</th><th>核心内容</th><th>对 2C 产业影响</th><th>管理启示</th></tr>'+
     cur.policyDigest.map(function(r){
-      return '<tr><td><b>'+esc(r.org)+'</b></td><td>'+esc(r.policy)+'</td><td>'+esc(r.content)+'</td><td>'+esc(r.impact)+'</td><td>'+esc(r.insight)+'</td></tr>';
+      return '<tr><td><b>'+esc(r.org)+'</b></td><td>'+esc(r.policy)+'</td><td>'+redify(r.content)+'</td><td>'+redify(r.impact)+'</td><td>'+redify(r.insight)+'</td></tr>';
     }).join('');
 }
 
