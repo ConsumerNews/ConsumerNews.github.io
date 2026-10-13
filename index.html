@@ -175,6 +175,30 @@ a:hover { text-decoration:underline; }
 /* Launch Radar 头部 */
 .lr-head { font-size:11.5px; color:#4b5563; background:#eef4ff; border:1px solid #d6e4ff; border-radius:8px; padding:8px 12px; margin-bottom:8px; line-height:1.6; }
 .lr-sub { font-size:11px; color:#9aa7bc; margin-bottom:6px; }
+/* Launch Radar v2 管理层看板 */
+.lr-verdict { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:10px 0 12px; }
+@media(max-width:900px){ .lr-verdict{ grid-template-columns:1fr; } }
+.lr-vcard { border:1px solid #E6EAF1; border-left:4px solid #2563eb; border-radius:9px; padding:10px 12px; background:#fff; }
+.lr-vtag { font-size:10px; font-weight:800; color:#2563eb; letter-spacing:1.5px; }
+.lr-vt { font-size:13.5px; font-weight:800; color:#1B2433; margin:3px 0 5px; line-height:1.45; }
+.lr-vs { font-size:11.5px; color:#4b5563; line-height:1.7; }
+.lr-kpis { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin:0 0 12px; }
+@media(max-width:900px){ .lr-kpis{ grid-template-columns:repeat(3,1fr); } }
+.lr-kpi { background:#f8fafc; border:1px solid #E6EAF1; border-radius:8px; padding:8px 10px; }
+.lr-kpi-v { font-size:17px; font-weight:800; line-height:1.15; }
+.lr-kpi-l { font-size:10.5px; color:#7A8AA3; margin-top:3px; line-height:1.4; }
+.lr-2up { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media(max-width:900px){ .lr-2up{ grid-template-columns:1fr; } }
+.lr-chart-box { border:1px solid #EEF1F6; border-radius:10px; padding:10px 10px 4px; margin-bottom:10px; background:#fff; }
+.lr-ct { font-size:12.5px; font-weight:800; color:#1B2433; margin-bottom:2px; }
+.lr-signal-box { border:1px solid #EEF1F6; border-radius:10px; padding:8px 12px 6px; background:#fbfcfe; margin-bottom:10px; }
+.lr-signal { font-size:11.5px; color:#4b5563; line-height:1.55; padding:5px 0; border-bottom:1px dashed #EEF1F6; }
+.lr-signal:last-child { border-bottom:none; }
+.lr-signal b { color:#1B2433; }
+.lr-star { color:#E0A106; font-weight:800; letter-spacing:1px; }
+.lr-chip { display:inline-block; font-size:10.5px; line-height:1.5; padding:1px 7px; border-radius:10px; margin:1px 3px 1px 0; }
+.lr-chip.g { color:#0f7a52; background:#E8F6EF; border:1px solid #bfe8d5; }
+.lr-chip.r { color:#b91c1c; background:#FDECEC; border:1px solid #f5c6c6; }
 
 /* Tab3 earnings */
 .earn-card { border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:16px; }
@@ -748,14 +772,21 @@ function renderTab2(){
   let html = '';
   if(cur.launchRadar && cur.launchRadar.products && cur.launchRadar.products.length){
     const lr = cur.launchRadar;
-    html += '<div class="card"><div class="section-title">新品首销横纵对比 · 周度 <span class="en">Launch Radar · 管理层实时首销看板</span></div>'+
-      '<div class="lr-head">数据更新：'+esc(lr.week||'')+'（截至 '+esc(lr.weekEnd||'')+'）· 来源：京东/酷安/微博抓取 + 第三方零售口径（RD观测/桑拓）· 指标：'+esc(lr.metric||'首销')+'（'+esc(lr.unit||'')+'）</div>'+
-      '<div class="lr-sub">纵向（上代→本代首销）见下方合并柱图；横向（同代机型首销）随各机型首销披露持续补全</div>'+
-      '<div id="lr-wow" style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0"></div>'+
-      '<div id="lr-combo" style="width:100%;height:300px"></div>'+
-      '<div id="lr-chips" style="display:flex;flex-wrap:wrap;gap:6px;margin:6px 0"></div>'+
-      '<table class="data-tbl show" id="lr-table" style="margin-top:6px"></table>'+
-      '<div style="font-size:10px;color:#9AA7BC;margin-top:6px">说明：仅已披露精确值画柱，未披露做定性标注；好评/差评率取自公开平台（京东/酷安/微博）抓取，待自动化填充真实值；"—"=未首销无样本。</div>'+
+    html += '<div class="card"><div class="section-title">新品首销纵横对比 · 管理层看板 <span class="en">Launch Radar · 首销 / 大盘 / 舆情</span></div>'+
+      '<div class="lr-head">数据截至 '+esc(lr.asOf||lr.weekEnd||'')+'（最新完整周 '+esc(lr.week||'')+'·'+esc(lr.weekEnd||'')+'）· 指标：'+esc(lr.metric||'系列累计激活量')+'（'+esc(lr.unit||'万台')+'）· 来源：RD观测 第三方 Sell-out 估算 + 京东/酷安/微博抓取</div>'+
+      '<div class="lr-verdict" id="lr-verdict"></div>'+
+      '<div class="lr-kpis" id="lr-kpis"></div>'+
+      '<div class="lr-chart-box"><div class="lr-ct">① 首销对比 · 各旗舰系列累计激活 vs 日均激活（柱=累计、红线=日均，开售天数进 tooltip，横向同代可比）</div><div id="lr-sales" style="width:100%;height:320px"></div></div>'+
+      '<div class="lr-2up">'+
+      '<div class="lr-chart-box"><div class="lr-ct">② 大盘 · 品牌份额 W39→W40（国庆+新机潮，大盘环比 +20%）</div><div id="lr-share" style="width:100%;height:270px"></div></div>'+
+      '<div class="lr-chart-box"><div class="lr-ct">③ iPhone 18 Pro 周度激活（柱=单周、红线=累计）</div><div id="lr-iphone" style="width:100%;height:270px"></div></div>'+
+      '</div>'+
+      '<div class="lr-2up">'+
+      '<div class="lr-chart-box"><div class="lr-ct">④ 舆情四象限 · 日均激活 × 京东好评率（气泡大小=累计激活）</div><div id="lr-bubble" style="width:100%;height:330px"></div></div>'+
+      '<div class="lr-signal-box"><div class="lr-ct">关键信号（一机一条，替代原周度长文卡）</div><div id="lr-signals"></div></div>'+
+      '</div>'+
+      '<div class="lr-chart-box"><div class="lr-ct">⑤ 舆情与消费者评价综合评估（京东自营好评率口径，10 月上旬抓取）</div><table class="data-tbl show" id="lr-eval" style="margin-top:4px"></table></div>'+
+      '<div id="lr-foot"></div>'+
       '</div>';
   }
   if(cur.launchCalendar && cur.launchCalendar.length){
@@ -883,61 +914,122 @@ function renderTab2(){
 }
 
 function renderLaunchRadar(lr){
-  // ① 周度变化（本周 vs 上周）卡片
-  const wow = lr.products.map(function(p){
-    const w = p.wow || {};
-    const last = (w.lastWeek == null) ? '—' : (w.lastWeek + ' 万');
-    const now = (w.thisWeek == null) ? '—' : (w.thisWeek + ' 万');
-    const badge = (w.badge === 'new') ? '本周首发' : (w.badge === 'warn') ? '虚高预警' : '待W40';
-    const bc = (w.badge === 'new') ? '#1FA971' : (w.badge === 'warn') ? '#E0A106' : '#9AA7BC';
-    const bg = (w.badge === 'new') ? '#E8F6EF' : (w.badge === 'warn') ? '#FCEFD6' : '#EEF1F6';
-    return '<div style="flex:1;min-width:200px;border:1px solid #E6EAF1;border-radius:9px;padding:8px 10px">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700"><span>' + esc(p.vendor) + ' ' + esc(p.product) + '</span>' +
-      '<span style="font-size:10px;font-weight:700;color:' + bc + ';background:' + bg + ';padding:1px 6px;border-radius:5px">' + badge + '</span></div>' +
-      '<div style="margin-top:6px;font-size:12px;color:#7A8AA3"><b style="color:#1B2433">' + last + '</b> → <b style="color:#1B2433">' + now + '</b></div>' +
-      '<div style="font-size:11px;color:#7A8AA3;margin-top:4px">' + redify(w.note || '') + '</div></div>';
+  // ① 管理层结论（观点明确：3 条）
+  el('lr-verdict').innerHTML = (lr.verdict||[]).map(function(v,i){
+    return '<div class="lr-vcard"><div class="lr-vtag">结论 '+(i+1)+'</div><div class="lr-vt">'+redify(v.t||'')+'</div><div class="lr-vs">'+redify(v.s||'')+'</div></div>';
   }).join('');
-  el('lr-wow').innerHTML = wow;
-  // ② 其余机型定性芯片（无精确首销值）
-  const chips = lr.products.filter(function(p){ return !(p.prevGen != null && p.currentGen != null); }).map(function(p){
-    return '<span style="font-size:11px;padding:3px 9px;border-radius:14px;border:1px solid #E6EAF1;color:#7A8AA3">' + esc(p.vendor) + ' ' + esc(p.product) + '：' + esc(p.qualitative || '待披露') + '</span>';
+  // ② KPI  chips（大盘 / 结构 / 头部机型）
+  el('lr-kpis').innerHTML = (lr.kpis||[]).map(function(k){
+    const c = k.tone==='up' ? '#dc2626' : (k.tone==='down' ? '#0f7a52' : '#2563eb');
+    return '<div class="lr-kpi"><div class="lr-kpi-v" style="color:'+c+'">'+esc(k.v)+'</div><div class="lr-kpi-l">'+esc(k.l)+'</div></div>';
   }).join('');
-  el('lr-chips').innerHTML = chips;
-  // ③ 消费者接受度状态矩阵（含抓取好评/差评率）
-  const rows = lr.products.map(function(p){
-    const rv = p.reviews || {};
-    const gr = (rv.goodRate == null) ? '—' : (rv.goodRate + '%');
-    const br = (rv.badRate == null) ? '—' : (rv.badRate + '%');
-    const grc = (rv.goodRate == null) ? '#9AA7BC' : (rv.goodRate >= 85 ? '#1FA971' : '#E0A106');
-    const brc = (rv.badRate == null) ? '#9AA7BC' : '#E0A106';
-    const dot = (p.pullStatus === 'green') ? '#1FA971' : (p.pullStatus === 'yellow') ? '#E0A106' : '#9AA7BC';
-    const stTxt = (p.pullStatus === 'green') ? '稳' : (p.pullStatus === 'yellow') ? '预警' : '待验';
-    return '<tr><td><b>' + esc(p.vendor) + ' ' + esc(p.product) + '</b></td>' +
-      '<td style="font-size:12px;line-height:1.5;color:#1B2433">' + esc(p.acceptance || '') + '</td>' +
-      '<td style="font-weight:800;color:' + grc + '">' + gr + '</td>' +
-      '<td style="font-weight:800;color:' + brc + '">' + br + '</td>' +
-      '<td style="font-size:10px;color:#7A8AA3">' + esc(rv.source || '') + '</td>' +
-      '<td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + dot + ';margin-right:5px;vertical-align:middle"></span>' + stTxt + '</td></tr>';
+  // ③ 关键信号（一机一条，替代原周度长文卡）
+  el('lr-signals').innerHTML = (lr.products||[]).map(function(p){
+    return '<div class="lr-signal"><b>'+esc(p.vendor)+' '+esc(p.short||p.product)+'</b>｜'+redify(p.signal||'')+'</div>';
   }).join('');
-  el('lr-table').innerHTML = '<tr><th>产品</th><th>接受度解读（Pull）</th><th>好评率</th><th>差评率</th><th>抓取平台</th><th>状态</th></tr>' + rows;
-  // ④ 横向+纵向合并柱状图（同图：灰=上代，蓝=本代）
-  const real = lr.products.filter(function(p){ return p.prevGen != null && p.currentGen != null; });
-  if(real.length && window.echarts){
-    const ch = echarts.init(el('lr-combo'));
-    charts['lr'] = ch;
-    ch.setOption({
-      grid: { left: 48, right: 20, top: 42, bottom: 30 },
-      legend: { top: 4, right: 6, itemWidth: 12, itemHeight: 12, textStyle: { fontSize: 11 } },
-      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-      xAxis: { type: 'category', data: real.map(function(p){ return p.product; }), axisLabel: { fontSize: 12, fontWeight: 600 }, axisTick: { show: false }, axisLine: { lineStyle: { color: '#E6EAF1' } } },
-      yAxis: { type: 'value', name: '万台', nameTextStyle: { fontSize: 11, color: '#7A8AA3' }, splitLine: { lineStyle: { color: '#EEF1F6' } }, axisLabel: { fontSize: 11 } },
-      series: [
-        { name: '上代首销', type: 'bar', barGap: '12%', barWidth: 34, itemStyle: { color: '#9AA7BC', borderRadius: [4,4,0,0] }, data: real.map(function(p){ return p.prevGen; }), label: { show: true, position: 'top', fontSize: 11, color: '#7A8AA3', formatter: '{c}' } },
-        { name: '本代首销', type: 'bar', barWidth: 34, itemStyle: { color: '#2563eb', borderRadius: [4,4,0,0] }, data: real.map(function(p){ return p.currentGen; }), label: { show: true, position: 'top', fontSize: 12, fontWeight: 800, color: '#2563eb', formatter: function(d){ return '+' + real[d.dataIndex].genDeltaPct + '%'; } } }
+  // ④ 口径与数据说明（长文折叠）
+  if(lr.footNote) el('lr-foot').innerHTML = '<div style="margin-top:2px">'+collapseNote(lr.footNote,'口径与数据说明')+'</div>';
+  // ⑤ 舆情与消费者评价综合评估表
+  const rows = (lr.products||[]).map(function(p){
+    const gr = (p.goodRate==null) ? '—' : p.goodRate+'%';
+    const grc = (p.goodRate==null) ? '#9AA7BC' : (p.goodRate>=99 ? '#0f7a52' : (p.goodRate>=97 ? '#2563eb' : '#E0A106'));
+    const pros = (p.pros||[]).map(function(x){ return '<span class="lr-chip g">'+esc(x)+'</span>'; }).join('');
+    const cons = (p.cons||[]).map(function(x){ return '<span class="lr-chip r">'+esc(x)+'</span>'; }).join('');
+    const rating = p.rating||0;
+    const stars = '<span class="lr-star">'+Array(Math.floor(rating)+1).join('★')+(rating%1>=0.5?'½':'')+'</span> <span style="font-size:10px;color:#9AA7BC">'+rating+'/5</span>';
+    return '<tr><td><b>'+esc(p.vendor)+' '+esc(p.short||p.product)+'</b><div style="font-size:10px;color:#9AA7BC;font-weight:400">'+esc(p.launch||'')+' 开售</div></td>'+
+      '<td style="font-weight:800;color:'+grc+'">'+gr+'<div style="font-size:9.5px;color:#9AA7BC;font-weight:400">'+esc(p.rateNote||'')+'</div></td>'+
+      '<td style="font-size:11px;color:#4b5563;line-height:1.5">'+redify(p.prevNote||'—')+'</td>'+
+      '<td>'+pros+'</td><td>'+cons+'</td>'+
+      '<td style="font-size:11.5px;line-height:1.6;color:#1B2433">'+redify(p.evalTxt||'')+'</td>'+
+      '<td style="white-space:nowrap">'+stars+'</td></tr>';
+  }).join('');
+  el('lr-eval').innerHTML = '<tr><th style="min-width:110px">机型</th><th>京东好评率</th><th style="min-width:130px">vs 上代</th><th style="min-width:140px">口碑亮点</th><th style="min-width:140px">口碑风险</th><th style="min-width:200px">综合评估</th><th>评级</th></tr>'+rows;
+  // ⑥ 图一：首销对比（柱=累计激活，红线=日均激活，双轴）
+  const ps = (lr.products||[]).filter(function(p){ return p.cum!=null; });
+  if(ps.length && window.echarts){
+    mkChart('lr-sales',{
+      grid:{left:46,right:52,top:38,bottom:46},
+      legend:{top:2,right:8,itemWidth:12,itemHeight:10,textStyle:{fontSize:11}},
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(paras){
+        const i=paras[0].dataIndex, p=ps[i];
+        let s='<b>'+esc(p.vendor)+' '+esc(p.short||p.product)+'</b>（'+esc(p.launch)+' 开售 · 约 '+p.days+' 天）<br/>';
+        s+='累计激活：<b>'+p.cum+' 万台</b><br/>日均激活：<b>'+(p.daily!=null?p.daily+' 万台/天':'—')+'</b><br/>';
+        s+='<span style="color:#9AA7BC">'+esc(p.prevNote||'')+'</span>';
+        return s;
+      }},
+      xAxis:{type:'category',data:ps.map(function(p){return p.short||p.product;}),axisLabel:{fontSize:11,fontWeight:600,interval:0,rotate:ps.length>6?26:0},axisTick:{show:false},axisLine:{lineStyle:{color:'#E6EAF1'}}},
+      yAxis:[
+        {type:'value',name:'万台',nameTextStyle:{fontSize:10,color:'#7A8AA3'},splitLine:{lineStyle:{color:'#EEF1F6'}},axisLabel:{fontSize:10}},
+        {type:'value',name:'万台/天',nameTextStyle:{fontSize:10,color:'#dc2626'},splitLine:{show:false},axisLabel:{fontSize:10}}
+      ],
+      series:[
+        {name:'累计激活',type:'bar',barWidth:26,itemStyle:{color:function(pp){return brandColor(ps[pp.dataIndex].vendor);},borderRadius:[4,4,0,0]},data:ps.map(function(p){return p.cum;}),label:{show:true,position:'top',fontSize:11,fontWeight:800,color:'#1B2433',formatter:'{c}'}},
+        {name:'日均激活',type:'line',yAxisIndex:1,symbol:'circle',symbolSize:7,lineStyle:{width:2.5,color:'#dc2626'},itemStyle:{color:'#dc2626'},data:ps.map(function(p){return p.daily;}),label:{show:true,position:'top',fontSize:10,fontWeight:700,color:'#dc2626',formatter:'{c}'}}
       ]
     });
   }
+  // ⑦ 图二：大盘品牌份额 W39 vs W40
+  const mk = lr.market||{};
+  if(mk.share && mk.share.length && window.echarts){
+    mkChart('lr-share',{
+      grid:{left:36,right:14,top:30,bottom:26},
+      legend:{top:2,right:6,itemWidth:12,itemHeight:10,textStyle:{fontSize:10.5}},
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+      xAxis:{type:'category',data:mk.share.map(function(s){return s.b;}),axisLabel:{fontSize:11,fontWeight:600},axisTick:{show:false},axisLine:{lineStyle:{color:'#E6EAF1'}}},
+      yAxis:{type:'value',name:'份额 %',nameTextStyle:{fontSize:10,color:'#7A8AA3'},splitLine:{lineStyle:{color:'#EEF1F6'}},axisLabel:{fontSize:10}},
+      series:[
+        {name:'W39',type:'bar',barGap:'15%',barWidth:16,itemStyle:{color:'#9AA7BC',borderRadius:[3,3,0,0]},data:mk.share.map(function(s){return s.w39;}),label:{show:true,position:'top',fontSize:10,color:'#7A8AA3'}},
+        {name:'W40',type:'bar',barWidth:16,itemStyle:{color:'#2563eb',borderRadius:[3,3,0,0]},data:mk.share.map(function(s){return s.w40;}),label:{show:true,position:'top',fontSize:10.5,fontWeight:800,color:'#2563eb'}}
+      ]
+    });
+  }
+  // ⑧ 图三：iPhone 18 Pro 周度激活（柱=单周，线=累计）
+  if(mk.iphoneWeekly && mk.iphoneWeekly.length && window.echarts){
+    mkChart('lr-iphone',{
+      grid:{left:38,right:42,top:30,bottom:26},
+      legend:{top:2,right:6,itemWidth:12,itemHeight:10,textStyle:{fontSize:10.5}},
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+      xAxis:{type:'category',data:mk.weeks||mk.iphoneWeekly.map(function(_,i){return 'W'+(38+i);}),axisLabel:{fontSize:11,fontWeight:600},axisTick:{show:false},axisLine:{lineStyle:{color:'#E6EAF1'}}},
+      yAxis:[
+        {type:'value',name:'万台/周',nameTextStyle:{fontSize:10,color:'#7A8AA3'},splitLine:{lineStyle:{color:'#EEF1F6'}},axisLabel:{fontSize:10}},
+        {type:'value',name:'累计万台',nameTextStyle:{fontSize:10,color:'#dc2626'},splitLine:{show:false},axisLabel:{fontSize:10}}
+      ],
+      series:[
+        {name:'单周激活',type:'bar',barWidth:30,itemStyle:{color:'#1d1d1f',borderRadius:[4,4,0,0]},data:mk.iphoneWeekly,label:{show:true,position:'top',fontSize:11,fontWeight:800,color:'#1d1d1f'}},
+        {name:'累计激活',type:'line',yAxisIndex:1,symbol:'circle',symbolSize:7,lineStyle:{width:2.5,color:'#dc2626'},itemStyle:{color:'#dc2626'},data:mk.iphoneCum||[],label:{show:true,position:'top',fontSize:10,fontWeight:700,color:'#dc2626'}}
+      ]
+    });
+  }
+  // ⑨ 图四：舆情四象限（X=日均激活，Y=京东好评率，气泡=累计激活）
+  const bp = (lr.products||[]).filter(function(p){ return p.cum!=null && p.goodRate!=null; });
+  if(bp.length && window.echarts){
+    mkChart('lr-bubble',{
+      grid:{left:46,right:26,top:34,bottom:42},
+      tooltip:{trigger:'item',formatter:function(d){
+        const p=bp[d.dataIndex];
+        return '<b>'+esc(p.vendor)+' '+esc(p.short||p.product)+'</b><br/>日均激活：'+p.daily+' 万台/天<br/>京东好评率：'+p.goodRate+'%<br/>累计激活：'+p.cum+' 万台';
+      }},
+      xAxis:{name:'日均激活（万台/天）',nameLocation:'middle',nameGap:26,nameTextStyle:{fontSize:10.5,color:'#7A8AA3'},type:'value',min:0,max:19,splitLine:{lineStyle:{color:'#EEF1F6'}},axisLabel:{fontSize:10}},
+      yAxis:{name:'京东好评率（%）',nameTextStyle:{fontSize:10.5,color:'#7A8AA3'},type:'value',min:92,max:103,splitLine:{lineStyle:{color:'#EEF1F6'}},axisLabel:{fontSize:10}},
+      series:[{
+        type:'scatter',
+        data:bp.map(function(p){ return {name:(p.short||p.product),value:[p.daily,p.goodRate,p.cum]}; }),
+        symbolSize:function(val){ return Math.max(16, Math.round(Math.sqrt(val[2])*3.4)); },
+        itemStyle:{color:function(pp){ return brandColor(bp[pp.dataIndex].vendor); },opacity:0.85,borderColor:'#fff',borderWidth:1.5},
+        label:{show:true,position:'top',fontSize:10,fontWeight:700,color:'#1B2433',formatter:'{b}'},
+        markLine:{silent:true,symbol:'none',lineStyle:{type:'dashed',color:'#9AA7BC'},label:{fontSize:9.5,color:'#9AA7BC'},data:[{xAxis:2.8,label:'日均分界'},{yAxis:98.5,label:'口碑分界'}]},
+        markArea:{silent:true,data:[
+          [{name:'量·口碑双优',xAxis:2.8,yAxis:98.5,itemStyle:{color:'rgba(31,169,113,0.07)'},label:{color:'#0f7a52',fontSize:11,fontWeight:800,position:'insideTopRight'}},{xAxis:19,yAxis:103}],
+          [{name:'卖爆·口碑裂',xAxis:2.8,yAxis:92,itemStyle:{color:'rgba(220,38,38,0.05)'},label:{color:'#b91c1c',fontSize:11,fontWeight:800,position:'insideBottomRight'}},{xAxis:19,yAxis:98.5}],
+          [{name:'量中·口碑优',xAxis:0,yAxis:98.5,itemStyle:{color:'rgba(37,99,235,0.05)'},label:{color:'#2563eb',fontSize:11,fontWeight:800,position:'insideTopLeft'}},{xAxis:2.8,yAxis:103}],
+          [{name:'量·口碑双弱',xAxis:0,yAxis:92,itemStyle:{color:'rgba(154,167,188,0.10)'},label:{color:'#7A8AA3',fontSize:11,fontWeight:800,position:'insideBottomLeft'}},{xAxis:2.8,yAxis:98.5}]
+        ]}
+      }]
+    });
+  }
 }
+function mkChart(id,opt){ if(!window.echarts) return; if(charts[id]){try{charts[id].dispose();}catch(e){} } charts[id]=echarts.init(el(id)); charts[id].setOption(opt); }
 
 /* ---------------- TAB3 最新财报解读 ---------------- */
 function renderTab3(){

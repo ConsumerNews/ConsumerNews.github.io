@@ -1,244 +1,366 @@
 {
   "launchRadar": {
-    "week": "W41",
-    "weekEnd": "2026-10-11",
-    "prevWeek": "W40",
-    "prevWeekEnd": "2026-10-04",
-    "metric": "首销3日激活量",
+    "week": "W40",
+    "weekEnd": "2026-10-04",
+    "asOf": "2026-10-13",
+    "metric": "系列累计激活量",
     "unit": "万台",
-    "summary": {
-      "tracked": 9,
-      "disclosed": 7,
-      "cumFirstSale": 146.58,
-      "wowNetNew": 20.91
-    },
+    "verdict": [
+      {
+        "t": "苹果「量稳口碑裂」：高端以价换量的风险外溢",
+        "s": "三周激活破 **300万**、W40 单周 **112万** 断层第一；但好评率 **96% 全阵营垫底**、Pro 版破发 **1100 元**、供应链传砍单 **15-20%**——量、价、口碑三者难兼得，双 11 是观察窗口。"
+      },
+      {
+        "t": "华为「量缩结构升」：高端守成靠结构而非台数",
+        "s": "Mate 90 首销 4 天 **27 万** 仅为上代七成，但 Pro+Pro Max 占 **七成**、均价抬升约 **2000 元**，收入口径好于台数；Pura X View 累计破 **50 万** 验证阔直板新赛道，供给是唯一瓶颈。"
+      },
+      {
+        "t": "荣耀黑马上位、小米掉队：胜负手是定价与备货",
+        "s": "荣耀份额 **10.5%→14.0%** 登顶安卓（Magic9 日均 **3 万**、京东首销日 **+200%**）；小米份额 **-3.9pp**、首销日仅上代 **三成**——反向定价+备货充足者胜。对华为启示：中高端须防荣耀性价比切入，供货与渠道前置决定首销天花板。"
+      }
+    ],
+    "kpis": [
+      {
+        "v": "+20%",
+        "l": "W40 大盘环比（国庆+新机潮）",
+        "tone": "up"
+      },
+      {
+        "v": "6600万台",
+        "l": "Q2 中国出货 -4.3% YoY（IDC）",
+        "tone": "down"
+      },
+      {
+        "v": "108万 : 289万",
+        "l": "国产六系列累计 : iPhone 单系列",
+        "tone": "flat"
+      },
+      {
+        "v": "300万+",
+        "l": "iPhone 18 Pro 三周累计激活",
+        "tone": "up"
+      },
+      {
+        "v": "6.7万/天",
+        "l": "华为 Mate 90 日均激活·国产第一",
+        "tone": "up"
+      },
+      {
+        "v": "14.0%",
+        "l": "荣耀 W40 份额·登顶安卓（+3.5pp）",
+        "tone": "up"
+      }
+    ],
     "products": [
       {
-        "vendor": "华为",
-        "product": "Pura X View",
-        "category": "阔直板",
-        "launchDate": "2026-09-09",
-        "prevGen": null,
-        "currentGen": 28.2,
-        "genDeltaPct": null,
-        "wow": {
-          "lastWeek": 28.2,
-          "thisWeek": 37.57,
-          "badge": "wait",
-          "note": "W38零售口径累计37.57万为最新披露值, W39-W41官方未再更新; 10/9观察:W39跌至畅销榜16名(缺货)、二手价反超官网500-700元, 256G版二手7700元超官网6999元; 华为低估受欢迎程度, OPPO大概率首个安卓阔直板跟进(2027年底)、荣耀第二; 生产瓶颈持续, Pura X(阔折叠)上市一年出货150万台"
-        },
-        "reviews": {
-          "goodRate": 97,
-          "badRate": 2,
-          "source": "京东金榜91分/天猫",
-          "status": "scraped_example"
-        },
-        "acceptance": "W38累计37.57万, 对应零售规模约22.5亿元; 首周28.2万登顶W37全品牌第一; 约30%用户来自苹果阵营; 阔直板开辟新赛道, 荣耀已立项跟进、阔折叠排期2027Q1; W39起缺货导致榜单下滑非冷遇",
-        "pullStatus": "green",
-        "dataStatus": "real"
-      },
-      {
         "vendor": "苹果",
-        "product": "iPhone 18 Pro",
+        "product": "iPhone 18 Pro 系列",
+        "short": "iPhone 18 Pro",
         "category": "直板旗舰",
-        "launchDate": "2026-09-18",
-        "prevGen": 24.83,
-        "currentGen": 32.28,
-        "genDeltaPct": 30,
-        "wow": {
-          "lastWeek": 289.09,
-          "thisWeek": 300.0,
-          "badge": "up",
-          "note": "10/10实时累计已破300万(7天130万→两周200万→三周289万→10/10破300万); W40末累计289.09万、单周Pro系列112万(ProMax 76万)、日均约17万/天; 10/10日经:Pro系列砍单15-20%但订单总量未实质调整, ProMax仍3-4周到货; Pro版破发直降1100元、黄牛拒收; Apple对Pro Max加单10-15%、Pro砍单10-15%; W41完整周度数据待10/18释放"
-        },
-        "reviews": {
-          "goodRate": 95,
-          "badRate": 3,
-          "source": "京东金榜94分",
-          "status": "scraped_example"
-        },
-        "acceptance": "三周累计289万、10/10实时已破300万、ProMax占55.5%并仍缺货、勃艮第酒红TOP1、Pro版破发直降1100元; 苹果公司砍单15-20%属实但需求向ProMax集中; 双11或进一步下行",
-        "pullStatus": "green",
-        "dataStatus": "real"
-      },
-      {
-        "vendor": "华为",
-        "product": "Mate XT2",
-        "category": "三折叠",
-        "launchDate": "2026-09-12",
-        "prevGen": null,
-        "currentGen": null,
-        "genDeltaPct": null,
-        "qualitative": "余承东9/29国际媒体圆桌会披露(10/6经华为X账号发布):截至9/29 Mate XT2出货近10万台、生命周期目标100万台; 第一代Mate XT及改款历史累计已破100万台; W41无新进展披露。误读修正:Mate XT2首销并未破100万,100万为第一代历史累计",
-        "wow": {
-          "lastWeek": null,
-          "thisWeek": 10.0,
-          "badge": "wait",
-          "note": "余承东9/29圆桌会:XT2截至9/29出货近10万台,生命周期目标100万台;误读修正:首代Mate XT历史累计100万≠XT2首销破100万;京东16+1TB报25499元、16+512报29088元(锦紫),溢价持续;首批30万秒罄后持续缺货"
-        },
-        "reviews": {
-          "goodRate": 95,
-          "badRate": 2,
-          "source": "京东/酷安",
-          "status": "scraped_example"
-        },
-        "acceptance": "余承东9/29圆桌会披露:XT2截至9/29出货近10万台、生命周期目标100万台(第一代历史累计已破100万);锦紫溢价最高3500元;展翼三折叠改U型双内折;灵盾防窥屏首次落地折叠机型;麒麟9050 Pro性能+42%",
-        "pullStatus": "green",
-        "dataStatus": "qualitative"
-      },
-      {
-        "vendor": "中兴",
-        "product": "AI 智能体手机二代",
-        "category": "AI手机",
-        "launchDate": "2026-09-16",
-        "prevGen": null,
-        "currentGen": null,
-        "genDeltaPct": null,
-        "qualitative": "9/16开售首日销售额一秒破亿(官方战报);京东预约37万+;整体备货约20万台、首批<10万;W41无新销量披露;MCP/A2A协议直连第三方接口非模拟点击;SAEP声明协议尝试建立边界",
-        "wow": {
-          "lastWeek": null,
-          "thisWeek": null,
-          "badge": "warn",
-          "note": "一秒破亿为销售额口径非激活量;AI跨应用仍限字节生态,微信/支付宝/美团仍只打开App不能完成App内操作;9/27王者荣耀风控冲突暴露端侧Agent与第三方安全机制的边界矛盾"
-        },
-        "reviews": {
-          "goodRate": null,
-          "badRate": null,
-          "source": "待抓取",
-          "status": "pending"
-        },
-        "acceptance": "首销一秒破亿热度高但为销售额口径;AI跨应用能力受限字节生态;9/27王者荣耀风控冲突暴露端侧Agent与第三方安全机制的边界矛盾;罗永浩已自费下单实测",
-        "pullStatus": "yellow",
-        "dataStatus": "qualitative"
-      },
-      {
-        "vendor": "vivo",
-        "product": "X500",
-        "category": "影像旗舰",
-        "launchDate": "2026-09-24",
-        "prevGen": null,
-        "currentGen": 7.4,
-        "genDeltaPct": null,
-        "qualitative": "W39首销周激活约7.4万台, 两款机型单款均值不足4万台, 受大杯X500 Pro 9/29延后开售拖累; W41官方周度数据待10/18释放",
-        "wow": {
-          "lastWeek": 7.4,
-          "thisWeek": 14.38,
-          "badge": "wait",
-          "note": "W40末累计14.38万维持, 日均约1.3万为六家最低; W40品牌份额13.12%环比+0.52pp, 单品失败未传导到品牌盘; X Fold6于10/13印度开售; W41完整周度数据待10/18释放"
-        },
-        "reviews": {
-          "goodRate": null,
-          "badRate": null,
-          "source": "待抓取",
-          "status": "pending"
-        },
-        "acceptance": "首销周7.4万台居三家之末; 蔡司影像口碑稳定但转化遇瓶颈; X500 Pro 9/29延后开售; 苹果降价与华为回归双重挤压",
-        "pullStatus": "yellow",
-        "dataStatus": "real"
-      },
-      {
-        "vendor": "OPPO",
-        "product": "Find X10",
-        "category": "影像旗舰",
-        "launchDate": "2026-09-24",
-        "prevGen": null,
-        "currentGen": 10.9,
-        "genDeltaPct": null,
-        "qualitative": "W39首销周激活约10.9万台, 三款机型分摊单款约3.6万台为国产三家最低; W41官方周度数据待10/18释放",
-        "wow": {
-          "lastWeek": 10.9,
-          "thisWeek": 17.57,
-          "badge": "wait",
-          "note": "W40末累计17.57万维持, 三款分摊单款均值不足6万; W40品牌份额11.89%环比-0.91pp; 10/11京东方与一加联合发布第四代东方屏; W41完整周度数据待10/18释放"
-        },
-        "reviews": {
-          "goodRate": null,
-          "badRate": null,
-          "source": "待抓取",
-          "status": "pending"
-        },
-        "acceptance": "首销周10.9万台, 单款均值3.6万台最低; 影像硬件下放到5499元标准版; 16GB占比偏高显示结构上移",
-        "pullStatus": "yellow",
-        "dataStatus": "real"
-      },
-      {
-        "vendor": "小米",
-        "product": "18 Pro",
-        "category": "直板旗舰",
-        "launchDate": "2026-09-23",
-        "prevGen": null,
-        "currentGen": 20.3,
-        "genDeltaPct": null,
-        "qualitative": "W39首销周激活约20.3万台居国产第一, 单款均值破10万台; 首销日仅上代三成, 周维度修复明显; W41官方周度数据待10/18释放",
-        "wow": {
-          "lastWeek": 20.3,
-          "thisWeek": 28.46,
-          "badge": "wait",
-          "note": "W40末累计28.46万维持居国产累计第一, 摊到约11天日均仅约2.6万为六家第三, 被Mate 90与荣耀反超; W40品牌份额10.99%环比-3.91pp为近一年最低; W41完整周度数据待10/18释放"
-        },
-        "reviews": {
-          "goodRate": null,
-          "badRate": null,
-          "source": "待抓取",
-          "status": "pending"
-        },
-        "acceptance": "W40末累计28.46万居国产累计第一但版本未上标准版、首销日仅上代三成; 口袋徕卡影像口碑成立; 标准版预计5499元起与Pro价差收窄",
-        "pullStatus": "yellow",
-        "dataStatus": "real"
-      },
-      {
-        "vendor": "荣耀",
-        "product": "Magic9",
-        "category": "直板旗舰",
-        "launchDate": "2026-09-28",
-        "prevGen": null,
-        "currentGen": 20.5,
-        "genDeltaPct": null,
-        "qualitative": "首销第三天激活同比上代+70%, 次日翻倍; 第五天仍居安卓旗舰激活第一; Pro Max约50%、标准版约38%、超能版约12%; 国产五家旗舰唯一正增长(+39%); Pro Max缺货发货排至10月下旬; 10/9余承东圆桌会:9/29数据, W40品牌份额冲至14%(W39为10.5%)、安卓第一",
-        "wow": {
-          "lastWeek": 20.5,
-          "thisWeek": 20.94,
-          "badge": "up",
-          "note": "W40末累计20.94万维持, 开售6天日均约3.5万居国产第二; W40品牌份额14%环比+3.5pp创近两年最高、安卓第一; ProMax约50%、1TB排期到11月; W41完整周度数据待10/18释放"
-        },
-        "reviews": {
-          "goodRate": null,
-          "badRate": null,
-          "source": "待抓取",
-          "status": "pending"
-        },
-        "acceptance": "反向定价的全档验证: 全系仅涨500至800元换来国庆七天每天安卓旗舰第一、领先约2倍; 首周激活超20.5万台; 缺货把部分订单推向10/12一加16与10/15红魔12 Pro+",
-        "pullStatus": "green",
-        "dataStatus": "qualitative"
+        "launch": "2026-09-18",
+        "days": 17,
+        "cum": 289.09,
+        "daily": 17,
+        "prevNote": "约为上代同期 **115%**；10/10 实时已破 **300万**",
+        "goodRate": 96.5,
+        "rateNote": "Pro 96% / Pro Max 97%",
+        "pros": [
+          "A20 Pro 性能独一档",
+          "屏幕显示顶尖",
+          "iOS 生态稳定"
+        ],
+        "cons": [
+          "发热降频·莫名重启",
+          "信号弱·品控瑕疵",
+          "外观挤牙膏·破发 1100 元"
+        ],
+        "evalTxt": "量仍断层第一，但口碑全阵营垫底：**卖爆与翻车热搜并存**，双 11 或价量双杀",
+        "rating": 3.5,
+        "signal": "三周激活破 **300万**；W40 单周 **112万**；破发直降 1100 元、供应链传砍单 15-20%"
       },
       {
         "vendor": "华为",
         "product": "Mate 90 系列",
+        "short": "Mate 90",
         "category": "直板旗舰",
-        "launchDate": "2026-10-01",
-        "prevGen": null,
-        "currentGen": 27.0,
-        "genDeltaPct": -28,
-        "qualitative": "10/1 12:08发布即开售;京东10/2观察标准版约9000台、Pro超2万台、Pro Max约9000台、典藏版约200台;渠道估算标准版同比-85%、Pro+208%(未官方确认);鸿蒙首日装机新增40万(Mate80首销日23.5万);Pro Max、RS一机难求发货排至10月25日后;W40 4天27.02万, W41完整周度数据待10/18释放",
-        "wow": {
-          "lastWeek": 27.0,
-          "thisWeek": 27.02,
-          "badge": "wait",
-          "note": "W40末累计27.02万(首销4天10/1-10/4)维持, 10/4后无新累计披露; 微信装机量推算首销36小时36万但非激活口径; 10/9渠道破发Pro版本直降300、RS仍溢价600、典藏版溢价最高1899;W41完整周度数据待10/18释放"
-        },
-        "reviews": {
-          "goodRate": null,
-          "badRate": null,
-          "source": "待抓取",
-          "status": "pending"
-        },
-        "acceptance": "首销四天超27万台, Pro与Pro Max合计吃下近七成订单, 越贵越好卖在华为自家数据上成立; 均价较上代抬升约2000元, 收入口径好于台数口径; 标准版与RS合计约三成; 首销日鸿蒙新增装机近40万台(上代23.5万)",
-        "pullStatus": "green",
-        "dataStatus": "qualitative"
+        "launch": "2026-10-01",
+        "days": 4,
+        "cum": 27.02,
+        "daily": 6.7,
+        "prevNote": "上代 Mate80 首销同期约 37.66 万（**-28%**）；高配占七成、均价 +约 2000 元",
+        "goodRate": 100,
+        "rateNote": "Pro Max 典藏版 100% 无差评",
+        "pros": [
+          "Pro+Pro Max 占七成",
+          "鸿蒙首日装机 40 万",
+          "翡冷绿等配色抢手"
+        ],
+        "cons": [
+          "标准版同比 -85%",
+          "Pro Max 缺货排至 10 月下旬",
+          "渠道破发·Pro 降 300 元"
+        ],
+        "evalTxt": "**量缩结构升**：台数为上代七成，但高配占七成、均价抬升，收入口径好于台数，高端基本盘稳固",
+        "rating": 4.5,
+        "signal": "首销 4 天 **27.02万**、日均 6.7 万国产第一；Pro Max 占 40%、Pro 占 30%"
+      },
+      {
+        "vendor": "华为",
+        "product": "Pura X View",
+        "short": "Pura X View",
+        "category": "阔直板",
+        "launch": "2026-09-09",
+        "days": 34,
+        "cum": 50,
+        "daily": 1.5,
+        "prevNote": "阔直板新品类·无上代；首销 5 天 30 万、国庆后累计破 50 万",
+        "goodRate": 97,
+        "rateNote": "京东金榜 91 分/天猫混合口径",
+        "pros": [
+          "累计销量破 50 万",
+          "约 30% 用户来自苹果阵营",
+          "开辟阔直板新赛道"
+        ],
+        "cons": [
+          "缺货致畅销榜下滑",
+          "二手溢价 500-700 元"
+        ],
+        "evalTxt": "**新赛道验证成功**，供给是唯一瓶颈；荣耀已立项跟进（排期 2027Q1）",
+        "rating": 4,
+        "signal": "累计破 **50万**；约 30% 果粉转粉；缺货+二手溢价 500-700 元"
+      },
+      {
+        "vendor": "荣耀",
+        "product": "Magic9 系列",
+        "short": "Magic9",
+        "category": "直板旗舰",
+        "launch": "2026-09-28",
+        "days": 7,
+        "cum": 20.94,
+        "daily": 3,
+        "prevNote": "首销 3 日激活同比 **+70%**；京东首销日同比 **+200%**",
+        "goodRate": 100,
+        "rateNote": "标准版 100%",
+        "pros": [
+          "京东首销日 +200%",
+          "30% 用户以旧换新",
+          "双 2 亿阿莱影像"
+        ],
+        "cons": [
+          "备货不足（CMO 自嘲）",
+          "Pro Max 排至 10 月下旬",
+          "1TB 排期到 11 月"
+        ],
+        "evalTxt": "**反向定价奏效**：全系仅涨 500-800 元，国庆七天安卓旗舰第一，份额 +3.5pp 登顶安卓",
+        "rating": 4.5,
+        "signal": "W40 末 20.94 万、日均 3 万国产第二；份额 10.5%→**14.0%** 安卓第一"
+      },
+      {
+        "vendor": "小米",
+        "product": "18 Pro 系列",
+        "short": "小米18 Pro",
+        "category": "直板旗舰",
+        "launch": "2026-09-23",
+        "days": 12,
+        "cum": 28.46,
+        "daily": 2.6,
+        "prevNote": "首销周 20.3 万、同比回落；**首销日仅上代三成**",
+        "goodRate": 98,
+        "rateNote": "Pro 98%",
+        "pros": [
+          "口袋徕卡影像口碑成立",
+          "硬件防窥屏差异化",
+          "7000mAh 续航 10h+"
+        ],
+        "cons": [
+          "首销日仅上代三成",
+          "W40 份额 11.0%（-3.9pp）",
+          "系统广告影响体验"
+        ],
+        "evalTxt": "产品口碑成立但操盘节奏被动：标准版缺席、首销冲高乏力，累计第一含**在售最久**水分",
+        "rating": 3.5,
+        "signal": "累计 28.46 万居国产第一；但首销周同比回落、份额跌至 11.0%"
+      },
+      {
+        "vendor": "OPPO",
+        "product": "Find X10 系列",
+        "short": "Find X10",
+        "category": "影像旗舰",
+        "launch": "2026-09-24",
+        "days": 11,
+        "cum": 17.57,
+        "daily": 1.6,
+        "prevNote": "标准版首销日 = 上代 **135%**",
+        "goodRate": 99,
+        "rateNote": "标准版 99%",
+        "pros": [
+          "标准版首销日 +35%",
+          "8000mAh 长续航",
+          "双 2 亿哈苏长焦"
+        ],
+        "cons": [
+          "单款均值 3.6 万最低",
+          "W40 份额 11.9%（-0.91pp）",
+          "后盖缝隙等品控个例"
+        ],
+        "evalTxt": "**更强标准版策略口碑兑现**（5499 元下放影像），但量能未起、份额小幅回落",
+        "rating": 4,
+        "signal": "累计 17.57 万；三款分摊单款均值最低；16GB 占比偏高、结构上移"
+      },
+      {
+        "vendor": "vivo",
+        "product": "X500 系列",
+        "short": "vivo X500",
+        "category": "影像旗舰",
+        "launch": "2026-09-24",
+        "days": 11,
+        "cum": 14.38,
+        "daily": 1.3,
+        "prevNote": "首销日约为上代 **112%**",
+        "goodRate": 99,
+        "rateNote": "系列三款均 99%",
+        "pros": [
+          "7500mAh 续航",
+          "人像/视频影像口碑"
+        ],
+        "cons": [
+          "涨价 1100 元缩水争议",
+          "砍运存不公示",
+          "重度游戏降频"
+        ],
+        "evalTxt": "口碑不差但**定价诚意遭质疑**：涨价+砍运存未公示，转化遇瓶颈，日均六家最低",
+        "rating": 3.5,
+        "signal": "累计 14.38 万、日均 1.3 万六家最低；X500 Pro 延后开售拖累"
+      },
+      {
+        "vendor": "vivo",
+        "product": "iQOO 16",
+        "short": "iQOO 16",
+        "category": "性能旗舰",
+        "launch": "2026-09-29",
+        "days": 6,
+        "cum": 8,
+        "daily": 1.3,
+        "prevNote": "安卓旗舰**单品销量第一**",
+        "goodRate": null,
+        "rateNote": "待抓取",
+        "pros": [
+          "单品日均与 X500 系列持平",
+          "性能旗舰定位清晰"
+        ],
+        "cons": [
+          "单品作战无系列协同"
+        ],
+        "evalTxt": "以一款机型打出与 X500 系列（两款）持平的日均，**单品效率六家最高之一**",
+        "rating": 4,
+        "signal": "开售 6 天 8 万；安卓旗舰单品销量第一（vivo 子品牌）"
+      },
+      {
+        "vendor": "华为",
+        "product": "Mate XT2 三折叠",
+        "short": "Mate XT2",
+        "category": "三折叠",
+        "launch": "2026-09-12",
+        "days": 18,
+        "cum": 10,
+        "daily": 0.6,
+        "prevNote": "截至 9/29 出货近 10 万（余承东圆桌会）；生命周期目标 100 万",
+        "goodRate": 95,
+        "rateNote": "京东/酷安抓取",
+        "pros": [
+          "生命周期目标 100 万台",
+          "锦紫溢价最高 3500 元",
+          "灵盾防窥首落地折叠"
+        ],
+        "cons": [
+          "首批 30 万秒罄后持续缺货"
+        ],
+        "evalTxt": "三折叠供给受限、溢价显示需求仍旺；**100 万为生命周期目标而非首销**（误读修正）",
+        "rating": 4,
+        "signal": "截至 9/29 出货近 **10万**；溢价最高 3500 元、持续缺货"
+      },
+      {
+        "vendor": "中兴",
+        "product": "AI 智能体手机二代",
+        "short": "中兴AI手机2代",
+        "category": "AI 手机",
+        "launch": "2026-09-16",
+        "days": 27,
+        "cum": null,
+        "daily": null,
+        "prevNote": "首日一秒破亿（**销售额口径**，非激活）",
+        "goodRate": null,
+        "rateNote": "待抓取",
+        "pros": [
+          "首日销售额一秒破亿",
+          "京东预约 37 万+"
+        ],
+        "cons": [
+          "AI 跨应用限字节生态",
+          "与第三方风控冲突（王者荣耀）"
+        ],
+        "evalTxt": "声量大于销量：AI Agent 跨应用边界未破，**销售额口径难证真实激活**",
+        "rating": 3,
+        "signal": "一秒破亿为销售额口径；激活量未披露、口碑待抓取"
       }
-    ]
+    ],
+    "market": {
+      "weeks": [
+        "W38",
+        "W39",
+        "W40"
+      ],
+      "share": [
+        {
+          "b": "苹果",
+          "w39": 27.5,
+          "w40": 26.3
+        },
+        {
+          "b": "华为",
+          "w39": 18.1,
+          "w40": 20.7
+        },
+        {
+          "b": "小米",
+          "w39": 14.9,
+          "w40": 11
+        },
+        {
+          "b": "OPPO",
+          "w39": 12.8,
+          "w40": 11.9
+        },
+        {
+          "b": "vivo",
+          "w39": 12.6,
+          "w40": 13.1
+        },
+        {
+          "b": "荣耀",
+          "w39": 10.5,
+          "w40": 14
+        }
+      ],
+      "iphoneWeekly": [
+        83,
+        93,
+        112
+      ],
+      "iphoneCum": [
+        83,
+        176,
+        288
+      ],
+      "context": [
+        "2026 Q2 中国智能手机出货 6600 万台、-4.3% YoY，连续第五个季度下滑（IDC）",
+        "2026 全年预计出货 2.78 亿台、-2.2%；600 美元以上高端份额预计 35.9%",
+        "存储涨价推高 BOM，本季旗舰普涨 400—1500 元；华为/苹果为前六中仅有的正增长品牌（约 +20%/+25%）"
+      ]
+    },
+    "footNote": "① 激活量为第三方（RD观测）Sell-out 估算，截至 W40（10/4）；10/5—10/11 仅有点状披露（iPhone 破 300 万、Pura X View 破 50 万），W41 完整周度数据待释放；② 好评率为京东自营抓取（10 月上旬，取系列代表机型），不同配置/批次存在差异；③ vs 上代为首销日/同窗口口径，各厂商统计范围未完全披露，绝对值当量级参考；④「待抓取」为尚未获得公开数据，不做臆测；⑤ 本面板为管理层决策参照，非官方战报。"
   },
-  "updateTime": "2026-10-13 06:00",
+  "updateTime": "2026-10-13",
   "headlineViewpoints": [
     {
       "t": "三季度全球出货同比跌两成，苹果却拿下史上最高 Q3 份额",
