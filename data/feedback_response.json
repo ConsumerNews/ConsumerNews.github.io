@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-30",
+  "updatedAt": "2026-10-22",
   "note": "由「2C看板·用户反馈处理」自动化每日归集公开 feedback Issue 后生成；index.html / feedback-viewer.html 可读取展示。",
   "items": [
     {
@@ -8,6 +8,14 @@
       "type": "纠错",
       "question": "看板多栏内容堆叠、缺结构化与标红加粗，建议凝练并突出关键信息",
       "response": "收到！你提的「凝练+关键信息标红加粗+图表下少堆字」已记录，会分期在内容迭代中优化，先改新品发布与财报两栏。",
+      "status": "answered"
+    },
+    {
+      "id": "#3",
+      "category": "汽车",
+      "type": "建议",
+      "question": "汽车板块财报速递从④起格式错乱，建议修复排版",
+      "response": "收到！汽车板块财报速递第④项起排版错乱已记录，我们排期修复版式，感谢指正～",
       "status": "answered"
     }
   ]
