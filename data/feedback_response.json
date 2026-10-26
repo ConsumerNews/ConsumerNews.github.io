@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22",
+  "updatedAt": "2026-10-26",
   "note": "由「2C看板·用户反馈处理」自动化每日归集公开 feedback Issue 后生成；index.html / feedback-viewer.html 可读取展示。",
   "items": [
     {
@@ -16,6 +16,14 @@
       "type": "建议",
       "question": "汽车板块财报速递从④起格式错乱，建议修复排版",
       "response": "收到！汽车板块财报速递第④项起排版错乱已记录，我们排期修复版式，感谢指正～",
+      "status": "answered"
+    },
+    {
+      "id": "#4",
+      "category": "汽车",
+      "type": "纠错",
+      "question": "汽车财报速递内容溢出需提炼结构化；市场大盘与新品汇总表待优化排版",
+      "response": "收到！汽车财报速递与市场大盘追踪内容溢出、排版待优化已记录，我们排期重构版式并提升可读性，感谢反馈～",
       "status": "answered"
     }
   ]
