@@ -1797,7 +1797,7 @@ function mcOpt(cfg){
   return {};
 }
 
-/* ---------------- 访问计数：由不蒜子(busuanzi)前端脚本自动填充，GitHub Pages 静态托管即可，无需服务端函数 ---------------- */
+/* ---------------- 访问计数：优先不蒜子(busuanzi)，0.8s 未回填则自动切换 Vercount（见页头看门狗脚本）；GitHub Pages 静态托管，无需服务端函数 ---------------- */
 
 function setUpdate(){
   const ut = cur.updateTime || DATA.terminal.updateTime || '';
