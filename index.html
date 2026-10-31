@@ -462,7 +462,7 @@ a:hover { text-decoration:underline; }
       </div>
       <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
       <script>
-      /* 访问计数：优先不蒜子；若 3 秒内未回填（其计数接口已长期 502，兜底域名亦失效），
+      /* 访问计数：优先不蒜子；1.5 秒内未回填（其计数接口长期 502、兜底域名已失效），
          则切换为 Vercount（写入同一批 busuanzi_value_* DOM id），确保页面一定出数字 */
       (function () {
         function filled() {
@@ -476,7 +476,7 @@ a:hover { text-decoration:underline; }
           s.src = 'https://events.vercount.one/js';
           s.async = true;
           document.head.appendChild(s);
-        }, 3000);
+        }, 1500);
       })();
       </script>
       <div class="badge" id="update-badge" data-page-node-id="uEwyCHaj4lKT5ev5OA8MnR">更新中…</div>
