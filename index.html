@@ -94,6 +94,10 @@ a:hover { text-decoration:underline; }
 .hl-card h4 { font-size:15px; font-weight:700; display:inline; }
 .hl-support { font-size:14.5px; color:#4b5563; margin-top:9px; line-height:1.7; }
 .hl-link { font-size:11px; margin-top:6px; }
+/* 宏观：对集团启示 callout + 集团视角标签 */
+.hl-impl { margin-top:10px; padding:10px 12px; background:#f6fdfb; border:1px solid #cce8e2; border-left:4px solid var(--accent); border-radius:8px; font-size:14px; color:#374151; line-height:1.75; }
+.hl-impl .grp-tag { display:inline-block; font-size:11px; font-weight:800; color:#fff; background:var(--accent); border-radius:5px; padding:1px 7px; margin-right:7px; vertical-align:1px; }
+.grp-tag { display:inline-block; font-size:11px; font-weight:800; color:#fff; background:var(--accent); border-radius:5px; padding:1px 7px; margin-right:6px; }
 
 .person-block { border:1px solid #e5e7eb; border-radius:10px; padding:14px 16px; margin-bottom:12px; }
 .person-block .pname { font-size:15px; font-weight:800; color:#1f2937; }
@@ -386,6 +390,17 @@ a:hover { text-decoration:underline; }
 /* 市场：数据来源与口径 */
 .mkt-src { font-size:11.5px; color:#6b7280; line-height:1.7; margin-top:8px; padding:8px 12px; background:#f8fafc; border-left:3px solid var(--accent); border-radius:6px; }
 .mkt-src b { color:#374151; }
+/* 芯片份额：按环节分组的紧凑表格（替代每张卡片一个品类导致的卡片爆炸） */
+.sr-scroll { max-height:520px; overflow-y:auto; margin-top:4px; padding-right:4px; }
+.sr-group { margin-bottom:14px; }
+.sr-group:last-child { margin-bottom:0; }
+.sr-cat { font-size:13px; font-weight:800; color:var(--accent-deep); margin:6px 0 6px; padding:4px 9px; background:#eef6ff; border-radius:6px; display:flex; align-items:center; gap:8px; }
+.sr-cnt { font-size:11px; font-weight:700; color:#64748b; background:#fff; border:1px solid #dbeafe; border-radius:10px; padding:0 8px; }
+.sr-tbl { margin:0 0 4px; }
+.sr-tbl td.num { white-space:nowrap; font-weight:700; color:#374151; text-align:center; }
+/* 大板块通用：数据来源小字 */
+.src-note { font-size:11.5px; color:#6b7280; line-height:1.65; margin-top:8px; padding:7px 11px; background:#f8fafc; border-left:3px solid var(--accent); border-radius:6px; }
+.src-note b { color:#374151; }
 
 /* ===== 宏观经济板块 ===== */
 .mb-brief{border:2px solid var(--accent);background:linear-gradient(180deg,#f6fdfb,#fff);}
@@ -1516,6 +1531,9 @@ function renderInternet(m){
     if(cap.cnCompanies && cap.cnCompanies.length) capexCard('国内主要互联网公司资本开支（分公司·估算）','China Internet Capex · 单位：十亿元', cap.cnCompanies, '十亿元');
     const capNote=(cap.note||'').split('\n').map(function(l){return redify(l);}).join('<br/>');
     if(capNote){ const nid='ac'+(autoCardSeq++); const nw=document.createElement('div'); nw.className='card'; nw.innerHTML='<div class="storage-note" style="padding:10px 14px">'+capNote+'</div>'; el('t4').appendChild(nw); }
+    const csn='ac'+(autoCardSeq++); const csw=document.createElement('div'); csw.className='card';
+    csw.innerHTML='<div class="src-note">数据来源与口径：<b>美国三大云厂（微软 / 亚马逊 / Google / Meta）取自各公司财报与业绩会指引</b>；国内（字节 / 阿里 / 腾讯等）为第三方估算，口径与会计确认值存在偏差。单位见各图标题。</div>';
+    el('t4').appendChild(csw);
   }
   if(m.subs){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
     wrap.innerHTML='<div class="section-title">AI 助手月活 / 订阅 <span class="en">AI Assistants · MAU</span></div><table class="data-tbl show" id="'+id+'"></table>'; el('t4').appendChild(wrap);
@@ -1538,7 +1556,10 @@ function renderChip(m){
     inst.setOption({ title:{text:'存储综合合约价指数（基准=100）',left:'center',textStyle:{fontSize:13,color:'#1f2937'}}, tooltip:{trigger:'axis'}, legend:{bottom:0}, grid:{left:50,right:30,top:46,bottom:46}, xAxis:{type:'category',data:t.months}, yAxis:{type:'value',name:'指数'}, series:[
       {name:'DRAM',type:'line',data:t.dram,smooth:true,symbolSize:7,lineStyle:{width:3},itemStyle:{color:'#2563eb'}},
       {name:'NAND',type:'line',data:t.nand,smooth:true,symbolSize:7,lineStyle:{width:2.5},itemStyle:{color:'#7c3aed'}},
-      {name:'HBM',type:'line',data:t.hbm,smooth:true,symbolSize:7,lineStyle:{width:2.5,type:'dashed'},itemStyle:{color:'#ea580c'}} ] }, true); }
+      {name:'HBM',type:'line',data:t.hbm,smooth:true,symbolSize:7,lineStyle:{width:2.5,type:'dashed'},itemStyle:{color:'#ea580c'}} ] }, true);
+    const sn='ac'+(autoCardSeq++); const sw=document.createElement('div'); sw.className='card';
+    sw.innerHTML='<div class="src-note">数据来源与口径：<b>TrendForce / DRAMeXchange 合约价指数</b>（DRAM / NAND / HBM 基准=100，2025Q1 起）。指数反映综合合约价走势，非绝对单价；HBM 因堆叠层数与带宽差异，单价波动独立于标准型 DRAM。</div>';
+    el('t4').appendChild(sw); }
   if(m.storagePrice){ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
     const sp=m.storagePrice;
     const spNote=collapseNote(sp.note||sp.sources||'', '数据来源与口径');
@@ -1553,9 +1574,18 @@ function renderChip(m){
     el(id).innerHTML='<tr><th>排名</th><th>处理器</th><th>厂商</th><th>制程</th><th>CPU</th><th>GPU</th><th>NPU</th><th>搭载机型</th><th>说明</th></tr>'+m.procSpec.map(r=>'<tr><td>'+r.rank+'</td><td><b>'+esc(r.soc)+'</b></td><td>'+esc(r.vendor)+'</td><td>'+esc(r.process)+'</td><td>'+esc(r.cpu)+'</td><td>'+esc(r.gpu)+'</td><td>'+esc(r.npu)+'</td><td>'+esc(r.usedIn)+'</td><td>'+redify(r.note)+'</td></tr>').join(''); }
   if(m.shareRank){
     const groups={}; m.shareRank.forEach(r=>{ (groups[r.cat]=groups[r.cat]||[]).push(r); });
-    Object.keys(groups).forEach(cat=>{ const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
-      wrap.innerHTML='<div class="section-title">'+esc(cat)+' 份额排名 <span class="en">Share Ranking</span></div><table class="data-tbl show" id="'+id+'"></table>'; el('t4').appendChild(wrap);
-      el(id).innerHTML='<tr><th>厂商</th><th>份额(%)</th><th>说明</th></tr>'+groups[cat].map(r=>'<tr><td><b>'+esc(r.name)+'</b></td><td>'+esc(r.share)+'</td><td>'+redify(r.note)+'</td></tr>').join(''); });
+    const id='ac'+(autoCardSeq++); const wrap=document.createElement('div'); wrap.className='card';
+    const segs = Object.keys(groups).map(function(cat){
+      const body = groups[cat].map(function(r){
+        return '<tr><td><b>'+esc(r.name)+'</b></td><td class="num">'+esc(r.share||'—')+'</td><td>'+redify(r.note||'')+'</td></tr>';
+      }).join('');
+      return '<div class="sr-group"><div class="sr-cat">'+esc(cat)+' <span class="sr-cnt">'+groups[cat].length+'</span></div>'+
+        '<table class="data-tbl show sr-tbl"><tr><th>厂商 / 标的</th><th>份额 / 指标</th><th>说明与口径</th></tr>'+body+'</table></div>';
+    }).join('');
+    wrap.innerHTML='<div class="section-title">产业链份额与关键指标 <span class="en">Share &amp; Key Metrics · 按环节分组</span></div>'+
+      '<div class="src-note">数据源：<b>TrendForce / 各厂商财报与公告</b>；份额为各细分环节口径（非全市场汇总），按「代工 / 存储 / 设备 / 封装 / HBM / 国产化」等环节归类，下方可滚动。</div>'+
+      '<div class="sr-scroll">'+segs+'</div>';
+    el('t4').appendChild(wrap);
   }
 }
 
@@ -1569,7 +1599,7 @@ function renderMacroBrief(){
   if(curCat!=='macro' || curTab!=='t1' || !DATA.macro || !DATA.macro.brief){ box.innerHTML=''; return; }
   const b = DATA.macro.brief;
   box.innerHTML =
-    '<div class="card mb-brief"><div class="section-title">管理层摘要 <span class="en">Macro Executive Summary · '+esc(b.window||'')+'</span></div>'+
+    '<div class="card mb-brief"><div class="section-title"><span class="grp-tag">大型集团企业视角</span>集团经营主线摘要 <span class="en">Macro Executive Summary · '+esc(b.window||'')+'</span></div>'+
     '<div class="mb-lead">'+redify(b.lead||'')+'</div>'+
     '<div class="mb-pts">'+(b.conclusions||[]).map(function(p,i){
       return '<div class="mb-pt"><div class="n">'+(i+1)+'</div><div class="b">'+redify(p)+'</div></div>';}).join('')+'</div>'+
@@ -1636,14 +1666,14 @@ function renderMacroT1(){
   el('mh-grid').innerHTML = (cur.headlineViewpoints||[]).map(function(h,i){
     return '<div class="hl-card"><div><span class="hl-rank">'+(i+1)+'</span><h4>'+redify(h.t)+'</h4></div>'+
       '<div class="hl-support">'+redify(h.s)+'</div>'+
-      (h.impl?'<div class="hl-impl">'+redify(h.impl)+'</div>':'')+
+      (h.impl?'<div class="hl-impl"><span class="grp-tag">集团启示</span>'+redify(h.impl)+'</div>':'')+
       '<div class="hl-link"><a href="'+(h.u||'#')+'" target="_blank" rel="noopener">'+esc(h.l)+' ↗</a></div></div>';
   }).join('');
   el('ml-block').innerHTML = (cur.opinionLeaders||[]).map(function(p){
     return '<div class="person-block"><div class="person-head"><span class="pname">'+esc(p.name)+'</span><span class="prole">'+esc(p.role)+'</span></div>'+
       p.items.map(function(it){
-        return '<div class="vp-item"><div class="vp-hl"><span class="hl-red">'+redify(it.hl)+'</span></div>'+
-          (it.detail?'<div class="vp-detail">'+redify(it.detail)+'</div>':'')+
+        return '<div class="inst-item"><div class="inst-it-title">'+redify(it.hl)+'</div>'+
+          (it.detail?'<div class="inst-it-body">'+redify(it.detail)+'</div>':'')+
           '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">来源：'+esc(it.l)+' ↗</a></div>';
       }).join('')+'</div>';
   }).join('');
@@ -1736,11 +1766,11 @@ function renderMacroT3(){
   const c = el('t3');
   const s = cur.industryProfit || {};
   let h = '<div class="card"><div class="section-title">一、规模以上工业企业利润 <span class="en">Industrial Profits · '+esc((cur.asOf&&cur.asOf.profit)||'')+'</span></div>'+
-    mcVerdict(s.verdict)+ mcMgmt(s.mgmt)+ mcSection(s) +'</div>';
+    mcVerdict(s.verdict)+ mcMgmt(s.mgmt,'集团视角 · 管理启示')+ mcSection(s) +'</div>';
   if(cur.electronicsMfg){
     const e = cur.electronicsMfg;
     h += '<div class="card"><div class="section-title">二、电子信息制造业运行 <span class="en">Electronics Manufacturing · 工信部口径</span></div>'+
-      mcVerdict(e.verdict)+ mcMgmt(e.mgmt)+ mcSection(e) +'</div>';
+      mcVerdict(e.verdict)+ mcMgmt(e.mgmt,'集团视角 · 管理启示')+ mcSection(e) +'</div>';
   }
   if(cur.earnSnap){
     h += '<div class="card"><div class="section-title">三、关键发现与管理启示 <span class="en">Findings / Implications</span></div>'+
@@ -1757,11 +1787,11 @@ function renderMacroT4(){
   const c = el('t4');
   const subs = (cur.market && cur.market.subs) || [];
   let h = '<div class="card"><div class="section-title">口径与导读 <span class="en">Reading Guide · 四个维度看什么</span></div>'+
-    '<div class="summary-box">'+summaryCollapsible(cur.marketView||'',3)+'</div>'+
+      '<div class="summary-box">'+summaryCollapsible(cur.marketView||'',3)+'</div>'+
     '<div class="mc-asof">'+esc((cur.asOf&&cur.asOf.note)||'')+'</div></div>';
   h += '<div class="card"><div id="msub-tabs" class="mkt-tabs"></div><div id="msub-body"></div></div>';
   if(cur.market && cur.market.mgmtSummary){
-    h += '<div class="card" style="border:2px solid var(--accent);background:linear-gradient(180deg,#f6fdfb,#fff);"><div class="section-title">综合研判与管理建议 <span class="en">Synthesis · 经营主线</span></div>'+mcMgmtOne(cur.market.mgmtSummary,'综合研判与管理建议')+'</div>';
+    h += '<div class="card" style="border:2px solid var(--accent);background:linear-gradient(180deg,#f6fdfb,#fff);"><div class="section-title"><span class="grp-tag">集团视角</span>综合研判与管理建议 <span class="en">Synthesis · 经营主线</span></div>'+mcMgmtOne(cur.market.mgmtSummary,'集团视角 · 综合研判与管理建议')+'</div>';
   }
   if(cur.sources && cur.sources.length){
     h += '<div class="card"><div class="section-title">数据来源 <span class="en">Sources · 官方发布</span></div><div class="mc-src">'+
@@ -1787,7 +1817,7 @@ function renderMacroSub(){
   const subs = (cur.market && cur.market.subs) || [];
   const s = subs.filter(function(x){return x.k===curMacroSub;})[0];
   if(!s){ body.innerHTML=''; return; }
-  body.innerHTML = mcVerdict(s.verdict) + mcMgmtOne(s.mgmt) + mcSection(s);
+  body.innerHTML = mcVerdict(s.verdict) + mcMgmtOne(s.mgmt,'集团视角 · 管理含义') + mcSection(s);
 }
 
 /* ---------------- 宏观图表绘制 ---------------- */
