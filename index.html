@@ -476,6 +476,43 @@ a:hover { text-decoration:underline; }
 .fb-updated { color:#9ca3af; font-size:11px; margin-top:10px; text-align:right; }
 .cat-item[data-cat="feedback"] { background:#fef3c7; color:#92400e; border:1px solid #fcd34d; }
 .cat-item[data-cat="feedback"].active { background:#f59e0b; color:#fff; border-color:#f59e0b; }
+.cat-item[data-cat="method"] { background:#e0e7ff; color:#3730a3; border:1px solid #c7d2fe; }
+.cat-item[data-cat="method"].active { background:#4f46e5; color:#fff; border-color:#4f46e5; }
+
+/* 方法论 · 数据溯源模块 */
+.method-hero { background:linear-gradient(135deg,#0b2a6b 0%,#1d4ed8 55%,#4f46e5 100%); color:#fff; border-radius:14px; padding:22px 26px; margin-bottom:18px; box-shadow:0 6px 20px rgba(11,42,107,.30); }
+.method-hero h2 { font-size:22px; font-weight:900; letter-spacing:1px; }
+.method-hero p { font-size:13.5px; color:#e0e7ff; margin-top:9px; line-height:1.75; }
+.method-hero b { color:#fff; }
+.m-tier { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:6px 0 4px; }
+@media(max-width:900px){ .m-tier { grid-template-columns:repeat(2,1fr); } }
+.tier-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:14px 16px; border-top:4px solid var(--accent); }
+.tier-card .tc-lv { font-size:11px; font-weight:800; color:var(--accent); letter-spacing:.5px; }
+.tier-card .tc-t { font-weight:800; font-size:15px; margin:4px 0 6px; color:#1f2937; }
+.tier-card .tc-d { font-size:12px; color:#4b5563; line-height:1.6; }
+.m-section { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:18px; box-shadow:0 2px 8px rgba(0,0,0,.03); }
+.m-section h3 { font-size:17px; font-weight:800; margin-bottom:10px; padding-left:12px; border-left:4px solid var(--accent); color:#1f2937; }
+.m-section p, .m-section li { font-size:13.5px; color:#374151; line-height:1.8; }
+.m-section ul { padding-left:20px; }
+.m-section li { margin-bottom:7px; }
+.m-section code { background:#f3f4f6; border-radius:4px; padding:1px 5px; font-size:12px; color:#b91c1c; }
+.tri-table { width:100%; border-collapse:collapse; margin:12px 0 4px; font-size:13px; }
+.tri-table th, .tri-table td { border:1px solid #e5e7eb; padding:8px 10px; text-align:center; }
+.tri-table th { background:#f8fafc; font-weight:700; color:#374151; }
+.tri-table td:first-child { text-align:left; font-weight:600; color:#1f2937; background:#fafafa; }
+.tri-table .div { color:#b91c1c; font-weight:700; }
+.tri-table .agree { color:#047857; font-weight:700; }
+.m-portal { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+.m-portal a { display:inline-block; background:var(--accent-soft); border:1px solid #bfdbfe; color:var(--accent-deep); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:600; }
+.m-portal a:hover { background:#dbeafe; text-decoration:none; }
+.conf-badge { display:inline-block; font-size:11px; font-weight:700; border-radius:5px; padding:1px 8px; }
+.conf-high { background:#dcfce7; color:#166534; }
+.conf-mid { background:#fef9c3; color:#854d0e; }
+.conf-low { background:#fee2e2; color:#991b1b; }
+.src-badge { display:inline-block; font-size:10.5px; font-weight:700; border-radius:4px; padding:1px 6px; background:#eef2ff; color:#4338ca; }
+.prov-row { display:inline-block; margin-left:8px; font-size:11px; vertical-align:middle; }
+.caveat { background:#fff7ed; border:1px solid #fed7aa; border-left:4px solid #f97316; border-radius:8px; padding:12px 14px; font-size:13px; color:#7c2d12; line-height:1.75; margin-top:12px; }
+.caveat b { color:#9a3412; }
 </style>
 </head>
 <body data-page-node-id="LoGzjJpmyP1LZPUCJn2ElF">
@@ -533,6 +570,7 @@ a:hover { text-decoration:underline; }
     <div class="cat-item" data-cat="chip" data-page-node-id="tfwFhjHN46fPoWoOyMDV5H">芯片半导体</div>
     <div class="cat-item" data-cat="macro" data-page-node-id="fVnHrkkuJXFWrF6kTA5UK3">宏观经济</div>
     <div class="cat-item" data-cat="feedback" data-page-node-id="fbCatNav">读者反馈</div>
+  <div class="cat-item" data-cat="method" data-page-node-id="methodCatNav">方法论·溯源</div>
   </nav>
 </header>
 
@@ -551,6 +589,7 @@ a:hover { text-decoration:underline; }
   <section class="tabpane" id="t3" data-page-node-id="n2GzKTQFnAMoF8vKCrNBGg"></section>
   <section class="tabpane" id="t4" data-page-node-id="WvaYr2bQujgdn2pRNCFocM"></section>
   <section class="tabpane" id="feedback-pane"></section>
+  <section class="tabpane" id="method-pane"></section>
 </div>
 <a class="feedback-fab" href="feedback.html" target="_blank">💬 我要反馈</a>
 
@@ -735,6 +774,7 @@ function renderTabNav(){
 
 function setCategory(cat){
   if(cat==='feedback'){ showFeedback(); return; }  // 读者反馈独立视图，不走 DATA 渲染
+  if(cat==='method'){ showMethod(); return; }      // 方法论 · 数据溯源（静态框架，不走 DATA 渲染）
   curCat = cat;
   cur = DATA[cat] || DATA.terminal;
   var fp = el('feedback-pane'); if(fp) fp.classList.remove('active');
@@ -1142,7 +1182,7 @@ function renderTab3(){
       {l:'出货 YoY', v:e.shipmentsChg}
     ].filter(x=>x.v && x.v!=='—' && x.v!=='— ');
     return '<div class="earn-card" style="border-left:5px solid '+(e.color||'#2563eb')+'"><div class="earn-top">'+
-    '<div><span class="earn-company" style="color:'+(e.color||'#1f2937')+'">'+esc(e.company)+'</span><span class="earn-code">'+esc(e.code||'')+'</span>'+(e.key?'<span class="earn-key">重点厂家</span>':'')+'</div>'+
+    '<div><span class="earn-company" style="color:'+(e.color||'#1f2937')+'">'+esc(e.company)+'</span><span class="earn-code">'+esc(e.code||'')+'</span>'+(e.key?'<span class="earn-key">重点厂家</span>':'')+provBadge(e.prov)+'</div>'+
     '<span class="earn-period">'+esc(e.period||'')+'</span></div>'+
     (deltas.length?'<div class="earn-sec"><span class="earn-sec-h">① 核心数据变化</span><div class="earn-delta">'+deltas.map(d=>'<div class="ed"><div class="ed-l">'+esc(d.l)+'</div><div class="ed-v '+dCls(d.v)+'">'+esc(d.v)+'</div></div>').join('')+'</div></div>':'')+
     (e.viewpoint?'<div class="earn-sec"><span class="earn-sec-h">② 核心观点 · 关键发现</span><div class="earn-fold" data-fold><div class="earn-viewpoint">'+numberedLines(e.viewpoint)+'</div><div class="fold-fade"></div></div><span class="earn-toggle" data-tog data-label="▸ 展开核心观点">▸ 展开核心观点</span></div>':'')+
@@ -1960,6 +2000,83 @@ function renderFeedback(d){
   if(d && d.updatedAt) html += '<div class="fb-updated">最近更新：'+esc(d.updatedAt)+'</div>';
   box.outerHTML = '<div id="fb-box" class="fb-wrap">'+html+'</div>';
 }
+/* ---------------- 方法论 · 数据溯源（顶尖分析师框架：分级 / 置信度 / 三角验证 / 可证伪） ---------------- */
+function provBadge(p){
+  if(!p) return '';
+  var cls = p.conf==='高' ? 'conf-high' : (p.conf==='中' ? 'conf-mid' : 'conf-low');
+  var src = p.src ? '<span class="src-badge">'+esc(p.src)+'</span>' : '';
+  var cf  = p.conf ? '<span class="conf-badge '+cls+'">'+esc(p.conf)+'</span>' : '';
+  var ul  = p.url ? '<a class="vp-link" href="'+esc(p.url)+'" target="_blank" rel="noopener" style="margin-left:6px">核验↗</a>' : '';
+  return (src||cf) ? '<span class="prov-row">'+src+cf+ul+'</span>' : '';
+}
+function showMethod(){
+  curCat='method'; cur=null; disposeCharts();
+  var mb=el('macroBrief'); if(mb) mb.style.display='none';
+  document.querySelectorAll('.tabpane').forEach(function(p){ p.classList.remove('active'); });
+  el('tabnav').innerHTML='<div class="tab-item active"><span class="tn">ⓘ</span>方法论 · 数据溯源</div>';
+  var pane=el('method-pane'); pane.classList.add('active');
+  pane.innerHTML=renderMethod();
+}
+function renderMethod(){
+  return ''
+  +'<div class="method-hero"><h2>方法论 · 数据溯源</h2>'
+  +'<p>本看板不是"信息搬运"，而是一套<b>可溯源、可三角验证、可证伪</b>的产业研判框架。顶尖行业分析师做同类看板时，会坚持四条纪律：①每个数字标注<b>原始出处与口径</b>；②对关键结论做<b>多源交叉验证</b>；③明说<b>置信度与不确定区间</b>；④预先写下"<b>什么证据会推翻我的判断</b>"。下面把这套方法论透明地摊开给你看。</p></div>'
+  +'<div class="m-section"><h3>一、数据分级体系（L1–L4）</h3>'
+  +'<div class="m-tier">'
+  +'<div class="tier-card"><div class="tc-lv">L1 · 一手</div><div class="tc-t">公司披露</div><div class="tc-d">财报、业绩交流会纪要、招股书、交易所公告。准确性最高，但滞后、口径由发行方定义。</div></div>'
+  +'<div class="tier-card"><div class="tc-lv">L2 · 调研</div><div class="tc-t">渠道 / 供应链</div><div class="tc-d">门店动销、电商销量、经销商访谈、零部件订单与产能。高频、前瞻，但样本偏差与口径不统一。</div></div>'
+  +'<div class="tier-card"><div class="tc-lv">L3 · 第三方</div><div class="tc-t">研究机构</div><div class="tc-d">IDC / Counterpoint / Omdia / TrendForce 等。独立、可比，但同为估算，机构间常有差异。</div></div>'
+  +'<div class="tier-card"><div class="tc-lv">L4 · 整理</div><div class="tc-t">公开资讯</div><div class="tc-d">新闻、社媒、公开报道。用于发现线索与情绪，单条不可作为结论依据。</div></div>'
+  +'</div>'
+  +'<p style="margin-top:10px">本看板各栏目标注遵循上述分级：财报与新品以 <b>L1 / L3</b> 为主，市场大盘以 <b>L3 抓取并标注来源与口径</b>，机构 / 领袖观点属 <b>L4 编辑整理</b>。看任何数字，先问"它属于哪一级、谁定义的口径"。</p></div>'
+  +'<div class="m-section"><h3>二、置信度评级（高 / 中 / 低）</h3>'
+  +'<p>分析师不会给所有结论同样的权重。本框架用三档标注确定性：</p><ul>'
+  +'<li><span class="conf-badge conf-high">高</span> 多家<b>独立</b>一手 / 第三方一致指向，或公司官方披露。例：某厂当季营收、全球出货同比方向。</li>'
+  +'<li><span class="conf-badge conf-mid">中</span> 单一权威来源，或多家方向一致但<b>幅度有分歧</b>。例：单家机构给出的厂商份额。</li>'
+  +'<li><span class="conf-badge conf-low">低</span> 基于 <b>L4 线索、前瞻调研或模型外推</b>，用于提示"值得跟踪"而非"已成定论"。例：下一代产品定义、季度内动销趋势。</li>'
+  +'</ul>'
+  +'<p style="margin-top:8px">卡片标题旁的 <span class="src-badge">来源</span> 徽标即为该条数据的分级与置信标注（如已填报）。未标注者默认按 L4 处理，引用前请自行核验。</p></div>'
+  +'<div class="m-section"><h3>三、三角验证：用 2026Q3 全球智能手机真实数据演示</h3>'
+  +'<p>同一季度，三家独立机构（IDC / Counterpoint / Omdia）基于各自的供应链与渠道调研给出估算。<b>顶尖分析师会同时看三家，而不是只看一家</b>——方向一致说明结论稳健，幅度分歧暴露"不确定区间"。</p>'
+  +'<table class="tri-table"><tr><th>指标</th><th>IDC</th><th>Counterpoint</th><th>Omdia</th><th>一致性</th></tr>'
+  +'<tr><td>全球出货同比</td><td>-22.0%</td><td>-20%</td><td>-20%</td><td class="agree">方向一致，幅度差 2pct</td></tr>'
+  +'<tr><td>全球出货（亿部）</td><td>2.553</td><td>未单列</td><td>未单列</td><td class="agree">IDC 初步值</td></tr>'
+  +'<tr><td>历史水位</td><td colspan="3">2012 年以来同期最低（Counterpoint）</td><td class="agree">极端事件级</td></tr>'
+  +'<tr><td>TOP5 排名</td><td colspan="3">三星 / 苹果 / 小米 / OPPO / vivo（三家完全一致）</td><td class="agree">排名稳健</td></tr>'
+  +'<tr><td>三星份额</td><td>22.6%</td><td>23%</td><td>23%</td><td class="agree">高度吻合</td></tr>'
+  +'<tr><td>苹果份额</td><td>22.4%</td><td>22%</td><td>22%</td><td class="agree">高度吻合</td></tr>'
+  +'<tr><td>小米份额</td><td>12%</td><td>10%</td><td>12%</td><td class="div">分歧 2pct</td></tr>'
+  +'</table>'
+  +'<div class="caveat"><b>⚠ 不确定区暴露：</b>同样在 2026Q3，苹果<b>中国区</b>出货三家给出截然相反的方向——IDC 同比 <b>-4.3%</b>，Omdia <b>+15%</b>，Counterpoint 折算约 <b>+19%</b>。差异源于 iPhone 标准版缺席导致出货结构异常、渠道为旧款提前备货。这正是三角验证的价值：<b>当机构分歧超过合理范围，该数字应标记为"低置信 / 待澄清"，而非直接采用。</b></div>'
+  +'<p style="margin-top:12px">根因（三家一致）：存储芯片价格同比约 <b>+350%</b>，终端被迫提价，消费者推迟换机，呈现"<b>量跌价升</b>"。这使"华为 / 苹果守份额、安卓四家失血"成为<b>高置信</b>结论；而任一单家厂商的精确份额则仅<b>中置信</b>。</p></div>'
+  +'<div class="m-section"><h3>四、独立核验入口（除了我们，你还能找谁验证）</h3>'
+  +'<p>任何结论都应可被独立第三方复核。以下为可公开核验的权威源头，建议对关键数字做一次交叉确认：</p>'
+  +'<div class="m-portal">'
+  +'<a href="https://www.idc.com/" target="_blank" rel="noopener">IDC 全球追踪</a>'
+  +'<a href="https://www.counterpointresearch.com/" target="_blank" rel="noopener">Counterpoint</a>'
+  +'<a href="https://www.omdia.com/" target="_blank" rel="noopener">Omdia</a>'
+  +'<a href="https://www.trendforce.com/" target="_blank" rel="noopener">TrendForce 存储 / 面板</a>'
+  +'<a href="https://www.huawei.com/cn/investor" target="_blank" rel="noopener">华为投资者关系</a>'
+  +'<a href="https://www.apple.com/investor/" target="_blank" rel="noopener">Apple IR</a>'
+  +'<a href="https://www.samsung.com/global/ir/" target="_blank" rel="noopener">Samsung IR</a>'
+  +'<a href="https://www1.hkexnews.hk/" target="_blank" rel="noopener">港交所披露易</a>'
+  +'<a href="https://www.sec.gov/" target="_blank" rel="noopener">SEC EDGAR</a>'
+  +'</div></div>'
+  +'<div class="m-section"><h3>五、可证伪清单（什么会推翻当前判断）</h3>'
+  +'<p>结论只有在"能被推翻"时才有价值。基于 2026Q3 结构，以下信号若出现，将修正本看板的核心判断：</p><ul>'
+  +'<li><b>存储价格环比转负并持续两季</b> → "量跌价升"逻辑逆转，换机需求或回暖，安卓四家失血趋势将缓和。</li>'
+  +'<li><b>华为份额连续两季回落</b> → 当前"华为守成 + 双位数增长"的高置信结论失效，需重新评估提价策略承接力。</li>'
+  +'<li><b>苹果标准版回归后中国出货跳升 &gt;20%</b> → 修正"苹果中国承压"判断，证明缺口主要为出货节奏而非需求。</li>'
+  +'<li><b>IDC / Counterpoint / Omdia 对全球方向出现分歧</b> → 当前"行业寒冬"高置信结论需降级，可能存在口径或样本偏差。</li>'
+  +'</ul></div>'
+  +'<div class="m-section"><h3>六、本看板口径与更新说明</h3><ul>'
+  +'<li><b>更新机制：</b>数据由各产业自动化任务工作日异步抓取 / 整理后写入 <code>data/*.json</code>，渲染层（本页）与数据层解耦；渲染升级不会回退数据。</li>'
+  +'<li><b>口径声明：</b>"出货 / shipments"指厂商出货至渠道，非终端零售销量；份额为出货量口径；财务为各公司报告币值与准则（A股 / H股 / 美股口径不同，跨司对比需谨慎）。</li>'
+  +'<li><b>红涨绿跌：</b>本看板财务与股市涨跌遵循 A 股惯例（红=涨、绿=跌），与部分海外数据源相反，引用时请注意。</li>'
+  +'<li><b>免责：</b>本看板为产业研究辅助工具，非投资建议；L4 整理类内容可能含时效偏差，决策请以 L1 / L3 原始来源为准。</li>'
+  +'</ul></div>';
+}
+
 async function init(){
   const ok = await loadData();
   if(!ok){ var b0=el('boot'); if(b0) b0.remove(); return; }
