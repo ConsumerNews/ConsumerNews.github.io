@@ -217,7 +217,7 @@ a:hover { text-decoration:underline; }
 .kpi .kl { font-size:10px; color:#9ca3af; margin-top:2px; }
 .kpi .ky { font-size:11px; font-weight:700; }
 .up { color:#dc2626; } .down { color:#16a34a; }
-.earn-insight { font-size:15px; color:#4b5563; line-height:1.85; }
+.earn-insight { font-size:13.5px; color:#475569; line-height:1.8; }
 .vp-summary { background:#eef4ff; border:1px solid #d6e4ff; border-left:4px solid #1d4ed8; border-radius:8px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:#1e3a5f; line-height:1.75; }
 .vp-summary b { color:#1d4ed8; }
 .prod-sub { margin-top:8px; padding:9px 12px; background:#f9fafb; border-radius:6px; font-size:12.5px; color:#374151; line-height:1.65; }
@@ -229,8 +229,11 @@ a:hover { text-decoration:underline; }
 .earn-kpi { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
 @media(max-width:900px){ .earn-kpi { grid-template-columns:repeat(2,1fr); } }
 .earn-kpi .kpi { background:linear-gradient(180deg,#fff,#f8fafc); }
-.earn-viewpoint { margin-top:10px; padding:10px 12px; background:#f0f9ff; border-radius:6px; font-size:12.5px; color:#374151; line-height:1.7; }
+.earn-viewpoint { margin-top:10px; padding:9px 12px; background:#f8fafc; border:1px solid #eef2f7; border-radius:8px; font-size:12px; color:#374151; line-height:1.72; letter-spacing:.1px; }
 .earn-viewpoint b { color:#0369a1; }
+.ep { font-size:12px; line-height:1.72; color:#374151; }
+.ep-lead { color:#0f3d6e; font-weight:700; }
+.ep-rest { color:#475569; }
 /* 新品/市场模块色条 */
 .mod-tag { display:inline-block; font-size:10px; font-weight:800; padding:2px 10px; border-radius:10px; color:#fff; margin-left:8px; vertical-align:middle; }
 .ai-advice { margin-top:8px; padding:9px 12px; background:#f0fdf4; border-left:3px solid #16a34a; border-radius:6px; font-size:12px; color:#14532d; line-height:1.6; }
@@ -371,19 +374,19 @@ a:hover { text-decoration:underline; }
 .inst-it-body { font-size:12.8px; line-height:1.78; color:#374151; }
 .inst-it-body .hl-red { font-weight:800; }
 /* 财报：专家框架 — 核心数据变化 / 核心观点 / 重点观测指标 / 管理启示 */
-.earn-sec { margin-top:12px; }
+.earn-sec { margin-top:14px; }
 .earn-sec-h { display:inline-block; font-size:12.5px; font-weight:800; color:var(--accent-deep); background:#eef4ff; border-radius:6px; padding:3px 10px; margin-bottom:8px; letter-spacing:.3px; }
 .earn-delta { display:flex; flex-wrap:wrap; gap:10px; margin:12px 0 4px; }
 .earn-delta .ed { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:8px 13px; min-width:118px; flex:1 1 118px; }
 .earn-delta .ed-l { font-size:11px; color:#6b7280; }
 .earn-delta .ed-v { font-size:18px; font-weight:800; margin-top:3px; }
 .ed-up { color:#dc2626; } .ed-down { color:#16a34a; } .ed-flat { color:#6b7280; }
-.earn-fold { max-height:132px; overflow:hidden; position:relative; transition:max-height .25s ease; }
+.earn-fold { max-height:108px; overflow:hidden; position:relative; transition:max-height .25s ease; }
 .earn-fold.open { max-height:2400px; }
-.earn-fold .fold-fade { position:absolute; bottom:0; left:0; right:0; height:36px; background:linear-gradient(transparent,#f0f9ff); pointer-events:none; }
+.earn-fold .fold-fade { position:absolute; bottom:0; left:0; right:0; height:46px; background:linear-gradient(rgba(248,250,252,0), #f8fafc 72%); pointer-events:none; }
 .earn-fold.open .fold-fade { display:none; }
-.earn-toggle { font-size:11.5px; color:var(--accent); cursor:pointer; font-weight:700; margin-top:6px; display:inline-block; }
-.earn-toggle:hover { text-decoration:underline; }
+.earn-toggle { font-size:11.5px; color:var(--accent-deep); cursor:pointer; font-weight:700; margin-top:7px; display:inline-block; background:#eef4ff; padding:3px 11px; border-radius:13px; letter-spacing:.3px; }
+.earn-toggle:hover { background:#dbe7ff; }
 /* 新品：结论先行 + 次要信息折叠 */
 .np-verdict { font-size:13.5px; font-weight:700; line-height:1.7; color:#0f172a; background:#f8fafc; border-left:4px solid var(--accent); border-radius:8px; padding:10px 13px; margin-bottom:12px; }
 .np-verdict .hl-red { font-weight:800; }
@@ -739,6 +742,15 @@ function numberedLines(t){
     const sl = segLead(body);
     return '<div class="nl-i"><span class="mk">'+mk+'</span><b class="seg-lead">'+redify(sl.lead)+'</b>'+(sl.rest?'<span class="seg-rest">'+redify(sl.rest)+'</span>':'')+'</div>';
   }).join('')+'</div>';
+}
+/* 财报长文本收敛：无编号长段提取首句作为核心判断（加粗 lead），剩余折叠 */
+function earnProse(t){
+  t = String(t==null?'':t).replace(/^(关键发现|管理启示|分析观点)[：:]\s*/, '').replace(/\s+/g,' ').trim();
+  if(t.length <= 96) return '<div class="ep"><span class="ep-rest">'+redify(t)+'</span></div>';
+  const m = t.match(/^([^。；：\n]{2,42}[。：；]?)/);
+  const lead = m ? m[1].replace(/[：:]\s*$/,'') : t.slice(0,42);
+  const rest = t.slice(lead.length).replace(/^\s*[:：]\s*/,'');
+  return '<div class="ep"><b class="ep-lead">'+redify(lead)+'</b>'+(rest?'<span class="ep-rest">'+redify(rest)+'</span>':'')+'</div>';
 }
 
 const CAT_COLORS = { terminal:'#2563eb', auto:'#16a34a', internet:'#7c3aed', chip:'#ea580c', macro:'#0f766e' };
@@ -1187,7 +1199,7 @@ function renderTab3(){
     '<div><span class="earn-company" style="color:'+(e.color||'#1f2937')+'">'+esc(e.company)+'</span><span class="earn-code">'+esc(e.code||'')+'</span>'+(e.key?'<span class="earn-key">重点厂家</span>':'')+provBadge(e.prov)+'</div>'+
     '<span class="earn-period">'+esc(e.period||'')+'</span></div>'+
     (deltas.length?'<div class="earn-sec"><span class="earn-sec-h">① 核心数据变化</span><div class="earn-delta">'+deltas.map(d=>'<div class="ed"><div class="ed-l">'+esc(d.l)+'</div><div class="ed-v '+dCls(d.v)+'">'+esc(d.v)+'</div></div>').join('')+'</div></div>':'')+
-    (e.viewpoint?'<div class="earn-sec"><span class="earn-sec-h">② 核心观点 · 关键发现</span><div class="earn-fold" data-fold><div class="earn-viewpoint">'+numberedLines(e.viewpoint)+'</div><div class="fold-fade"></div></div><span class="earn-toggle" data-tog data-label="▸ 展开核心观点">▸ 展开核心观点</span></div>':'')+
+    (e.viewpoint?'<div class="earn-sec"><span class="earn-sec-h">② 核心观点 · 关键发现</span><div class="earn-fold" data-fold><div class="earn-viewpoint">'+earnProse(e.viewpoint)+'</div><div class="fold-fade"></div></div><span class="earn-toggle" data-tog data-label="▸ 展开核心观点">▸ 展开核心观点</span></div>':'')+
     '<div class="earn-sec"><span class="earn-sec-h">③ 重点观测指标</span><div class="earn-kpi">'+
       '<div class="kpi"><div class="kv">'+esc(e.revenue)+'</div><div class="kl">营收 '+(e.revYoy||'')+'</div></div>'+
       '<div class="kpi"><div class="kv">'+esc(e.grossMargin!=='—'?e.grossMargin:'—')+'</div><div class="kl">毛利率</div></div>'+
