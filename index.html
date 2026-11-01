@@ -360,6 +360,33 @@ a:hover { text-decoration:underline; }
 .ab-foot{text-align:center;color:#9ca3af;font-size:11.5px;padding:18px;}
 @media(max-width:900px){.ab-grid2{grid-template-columns:1fr;}}
 
+/* ===== 重构：机构观点 / 财报 / 新品 / 市场 通用结构件 ===== */
+/* 机构观点：按机构结构化，去除整段红粗 */
+.inst-item { padding:10px 12px; background:#f8fafc; border:1px solid #eef2f7; border-left:3px solid var(--accent); border-radius:8px; margin:10px 0; }
+.inst-it-title { font-size:13.5px; font-weight:800; color:var(--accent-deep); margin-bottom:5px; line-height:1.5; }
+.inst-it-body { font-size:12.8px; line-height:1.78; color:#374151; }
+.inst-it-body .hl-red { font-weight:800; }
+/* 财报：专家框架 — 核心数据变化 / 核心观点 / 重点观测指标 / 管理启示 */
+.earn-sec { margin-top:12px; }
+.earn-sec-h { display:inline-block; font-size:12.5px; font-weight:800; color:var(--accent-deep); background:#eef4ff; border-radius:6px; padding:3px 10px; margin-bottom:8px; letter-spacing:.3px; }
+.earn-delta { display:flex; flex-wrap:wrap; gap:10px; margin:12px 0 4px; }
+.earn-delta .ed { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:8px 13px; min-width:118px; flex:1 1 118px; }
+.earn-delta .ed-l { font-size:11px; color:#6b7280; }
+.earn-delta .ed-v { font-size:18px; font-weight:800; margin-top:3px; }
+.ed-up { color:#dc2626; } .ed-down { color:#16a34a; } .ed-flat { color:#6b7280; }
+.earn-fold { max-height:132px; overflow:hidden; position:relative; transition:max-height .25s ease; }
+.earn-fold.open { max-height:2400px; }
+.earn-fold .fold-fade { position:absolute; bottom:0; left:0; right:0; height:36px; background:linear-gradient(transparent,#f0f9ff); pointer-events:none; }
+.earn-fold.open .fold-fade { display:none; }
+.earn-toggle { font-size:11.5px; color:var(--accent); cursor:pointer; font-weight:700; margin-top:6px; display:inline-block; }
+.earn-toggle:hover { text-decoration:underline; }
+/* 新品：结论先行 + 次要信息折叠 */
+.np-verdict { font-size:13.5px; font-weight:700; line-height:1.7; color:#0f172a; background:#f8fafc; border-left:4px solid var(--accent); border-radius:8px; padding:10px 13px; margin-bottom:12px; }
+.np-verdict .hl-red { font-weight:800; }
+/* 市场：数据来源与口径 */
+.mkt-src { font-size:11.5px; color:#6b7280; line-height:1.7; margin-top:8px; padding:8px 12px; background:#f8fafc; border-left:3px solid var(--accent); border-radius:6px; }
+.mkt-src b { color:#374151; }
+
 /* ===== 宏观经济板块 ===== */
 .mb-brief{border:2px solid var(--accent);background:linear-gradient(180deg,#f6fdfb,#fff);}
 .mb-lead{font-size:15.5px;font-weight:700;color:#1f2937;line-height:1.75;padding:12px 15px;background:#fef2f2;border-left:4px solid #dc2626;border-radius:8px;margin-bottom:14px;}
@@ -594,6 +621,26 @@ function wireCollapse(root){
     });
   });
 }
+/* 取分析文本首条核心看点（① …）作为"结论先行"一句话；无序号则取首句 */
+function firstPoint(t){
+  t = String(t==null?'':t);
+  const m = t.match(/①\s*([\s\S]*?)(?=\n?\s*②|$)/);
+  if(m && m[1].trim()) return m[1].trim();
+  const s = t.split(/[。\n]/)[0];
+  return s ? s.trim() : t.slice(0,90);
+}
+/* 通用折叠：.earn-toggle 控制前一个兄弟 .earn-fold 的展开/收起 */
+function wireFolds(root){
+  if(!root) return;
+  root.querySelectorAll('.earn-toggle').forEach(function(tg){
+    tg.addEventListener('click', function(){
+      const f = tg.previousElementSibling;
+      if(!f || !f.classList.contains('earn-fold')) return;
+      const open = f.classList.toggle('open');
+      tg.textContent = open ? '▾ 收起全文' : (tg.dataset.label || '▸ 展开全文');
+    });
+  });
+}
 const BRAND_COLORS = {
   '华为':'#c7000b','苹果':'#1d1d1f','小米':'#ff6900','红米':'#ff0000','三星':'#1428a0',
   '荣耀':'#00b4a0','索尼':'#1d4ed8','OPPO':'#0b8a3d','vivo':'#415fff','联想':'#16a34a',
@@ -613,8 +660,7 @@ function segLead(t){
   let rest = t.slice(m? m[1].length:40).replace(/^\s*[:：]\s*/,'');
   return {lead: lead, rest: rest};
 }
-function proseBlock(t){
-  t = String(t==null?'':t);
+function proseBlock(t){  t = String(t==null?'':t);
   if(/[①②③④⑤⑥⑦⑧⑨⑩]/.test(t)) return splitSummary(t);
   const sl = segLead(t);
   if(!sl.rest) return '<div class="prose">'+redify(sl.lead)+'</div>';
@@ -724,12 +770,13 @@ function renderTab1(){
       '<div class="vp-hl"><span class="hl-red">'+redify(it.hl)+'</span></div>'+
       (it.detail?'<div class="vp-detail">'+redify(it.detail)+'</div>':'')+
       '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">来源：'+esc(it.l)+' ↗</a></div>').join('')+'</div>').join('');
-  el('i-summary').innerHTML = '<span class="lbl">机构观点 · 汇总提炼</span>'+splitSummary(cur.instsSummary||'');
+  el('i-summary').innerHTML = '<span class="lbl">机构观点 · 跨机构汇总提炼</span>'+splitSummary(cur.instsSummary||'');
   el('i-block').innerHTML = (cur.institutionViews||[]).map(p=>
     '<div class="person-block"><div><span class="pname">'+esc(p.name)+'</span><span class="prole">机构</span></div>'+
-    p.items.map(it=>'<div class="vp-item">'+
-      '<div class="vp-hl"><span class="hl-red">'+redify(it.s)+'</span></div>'+
-      '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">（'+esc(it.l)+' ↗）</a></div>').join('')+'</div>').join('');
+    p.items.map(it=>'<div class="inst-item">'+
+      (it.t?'<div class="inst-it-title">'+redify(it.t)+'</div>':'')+
+      '<div class="inst-it-body">'+redify(it.s)+'</div>'+
+      '<a class="vp-link" href="'+(it.u||'#')+'" target="_blank" rel="noopener">来源：'+esc(it.l)+' ↗</a></div>').join('')+'</div>').join('');
   el('n-summary').innerHTML = '<span class="lbl">新闻头条 · 汇总提炼</span>'+splitSummary(cur.newsSummary||'');
   el('n-block').innerHTML = (cur.topNews||[]).map((n,i)=>
     '<div class="news-row"><div class="news-rank">'+(i+1)+'</div><div class="news-main">'+
@@ -905,14 +952,18 @@ function renderTab2(){
         analysis = [['战略意图',p.strategy],['竞争力点',p.compete],['消费者视角',p.consumer],['管理层建议',p.advice]].filter(function(x){return x[1];}).map(function(x){return '<div class="np-line"><b>'+x[0]+'：</b>'+redify(x[1])+'</div>';}).join('');
       }
       const showChart = !!(p.compare && window.echarts);
+      const verdict = firstPoint(p.analysis || p.summary);
       return '<div class="np-card"><div class="np-head" style="background:'+(p.color||'#2563eb')+'"><span class="np-brand">'+redify(p.brand)+'</span>'
         + (p.tag?'<span class="np-tag">'+esc(p.tag)+'</span>':'')
         + (p.date?'<span class="np-date">'+esc(p.date)+'</span>':'')
         + '</div><div class="np-body">'
-        + '<div class="np-summary">'+proseBlock(p.summary)+'</div>'
+        + '<div class="np-verdict">'+redify(verdict)+'</div>'
         + (dimTbl?'<div class="np-sec-title">关键参数 · 数据表</div>'+dimTbl:'')
         + (showChart?'<div class="np-sec-title">'+(p.compare.title||'对比')+'</div><div class="np-chart" id="np-chart-'+slug(p.brand)+'"></div>':'')
-        + '<div class="np-sec-title">深度解读 · 分类</div>'+(analysis||'')
+        + '<div class="np-sec-title">深度解读 · 核心看点</div>'+(analysis||'')
+        + '<div class="np-sec-title">完整发布信息</div>'
+        + '<div class="earn-fold" data-fold><div class="np-summary">'+proseBlock(p.summary)+'</div><div class="fold-fade"></div></div>'
+        + '<span class="earn-toggle" data-tog data-label="▸ 展开完整发布信息">▸ 展开完整发布信息</span>'
         + '</div></div>';
     }).join('');
     cur.newProducts.forEach(function(p){
@@ -931,6 +982,7 @@ function renderTab2(){
     });
   }
   if(cur.launchRadar) renderLaunchRadar(cur.launchRadar);
+  wireFolds(c);
 }
 
 function renderLaunchRadar(lr){
@@ -1067,21 +1119,30 @@ function renderTab3(){
   if(cur.earnSnap) el('earn-snap').innerHTML =
     '<div class="snap-box find"><div class="snap-h">🔍 关键发现</div>'+numberedLines(cur.earnSnap.find)+'</div>'+
     '<div class="snap-box impl"><div class="snap-h">💡 管理层启示</div>'+numberedLines(cur.earnSnap.impl)+'</div>';
-  if(cur.earnings) el('earn-block').innerHTML = cur.earnings.map(e=>
-    '<div class="earn-card" style="border-left:5px solid '+(e.color||'#2563eb')+'"><div class="earn-top">'+
+  if(cur.earnings) el('earn-block').innerHTML = cur.earnings.map(e=>{
+    const dCls = v => /^\s*\+/.test(v||'') ? 'ed-up' : (/^\s*-/.test(v||'') ? 'ed-down' : 'ed-flat');
+    const deltas = [
+      {l:'营收 YoY', v:e.revYoy},
+      {l:'净利 YoY', v:e.profitYoy},
+      {l:'出货 YoY', v:e.shipmentsChg}
+    ].filter(x=>x.v && x.v!=='—' && x.v!=='— ');
+    return '<div class="earn-card" style="border-left:5px solid '+(e.color||'#2563eb')+'"><div class="earn-top">'+
     '<div><span class="earn-company" style="color:'+(e.color||'#1f2937')+'">'+esc(e.company)+'</span><span class="earn-code">'+esc(e.code||'')+'</span>'+(e.key?'<span class="earn-key">重点厂家</span>':'')+'</div>'+
     '<span class="earn-period">'+esc(e.period||'')+'</span></div>'+
-    '<div class="earn-kpi">'+
+    (deltas.length?'<div class="earn-sec"><span class="earn-sec-h">① 核心数据变化</span><div class="earn-delta">'+deltas.map(d=>'<div class="ed"><div class="ed-l">'+esc(d.l)+'</div><div class="ed-v '+dCls(d.v)+'">'+esc(d.v)+'</div></div>').join('')+'</div></div>':'')+
+    (e.viewpoint?'<div class="earn-sec"><span class="earn-sec-h">② 核心观点 · 关键发现</span><div class="earn-fold" data-fold><div class="earn-viewpoint">'+numberedLines(e.viewpoint)+'</div><div class="fold-fade"></div></div><span class="earn-toggle" data-tog data-label="▸ 展开核心观点">▸ 展开核心观点</span></div>':'')+
+    '<div class="earn-sec"><span class="earn-sec-h">③ 重点观测指标</span><div class="earn-kpi">'+
       '<div class="kpi"><div class="kv">'+esc(e.revenue)+'</div><div class="kl">营收 '+(e.revYoy||'')+'</div></div>'+
       '<div class="kpi"><div class="kv">'+esc(e.grossMargin!=='—'?e.grossMargin:'—')+'</div><div class="kl">毛利率</div></div>'+
       '<div class="kpi"><div class="kv" style="font-size:13px">'+esc(e.profit)+'</div><div class="kl">利润 '+(e.profitYoy||'')+'</div></div>'+
       '<div class="kpi"><div class="kv" style="font-size:12px">'+esc(e.ocf)+'</div><div class="kl">经营现金流</div></div>'+
       '<div class="kpi"><div class="kv" style="font-size:12px">'+esc(e.inventory)+'</div><div class="kl">存货</div></div>'+
       '<div class="kpi"><div class="kv" style="font-size:12px">'+esc(e.shipments)+'</div><div class="kl">发货量 '+(e.shipmentsChg||'')+'</div></div>'+
-    '</div>'+
-    (e.viewpoint?'<div class="earn-viewpoint"><b>分析观点与关键发现</b>'+numberedLines(e.viewpoint)+'</div>':'')+
-    (e.insight?'<div class="earn-insight"><b>对经营管理启示</b>'+numberedLines(e.insight)+'</div>':'')+
-    '</div>').join('');
+    '</div></div>'+
+    (e.insight?'<div class="earn-sec"><span class="earn-sec-h">④ 管理启示</span><div class="earn-fold" data-fold><div class="earn-insight">'+numberedLines(e.insight)+'</div><div class="fold-fade"></div></div><span class="earn-toggle" data-tog data-label="▸ 展开管理启示">▸ 展开管理启示</span></div>':'')+
+    '</div>';
+  }).join('');
+  wireFolds(c);
 }
 
 /* ---------------- TAB4 市场大盘追踪 ---------------- */
@@ -1090,7 +1151,7 @@ function renderTab4(){
   autoCardSeq = 0;
   let html = '';
   if(cur.marketView) html += '<div class="card"><div class="section-title">大盘观点 <span class="en">Market View</span></div><div class="summary-box">'+summaryCollapsible(cur.marketView,3)+'</div></div>';
-  if(cur.marketData) html += '<div class="card"><div class="section-title">各品类大盘追踪 <span class="en">Market Big-board · 全球 / 中国</span></div><div id="mkt-gc" class="gc-toggle"></div><div id="mkt-tabs" class="mkt-tabs"></div><div class="chart-box" id="mkt-chart"></div><div class="mkt-sub">厂商份额分布（柱状图） <span class="en" id="mkt-share-chart-note"></span></div><div class="share-chart" id="mkt-share-chart"></div><div class="mkt-extra"><div class="mkt-sub">各厂商竞争份额及变化 <span class="en" id="mkt-share-note"></span></div><table class="data-tbl show" id="mkt-shares"></table><div class="mkt-sub">分类变化 <span class="en">Segments</span></div><table class="data-tbl show" id="mkt-segments"></table></div><div style="margin-top:8px"><span class="toggle-tbl" id="mkt-toggle">▸ 显示总量数据表格</span></div><table class="data-tbl" id="mkt-tbl"></table></div>';
+  if(cur.marketData) html += '<div class="card"><div class="section-title">各品类大盘追踪 <span class="en">Market Big-board · 全球 / 中国</span></div><div id="mkt-gc" class="gc-toggle"></div><div id="mkt-tabs" class="mkt-tabs"></div><div class="chart-box" id="mkt-chart"></div><div class="mkt-src" id="mkt-src"></div><div class="mkt-sub">厂商份额分布（柱状图） <span class="en" id="mkt-share-chart-note"></span></div><div class="share-chart" id="mkt-share-chart"></div><div class="mkt-extra"><div class="mkt-sub">各厂商竞争份额及变化 <span class="en" id="mkt-share-note"></span></div><table class="data-tbl show" id="mkt-shares"></table><div class="mkt-sub">分类变化 <span class="en">Segments</span></div><table class="data-tbl show" id="mkt-segments"></table></div><div style="margin-top:8px"><span class="toggle-tbl" id="mkt-toggle">▸ 显示总量数据表格</span></div><table class="data-tbl" id="mkt-tbl"></table></div>';
   c.innerHTML = html;
   wireCollapse(c);
   try{ if(cur.marketData) renderCategoryMarket(); }catch(e){ console.error('renderCategoryMarket', e); }
@@ -1135,6 +1196,8 @@ function drawMkt(key){
       { name:'同比YoY', type:'line', yAxisIndex:1, data:yoy, itemStyle:{color:'#1d4ed8'}, symbolSize:8, label:{show:true,position:'bottom',formatter:function(p){ return p.value==null?'—':p.value+'%'; }} }
     ]
   }, true);
+  const srcEl = el('mkt-src');
+  if(srcEl) srcEl.innerHTML = '数据来源与口径：<b>'+(d.note || '公开第三方机构抓取，以各机构官方披露为准')+'</b>';
   const sh = el('mkt-shares');
   if(d.shares){
     el('mkt-share-note').textContent = '（'+(mktGC==='global'?'全球':'中国')+'厂商份额）';
