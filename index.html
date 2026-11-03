@@ -546,22 +546,24 @@ a:hover { text-decoration:underline; }
       <link rel="preload" as="script" href="https://events.vercount.one/js">
       <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
       <script>
-      /* 访问计数：优先不蒜子；0.8 秒内未回填（其计数接口长期 502、兜底域名已失效），
-         则切换为 Vercount（写入同一批 busuanzi_value_* DOM id）。上方 preload 让脚本
-         下载与等待期重叠，切换几乎无感。 */
+      /* 访问计数：优先不蒜子；不蒜子实测偏慢（常 >800ms 才回填），故把兜底判定窗口
+         放宽到 3s——只要不蒜子在 3s 内回填了真实数字，就保持不蒜子、绝不加载 Vercount，
+         避免两个计数器抢写同一批 busuanzi_value_* DOM（此前 800ms 过短导致慢一点的不蒜子
+         被禁用、最终显示成 Vercount 的较小数字且乱跳）。仅当 3s 后仍无数字（不蒜子真挂）
+         才加载 Vercount 并禁用不蒜子渲染作为兜底。上方 preload 仅预取，不执行。 */
       (function () {
         function filled() {
           var e = document.getElementById('busuanzi_value_site_pv');
           return !!(e && /[0-9]/.test(e.textContent || ''));
         }
         setTimeout(function () {
-          if (filled()) { return; }
+          if (filled()) { return; }   // 不蒜子已回填真值 -> 保持，不碰 Vercount
           window.bszTag = { texts: function () {}, shows: function () {}, hides: function () {} };
           var s = document.createElement('script');
           s.src = 'https://events.vercount.one/js';
           s.async = true;
           document.head.appendChild(s);
-        }, 800);
+        }, 3000);
       })();
       </script>
       <div class="badge" id="update-badge" data-page-node-id="uEwyCHaj4lKT5ev5OA8MnR">更新中…</div>
