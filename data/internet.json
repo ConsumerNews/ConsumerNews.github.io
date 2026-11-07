@@ -1,9 +1,9 @@
 {
-  "updateTime": "2026-11-07 06:20",
+  "updateTime": "2026-11-08 06:21",
   "headlineViewpoints": [
     {
-      "t": "**选举重定价**：道指跌 1800 点、AI 股承压",
-      "s": "核心观点：美国中期选举民主党胜出后道指单日跌 **1800 点**，AI 监管忧虑引发科技股与算力股普跌。\n① Anthropic **IPO 窗口**受冲击，潜在投资者忧定价与需求。\n② 英伟达市值回撤，黄仁勋退出全球前十富豪。\n③ 多家企业启动 AI 相关裁员（Canva / ServiceNow）。\n高层建议：**AI 资产估值进入重定价窗口。**",
+      "t": "**利空出尽**：选举冲击后科技股超跌反弹",
+      "s": "核心观点：中期选举民主党胜出引发 **AI 禁令**恐慌，美股算力股单日蒸发约 **2 万亿$**、纳指跌 5.5%。\n① 法案落地难度大，市场 **利空出尽** 后科技股超跌反弹。\n② 港股恒生科技连涨、腾讯阿里反弹 7%+。\n③ 费城半导体单日 -12%，A 股科创亦受拖累。\n高层建议：**AI 资产短期波动放大，宜看长线产业趋势。**",
       "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226",
       "l": "Quartz / 路透",
       "prov": {
@@ -68,14 +68,14 @@
       }
     },
     {
-      "t": "**170 亿$**：Anthropic 单季营收暴涨",
-      "s": "核心观点：Anthropic 披露 **9 月季度**营收 **170 亿$**、同比 **+1127%**，上调后营业利润 **25 亿$**。\n① 季度净亏 **233 亿$**，算力承诺接近 **9000 亿$**。\n② 路演 **11/9** 启动、定价 **180–220 美元**，估值 **1.5–2 万亿$**。\n高层建议：**以修订后注册文件而非传闻估值决策。**",
-      "u": "https://news.qq.com/rain/a/20261103A0BO8Q00",
-      "l": "腾讯新闻 / 腾讯网",
+      "t": "**IPO 路演启动**：Anthropic 11/9 当周路演、估值 1.5–2 万亿$",
+      "s": "核心观点：Anthropic 最早 **11/10** 启动 IPO 路演、定价 **180–220 美元**、估值 **1.5–2 万亿$**。\n① Q3 营收 **170 亿$**、同比 +1127%，上调后营业利润 25 亿$。\n② 摩根士丹利/高盛/小摩联席簿记，代码 ANT。\n③ 市场忧选举后监管与定价节奏。\n高层建议：**以修订后注册文件而非传闻估值决策。**",
+      "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226",
+      "l": "Quartz / 路透",
       "prov": {
         "src": "公开报道(L4)",
         "conf": "高",
-        "url": "https://news.qq.com/rain/a/20261103A0BO8Q00"
+        "url": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226"
       }
     },
     {
@@ -220,8 +220,8 @@
       "role": "字节跳动首席执行官",
       "items": [
         {
-          "hl": "把豆包工作从自研模型扩到多模型聚合，拼的是执行链而非单模型。",
-          "detail": "① 豆包工作 10/29 向企业开放 Kimi 3.1 Pro、GLM-5.3、DeepSeek V4.1 Flash。\n② TRAE Work 已先走多模型路线，管理员按成员部门配权限。\n③ 强调 Harness 的模型路由与失败恢复是下一关。",
+          "hl": "把豆包工作从自研扩到多模型聚合，并取消个人版 5 小时额度限制。",
+          "detail": "① 豆包工作 10/29 向企业开放 Kimi 3.1 Pro、GLM-5.3、DeepSeek V4.1 Flash。\n② TRAE Work 已先走多模型路线，管理员按成员部门配权限。\n③ 11/6 豆包工作个人版取消 5 小时额度限制，用户可在周额度内自由排布。\n④ 强调 Harness 的模型路由与失败恢复是下一关。",
           "u": "https://www.163.com/dy/article/LAGCE35V05198NMR.html",
           "l": "华尔街见闻"
         }
@@ -229,7 +229,7 @@
       "prov": {
         "src": "KOL观点(L4)",
         "conf": "高",
-        "url": ""
+        "url": "https://news.dayoo.com/finance/202611/06/171077_55021013.htm"
       }
     },
     {
@@ -284,7 +284,7 @@
       }
     }
   ],
-  "leadersSummary": "① **奥特曼**推数据中心透明新政，GPT-6 Cyber 与安全赛道并进。② **阿莫迪**IPO 路演前夜遇选举后市场重定价冲击。③ **杨植麟**Kimi K3.1 Pro 权重开放领跑开源旗舰。",
+  "leadersSummary": "① **奥特曼**推数据中心透明新政，GPT-6 Cyber 与安全赛道并进。② **阿莫迪** IPO 路演 11/9 当周启动、估值 1.5–2 万亿$。③ **梁汝波** 豆包工作取消 5 小时额度限制，多模型办公提速。",
   "institutionViews": [
     {
       "name": "标普全球 / 摩根大通",
@@ -347,18 +347,18 @@
       }
     },
     {
-      "name": "界面新闻 / 今日头条",
+      "name": "门罗风投 (Menlo Ventures)",
       "items": [
         {
-          "s": "① 榜单要看口径：聚合平台只统计经其网关的调用，不含官网与私有化。\n② 最新一期：截至 11/1 周调用 48.1 万亿，DeepSeek V4.1 Flash 1017 居首。\n③ 提示：调用量与付费额不重合，MiniMax M3.1 Flash +690% 空降第八。",
-          "u": "https://openrouter.ai/rankings",
-          "l": "OpenRouter 排行榜"
+          "s": "① 支出跃迁：全球企业 AI 部署年化 1768 亿$、三年翻 100 倍（2023 年 17 亿$）。\n② 开源格局：美国企业开源模型支出 89% 流向中国，Kimi 61%、DeepSeek 15%、GLM 11%。\n③ 份额集中：Anthropic/OpenAI/谷歌占美企 LLM API 69%（Anthropic 55%）。",
+          "u": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/",
+          "l": "Menlo Ventures / 环球网"
         }
       ],
       "prov": {
         "src": "机构研报(L3)",
         "conf": "高",
-        "url": "https://openrouter.ai/rankings"
+        "url": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/"
       }
     },
     {
@@ -377,10 +377,10 @@
       }
     }
   ],
-  "instsSummary": "① **标普/小摩**：Q3 capex **2078 亿$** 新高、FCF 集体转负。② **高盛**：Anthropic **11/9** 路演、估值 **1.5–2 万亿$**。③ **市场**：选举后 AI 股重定价，IPO 窗口承压。",
+  "instsSummary": "① **标普/小摩**：Q3 capex 2078 亿$ 新高、FCF 集体转负。② **高盛**：Anthropic 11/9 当周路演、估值 1.5–2 万亿$。③ **门罗风投**：企业 AI 支出三年翻百倍至 1768 亿$、中国开源模型占 89%。",
   "topNews": [
     {
-      "t": "**选举重定价**：道指跌 1800 点、AI 股承压",
+      "t": "**利空出尽**：选举冲击后科技股超跌反弹",
       "l": "Quartz / 路透",
       "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226"
     },
@@ -410,9 +410,9 @@
       "u": "https://m.sohu.com/a/1095889057_122066679"
     },
     {
-      "t": "**170 亿$**：Anthropic 单季营收暴涨",
-      "l": "腾讯新闻 / 腾讯网",
-      "u": "https://news.qq.com/rain/a/20261103A0BO8Q00"
+      "t": "**取消额度**：豆包工作个人版放开 5 小时限制",
+      "l": "澎湃新闻 / 广州日报",
+      "u": "https://www.thepaper.cn/newsDetail_forward_34422079"
     },
     {
       "t": "**双11 首战**：千问办公半天调用破 5 万亿",
@@ -430,8 +430,15 @@
       "u": "https://dy.163.com/article/LAAUG8840519QIKK.html"
     }
   ],
-  "newsSummary": "① **模型侧**：GPT-6 Cyber 上线、百度开源文心 **5.5 FlashBase**。② **应用侧**：DeepSeek Harness 日活 **154 万**、千问双 11 调用破 **5 万亿**。③ **平台侧**：OpenRouter 周调用 **48.1 万亿**、开源权重领跑。",
+  "newsSummary": "① **模型侧**：GPT-6 Cyber 上线、百度开源文心 5.5 FlashBase。② **应用侧**：DeepSeek Harness 日活 154 万、豆包工作取消 5 小时额度限制。③ **平台侧**：OpenRouter 周调用 57.6 万亿、企业 AI 支出三年翻百倍至 1768 亿$。",
   "launchCalendar": [
+    {
+      "d": "11/6",
+      "brand": "字节跳动",
+      "evt": "豆包工作个人版取消 5 小时额度限制",
+      "product": "豆包工作配额",
+      "point": "**取消 5 小时**额度、周额度内自由排布"
+    },
     {
       "d": "11/6",
       "brand": "百度",
@@ -529,13 +536,6 @@
       "evt": "DeepSeek V5 计划预训练",
       "product": "V5昇腾预训练",
       "point": "首款原生依托**华为昇腾950**训练"
-    },
-    {
-      "d": "11/3",
-      "brand": "美团",
-      "evt": "美团发布 1.6 万亿参数模型",
-      "product": "美团万亿模型",
-      "point": "**1.6万亿**参数、Terminal Bench 2.1 **88.4**"
     },
     {
       "d": "11/4",
@@ -668,9 +668,9 @@
     {
       "brand": "字节",
       "product": "豆包工作多模型",
-      "selling": "已接入 Kimi/GLM/DeepSeek 等第三方大模型",
-      "intent": "将办公 Agent 从自研模型扩展为多模型聚合化路线",
-      "insight": "竞争已升维到 Harness 编排与多模型路由的核心能力"
+      "selling": "已接入 Kimi/GLM/DeepSeek 并取消个人版 5 小时额度限制",
+      "intent": "将办公 Agent 从自研模型扩展为多模型聚合与自由配额路线",
+      "insight": "竞争已升维到模型编排、多模型路由与配额体验等核心能力"
     },
     {
       "brand": "阿里",
@@ -687,7 +687,7 @@
       "insight": "安全能力正成为前沿模型首个独立产品线，拉开安全模型赛道"
     }
   ],
-  "productsSummary": "① **模型**：GPT-6 Cyber 专用安全模型上线；百度文心 **5.5 FlashBase** 开源。② **办公 AI**：千问双 11 调用破 **5 万亿** Token、DeepSeek Harness 日活 **154 万**。③ **开源**：Mistral 开放万亿权重、月之暗面 K3.1 Pro 进主权采购。",
+  "productsSummary": "① **模型**：GPT-6 Cyber 专用安全模型上线；百度文心 5.5 FlashBase 开源。② **办公 AI**：豆包工作取消 5 小时额度、千问双 11 调用破 5 万亿、Harness 日活 154 万。③ **开源**：Mistral 开放万亿权重、月之暗面 K3.1 Pro 进主权采购。",
   "newProducts": [
     {
       "brand": "百度",
@@ -945,8 +945,8 @@
       "brand": "字节跳动",
       "color": "#ff6900",
       "tag": "多模型办公",
-      "date": "10/29",
-      "summary": "豆包工作向企业开放 **Kimi 3.1 Pro、GLM-5.3、DeepSeek V4.1 Flash** 等第三方模型。",
+      "date": "11/6",
+      "summary": "**豆包工作** 11/6 取消个人版 5 小时额度限制，此前已向企业开放 Kimi/GLM/DeepSeek 等第三方模型。",
       "table": {
         "rows": [
           {
@@ -967,7 +967,7 @@
           }
         ]
       },
-      "analysis": "① **路线切换**：从自研模型扩到多模型聚合。\n② **竞争升维**：拼模型路由、上下文与失败恢复。\n③ **待解**：多模型不等于更好体验，稳定性是关键。"
+      "analysis": "① **配额放开**：个人用户可在周额度内自由排布，AI 办公体验门槛再降。\n② **路线切换**：从自研模型扩到多模型聚合。\n③ **竞争升维**：拼模型路由、上下文与失败恢复，稳定性是关键。"
     },
     {
       "brand": "阿里",
@@ -1085,13 +1085,13 @@
       "brand": "OpenRouter",
       "color": "#0b8a3d",
       "tag": "聚合平台",
-      "date": "11/1",
-      "summary": "周榜 **DeepSeek V4.1 Flash 1017** 调用 **48.1 万亿**、环比 **+43%** 居首。",
+      "date": "11/4",
+      "summary": "周榜 **DeepSeek V4.1 Flash 1017** 调用 **57.6 万亿**、环比 **+46%** 居首。",
       "table": {
         "rows": [
           {
             "k": "用户规模",
-            "v": "周总调用 **194 万亿**、环比 **+3.19%**"
+            "v": "Top20 中国占 11 席、合计 **116.5 万亿**"
           },
           {
             "k": "核心能力",
@@ -1107,7 +1107,7 @@
           }
         ]
       },
-      "analysis": "① **东方主导**：中国周调用 **99.55 万亿**连续 **27 周**超美。\n② **新版挤占**：1017 版替代旧版，GLM 5.3 Flash 稳居第二。\n③ **口径提醒**：调用量不等于收入份额，需分开看。"
+      "analysis": "① **东方主导**：中国周调用连续 27 周超美，Top20 占 11 席。\n② **新版挤占**：1017 版月内 +46% 至 57.6 万亿，GLM 5.3 Flash 稳居第二。\n③ **口径提醒**：调用量不等于收入份额，需分开看。"
     }
   ],
   "earningsCalendar": [
@@ -1452,7 +1452,7 @@
       }
     }
   ],
-  "marketView": "① **估值重定价**：中期选举后道指跌 **1800 点**，AI 监管忧虑冲击科技股与 Anthropic **IPO 窗口**。\n② **现金转负**：2026Q3 四大云厂 capex **2078 亿$**、FCF 合计约 **-273 亿$**，仅微软为正。\n③ **透明化转向**：OpenAI 承诺 **100%** 承担数据中心电费、取消官员 NDA，自建算力走向共担。",
+  "marketView": "① **利空出尽**：选举冲击后科技股超跌反弹，AI 禁令恐慌缓解、港股腾讯阿里反弹 7%+。\n② **支出跃迁**：全球企业 AI 部署年化 1768 亿$、三年翻百倍，Anthropic/OpenAI/谷歌占美企 LLM API 69%。\n③ **透明化+开源**：OpenAI 承诺 100% 承担数据中心电费；OpenRouter 中国模型占 Top20 75%、DeepSeek 周调用 57.6 万亿。",
   "market": {
     "type": "internet",
     "capex": {
@@ -1758,62 +1758,62 @@
       {
         "model": "DeepSeek V4.1 Flash 1017",
         "vendor": "deepseek",
-        "weeklyTokens": "52100",
-        "note": "周榜 **52.1 万亿**居首、环比 **+8%**，延续挤占旧版份额"
-      },
-      {
-        "model": "GLM 5.3 Flash",
-        "vendor": "z-ai",
-        "weeklyTokens": "16200",
-        "note": "**16.2 万亿**居次、环比 **+8%**，国产新版领跑"
+        "weeklyTokens": "57600",
+        "note": "周榜 **57.6 万亿**居首、环比 **+46%**，独占平台约三成"
       },
       {
         "model": "DeepSeek V4.1 Flash",
         "vendor": "deepseek",
-        "weeklyTokens": "13900",
-        "note": "**13.9 万亿**、环比 **-7%**，被 1017 版替代"
+        "weeklyTokens": "16200",
+        "note": "**16.2 万亿**、环比 **-2%**，被 1017 版替代"
+      },
+      {
+        "model": "GLM 5.3 Flash",
+        "vendor": "z-ai",
+        "weeklyTokens": "15900",
+        "note": "**15.9 万亿**居次、环比 **+6%**，国产新版领跑"
+      },
+      {
+        "model": "GPT-6 Luna",
+        "vendor": "openai",
+        "weeklyTokens": "8950",
+        "note": "**8.95 万亿**、环比 **-7%**，闭源阵营回稳"
       },
       {
         "model": "Hy4 preview",
-        "vendor": "z-ai",
-        "weeklyTokens": "12000",
-        "note": "**12 万亿**稳居前四，混元阵营持续放量"
+        "vendor": "tencent",
+        "weeklyTokens": "8100",
+        "note": "**8.1 万亿**稳居前四，混元阵营持续放量"
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "vendor": "anthropic",
+        "weeklyTokens": "6810",
+        "note": "**6.81 万亿**、环比 **-13%**，企业 API 主力"
+      },
+      {
+        "model": "Step 5 Preview",
+        "vendor": "stepfun",
+        "weeklyTokens": "6730",
+        "note": "**6.73 万亿**、环比 **+25%**，长程任务交付稳"
+      },
+      {
+        "model": "MiniMax M3.1 Flash",
+        "vendor": "minimax",
+        "weeklyTokens": "6350",
+        "note": "**6.35 万亿**、环比 **+98%**，付费后企稳"
       },
       {
         "model": "GPT-5.6 Luna",
         "vendor": "openai",
-        "weeklyTokens": "10500",
-        "note": "**10.5 万亿**、环比 **+6%**，闭源阵营回稳"
+        "weeklyTokens": "5250",
+        "note": "**5.25 万亿**、环比 **+163%**，放量明显"
       },
       {
-        "model": "GPT-6 Cyber",
+        "model": "GPT-6.1 Sol",
         "vendor": "openai",
-        "weeklyTokens": "6200",
-        "note": "安全模型上线首周 **6.2 万亿**，政企安全场景吃量"
-      },
-      {
-        "model": "Kimi K3.1 Pro",
-        "vendor": "moonshot",
-        "weeklyTokens": "5400",
-        "note": "权重开放后 **5.4 万亿**、主权与安全客户拉动"
-      },
-      {
-        "model": "MiniMax",
-        "vendor": "minimax",
-        "weeklyTokens": "4100",
-        "note": "**4.1 万亿**、环比 **+690%**，空降前十"
-      },
-      {
-        "model": "Qwen3.8 Flash",
-        "vendor": "qwen",
-        "weeklyTokens": "3800",
-        "note": "**3.8 万亿**、环比 **+5%**，电商双 11 带动"
-      },
-      {
-        "model": "MiMo-V2.6 Flash",
-        "vendor": "xiaomi",
-        "weeklyTokens": "3100",
-        "note": "**3.1 万亿**、环比 **-12%**，开源后退居"
+        "weeklyTokens": "4110",
+        "note": "**4.11 万亿**、环比 **+34%**，高效低价档"
       }
     ],
     "hfModels": [
@@ -1909,9 +1909,9 @@
       },
       {
         "name": "聚合平台周调用",
-        "metric": "截至 11/1 周榜",
-        "value": "52.1万亿",
-        "note": "环比 **+8%**，DeepSeek V4.1 Flash 1017 居首，前十中五个为中国模型"
+        "metric": "截至 11/4 周榜",
+        "value": "57.6万亿",
+        "note": "环比 **+20%**，DeepSeek V4.1 Flash 1017 居首；Top20 中国占 11 席、合计 **75%**"
       },
       {
         "name": "中国模型请求份额",
