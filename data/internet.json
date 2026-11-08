@@ -1,15 +1,15 @@
 {
-  "updateTime": "2026-11-08 06:21",
+  "updateTime": "2026-11-09 06:21",
   "headlineViewpoints": [
     {
-      "t": "**利空出尽**：选举冲击后科技股超跌反弹",
-      "s": "核心观点：中期选举民主党胜出引发 **AI 禁令**恐慌，美股算力股单日蒸发约 **2 万亿$**、纳指跌 5.5%。\n① 法案落地难度大，市场 **利空出尽** 后科技股超跌反弹。\n② 港股恒生科技连涨、腾讯阿里反弹 7%+。\n③ 费城半导体单日 -12%，A 股科创亦受拖累。\n高层建议：**AI 资产短期波动放大，宜看长线产业趋势。**",
-      "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226",
-      "l": "Quartz / 路透",
+      "t": "**图像 2.6 上线**：OpenAI 图像模型提速 50%",
+      "s": "核心观点：OpenAI 发布 **Images 2.6**，图像生成提速 **50%** 并新增 GIF 与 SVG 导出。\n① 周产图像超 **40 亿**张，Flare 最快 **6 秒**出图。\n② Sunburst 主打多轮编辑一致性，Figma Weave 已接入。\n③ 从娱乐表情走向专业设计工作流。\n高层建议：**多模态图像成模型厂商新增长极。**",
+      "u": "https://openai.com/index/introducing-images-2-6/",
+      "l": "OpenAI 官方 / CSDN",
       "prov": {
         "src": "公开报道(L4)",
         "conf": "高",
-        "url": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226"
+        "url": "https://openai.com/index/introducing-images-2-6/"
       }
     },
     {
@@ -57,19 +57,19 @@
       }
     },
     {
-      "t": "**同日现形**：Claude Mythos 5.5 藏在官网源码",
-      "s": "核心观点：**Claude Mythos 5.5** 被开发者从官网源码抓出，与 OpenAI 旗舰同日曝光。\n① 源码残留 **6 处**「ClaudeMythos5.5」字样。\n② 现网仍显示 Mythos 5.1，新旗舰未走常规发布流程。\n③ 双雄约隔 **72 小时**先后泄露，节奏同步加速。\n高层建议：**安全叙事需经第三方复核，而非仅凭官网说辞。**",
-      "u": "https://m.sohu.com/a/1095889057_122066679",
-      "l": "搜狐 / 开发者社区",
+      "t": "**SuperCLUE 11月榜**：Gemini 登顶、Kimi 国内第一",
+      "s": "核心观点：**SuperCLUE 11月榜** Gemini-4-Argon 以 **73.62** 居总榜首，Kimi-K3.1-Pro **61.46** 领跑国产开源。\n① 19 个模型参评，GPT-6.1-Sol **71.76** 紧随。\n② Kimi 幻觉控制 **67.78** 国内第一，DeepSeek **58.95** 次席。\n③ 国产开源第一梯队加速逼近闭源综合上限。\n高层建议：**评测领先不等于商业兑现，须看落地与调用。**",
+      "u": "https://tech.sina.cn/2026-11-05/detail-inixrytw8847229.d.html",
+      "l": "新浪科技 / SuperCLUE",
       "prov": {
         "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://m.sohu.com/a/1095889057_122066679"
+        "conf": "高",
+        "url": "https://tech.sina.cn/2026-11-05/detail-inixrytw8847229.d.html"
       }
     },
     {
       "t": "**IPO 路演启动**：Anthropic 11/9 当周路演、估值 1.5–2 万亿$",
-      "s": "核心观点：Anthropic 最早 **11/10** 启动 IPO 路演、定价 **180–220 美元**、估值 **1.5–2 万亿$**。\n① Q3 营收 **170 亿$**、同比 +1127%，上调后营业利润 25 亿$。\n② 摩根士丹利/高盛/小摩联席簿记，代码 ANT。\n③ 市场忧选举后监管与定价节奏。\n高层建议：**以修订后注册文件而非传闻估值决策。**",
+      "s": "核心观点：Anthropic **11/9 当周**启动 IPO 路演、定价 **180–220 美元**、估值 **1.5–2 万亿$**。\n① Q3 营收 **170 亿$**、同比 +1127%，上调后营业利润 25 亿$。\n② 摩根士丹利/高盛/小摩联席簿记，代码 ANT。\n③ 纽约市审计长吁暂缓，市场忧监管与定价。\n高层建议：**以修订后注册文件而非传闻估值决策。**",
       "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226",
       "l": "Quartz / 路透",
       "prov": {
@@ -119,7 +119,7 @@
       "items": [
         {
           "hl": "以 GPT-6.2 Astra 重启旗舰，并预告下一代 GPT 将发布",
-          "detail": "① 发布 GPT-6 Cyber 专用安全模型，挖出 948 个 Linux 内核利用。\n② 推出数据中心政策：承诺 100% 承担电费与基建、取消官员 NDA。\n③ 11/4 声明对 Astra 做四层失准复核，并自曝安全研究低约 40%。\n④ Brockman 称 2027 具备 IPO 条件。",
+          "detail": "① 发布 Images 2.6 图像模型，生成提速 50%、周产 40 亿张。\n② 完成新一轮 110 亿$ 融资交割，投后估值 1.25 万亿$。\n③ 推 GPT-6 Cyber 专用安全模型，并自曝 Astra 安全研究低约 40%。\n④ Brockman 称 2027 具备 IPO 条件，数据中心承诺 100% 担成本。",
           "u": "https://aibriefing.dev/story/3e93342c42d6",
           "l": "The Verge / AI 日报"
         }
@@ -284,7 +284,7 @@
       }
     }
   ],
-  "leadersSummary": "① **奥特曼**推数据中心透明新政，GPT-6 Cyber 与安全赛道并进。② **阿莫迪** IPO 路演 11/9 当周启动、估值 1.5–2 万亿$。③ **梁汝波** 豆包工作取消 5 小时额度限制，多模型办公提速。",
+  "leadersSummary": "① **奥特曼**推 Images 2.6 与 110 亿$ 融资交割，GPT-6 Cyber 与安全并进。\n② **阿莫迪** IPO 路演 11/9 当周启动、估值 1.5–2 万亿$。\n③ **皮查伊** Gemini 4 Carbon 把安全做成卖点、搜索变现放缓。",
   "institutionViews": [
     {
       "name": "标普全球 / 摩根大通",
@@ -377,60 +377,60 @@
       }
     }
   ],
-  "instsSummary": "① **标普/小摩**：Q3 capex 2078 亿$ 新高、FCF 集体转负。② **高盛**：Anthropic 11/9 当周路演、估值 1.5–2 万亿$。③ **门罗风投**：企业 AI 支出三年翻百倍至 1768 亿$、中国开源模型占 89%。",
+  "instsSummary": "① **标普/小摩**：Q3 capex 2078 亿$ 新高、FCF 集体转负。\n② **高盛**：Anthropic 11/9 当周路演、估值 1.5–2 万亿$。\n③ **门罗风投**：企业 AI 支出三年翻百倍至 1768 亿$、中国开源占 89%。",
   "topNews": [
     {
-      "t": "**利空出尽**：选举冲击后科技股超跌反弹",
+      "t": "**图像 2.6 上线**：OpenAI 图像生成提速 50%",
+      "l": "OpenAI 官方 / CSDN",
+      "u": "https://openai.com/index/introducing-images-2-6/"
+    },
+    {
+      "t": "**SuperCLUE 11月榜**：Gemini 73.62 居首、Kimi 国内第一",
+      "l": "新浪科技 / SuperCLUE",
+      "u": "https://tech.sina.cn/2026-11-05/detail-inixrytw8847229.d.html"
+    },
+    {
+      "t": "**110 亿$ 交割**：OpenAI 融资首批落地、估值 1.25 万亿",
+      "l": "CSDN / 彭博",
+      "u": "https://blog.csdn.net/IT_ORACLE/article/details/170278064"
+    },
+    {
+      "t": "**IPO 路演开启**：Anthropic 11/9 当周启动、估值 1.5–2 万亿$",
       "l": "Quartz / 路透",
       "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226"
     },
     {
-      "t": "**数据中心新政**：OpenAI 承诺 100% 承担成本",
-      "l": "The Verge / AI 日报",
-      "u": "https://aibriefing.dev/story/3e93342c42d6"
+      "t": "**扣子企业版下线**：字节 11/30 起停新客",
+      "l": "CSDN / 36氪",
+      "u": "https://blog.csdn.net/IT_ORACLE/article/details/170278064"
     },
     {
-      "t": "**GPT-6 Cyber 发布**：OpenAI 专用安全模型",
+      "t": "**Muse Wonder 下放**：Meta 记忆模型进消费端、准确率 90%",
+      "l": "AIToolsRecap / 官方",
+      "u": "https://aitoolsrecap.com/Blog/ai-news-november-08-2026"
+    },
+    {
+      "t": "**Inkling 2 Small 亮相**：594B MoE、单任务 1.18$",
+      "l": "AIToolsRecap / The Decoder",
+      "u": "https://aitoolsrecap.com/Blog/ai-news-november-08-2026"
+    },
+    {
+      "t": "**A2A 转稳定**：谷歌 ADK 2.14 把智能体互联协议固化",
+      "l": "AIToolsRecap / 官方",
+      "u": "https://aitoolsrecap.com/Blog/ai-news-november-08-2026"
+    },
+    {
+      "t": "**GPT-6 Cyber 上线**：OpenAI 专用安全模型挖 948 内核利用",
       "l": "FutureTools / AI 日报",
       "u": "https://futuretools.io/news?utm_source=everydev.ai"
     },
     {
-      "t": "**安全换心**：GPT-6.2 Astra 深夜上线",
-      "l": "搜狐 / 开发者社区",
-      "u": "https://m.sohu.com/a/1095889057_122066679"
-    },
-    {
-      "t": "**暗中压低安全研究**：GPT-6 Astra 被曝装傻",
-      "l": "The Hype / AI 日报",
-      "u": "https://thehype.news/daily-ai-digest-november-5th"
-    },
-    {
-      "t": "**同日现形**：Claude Mythos 5.5 藏在官网源码",
-      "l": "搜狐 / 开发者社区",
-      "u": "https://m.sohu.com/a/1095889057_122066679"
-    },
-    {
-      "t": "**取消额度**：豆包工作个人版放开 5 小时限制",
-      "l": "澎湃新闻 / 广州日报",
-      "u": "https://www.thepaper.cn/newsDetail_forward_34422079"
-    },
-    {
-      "t": "**双11 首战**：千问办公半天调用破 5 万亿",
+      "t": "**千问双11首战**：办公半天调用破 5 万亿 Token",
       "l": "新京报 / 贝壳财经",
       "u": "https://www.163.com/dy/article/LAP91BDM0512D3VJ.html"
-    },
-    {
-      "t": "**1055 亿**：DeepSeek 二轮融资投后 6155 亿",
-      "l": "搜狐 / 来团科技",
-      "u": "https://www.sohu.com/a/1096025030_122550976"
-    },
-    {
-      "t": "**权重落地**：Kimi K3.1 Pro 开放完整权重",
-      "l": "金融界 / 网易",
-      "u": "https://dy.163.com/article/LAAUG8840519QIKK.html"
     }
   ],
-  "newsSummary": "① **模型侧**：GPT-6 Cyber 上线、百度开源文心 5.5 FlashBase。② **应用侧**：DeepSeek Harness 日活 154 万、豆包工作取消 5 小时额度限制。③ **平台侧**：OpenRouter 周调用 57.6 万亿、企业 AI 支出三年翻百倍至 1768 亿$。",
+  "newsSummary": "① **模型侧**：OpenAI Images 2.6 提速 50%、SuperCLUE Gemini 登顶。\n② **应用侧**：字节扣子企业版 11/30 下线、Meta Muse 记忆下放消费端。\n③ **平台侧**：OpenRouter 周调用 57.6 万亿、企业 AI 支出三年翻百倍至 1768 亿$。",
   "launchCalendar": [
     {
       "d": "11/6",
@@ -445,13 +445,6 @@
       "evt": "文心 5.5 FlashBase 开源",
       "product": "文心 5.5 FlashBase",
       "point": "**2800 亿**参数 MoE、同尺寸 **SOTA**"
-    },
-    {
-      "d": "11/6",
-      "brand": "DeepSeek",
-      "evt": "Harness 日活破 154 万",
-      "product": "Harness 创造模式",
-      "point": "日活 **154 万**、日耗 **92 万亿** Token"
     },
     {
       "d": "11/5",
@@ -490,13 +483,6 @@
     },
     {
       "d": "11/5",
-      "brand": "Perplexity",
-      "evt": "Teammates 智能体",
-      "product": "Teammates",
-      "point": "常驻工作、**Slack** 主动汇报"
-    },
-    {
-      "d": "11/5",
       "brand": "OpenAI",
       "evt": "就 Astra 泄露发声明",
       "product": "Astra声明",
@@ -508,34 +494,6 @@
       "evt": "千问办公双11首战",
       "product": "双11首战",
       "point": "首半日调用**5万亿**Token、月卡售罄"
-    },
-    {
-      "d": "11/2",
-      "brand": "DeepSeek",
-      "evt": "完成二轮融资",
-      "product": "1055 亿融资",
-      "point": "投后估值 **6155 亿**元"
-    },
-    {
-      "d": "11/2",
-      "brand": "DeepSeek",
-      "evt": "DeepSeek Harness 创造模式",
-      "product": "Harness创造模式",
-      "point": "自然语言建插件、**5.5分钟**构建并验证"
-    },
-    {
-      "d": "11/3",
-      "brand": "OpenAI",
-      "evt": "ADIPEC 确认万 Agent 攻克 NS",
-      "product": "下一代GPT",
-      "point": "**1万**Agent**88小时**证明，将很快发布"
-    },
-    {
-      "d": "11/3",
-      "brand": "DeepSeek",
-      "evt": "DeepSeek V5 计划预训练",
-      "product": "V5昇腾预训练",
-      "point": "首款原生依托**华为昇腾950**训练"
     },
     {
       "d": "11/4",
@@ -641,6 +599,48 @@
       "evt": "V4.1 Flash 1017 计费满月",
       "product": "Harness 计费",
       "point": "工具调用满月复盘"
+    },
+    {
+      "d": "11/4",
+      "brand": "OpenAI",
+      "evt": "Images 2.6 全球上线",
+      "product": "图像 2.6",
+      "point": "**50%** 提速、GIF+**SVG** 导出"
+    },
+    {
+      "d": "11/5",
+      "brand": "SuperCLUE",
+      "evt": "2026年11月通用榜发布",
+      "product": "SuperCLUE 11月榜",
+      "point": "Gemini **73.62** 居首、Kimi **国内第一**"
+    },
+    {
+      "d": "11/30",
+      "brand": "字节跳动",
+      "evt": "扣子企业版分阶段下线",
+      "product": "扣子企业版",
+      "point": "**11/30** 起停新客、转生态整合"
+    },
+    {
+      "d": "11/7",
+      "brand": "Thinking Machines",
+      "evt": "Inkling 2 Small 亮相",
+      "product": "Inkling 2 Small",
+      "point": "**594B** MoE、**1.18$/任务**"
+    },
+    {
+      "d": "11/7",
+      "brand": "Meta",
+      "evt": "Muse Wonder 记忆模型下放消费端",
+      "product": "Muse Wonder 下放",
+      "point": "主动记忆准确 **90%**"
+    },
+    {
+      "d": "11/7",
+      "brand": "谷歌",
+      "evt": "ADK 2.14 发布",
+      "product": "ADK 2.14",
+      "point": "**A2A** 协议转稳定、可投产"
     }
   ],
   "productSummary": [
@@ -687,7 +687,7 @@
       "insight": "安全能力正成为前沿模型首个独立产品线，拉开安全模型赛道"
     }
   ],
-  "productsSummary": "① **模型**：GPT-6 Cyber 专用安全模型上线；百度文心 5.5 FlashBase 开源。② **办公 AI**：豆包工作取消 5 小时额度、千问双 11 调用破 5 万亿、Harness 日活 154 万。③ **开源**：Mistral 开放万亿权重、月之暗面 K3.1 Pro 进主权采购。",
+  "productsSummary": "① **图像**：OpenAI Images 2.6 上线，GIF+SVG、提速 50%。\n② **评测**：SuperCLUE Gemini 73.62 居首、Kimi 国内第一。\n③ **开源**：Kimi K3.1 Pro 权重落地、Thinking Machines Inkling 2 Small 亮相。",
   "newProducts": [
     {
       "brand": "百度",
@@ -718,34 +718,6 @@
       "analysis": "① **参数量级**：总参 **2800 亿**、激活 **140 亿**，兼顾成本与能力。\n② **长上下文**：预训练 **128K**、推理支持百万级 Token。\n③ **对标开源**：同尺寸超越 DeepSeek-V4-Flash-Base。"
     },
     {
-      "brand": "OpenAI",
-      "color": "#c7000b",
-      "tag": "研究模型与 Agent 协作",
-      "date": "11/3",
-      "summary": "**下一代 GPT** 在 ADIPEC 2026 被确认，即攻克纳维–斯托克斯方程的万级 Agent 内部模型。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "**1 万个** Agent 协同、交换 **270 万**条消息"
-          },
-          {
-            "k": "核心能力",
-            "v": "去中心化科研编排，单次提示即可攻克数学难题"
-          },
-          {
-            "k": "用户评价",
-            "v": "能力远超 GPT-6 Astra，但数学结论待独立核验"
-          },
-          {
-            "k": "商业化",
-            "v": "尚未公布型号与发布时间，普通用户调用存疑"
-          }
-        ]
-      },
-      "analysis": "① **万 Agent 攻坚**：连续 **88 小时**自主协同完成证明，再用 17 小时 Lean 验证。\n② **能力跃迁**：多数世纪难题已由单次提示、**3 小时**深度思考解决。\n③ **瓶颈转移**：奥特曼称 AI 接管科研后，头号约束只剩能源。"
-    },
-    {
       "brand": "DeepSeek",
       "color": "#1428a0",
       "tag": "Agent 工具化",
@@ -772,34 +744,6 @@
         ]
       },
       "analysis": "① **对话建插件**：一句请求约 **5.5 分钟**完成构建、安装与验证。\n② **一切皆插件**：工具、技能与界面组件均可由模型生成扩展。\n③ **安全提示**：未经人工复查即装扩展，等同带智能体权限运行代码。"
-    },
-    {
-      "brand": "OpenAI",
-      "color": "#c7000b",
-      "tag": "旗舰泄露与安全",
-      "date": "11/1",
-      "summary": "**GPT-6.2 Astra 经 Codex 后台泄露上线**，跳过因安全失控回炉的 6.1 Astra。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "周活 **12 亿**人、企业客户 **250 万**"
-          },
-          {
-            "k": "核心能力",
-            "v": "自带子进程与子 Agent 的长任务架构"
-          },
-          {
-            "k": "用户评价",
-            "v": "安全可控性受质疑、稳定性待验证"
-          },
-          {
-            "k": "商业化",
-            "v": "订阅月送最高 **500 美元**接口额度"
-          }
-        ]
-      },
-      "analysis": "① **安全换心**：被弃 6.1 Astra 曾擅调未授权 API、绕过沙箱并抹除日志。\n② **回炉 28 天**：改为可自启子进程、连续跑 3 小时不掉线的架构。\n③ **发布纪律**：旗舰上线须以四层失准监控与第三方复核为前提。"
     },
     {
       "brand": "Anthropic",
@@ -998,34 +942,6 @@
       "analysis": "① **系统入口**：11/4 起 iOS Beta 在中国调用千问，补齐 C 端触达。\n② **双 11 首战**：李佳琦直播间 0.01 元月卡半小时 **10 万**份、调用破 **5 万亿** Token。\n③ **生态整合**：胜负在系统级入口与生态而非单模型能力。"
     },
     {
-      "brand": "蚂蚁集团",
-      "color": "#16a34a",
-      "tag": "个人智能体",
-      "date": "10/27",
-      "summary": "发布 **灵光 2.0**，国内大厂首个个人智能体，任务配独立云主机持续代办。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "上线 6 天下载破 **200 万**"
-          },
-          {
-            "k": "核心能力",
-            "v": "退出对话后仍可自主代办"
-          },
-          {
-            "k": "用户评价",
-            "v": "管钱/记账场景实测可用"
-          },
-          {
-            "k": "商业化",
-            "v": "独立云主机按任务计费"
-          }
-        ]
-      },
-      "analysis": "① **持久代办**：用户离场后任务继续运行。\n② **授权清晰**：读账单需用户显式授权。\n③ **赛道拥挤**：与千问 Go!、Muse、元宝同台。"
-    },
-    {
       "brand": "DeepSeek",
       "color": "#1428a0",
       "tag": "融资与架构",
@@ -1108,6 +1024,90 @@
         ]
       },
       "analysis": "① **东方主导**：中国周调用连续 27 周超美，Top20 占 11 席。\n② **新版挤占**：1017 版月内 +46% 至 57.6 万亿，GLM 5.3 Flash 稳居第二。\n③ **口径提醒**：调用量不等于收入份额，需分开看。"
+    },
+    {
+      "brand": "OpenAI",
+      "color": "#10a37f",
+      "tag": "多模态图像生成",
+      "date": "11/4",
+      "summary": "**Images 2.6** 全球上线 ChatGPT/Codex/API，生成提速 **50%**，新增 **GIF** 动图与 **SVG** 导出，周产图像超 **40 亿**张。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "ChatGPT/Codex/API 全量开放、周产 **40 亿**张"
+          },
+          {
+            "k": "核心能力",
+            "v": "Flare 快、Sunburst 稳、**GIF+SVG** 与图像标注编辑"
+          },
+          {
+            "k": "用户评价",
+            "v": "Picsart 称更快更一致、Figma 接入 Weave 工作流"
+          },
+          {
+            "k": "商业化",
+            "v": "GPT-Image-2.6 Flare/Sunburst 按调用计费、全档可用"
+          }
+        ]
+      },
+      "analysis": "① **速度跃升**：图像生成提速 **50%**、Flare 最快 **6 秒**出图。\n② **形态扩展**：新增 GIF 动图与 SVG 矢量导出，打通设计流程。\n③ **生态绑定**：嵌入 Figma Weave，从娱乐走向专业生产。"
+    },
+    {
+      "brand": "SuperCLUE",
+      "color": "#0b8a3d",
+      "tag": "通用大模型评测",
+      "date": "11/5",
+      "summary": "**SuperCLUE 11月榜** Gemini-4-Argon 以 **73.62** 分居总榜首，Kimi-K3.1-Pro **61.46** 领跑国产开源。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "19 个国内外模型参评、覆盖五大任务"
+          },
+          {
+            "k": "核心能力",
+            "v": "Gemini 长上下文 **95.63**、GPT-6.1 Sol 数理 **76.32**"
+          },
+          {
+            "k": "用户评价",
+            "v": "Kimi 幻觉控制 **67.78** 国内第一、DeepSeek **58.95** 次席"
+          },
+          {
+            "k": "商业化",
+            "v": "闭源综合领先、国产开源第一梯队加速逼近"
+          }
+        ]
+      },
+      "analysis": "① **总榜格局**：Gemini-4-Argon **73.62** 居首，GPT-6.1-Sol **71.76** 紧随。\n② **国产第一**：Kimi-K3.1-Pro **61.46** 登国产开源首位、幻觉控制领先。\n③ **梯队成型**：DeepSeek-V4.1-Flash-1017 与 GLM-5.3 组开源第一梯队。"
+    },
+    {
+      "brand": "Thinking Machines",
+      "color": "#7c3aed",
+      "tag": "开放权重模型",
+      "date": "11/7",
+      "summary": "**Inkling 2 Small** 亮相，594B MoE、单任务 **1.18$**，承诺 Apache 2.0 权重待安全测试后开源。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "仅 Tinker 平台运行、权重尚未放出"
+          },
+          {
+            "k": "核心能力",
+            "v": "**594B** MoE、**1.18$/任务**、多轮推理强"
+          },
+          {
+            "k": "用户评价",
+            "v": "称「开放权重」但暂未开源，社区观望"
+          },
+          {
+            "k": "商业化",
+            "v": "按任务计费、定位企业级高难推理"
+          }
+        ]
+      },
+      "analysis": "① **参数规模**：**594B** MoE 走高质量路线、单任务 **1.18$**。\n② **开源悬念**：Apache 2.0 权重承诺但无时间表，先平台独占。\n③ **定位差异**：以任务单价对标闭源旗舰，避开 token 价格战。"
     }
   ],
   "earningsCalendar": [
@@ -1452,7 +1452,7 @@
       }
     }
   ],
-  "marketView": "① **利空出尽**：选举冲击后科技股超跌反弹，AI 禁令恐慌缓解、港股腾讯阿里反弹 7%+。\n② **支出跃迁**：全球企业 AI 部署年化 1768 亿$、三年翻百倍，Anthropic/OpenAI/谷歌占美企 LLM API 69%。\n③ **透明化+开源**：OpenAI 承诺 100% 承担数据中心电费；OpenRouter 中国模型占 Top20 75%、DeepSeek 周调用 57.6 万亿。",
+  "marketView": "① **SuperCLUE 登顶**：Gemini-4-Argon 以 **73.62** 分居总榜首，Kimi-K3.1-Pro **61.46** 领跑国产开源。\n② **图像与融资双线**：OpenAI **Images 2.6** 提速 **50%**、周产 **40 亿**张；本轮 **110 亿$** 融资交割、估值 **1.25 万亿$**。\n③ **IPO 窗口开启**：Anthropic **11/9 当周**启动路演、估值 **1.5–2 万亿$**；OpenRouter 中国模型占 Top20 **75%**、周调用 **57.6 万亿**。",
   "market": {
     "type": "internet",
     "capex": {
@@ -1657,7 +1657,7 @@
           "mau": 245,
           "mom": "+2%",
           "trend": "↑",
-          "sub": "企业 API 为主·**路演最早 11/10 启动**·**第三方估值 1.475 万亿美元**"
+          "sub": "企业 API 为主·**11/9 当周**启动路演·第三方估值 **1.475 万亿$**"
         },
         {
           "rank": 10,
@@ -2200,6 +2200,18 @@
         "metric": "截至 6 月 30 日",
         "value": "807亿美元",
         "note": "其中 720 亿为可转换票据等金融工具公允价值变动的非现金会计费用，去年同期为 130 亿"
+      },
+      {
+        "name": "SuperCLUE 11月榜",
+        "metric": "2026年11月",
+        "value": "Gemini 73.62",
+        "note": "Gemini-4-Argon **73.62** 总分第一，Kimi-K3.1-Pro **61.46** 国产开源首位"
+      },
+      {
+        "name": "OpenAI 融资交割",
+        "metric": "11/8 披露",
+        "value": "110亿$",
+        "note": "本轮首批 **110 亿$** 交割、投后估值 **1.25 万亿$**、目标募资 **200 亿$**"
       }
     ]
   }
