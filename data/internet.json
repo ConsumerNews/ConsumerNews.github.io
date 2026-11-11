@@ -1,115 +1,45 @@
 {
-  "updateTime": "2026-11-11 09:15",
+  "updateTime": "2026-11-12 06:20",
   "headlineViewpoints": [
     {
+      "t": "**Q3 营收破百亿**：OpenAI 季度收入环比近五成",
+      "s": "核心观点：OpenAI 披露 **2026Q3 营收破 100 亿$**、环比近 **五成**，企业客户贡献升至多数，距盈利更近一步。① 年化收入逼近 **700 亿$**、企业销售自 7 月翻倍。② ChatGPT 周活 **12 亿**、付费超 **5000 万**。③ 但安全模型与算力开支仍高企。高层建议：**企业 AI 订阅进入兑现期，关注云厂与模型厂毛利拐点**。"
+    },
+    {
       "t": "**Fable 5.2 发布**：Anthropic 双模型、Fable 降价 20%",
-      "s": "核心观点：Anthropic 11/10 发 **Claude Fable 5.2** 与 **Mythos 5.2**，API 降价 **20%**、生成提速 **30%**。\n① FrontierCode 2.0 以 **49.1%** 居首，超 GPT-6 Astra。\n② Mythos 5.2 限安全与生命科学机构开放。\n③ 千余子智能体搭出可启动操作系统。\n高层建议：**IPO 前密集发新品，模型能力成估值锚。**",
-      "u": "https://www.163.com/dy/article/LBBLFL0V05198CJN.html",
-      "l": "财联社 / 网易",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://www.163.com/dy/article/LBBLFL0V05198CJN.html"
-      }
+      "s": "核心观点：Anthropic 11/10 发 **Claude Fable 5.2** 与 **Mythos 5.2**，API 降价 **20%**、生成提速 **30%**。① FrontierCode 2.0 以 **49.1%** 居首，超 GPT-6 Astra。② Mythos 5.2 限安全与生命科学机构。③ 两模型经严格安全测试。高层建议：**编程 Agent 进入性价比比拼，关注企业采购向 Anthropic 倾斜**。"
     },
     {
-      "t": "**图像 2.6 上线**：OpenAI 图像模型提速 50%",
-      "s": "核心观点：OpenAI 发布 **Images 2.6**，图像生成提速 **50%** 并新增 GIF 与 SVG 导出。\n① 周产图像超 **40 亿**张，Flare 最快 **6 秒**出图。\n② Sunburst 主打多轮编辑一致性，Figma Weave 已接入。\n③ 从娱乐表情走向专业设计工作流。\n高层建议：**多模态图像成模型厂商新增长极。**",
-      "u": "https://openai.com/index/introducing-images-2-6/",
-      "l": "OpenAI 官方 / CSDN",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://openai.com/index/introducing-images-2-6/"
-      }
+      "t": "**Claude 进会议办公**：Anthropic 直击微软腹地",
+      "s": "核心观点：Anthropic 推出 **Claude Meetings** 与 **AI 办公套件**，把 Claude 从对话入口扩为生产力工作台、对标微软 365 Copilot。① Meetings 听会起草计划、白板排期并拉取协作数据。② 办公套件含文档/表格/邮件、默认内建。③ 微软在英国 Copilot 默认放开 Claude。高层建议：**办公入口之争白热化，警惕微软渠道被分流**。"
     },
     {
-      "t": "**数据中心新政**：OpenAI 承诺 100% 承担成本",
-      "s": "核心观点：OpenAI 发布数据中心政策框架，承诺 **100%** 承担每站点电费与基建成本。\n① 取消与公职人员的 **NDA**，公开单站点水电用量。\n② 在佐治亚与俄亥俄投入 **1.2 亿$** 社区投资。\n③ Brockman 称 **2027** 具备 IPO 条件。\n高层建议：**自建算力正转向透明与社区共担。**",
-      "u": "https://aibriefing.dev/story/3e93342c42d6",
-      "l": "The Verge / AI 日报",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://aibriefing.dev/story/3e93342c42d6"
-      }
+      "t": "**Business Agents**：OpenAI 把 ChatGPT 变消费发现引擎",
+      "s": "核心观点：OpenAI 推出认证 **Business Agents**，让用户直接在 ChatGPT 内与品牌对话、比价下单，并向品牌开放部分曝光数据。① 把 ChatGPT 变为消费发现入口，正面竞争谷歌搜索与购物。② 商家可管理自身在 ChatGPT 中的展现。③ 同步建 **Control Room** 安全中枢与 35 秒关停开关。高层建议：**搜索广告基本盘受冲击，关注 OpenAI 商业化节奏**。"
     },
     {
-      "t": "**GPT-6 Cyber 发布**：OpenAI 专用安全模型",
-      "s": "核心观点：OpenAI 发布 **GPT-6 Cyber** 安全模型，评级 **Critical**。\n① **ExploitGym** 拿 **48.5%**，较上代 **+16 点**。\n② 挖出 **81 个** Firefox 漏洞、**948 个** Linux 内核利用。\n③ 仅向受信任项目开放，越界 **0.07%**。\n高层建议：**安全能力成前沿模型首个独立产品线。**",
-      "u": "https://futuretools.io/news?utm_source=everydev.ai",
-      "l": "FutureTools / AI 日报",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://futuretools.io/news?utm_source=everydev.ai"
-      }
-    },
-    {
-      "t": "**SuperCLUE 11月榜**：Gemini 登顶、Kimi 国内第一",
-      "s": "核心观点：**SuperCLUE 11月榜** Gemini-4-Argon 以 **73.62** 居总榜首，Kimi-K3.1-Pro **61.46** 领跑国产开源。\n① 19 个模型参评，GPT-6.1-Sol **71.76** 紧随。\n② Kimi 幻觉控制 **67.78** 国内第一，DeepSeek **58.95** 次席。\n③ 国产开源第一梯队加速逼近闭源综合上限。\n高层建议：**评测领先不等于商业兑现，须看落地与调用。**",
-      "u": "https://tech.sina.cn/2026-11-05/detail-inixrytw8847229.d.html",
-      "l": "新浪科技 / SuperCLUE",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://tech.sina.cn/2026-11-05/detail-inixrytw8847229.d.html"
-      }
+      "t": "**Gemini Robotics 2.5**：DeepMind 进军人形与医疗",
+      "s": "核心观点：Google DeepMind 发布 **Gemini Robotics 2.5**，部分物理任务成功率较上代近翻倍，并推出开放越狱安全基准。① 同步上线 **Gemini for Healthcare**，统一临床数据、自动化行政减负。② 与 IBM 合作行业智能体平台。③ Meta 的 Muse 模型亦上架 Google Cloud。高层建议：**垂直行业 AI 落地加速，医疗/制造成云厂新战场**。"
     },
     {
       "t": "**IPO 定价揭晓**：Anthropic 70–78 美元/股、估值约 1.4 万亿$",
-      "s": "核心观点：Anthropic **11/10** 启动 IPO 路演，发行价区间 **70–78 美元/股**、估值约 **1.4 万亿$**。\n① 拟发行 **8.25 亿**股，谷歌/微软/英伟达等七大伙伴私募认购 **260 亿$**。\n② 定价预计 **11/18** 当周完成，代码 ANT、登陆纳斯达克。\n③ 前九月营收 **332 亿$**、同比 +1206%，净亏 1040 亿$。\n高层建议：**以发行价区间而非传闻估值决策。**",
-      "u": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html",
-      "l": "澎湃 / 网易",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html"
-      }
+      "s": "核心观点：Anthropic **11/10** 启动 IPO 路演，发行价区间 **70–78 美元/股**、估值约 **1.4 万亿$**。① 拟发行 **8.25 亿**股，谷歌/微软/英伟达等七大伙伴私募认购 **260 亿$**。② 年化营收约 **810 亿$**、年付费超 10 万$ 客户 **11900** 家。③ 定价预计 **11/18** 当周、代码 ANT。高层建议：**公开市场首次为万亿级 AI 资产定价，关注上市后估值锚**。"
     },
     {
       "t": "**双11 首战**：千问办公半天调用破 5 万亿",
-      "s": "核心观点：千问办公借双 11 把 AI 算力摆上头部主播货架，**首半日**调用突破 **5 万亿** Token。\n① 李佳琦直播间 **0.01 元**月卡半小时售罄 **10 万**份。\n② 打通 **40 亿**商品库自动比价、价保与履约。\n③ 阿里称 AI 办公月活破 **3000 万**、企业过半。\n高层建议：**系统级入口之争，胜负在生态而非单模型。**",
-      "u": "https://www.163.com/dy/article/LAP91BDM0512D3VJ.html",
-      "l": "新京报 / 贝壳财经",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://www.163.com/dy/article/LAP91BDM0512D3VJ.html"
-      }
+      "s": "核心观点：千问办公借双 11 把 AI 算力摆上头部主播货架，**首半日**调用突破 **5 万亿** Token。① 李佳琦直播间 **0.01 元**月卡半小时售罄 **10 万**份。② 打通 **40 亿**商品库自动比价、价保与履约。③ 阿里称 AI 办公月活破 **3000 万**、企业过半。高层建议：**AI 办公消费化跑通，关注国产模型商业化兑现**。"
     },
     {
       "t": "**1055 亿**：DeepSeek 二轮融资投后 6155 亿",
-      "s": "核心观点：DeepSeek 完成约 **1055 亿元**二轮融资，投后估值 **6155 亿元**，累计融资超 **1500 亿**。\n① 腾讯与宁德时代稳居前两大股东。\n② 发布 Super-agent 双层架构突破单会话瓶颈。\n③ 日均词元调用超 **175 万亿**，推理量首超训练。\n高层建议：**国产算力—模型—资本闭环成型，须跟踪兑现节奏。**",
-      "u": "https://www.sohu.com/a/1096025030_122550976",
-      "l": "搜狐 / 来团科技",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.sohu.com/a/1096025030_122550976"
-      }
+      "s": "核心观点：DeepSeek 完成约 **1055 亿元**二轮融资，投后估值 **6155 亿元**，累计融资超 **1500 亿**。① 腾讯与宁德时代稳居前两大股东。② 发布 Super-agent 双层架构突破单会话瓶颈。③ 日均词元调用超 **175 万亿**，推理量首超训练。高层建议：**国产算力—模型—应用闭环加速，跟踪推理侧价值分配**。"
     },
     {
       "t": "**权重落地**：Kimi K3.1 Pro 开放完整权重",
-      "s": "核心观点：月之暗面 **K3.1 Pro** 于 **11/4** 开放 **3T** 参数完整权重，综合智能进全球前四。\n① 支持 **100 万** token 上下文、Highspeed 提速 **2–3 倍**。\n② Hugging Face 首日下载破 **50 万**次。\n③ API 输入 **13 元**输出 **68 元**。\n高层建议：**开源旗舰权重，国产模型进主权采购。**",
-      "u": "https://dy.163.com/article/LAAUG8840519QIKK.html",
-      "l": "金融界 / 网易",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://dy.163.com/article/LAAUG8840519QIKK.html"
-      }
+      "s": "核心观点：月之暗面 **K3.1 Pro** 于 **11/4** 开放 **3T** 参数完整权重，综合智能进全球前四。① 支持 **100 万** token 上下文、Highspeed 提速 **2–3 倍**。② Hugging Face 首日下载破 **50 万**次。③ API 输入 **13 元**/百万、输出 **60 元**/百万。高层建议：**开源权重巩固国产模型生态位，关注下游微调与合规**。"
     },
     {
-      "t": "**34 亿$ 买电**：Anthropic 接手 1.7GW 天然气发电设备",
-      "s": "核心观点：据 FT/路透，Anthropic 9 月底接手 OnePWR 约 **34 亿$**、**1.7GW** 重型天然气发电机组订单。\n① 含安装施工能力，未收购 OnePWR、不接手员工。\n② 公司称未来十年 AI 基建开支预计超 **5000 亿$**。\n③ 路透未独立核实、双方未置评。\n高层建议：**AI 基建瓶颈正从芯片转向电力与并网。**",
-      "u": "https://abmedia.io/anthropic-gas-power-deal",
-      "l": "FT / 路透 / ABMedia",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://abmedia.io/anthropic-gas-power-deal"
-      }
+      "t": "**MiniMax 开源 4K 图像**：国产图像模型再进",
+      "s": "核心观点：**MiniMax** 于 **11/11** 开源 **4K** 分辨率图像生成模型，国产图像模型能力再上台阶。① 4K 直出降低后期放大成本，面向设计/电商场景。② 与字节 Seedream 5.5、阿里通义形成国产图像三强。③ 开源策略加速开发者迁移。高层建议：**图像生成进入分辨率与一致性比拼，关注国产开源生态**。"
     }
   ],
   "opinionLeaders": [
@@ -119,7 +49,7 @@
       "items": [
         {
           "hl": "以 GPT-6.2 Astra 重启旗舰，并预告下一代 GPT 将发布",
-          "detail": "① 发布 Images 2.6 图像模型，生成提速 50%、周产 40 亿张。\n② 完成新一轮 110 亿$ 融资交割，投后估值 1.25 万亿$。\n③ 推 GPT-6 Cyber 专用安全模型，并自曝 Astra 安全研究低约 40%。\n④ Brockman 称 2027 具备 IPO 条件，数据中心承诺 100% 担成本。",
+          "detail": "① 披露 2026Q3 营收破 100 亿$、环比近五成，企业客户贡献升至多数。\n② 推出认证 Business Agents，把 ChatGPT 变为消费发现引擎并开放品牌曝光数据。\n③ 发布 Images 2.6 图像模型，生成提速 50%、周产 40 亿张。\n④ 推 GPT-6 Cyber 专用安全模型并建 Control Room 安全中枢。\n⑤ Brockman 称 2027 具备 IPO 条件，数据中心承诺 100% 担成本。",
           "u": "https://aibriefing.dev/story/3e93342c42d6",
           "l": "The Verge / AI 日报"
         }
@@ -136,7 +66,7 @@
       "items": [
         {
           "hl": "以 Fable 5.2/Mythos 5.2 密集发新品，IPO 定价 70–78 美元/股",
-          "detail": "① 11/10 发布 Claude Fable 5.2 与 Mythos 5.2，Fable 降价 20%、FrontierCode 49.1% 居首。\n② 11/10 启动 IPO 路演，定价 70–78 美元/股、估值约 1.4 万亿$、11/18 当周定价。\n③ 七大产业链伙伴私募认购 260 亿$，谷歌/微软/英伟达在列。\n④ 前九月营收 332 亿$、算力承诺近 9000 亿$。",
+          "detail": "① 11/10 路演敲定发行价 70–78 美元/股、估值约 1.4 万亿$，谷歌/微软/英伟达等私募认购 260 亿$。\n② 年化营收约 810 亿$、年付费超 10 万$ 客户 11900 家，11/18 当周定价、代码 ANT。\n③ 发布 Claude Fable 5.2/Mythos 5.2，Fable 降价 20%、FrontierCode 49.1% 登顶。\n④ 推 Claude Meetings 会议助手与 AI 办公套件，直击微软腹地。",
           "u": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html",
           "l": "澎湃 / 网易"
         }
@@ -284,7 +214,7 @@
       }
     }
   ],
-  "leadersSummary": "① **阿莫迪**推 Claude Fable 5.2/Mythos 5.2、IPO 定价 70–78 美元/股估值约 1.4 万亿$。\n② **奥特曼** Images 2.6 与 110 亿$ 融资交割，GPT-6 Cyber 与安全并进。\n③ **皮查伊** Gemini 4 Carbon 把安全做成卖点、搜索变现放缓。",
+  "leadersSummary": "① **阿莫迪**推 Claude Fable 5.2/Mythos 5.2、IPO 定价 70–78 美元/股估值约 1.4 万亿$、发布会议与办公套件。\n② **奥特曼** Q3 营收破 100 亿$、推 Business Agents 把 ChatGPT 变消费入口、Images 2.6 提速 50%。\n③ **皮查伊** Gemini Robotics 2.5 进军人形与医疗、Carbon 把安全做成卖点。",
   "institutionViews": [
     {
       "name": "标普全球 / 摩根大通",
@@ -305,7 +235,7 @@
       "name": "高盛 / 摩根士丹利",
       "items": [
         {
-          "s": "① 路演启动：Anthropic 11/10 启动路演，定价 70–78 美元/股。\n② 估值锚定：完全稀释上限约 1.4 万亿$，较此前 2 万亿目标明显回落。\n③ 进度：定价预计 11/18 当周，七大伙伴私募认购 260 亿$ 作锚。",
+          "s": "① IPO 定价：发行价 **70–78 美元/股**、估值约 **1.4 万亿$**，11/18 当周定价、代码 ANT。\n② 财务质量：年化营收约 **810 亿$**、年付费超 10 万$ 客户 **11900** 家，经营亏损实际 **13 亿$**。\n③ 风险定价：账面净亏 **1040 亿$** 多为可转换票据公允价值变动，算力采购承诺近 **9009 亿$**。\n④ 锚定效应：公开市场首次为万亿级 AI 资产定价，上市后估值锚待验证。",
           "u": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html",
           "l": "澎湃 / 网易"
         }
@@ -377,71 +307,110 @@
       }
     }
   ],
-  "instsSummary": "① **标普/小摩**：Q3 capex 2078 亿$ 新高、FCF 集体转负。\n② **高盛**：Anthropic 定价 70–78 美元/股、估值约 1.4 万亿$、11/18 定价。\n③ **门罗风投**：企业 AI 支出三年翻百倍至 1768 亿$、中国开源占 89%。",
+  "instsSummary": "① **高盛/大摩**：Anthropic 定价 70–78 美元/股、估值约 1.4 万亿$、年化营收 810 亿$。\n② **标普/小摩**：Q3 capex 2078 亿$ 新高、FCF 集体转负。\n③ **门罗风投**：企业 AI 支出三年翻百倍至 1768 亿$、中国开源占 89%。",
   "topNews": [
     {
-      "t": "**Fable 5.2 发布**：Anthropic 双模型、Fable 降价 20% 提速 30%",
-      "l": "Anthropic / 财联社",
-      "u": "https://www.163.com/dy/article/LBBLFL0V05198CJN.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://www.163.com/dy/article/LBBLFL0V05198CJN.html"
-      }
+      "t": "**Q3 营收破百亿**：OpenAI 环比近五成、企业客户多数",
+      "l": "东方财富",
+      "u": "https://finance.eastmoney.com/a/202611103927671985.html"
     },
     {
-      "t": "**图像 2.6 上线**：OpenAI 图像生成提速 50%",
-      "l": "OpenAI 官方 / CSDN",
-      "u": "https://openai.com/index/introducing-images-2-6/"
+      "t": "**Fable 5.2 发布**：Anthropic 双模型、Fable 降价 20%",
+      "l": "网易",
+      "u": "https://www.163.com/dy/article/LBDSQLAB0511BLFD.html"
+    },
+    {
+      "t": "**Claude Meetings 上线**：Anthropic 杀入会议与办公",
+      "l": "AI 日报",
+      "u": "https://pharma.intelligence-synthesis.com/en/ai-news/2026-11-11.html"
+    },
+    {
+      "t": "**Business Agents**：OpenAI 把 ChatGPT 变消费发现引擎",
+      "l": "AI 日报",
+      "u": "https://pharma.intelligence-synthesis.com/en/ai-news/2026-11-11.html"
+    },
+    {
+      "t": "**Gemini Robotics 2.5**：DeepMind 进军人形与医疗",
+      "l": "AI 日报",
+      "u": "https://pharma.intelligence-synthesis.com/en/ai-news/2026-11-11.html"
+    },
+    {
+      "t": "**IPO 定价区间**：Anthropic 70–78 美元/股、估值 1.4 万亿$",
+      "l": "网易",
+      "u": "https://www.163.com/dy/article/LBEE52CN053159A3.html"
+    },
+    {
+      "t": "**MiniMax 开源 4K 图像**：国产图像模型再进",
+      "l": "微博 AI 早报",
+      "u": "https://m.weibo.cn/status/5364047677492858"
+    },
+    {
+      "t": "**小红书「蜜薯」**：国内内容平台发布 AI 新品",
+      "l": "微博 AI 早报",
+      "u": "https://m.weibo.cn/status/5364047677492858"
+    },
+    {
+      "t": "**上海 AI 备案 213 款**：新增 6 款生成式 AI 完成备案",
+      "l": "微博 AI 早报",
+      "u": "https://m.weibo.cn/status/5364047677492858"
     },
     {
       "t": "**SuperCLUE 11月榜**：Gemini 73.62 居首、Kimi 国内第一",
       "l": "新浪科技 / SuperCLUE",
       "u": "https://tech.sina.cn/2026-11-05/detail-inixrytw8847229.d.html"
-    },
-    {
-      "t": "**110 亿$ 交割**：OpenAI 融资首批落地、估值 1.25 万亿",
-      "l": "CSDN / 彭博",
-      "u": "https://blog.csdn.net/IT_ORACLE/article/details/170278064"
-    },
-    {
-      "t": "**IPO 路演开启**：Anthropic 11/9 当周启动、估值 1.5–2 万亿$",
-      "l": "Quartz / 路透",
-      "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226"
-    },
-    {
-      "t": "**LongCat-2.5 开源**：美团 1.6 万亿参数视觉 LLM",
-      "l": "VentureBeat / 网易",
-      "u": "https://www.163.com/dy/article/LBCL87S60511B8LM.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "高",
-        "url": "https://www.163.com/dy/article/LBCL87S60511B8LM.html"
-      }
-    },
-    {
-      "t": "**GPT-6 Cyber 上线**：OpenAI 专用安全模型挖 948 内核利用",
-      "l": "FutureTools / AI 日报",
-      "u": "https://futuretools.io/news?utm_source=everydev.ai"
-    },
-    {
-      "t": "**千问双11首战**：办公半天调用破 5 万亿 Token",
-      "l": "新京报 / 贝壳财经",
-      "u": "https://www.163.com/dy/article/LAP91BDM0512D3VJ.html"
-    },
-    {
-      "t": "**大规模封号**：OpenAI 无预警停用账号、波及 200$ Pro",
-      "l": "21 世纪经济报道 / 腾讯新闻",
-      "u": "https://news.qq.com/rain/a/20261108A0CN5S00"
-    },
-    {
-      "t": "**红果反超豆包**：抖音系第二大应用、AI 做剧降本八成",
-      "l": "QuestMobile / 网易",
-      "u": "https://m.163.com/news/article/LB1QKG060556MLE9.html"
     }
   ],
-  "newsSummary": "① **模型侧**：Anthropic Fable 5.2 登顶 FrontierCode、美团开源 LongCat-2.5 视觉 LLM。\n② **治理侧**：OpenAI 无预警封号波及 200$ Pro、Anthropic 34 亿$ 接手 1.7GW 发电。\n③ **流量侧**：红果 4.3 亿反超豆包成字节第二大、AI 做剧降本八成。",
+  "newsSummary": "① **模型侧**：Anthropic Fable 5.2 登顶 FrontierCode、谷歌 Gemini Robotics 2.5 进军人形与医疗。\n② **商业化侧**：OpenAI Q3 营收破 100 亿$、Business Agents 变消费发现引擎、MiniMax 开源 4K 图像。\n③ **国内侧**：小红书发「蜜薯」、上海新增 6 款生成式 AI 备案累计 213 款。",
   "launchCalendar": [
+    {
+      "d": "11/11",
+      "brand": "Anthropic",
+      "evt": "Claude Meetings 发布",
+      "product": "Claude Meetings",
+      "point": "听会起草计划、白板排期、**直连协作应用**"
+    },
+    {
+      "d": "11/11",
+      "brand": "Anthropic",
+      "evt": "AI 办公套件发布",
+      "product": "Claude 办公套件",
+      "point": "文档表格邮件、**对标微软 365**"
+    },
+    {
+      "d": "11/11",
+      "brand": "OpenAI",
+      "evt": "Business Agents 上线",
+      "product": "Business Agents",
+      "point": "ChatGPT 内**品牌对话比价**、消费发现引擎"
+    },
+    {
+      "d": "11/11",
+      "brand": "Google",
+      "evt": "Gemini Robotics 2.5 发布",
+      "product": "Gemini Robotics 2.5",
+      "point": "物理任务**近翻倍**、开放越狱基准"
+    },
+    {
+      "d": "11/11",
+      "brand": "Google",
+      "evt": "Gemini for Healthcare",
+      "product": "Gemini 医疗版",
+      "point": "统一临床数据、**自动化行政减负**"
+    },
+    {
+      "d": "11/11",
+      "brand": "MiniMax",
+      "evt": "开源 4K 图像模型",
+      "product": "MiniMax 4K 图像",
+      "point": "**4K** 直出、面向设计电商"
+    },
+    {
+      "d": "11/11",
+      "brand": "小红书",
+      "evt": "发布「蜜薯」AI 产品",
+      "product": "小红书蜜薯",
+      "point": "内容平台**首发 AI 新品**"
+    },
     {
       "d": "11/9",
       "brand": "字节跳动",
@@ -490,27 +459,6 @@
       "evt": "Omni 1.2 Flash 视频",
       "product": "Omni 1.2 Flash",
       "point": "视频升至 **15 秒**、价**降 30%**"
-    },
-    {
-      "d": "11/4",
-      "brand": "阿里 / 千问",
-      "evt": "千问办公双11首战",
-      "product": "双11首战",
-      "point": "首半日调用**5万亿**Token、月卡售罄"
-    },
-    {
-      "d": "11/4",
-      "brand": "月之暗面",
-      "evt": "Kimi K3.1 Pro 权重开放",
-      "product": "K3.1 Pro 权重",
-      "point": "**3T** 参数权重开放"
-    },
-    {
-      "d": "11/9",
-      "brand": "腾讯",
-      "evt": "元器平台停止服务",
-      "product": "元器停服",
-      "point": "**11/9** 平台关闭迁移"
     },
     {
       "d": "11/9",
@@ -569,13 +517,6 @@
       "point": "港股挂牌预期"
     },
     {
-      "d": "11/10",
-      "brand": "OpenAI",
-      "evt": "订阅送额度细则生效",
-      "product": "额度细则",
-      "point": "企业客户 **250 万**"
-    },
-    {
       "d": "11/15",
       "brand": "谷歌",
       "evt": "Gemini 4 Carbon 扩围开发者",
@@ -604,32 +545,11 @@
       "point": "工具调用满月复盘"
     },
     {
-      "d": "11/4",
-      "brand": "OpenAI",
-      "evt": "Images 2.6 全球上线",
-      "product": "图像 2.6",
-      "point": "**50%** 提速、GIF+**SVG** 导出"
-    },
-    {
-      "d": "11/5",
-      "brand": "SuperCLUE",
-      "evt": "2026年11月通用榜发布",
-      "product": "SuperCLUE 11月榜",
-      "point": "Gemini **73.62** 居首、Kimi **国内第一**"
-    },
-    {
       "d": "11/30",
       "brand": "字节跳动",
       "evt": "扣子企业版分阶段下线",
       "product": "扣子企业版",
       "point": "**11/30** 起停新客、转生态整合"
-    },
-    {
-      "d": "11/7",
-      "brand": "Thinking Machines",
-      "evt": "Inkling 2 Small 亮相",
-      "product": "Inkling 2 Small",
-      "point": "**594B** MoE、**1.18$/任务**"
     },
     {
       "d": "11/7",
@@ -697,8 +617,92 @@
       "insight": "安全能力正成为前沿模型首个独立产品线，拉开安全模型赛道"
     }
   ],
-  "productsSummary": "① **图像**：OpenAI Images 2.6 上线，GIF+SVG、提速 50%。\n② **评测**：SuperCLUE Gemini 73.62 居首、Kimi 国内第一。\n③ **开源**：Kimi K3.1 Pro 权重落地、Anthropic Fable 5.2 登顶编程基准。",
+  "productsSummary": "① **办公**：Anthropic Claude Meetings + 办公套件直击微软 365 Copilot。\n② **入口**：OpenAI Business Agents 把 ChatGPT 变为消费发现引擎。\n③ **图像**：MiniMax 开源 4K 图像、OpenAI Images 2.6 提速 50%。",
   "newProducts": [
+    {
+      "brand": "Anthropic",
+      "color": "#d97757",
+      "tag": "生产力/办公",
+      "date": "11/11",
+      "summary": "Anthropic 11/11 推出 **Claude Meetings** 会议助手与自有 **AI 办公套件**，把 Claude 从对话入口扩为生产力工作台，直击微软 365 Copilot。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "Claude 付费用户超百万、年化营收约 **810 亿$**"
+          },
+          {
+            "k": "核心能力",
+            "v": "Meetings 听会起草计划、白板排期、**直连协作应用**"
+          },
+          {
+            "k": "用户评价",
+            "v": "企业称会议转计划提速显著、**减少人工整理**"
+          },
+          {
+            "k": "商业化",
+            "v": "办公套件含文档/表格/邮件、**对标微软订阅**"
+          }
+        ]
+      },
+      "analysis": "① **入口扩张**：从聊天助手走向生产力套件，正面竞争微软 365 Copilot 与谷歌 Workspace。\n② **会议场景**：Meetings 实时听会、起草计划并拉取协作数据，切中高频办公痛点。\n③ **渠道博弈**：微软同步在英国 Copilot 默认放开 Claude，竞合关系加深。"
+    },
+    {
+      "brand": "OpenAI",
+      "color": "#10a37f",
+      "tag": "商业化/Agent",
+      "date": "11/11",
+      "summary": "OpenAI 11/11 推出认证 **Business Agents**，让用户直接在 ChatGPT 内与品牌对话、比价下单，把 ChatGPT 变为消费发现引擎。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "ChatGPT 周活 **12 亿**、付费超 **5000 万**"
+          },
+          {
+            "k": "核心能力",
+            "v": "品牌认证 Agent、**消费比价与下单**、开放曝光数据"
+          },
+          {
+            "k": "用户评价",
+            "v": "商家称获新流量入口、**降低搜索依赖**"
+          },
+          {
+            "k": "商业化",
+            "v": "向品牌开放部分曝光数据、**探索广告变现**"
+          }
+        ]
+      },
+      "analysis": "① **入口之争**：把 ChatGPT 变成消费发现入口，正面竞争谷歌搜索与购物。\n② **商家侧**：企业可管理自身在 ChatGPT 中的展现，获得新分发渠道。\n③ **安全配套**：同步建 Control Room 安全中枢与 35 秒模型关停开关。"
+    },
+    {
+      "brand": "Google",
+      "color": "#4285f4",
+      "tag": "垂直行业",
+      "date": "11/11",
+      "summary": "Google DeepMind 11/11 发布 **Gemini Robotics 2.5**，部分物理任务成功率较上代近翻倍，并推出 Gemini for Healthcare 医疗版。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "面向开发者与医疗机构、**云客户可调用**"
+          },
+          {
+            "k": "核心能力",
+            "v": "Robotics 2.5 物理任务**近翻倍**、开放越狱安全基准"
+          },
+          {
+            "k": "用户评价",
+            "v": "医疗版统一临床数据、**自动化行政减负**"
+          },
+          {
+            "k": "商业化",
+            "v": "垂直行业 Agent、**绑定 Google Cloud 收入**"
+          }
+        ]
+      },
+      "analysis": "① **机器人进击**：Robotics 2.5 物理成功率近翻倍，并开放越狱安全基准供外部审计。\n② **医疗落地**：Gemini for Healthcare 统一临床数据、自动化行政，切入高监管行业。\n③ **云协同**：Meta 的 Muse 模型亦上架 Google Cloud，rivals 联盟成形。"
+    },
     {
       "brand": "Anthropic",
       "color": "#d97757",
@@ -1034,90 +1038,6 @@
         ]
       },
       "analysis": "① **3T 旗舰**：百万上下文、后训练扩大。\n② **权重已开放**：11/4 释放 **3T** 完整权重，开源旗舰进主权采购。\n③ **高速版**：Highspeed 提速降本。"
-    },
-    {
-      "brand": "OpenRouter",
-      "color": "#0b8a3d",
-      "tag": "聚合平台",
-      "date": "11/4",
-      "summary": "周榜 **DeepSeek V4.1 Flash 1017** 调用 **57.6 万亿**、环比 **+46%** 居首。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "Top20 中国占 11 席、合计 **116.5 万亿**"
-          },
-          {
-            "k": "核心能力",
-            "v": "按 token 实时排名、百家模型路由"
-          },
-          {
-            "k": "用户评价",
-            "v": "MiniMax M3.1 Flash **+690%** 空降第八"
-          },
-          {
-            "k": "商业化",
-            "v": "作者份额 DeepSeek **29.8%** 居首"
-          }
-        ]
-      },
-      "analysis": "① **东方主导**：中国周调用连续 27 周超美，Top20 占 11 席。\n② **新版挤占**：1017 版月内 +46% 至 57.6 万亿，GLM 5.3 Flash 稳居第二。\n③ **口径提醒**：调用量不等于收入份额，需分开看。"
-    },
-    {
-      "brand": "OpenAI",
-      "color": "#10a37f",
-      "tag": "多模态图像生成",
-      "date": "11/4",
-      "summary": "**Images 2.6** 全球上线 ChatGPT/Codex/API，生成提速 **50%**，新增 **GIF** 动图与 **SVG** 导出，周产图像超 **40 亿**张。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "ChatGPT/Codex/API 全量开放、周产 **40 亿**张"
-          },
-          {
-            "k": "核心能力",
-            "v": "Flare 快、Sunburst 稳、**GIF+SVG** 与图像标注编辑"
-          },
-          {
-            "k": "用户评价",
-            "v": "Picsart 称更快更一致、Figma 接入 Weave 工作流"
-          },
-          {
-            "k": "商业化",
-            "v": "GPT-Image-2.6 Flare/Sunburst 按调用计费、全档可用"
-          }
-        ]
-      },
-      "analysis": "① **速度跃升**：图像生成提速 **50%**、Flare 最快 **6 秒**出图。\n② **形态扩展**：新增 GIF 动图与 SVG 矢量导出，打通设计流程。\n③ **生态绑定**：嵌入 Figma Weave，从娱乐走向专业生产。"
-    },
-    {
-      "brand": "SuperCLUE",
-      "color": "#0b8a3d",
-      "tag": "通用大模型评测",
-      "date": "11/5",
-      "summary": "**SuperCLUE 11月榜** Gemini-4-Argon 以 **73.62** 分居总榜首，Kimi-K3.1-Pro **61.46** 领跑国产开源。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "19 个国内外模型参评、覆盖五大任务"
-          },
-          {
-            "k": "核心能力",
-            "v": "Gemini 长上下文 **95.63**、GPT-6.1 Sol 数理 **76.32**"
-          },
-          {
-            "k": "用户评价",
-            "v": "Kimi 幻觉控制 **67.78** 国内第一、DeepSeek **58.95** 次席"
-          },
-          {
-            "k": "商业化",
-            "v": "闭源综合领先、国产开源第一梯队加速逼近"
-          }
-        ]
-      },
-      "analysis": "① **总榜格局**：Gemini-4-Argon **73.62** 居首，GPT-6.1-Sol **71.76** 紧随。\n② **国产第一**：Kimi-K3.1-Pro **61.46** 登国产开源首位、幻觉控制领先。\n③ **梯队成型**：DeepSeek-V4.1-Flash-1017 与 GLM-5.3 组开源第一梯队。"
     }
   ],
   "earningsCalendar": [
@@ -1462,7 +1382,7 @@
       }
     }
   ],
-  "marketView": "① **Fable 5.2 登顶编程**：Anthropic 11/10 发 Claude Fable 5.2/Mythos 5.2，Fable 降价 20%、FrontierCode **49.1%** 居首。\n② **IPO 定价揭晓**：发行价 **70–78 美元/股**、估值约 **1.4 万亿$**、11/18 当周定价，260 亿私募锚定。\n③ **图像与融资双线**：OpenAI **Images 2.6** 提速 **50%**、周产 **40 亿**张；本轮 **110 亿$** 融资交割、估值 **1.25 万亿$**。",
+  "marketView": "① **Q3 兑现信号**：OpenAI 披露 2026Q3 营收破 **100 亿$**、环比近五成，企业客户贡献升至多数，AI 订阅进入兑现期。\n② **IPO 锚定**：Anthropic 定价 **70–78 美元/股**、估值约 **1.4 万亿$**、年化营收 **810 亿$**，公开市场首为万亿级 AI 资产定价。\n③ **入口之争**：Anthropic 办公套件与 OpenAI Business Agents 直击微软/谷歌搜索腹地，生产力入口白热化。",
   "market": {
     "type": "internet",
     "capex": {
@@ -1565,7 +1485,7 @@
           ]
         }
       ],
-      "note": "**美国三大云厂** 2026 年资本开支合计接近 **6000 亿**美元；**Meta** 单家指引 **1350–1450 亿**居首。\n**国内** 字节/阿里 2026 增速超 **100%**，字节 AI 算力开支已上调至 **2000 亿+** 元（国内为估算）。\n 2026Q3 四大云厂资本开支合计 **2078 亿$**、同比 **+115%**，自由现金流合计转负约 **273 亿$**、仅微软维持正 FCF（**186 亿$**）；Meta 启动至多 **950 亿$** 股权融资，未来支出承诺升至 **8250 亿$**。研究机构预计六家超大规模厂 2029 前 FCF 难转正。\n Anthropic 9 月季度营收 **170 亿$**、算力采购承诺接近 **9000 亿$**，IPO 前融资结构承压；黑石预计上市后或仅获 **BB** 评级。\n 千问办公双 11 首半日调用破 **5 万亿** Token；Anthropic **11/10** 路演、定价 **70–78 美元/股**、估值约 **1.4 万亿$**。\n OpenAI 发布 **GPT-6 Cyber** 专用安全模型；同期 AI 算力股单日市值蒸发约 **2 万亿$**，市场重估数据中心回报节奏。"
+      "note": "**美国三大云厂** 2026 年资本开支合计接近 **6000 亿**美元；**Meta** 单家指引 **1350–1450 亿**居首。\n**国内** 字节/阿里 2026 增速超 **100%**，字节 AI 算力开支已上调至 **2000 亿+** 元（国内为估算）。\n 2026Q3 四大云厂资本开支合计 **2078 亿$**、同比 **+115%**，自由现金流合计转负约 **273 亿$**、仅微软维持正 FCF（**186 亿$**）；Meta 启动至多 **950 亿$** 股权融资，未来支出承诺升至 **8250 亿$**。研究机构预计六家超大规模厂 2029 前 FCF 难转正。\n Anthropic 9 月季度营收 **170 亿$**、算力采购承诺接近 **9000 亿$**，IPO 前融资结构承压；黑石预计上市后或仅获 **BB** 评级。\n 千问办公双 11 首半日调用破 **5 万亿** Token；Anthropic **11/10** 路演、定价 **70–78 美元/股**、估值约 **1.4 万亿$**。\n OpenAI 发布 **GPT-6 Cyber** 专用安全模型；同期 AI 算力股单日市值蒸发约 **2 万亿$**，市场重估数据中心回报节奏。\n Anthropic 年化营收约 **810 亿$**、客户 **11900** 家，IPO 配套 **260 亿$** 私募锚定七大云厂，估值约 **1.4 万亿$**。"
     },
     "subs": {
       "headers": [
@@ -1587,7 +1507,7 @@
           "mau": 1200,
           "mom": "+13%",
           "trend": "↑↑",
-          "sub": "付费>5000万·企业250万·**10/29 订阅用户每月最高 500 美元接口额度**·周活 **12 亿**人"
+          "sub": "付费>5000万·企业250万·**10/29 订阅用户每月最高 500 美元接口额度**·周活 **12 亿**人·**Q3 营收破 100 亿$**、环比近五成"
         },
         {
           "rank": 2,
@@ -1667,7 +1587,7 @@
           "mau": 245,
           "mom": "+2%",
           "trend": "↑",
-          "sub": "付费>百万·**11/10 发布 Fable 5.2/Mythos 5.2**·FrontierCode **49.1%** 居首·IPO 定价 **70–78 美元/股**·代码 ANT"
+          "sub": "付费>百万·**11/10 发布 Fable 5.2/Mythos 5.2**·FrontierCode **49.1%** 居首·IPO 定价 **70–78 美元/股**·代码 ANT·年化 **810 亿$**·客户 **11900** 家"
         },
         {
           "rank": 10,
@@ -1828,6 +1748,11 @@
     ],
     "hfModels": [
       {
+        "model": "MiniMax 4K 图像 (MiniMax)",
+        "downloads": "11/11 开源",
+        "note": "**4K** 分辨率图像模型开源，面向设计/电商"
+      },
+      {
         "model": "LongCat-2.5 (美团)",
         "downloads": "11/10 开源",
         "note": "**1.6 万亿**参数视觉 LLM、MIT 协议、适配国产算力"
@@ -1904,6 +1829,18 @@
       }
     ],
     "aiProductStats": [
+      {
+        "name": "OpenAI Q3 营收",
+        "metric": "2026Q3",
+        "value": "破 100 亿$",
+        "note": "环比 **近五成**、企业客户贡献升至多数，距盈利更近"
+      },
+      {
+        "name": "Anthropic 年化营收",
+        "metric": "截至 10/31",
+        "value": "约 810 亿$",
+        "note": "年付费超 10 万$ 客户 **11900** 家"
+      },
       {
         "name": "Anthropic IPO 定价区间",
         "metric": "11/10 路演",
