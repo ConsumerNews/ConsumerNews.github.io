@@ -1,6 +1,17 @@
 {
-  "updateTime": "2026-11-10 06:28",
+  "updateTime": "2026-11-11 09:15",
   "headlineViewpoints": [
+    {
+      "t": "**Fable 5.2 发布**：Anthropic 双模型、Fable 降价 20%",
+      "s": "核心观点：Anthropic 11/10 发 **Claude Fable 5.2** 与 **Mythos 5.2**，API 降价 **20%**、生成提速 **30%**。\n① FrontierCode 2.0 以 **49.1%** 居首，超 GPT-6 Astra。\n② Mythos 5.2 限安全与生命科学机构开放。\n③ 千余子智能体搭出可启动操作系统。\n高层建议：**IPO 前密集发新品，模型能力成估值锚。**",
+      "u": "https://www.163.com/dy/article/LBBLFL0V05198CJN.html",
+      "l": "财联社 / 网易",
+      "prov": {
+        "src": "公开报道(L4)",
+        "conf": "高",
+        "url": "https://www.163.com/dy/article/LBBLFL0V05198CJN.html"
+      }
+    },
     {
       "t": "**图像 2.6 上线**：OpenAI 图像模型提速 50%",
       "s": "核心观点：OpenAI 发布 **Images 2.6**，图像生成提速 **50%** 并新增 GIF 与 SVG 导出。\n① 周产图像超 **40 亿**张，Flare 最快 **6 秒**出图。\n② Sunburst 主打多轮编辑一致性，Figma Weave 已接入。\n③ 从娱乐表情走向专业设计工作流。\n高层建议：**多模态图像成模型厂商新增长极。**",
@@ -46,14 +57,14 @@
       }
     },
     {
-      "t": "**IPO 路演启动**：Anthropic 11/9 当周路演、估值 1.5–2 万亿$",
-      "s": "核心观点：Anthropic **11/9 当周**启动 IPO 路演、定价 **180–220 美元**、估值 **1.5–2 万亿$**。\n① Q3 营收 **170 亿$**、同比 +1127%，上调后营业利润 25 亿$。\n② 摩根士丹利/高盛/小摩联席簿记，代码 ANT。\n③ 纽约市审计长吁暂缓，市场忧监管与定价。\n高层建议：**以修订后注册文件而非传闻估值决策。**",
-      "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226",
-      "l": "Quartz / 路透",
+      "t": "**IPO 定价揭晓**：Anthropic 70–78 美元/股、估值约 1.4 万亿$",
+      "s": "核心观点：Anthropic **11/10** 启动 IPO 路演，发行价区间 **70–78 美元/股**、估值约 **1.4 万亿$**。\n① 拟发行 **8.25 亿**股，谷歌/微软/英伟达等七大伙伴私募认购 **260 亿$**。\n② 定价预计 **11/18** 当周完成，代码 ANT、登陆纳斯达克。\n③ 前九月营收 **332 亿$**、同比 +1206%，净亏 1040 亿$。\n高层建议：**以发行价区间而非传闻估值决策。**",
+      "u": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html",
+      "l": "澎湃 / 网易",
       "prov": {
         "src": "公开报道(L4)",
         "conf": "高",
-        "url": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226"
+        "url": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html"
       }
     },
     {
@@ -87,17 +98,6 @@
         "src": "公开报道(L4)",
         "conf": "中",
         "url": "https://dy.163.com/article/LAAUG8840519QIKK.html"
-      }
-    },
-    {
-      "t": "**大规模封号**：OpenAI 无预警停用账号、波及 200$ Pro",
-      "s": "核心观点：OpenAI 11/7—8 批量停用账号，免费 API、拼车号与每月 **200$ Pro** 均被波及，且无事先邮件。\n① 重灾区为低价区订阅、共用支付卡/设备、中转反代与 API 转售。\n② 多年对话记录与个人记忆锁死云端，用户申诉仅剩通用表单。\n③ 发生在 Claude Code 负责人 Cat Wu 转投 OpenAI 三日后。\n高层建议：**上下文资产可携带性成付费用户新痛点。**",
-      "u": "https://news.qq.com/rain/a/20261108A0CN5S00",
-      "l": "21 世纪经济报道 / 腾讯新闻",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://news.qq.com/rain/a/20261108A0CN5S00"
       }
     },
     {
@@ -135,10 +135,10 @@
       "role": "Anthropic 首席执行官",
       "items": [
         {
-          "hl": "以 S-1 把增长与治理摊开，但估值与盈利承压",
-          "detail": "① 11/9 启动 IPO 路演、估值 1.5–2 万亿$，代码 ANT。\n② 中期选举后道指跌 1800 点，潜在投资者忧 IPO 窗口与定价。\n③ 同步上线 Personal Finance（经 Plaid 只读），扩大消费端入口。\n④ Q3 营收 170 亿$、算力承诺近 9000 亿$。",
-          "u": "https://news.qq.com/rain/a/20261103A0BO8Q00",
-          "l": "腾讯新闻 / 腾讯网"
+          "hl": "以 Fable 5.2/Mythos 5.2 密集发新品，IPO 定价 70–78 美元/股",
+          "detail": "① 11/10 发布 Claude Fable 5.2 与 Mythos 5.2，Fable 降价 20%、FrontierCode 49.1% 居首。\n② 11/10 启动 IPO 路演，定价 70–78 美元/股、估值约 1.4 万亿$、11/18 当周定价。\n③ 七大产业链伙伴私募认购 260 亿$，谷歌/微软/英伟达在列。\n④ 前九月营收 332 亿$、算力承诺近 9000 亿$。",
+          "u": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html",
+          "l": "澎湃 / 网易"
         }
       ],
       "prov": {
@@ -284,7 +284,7 @@
       }
     }
   ],
-  "leadersSummary": "① **奥特曼**推 Images 2.6 与 110 亿$ 融资交割，GPT-6 Cyber 与安全并进。\n② **阿莫迪** IPO 路演 11/9 当周启动、估值 1.5–2 万亿$。\n③ **皮查伊** Gemini 4 Carbon 把安全做成卖点、搜索变现放缓。",
+  "leadersSummary": "① **阿莫迪**推 Claude Fable 5.2/Mythos 5.2、IPO 定价 70–78 美元/股估值约 1.4 万亿$。\n② **奥特曼** Images 2.6 与 110 亿$ 融资交割，GPT-6 Cyber 与安全并进。\n③ **皮查伊** Gemini 4 Carbon 把安全做成卖点、搜索变现放缓。",
   "institutionViews": [
     {
       "name": "标普全球 / 摩根大通",
@@ -305,9 +305,9 @@
       "name": "高盛 / 摩根士丹利",
       "items": [
         {
-          "s": "① 路演启动：Anthropic 11/9 启动路演，定价区间 180–220 美元。\n② 估值锚定：目标 1.5–2 万亿$，部分投资者已下修至约 1.5 万亿$。\n③ 进度待定：股数与最终区间仍待修订后注册文件披露。",
-          "u": "https://www.163.com/dy/article/LADTCM810514BQ68.html",
-          "l": "参考消息 / 美联社"
+          "s": "① 路演启动：Anthropic 11/10 启动路演，定价 70–78 美元/股。\n② 估值锚定：完全稀释上限约 1.4 万亿$，较此前 2 万亿目标明显回落。\n③ 进度：定价预计 11/18 当周，七大伙伴私募认购 260 亿$ 作锚。",
+          "u": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html",
+          "l": "澎湃 / 网易"
         }
       ],
       "prov": {
@@ -377,8 +377,18 @@
       }
     }
   ],
-  "instsSummary": "① **标普/小摩**：Q3 capex 2078 亿$ 新高、FCF 集体转负。\n② **高盛**：Anthropic 11/9 当周路演、估值 1.5–2 万亿$。\n③ **门罗风投**：企业 AI 支出三年翻百倍至 1768 亿$、中国开源占 89%。",
+  "instsSummary": "① **标普/小摩**：Q3 capex 2078 亿$ 新高、FCF 集体转负。\n② **高盛**：Anthropic 定价 70–78 美元/股、估值约 1.4 万亿$、11/18 定价。\n③ **门罗风投**：企业 AI 支出三年翻百倍至 1768 亿$、中国开源占 89%。",
   "topNews": [
+    {
+      "t": "**Fable 5.2 发布**：Anthropic 双模型、Fable 降价 20% 提速 30%",
+      "l": "Anthropic / 财联社",
+      "u": "https://www.163.com/dy/article/LBBLFL0V05198CJN.html",
+      "prov": {
+        "src": "公开报道(L4)",
+        "conf": "高",
+        "url": "https://www.163.com/dy/article/LBBLFL0V05198CJN.html"
+      }
+    },
     {
       "t": "**图像 2.6 上线**：OpenAI 图像生成提速 50%",
       "l": "OpenAI 官方 / CSDN",
@@ -400,14 +410,14 @@
       "u": "https://qz.com/anthropic-ipo-thanksgiving-valuation-100226"
     },
     {
-      "t": "**Muse Wonder 下放**：Meta 记忆模型进消费端、准确率 90%",
-      "l": "AIToolsRecap / 官方",
-      "u": "https://aitoolsrecap.com/Blog/ai-news-november-08-2026"
-    },
-    {
-      "t": "**Inkling 2 Small 亮相**：594B MoE、单任务 1.18$",
-      "l": "AIToolsRecap / The Decoder",
-      "u": "https://aitoolsrecap.com/Blog/ai-news-november-08-2026"
+      "t": "**LongCat-2.5 开源**：美团 1.6 万亿参数视觉 LLM",
+      "l": "VentureBeat / 网易",
+      "u": "https://www.163.com/dy/article/LBCL87S60511B8LM.html",
+      "prov": {
+        "src": "公开报道(L4)",
+        "conf": "高",
+        "url": "https://www.163.com/dy/article/LBCL87S60511B8LM.html"
+      }
     },
     {
       "t": "**GPT-6 Cyber 上线**：OpenAI 专用安全模型挖 948 内核利用",
@@ -430,14 +440,35 @@
       "u": "https://m.163.com/news/article/LB1QKG060556MLE9.html"
     }
   ],
-  "newsSummary": "① **模型侧**：OpenAI Images 2.6 提速 50%、SuperCLUE Gemini 登顶。\n② **治理侧**：OpenAI **无预警封号**波及 200$ Pro、Anthropic **34 亿$**接手 1.7GW 发电。\n③ **流量侧**：红果 **4.3 亿**反超豆包成字节第二大、AI 做剧降本八成。",
+  "newsSummary": "① **模型侧**：Anthropic Fable 5.2 登顶 FrontierCode、美团开源 LongCat-2.5 视觉 LLM。\n② **治理侧**：OpenAI 无预警封号波及 200$ Pro、Anthropic 34 亿$ 接手 1.7GW 发电。\n③ **流量侧**：红果 4.3 亿反超豆包成字节第二大、AI 做剧降本八成。",
   "launchCalendar": [
     {
-      "d": "11/6",
+      "d": "11/9",
       "brand": "字节跳动",
-      "evt": "豆包工作个人版取消 5 小时额度限制",
-      "product": "豆包工作配额",
-      "point": "**取消 5 小时**额度、周额度内自由排布"
+      "evt": "豆包 Seedream 5.5 图像模型",
+      "product": "Seedream 5.5",
+      "point": "像素级可控编辑、**角色一致性**、原生 RGBA 透明通道"
+    },
+    {
+      "d": "11/10",
+      "brand": "美团",
+      "evt": "开源 LongCat-2.5 视觉 LLM",
+      "product": "LongCat-2.5",
+      "point": "**1.6 万亿**参数视觉 LLM、MIT 开源、适配国产算力"
+    },
+    {
+      "d": "11/9",
+      "brand": "谷歌",
+      "evt": "第八代 TPU 8i Max 发布",
+      "product": "TPU 8i Max",
+      "point": "双芯合封、**性能翻倍**、面向超长上下文多智能体"
+    },
+    {
+      "d": "11/10",
+      "brand": "Anthropic",
+      "evt": "Claude Fable 5.2 / Mythos 5.2 发布",
+      "product": "Claude Fable 5.2",
+      "point": "Fable 降价20%提速30%、FrontierCode **49.1%** 登顶"
     },
     {
       "d": "11/6",
@@ -452,20 +483,6 @@
       "evt": "GPT-6 Cyber 发布",
       "product": "GPT-6 Cyber",
       "point": "**Critical** 评级、挖 **948** 内核利用"
-    },
-    {
-      "d": "11/5",
-      "brand": "Anthropic",
-      "evt": "Claude 个人理财上线",
-      "product": "Personal Finance",
-      "point": "Plaid **只读**连账户答理财"
-    },
-    {
-      "d": "11/5",
-      "brand": "Meta",
-      "evt": "Muse 实时虚拟形象",
-      "product": "Muse Avatar",
-      "point": "实时语音+**表情**化身"
     },
     {
       "d": "11/5",
@@ -622,13 +639,6 @@
       "point": "主动记忆准确 **90%**"
     },
     {
-      "d": "11/7",
-      "brand": "谷歌",
-      "evt": "ADK 2.14 发布",
-      "product": "ADK 2.14",
-      "point": "**A2A** 协议转稳定、可投产"
-    },
-    {
       "d": "11/8",
       "brand": "OpenAI",
       "evt": "突发大规模账号停用",
@@ -687,8 +697,36 @@
       "insight": "安全能力正成为前沿模型首个独立产品线，拉开安全模型赛道"
     }
   ],
-  "productsSummary": "① **图像**：OpenAI Images 2.6 上线，GIF+SVG、提速 50%。\n② **评测**：SuperCLUE Gemini 73.62 居首、Kimi 国内第一。\n③ **开源**：Kimi K3.1 Pro 权重落地、Thinking Machines Inkling 2 Small 亮相。",
+  "productsSummary": "① **图像**：OpenAI Images 2.6 上线，GIF+SVG、提速 50%。\n② **评测**：SuperCLUE Gemini 73.62 居首、Kimi 国内第一。\n③ **开源**：Kimi K3.1 Pro 权重落地、Anthropic Fable 5.2 登顶编程基准。",
   "newProducts": [
+    {
+      "brand": "Anthropic",
+      "color": "#d97757",
+      "tag": "前沿模型",
+      "date": "11/10",
+      "summary": "Anthropic 11/10 发布 **Claude Fable 5.2** 与 **Mythos 5.2**（同底层），Fable 面向编程推理、API 降价 **20%**、生成提速 **30%**，FrontierCode 2.0 以 **49.1%** 登顶。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "AWS Bedrock 已上线，面向所有付费用户；Mythos 限审核机构"
+          },
+          {
+            "k": "核心能力",
+            "v": "FrontierCode **49.1%** 居首、Chartography 44.8%→73.4%、RoboDojo 64.9%"
+          },
+          {
+            "k": "用户评价",
+            "v": "核心代码库 **90%+** 变更由 Claude 编写；企业称审计提速显著"
+          },
+          {
+            "k": "商业化",
+            "v": "标准价 输入 **8$/百万**、输出 **40$/百万**；快速模式 2.5 倍速"
+          }
+        ]
+      },
+      "analysis": "① **编程登顶**：Fable 5.2 在 FrontierCode 2.0 以 49.1% 超过 GPT-6 Astra 与 Gemini Carbon，成本约为 Opus 5.5 一半。\n② **长程协作**：协调千余子智能体 8 天搭出可启动操作系统，验证多智能体工程能力。\n③ **分层发售**：Mythos 5.2 解除限制仅向网络安全与生命科学机构开放，IPO 前巩固企业信任。"
+    },
     {
       "brand": "百度",
       "color": "#16a34a",
@@ -1080,34 +1118,6 @@
         ]
       },
       "analysis": "① **总榜格局**：Gemini-4-Argon **73.62** 居首，GPT-6.1-Sol **71.76** 紧随。\n② **国产第一**：Kimi-K3.1-Pro **61.46** 登国产开源首位、幻觉控制领先。\n③ **梯队成型**：DeepSeek-V4.1-Flash-1017 与 GLM-5.3 组开源第一梯队。"
-    },
-    {
-      "brand": "Thinking Machines",
-      "color": "#7c3aed",
-      "tag": "开放权重模型",
-      "date": "11/7",
-      "summary": "**Inkling 2 Small** 亮相，594B MoE、单任务 **1.18$**，承诺 Apache 2.0 权重待安全测试后开源。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "仅 Tinker 平台运行、权重尚未放出"
-          },
-          {
-            "k": "核心能力",
-            "v": "**594B** MoE、**1.18$/任务**、多轮推理强"
-          },
-          {
-            "k": "用户评价",
-            "v": "称「开放权重」但暂未开源，社区观望"
-          },
-          {
-            "k": "商业化",
-            "v": "按任务计费、定位企业级高难推理"
-          }
-        ]
-      },
-      "analysis": "① **参数规模**：**594B** MoE 走高质量路线、单任务 **1.18$**。\n② **开源悬念**：Apache 2.0 权重承诺但无时间表，先平台独占。\n③ **定位差异**：以任务单价对标闭源旗舰，避开 token 价格战。"
     }
   ],
   "earningsCalendar": [
@@ -1452,7 +1462,7 @@
       }
     }
   ],
-  "marketView": "① **SuperCLUE 登顶**：Gemini-4-Argon 以 **73.62** 分居总榜首，Kimi-K3.1-Pro **61.46** 领跑国产开源。\n② **图像与融资双线**：OpenAI **Images 2.6** 提速 **50%**、周产 **40 亿**张；本轮 **110 亿$** 融资交割、估值 **1.25 万亿$**。\n③ **基建与治理并行**：Anthropic 接手 **1.7GW** 发电、OpenAI **无预警封号**波及 Pro；红果 **4.3 亿**反超豆包成字节第二大。",
+  "marketView": "① **Fable 5.2 登顶编程**：Anthropic 11/10 发 Claude Fable 5.2/Mythos 5.2，Fable 降价 20%、FrontierCode **49.1%** 居首。\n② **IPO 定价揭晓**：发行价 **70–78 美元/股**、估值约 **1.4 万亿$**、11/18 当周定价，260 亿私募锚定。\n③ **图像与融资双线**：OpenAI **Images 2.6** 提速 **50%**、周产 **40 亿**张；本轮 **110 亿$** 融资交割、估值 **1.25 万亿$**。",
   "market": {
     "type": "internet",
     "capex": {
@@ -1555,7 +1565,7 @@
           ]
         }
       ],
-      "note": "**美国三大云厂** 2026 年资本开支合计接近 **6000 亿**美元；**Meta** 单家指引 **1350–1450 亿**居首。\n**国内** 字节/阿里 2026 增速超 **100%**，字节 AI 算力开支已上调至 **2000 亿+** 元（国内为估算）。\n 2026Q3 四大云厂资本开支合计 **2078 亿$**、同比 **+115%**，自由现金流合计转负约 **273 亿$**、仅微软维持正 FCF（**186 亿$**）；Meta 启动至多 **950 亿$** 股权融资，未来支出承诺升至 **8250 亿$**。研究机构预计六家超大规模厂 2029 前 FCF 难转正。\n Anthropic 9 月季度营收 **170 亿$**、算力采购承诺接近 **9000 亿$**，IPO 前融资结构承压；黑石预计上市后或仅获 **BB** 评级。\n 千问办公双 11 首半日调用破 **5 万亿** Token；Anthropic **11/9** 路演、估值 **1.5–2 万亿$**。\n OpenAI 发布 **GPT-6 Cyber** 专用安全模型；同期 AI 算力股单日市值蒸发约 **2 万亿$**，市场重估数据中心回报节奏。"
+      "note": "**美国三大云厂** 2026 年资本开支合计接近 **6000 亿**美元；**Meta** 单家指引 **1350–1450 亿**居首。\n**国内** 字节/阿里 2026 增速超 **100%**，字节 AI 算力开支已上调至 **2000 亿+** 元（国内为估算）。\n 2026Q3 四大云厂资本开支合计 **2078 亿$**、同比 **+115%**，自由现金流合计转负约 **273 亿$**、仅微软维持正 FCF（**186 亿$**）；Meta 启动至多 **950 亿$** 股权融资，未来支出承诺升至 **8250 亿$**。研究机构预计六家超大规模厂 2029 前 FCF 难转正。\n Anthropic 9 月季度营收 **170 亿$**、算力采购承诺接近 **9000 亿$**，IPO 前融资结构承压；黑石预计上市后或仅获 **BB** 评级。\n 千问办公双 11 首半日调用破 **5 万亿** Token；Anthropic **11/10** 路演、定价 **70–78 美元/股**、估值约 **1.4 万亿$**。\n OpenAI 发布 **GPT-6 Cyber** 专用安全模型；同期 AI 算力股单日市值蒸发约 **2 万亿$**，市场重估数据中心回报节奏。"
     },
     "subs": {
       "headers": [
@@ -1657,7 +1667,7 @@
           "mau": 245,
           "mom": "+2%",
           "trend": "↑",
-          "sub": "企业 API 为主·**11/9 当周**启动路演·第三方估值 **1.475 万亿$**"
+          "sub": "付费>百万·**11/10 发布 Fable 5.2/Mythos 5.2**·FrontierCode **49.1%** 居首·IPO 定价 **70–78 美元/股**·代码 ANT"
         },
         {
           "rank": 10,
@@ -1818,6 +1828,11 @@
     ],
     "hfModels": [
       {
+        "model": "LongCat-2.5 (美团)",
+        "downloads": "11/10 开源",
+        "note": "**1.6 万亿**参数视觉 LLM、MIT 协议、适配国产算力"
+      },
+      {
         "model": "文心 5.5 FlashBase (百度)",
         "downloads": "11/6 开源",
         "note": "**2800 亿**参数 MoE、激活 **140 亿**，同尺寸 **SOTA**"
@@ -1889,6 +1904,18 @@
       }
     ],
     "aiProductStats": [
+      {
+        "name": "Anthropic IPO 定价区间",
+        "metric": "11/10 路演",
+        "value": "70–78 美元/股",
+        "note": "拟发行 **8.25 亿**股、估值约 **1.4 万亿$**、11/18 当周定价"
+      },
+      {
+        "name": "Claude Fable 5.2 编程基准",
+        "metric": "FrontierCode 2.0",
+        "value": "49.1%",
+        "note": "较上代 32.4% 提升 **16.7 点**，超 GPT-6 Astra 42.8% 与 Gemini Carbon 41.1%"
+      },
       {
         "name": "DeepSeek Harness 日活",
         "metric": "截至 11/6",
