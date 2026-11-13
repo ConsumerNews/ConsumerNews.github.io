@@ -442,117 +442,67 @@
       "note": "W44（10/26-11/1）RD观测产品级累计已补齐 7 款；W45 数据 11/13 尚未释放，继续报 W44"
     }
   },
-  "updateTime": "2026-11-13",
+  "updateTime": "2026-11-14",
   "headlineViewpoints": [
     {
-      "t": "荣耀 700 系列今日发布，背屏+9000mAh 把旗舰体验下放数字系列",
-      "s": "核心观点：荣耀 700 系列 11/13 正式发布，全系标配 **9000mAh** 青海湖电池与 1.72 英寸原生背屏，2 亿主摄+潜望长焦，把旗舰影像与续航下放数字系列。结论：**背屏交互+大电池或成中端新范式**，直接抢 nova/畅享走量盘。高层建议：**华为须以星芒与 nova17 正面拦截荣耀数字系列抢量**，守住 4000 元以下基本盘。",
+      "t": "Pura X View 上市 66 天激活破百万，下半年唯一百万国产旗舰",
+      "s": "核心观点：华为 **Pura X View 阔直板上市 66 天激活量突破 100 万台**，成为下半年唯一百万级国产旗舰（仅 iPhone 18 Pro Max / 18 Pro 与之并列）。高层建议：**实销均价约 7000 元、约 30% 用户来自苹果，阔直屏+鸿蒙协同已成高端破局样本，应加速同形态矩阵铺量。**",
+      "l": "IT之家",
+      "u": "https://www.ithome.com/1/026/869.htm"
+    },
+    {
+      "t": "W45 份额：苹果 29.3% 逼近三成，华为 20.8% 猛涨 1.4pp",
+      "s": "核心观点：RD观测第 45 周（11/2-8）国内份额 **苹果 29.3%**、**华为 20.8%（环比 +1.4pp）**，仅两家逆势上扬、合计 **50.1%** 超半壁。高层建议：**华为与苹果双强固化，腰部 OV 荣耀差距不足 2pp，须以 Mate80 降价与 nova17 抢年末换机窗口。**",
+      "l": "网易 / CNMO",
+      "u": "https://www.163.com/dy/article/LBKHPPG3051191D6.html"
+    },
+    {
+      "t": "苹果以旧换新首纳三星六款折叠屏，抢安卓折叠用户",
+      "s": "核心观点：苹果 11/13 更新美国以旧换新，首次纳入 **六款三星 Galaxy 折叠屏**（Fold5-Fold7/Flip5-Flip7），并下调 Pro 系列回收价。高层建议：**iPhone Duo 上市后苹果主动挖安卓折叠存量，华为须以 Mate X8 供给与体验守住折叠心智。**",
+      "l": "东方财富 / 界面新闻",
+      "u": "https://finance.eastmoney.com/a/202611133930933565.html"
+    },
+    {
+      "t": "荣耀 700 系列发布：背屏+9000mAh 把旗舰体验下放数字系列",
+      "s": "核心观点：荣耀 **700 系列 11/13 正式发布**，全系标配 **9000mAh** 青海湖电池与 1.72 英寸原生背屏，2 亿主摄+潜望长焦，把旗舰影像与续航下放数字系列。高层建议：**国产中端进入「背屏+大电池」差异化窗口，华为 nova17 须以影像与鸿蒙协同反制。**",
       "l": "凤凰网科技",
-      "u": "https://original.ifeng.com/c/8xzeJF3XpWT",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://original.ifeng.com/c/8xzeJF3XpWT"
-      }
+      "u": "https://original.ifeng.com/c/8xzeJF3XpWT"
     },
     {
-      "t": "双11 全周期收官：华为销售额居国产第一，单品前四仍全苹果",
-      "s": "核心观点：京东 11.11 全周期（11/1-11/11）品牌销售额 **苹果第一、华为第二**（OPPO/一加第三），华为手机以旧换新销售额同比 **+300%**，销售额破亿单品超 70 款。结论：**5000-6000 档国产旗舰因涨价越线被挤出**，K 型分化固化。高层建议：**华为须用 Mate80 降价+星芒补位抢回走量盘**，对冲高端单点依赖。",
+      "t": "双11 全周期收官：华为销售额居国产第一，单品前四全苹果",
+      "s": "核心观点：京东 11.11 全周期（11/1-11/11）品牌销售额 **苹果第一、华为第二**（OPPO/一加第三），华为手机以旧换新销售额同比 **+300%**，销售额破亿单品超 70 款。高层建议：**以旧换新已成换机主引擎，华为须扩大跨品牌回收与补贴组合守住高端基本盘。**",
       "l": "中国经济新闻网",
-      "u": "https://www.cet.com.cn/wzsy/cyzx/10661411.shtml",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.cet.com.cn/wzsy/cyzx/10661411.shtml"
-      }
+      "u": "https://www.cet.com.cn/wzsy/cyzx/10661411.shtml"
     },
     {
-      "t": "苹果 HomeView 与 Apple TV 4K 今日发售，Siri AI 入局家庭屏",
-      "s": "核心观点：苹果 **HomeView（$299、7 英寸屏、A18）** 与 **Apple TV 4K（A19）** 11/13 正式发售，HomePod mini 2 国行 1099 元已开售，Siri AI 入局家庭中枢。结论：**苹果以「屏+音箱+机顶盒」重构智能家居**，对标华为智慧屏与全屋生态。高层建议：**华为须加速鸿蒙智家与智慧屏的 AI 交互对齐**，守住家庭入口。",
+      "t": "苹果 HomeView 与 Apple TV 4K 发售，Siri AI 入局家庭屏",
+      "s": "核心观点：苹果 **HomeView（$299、7 英寸屏、A18）** 与 **Apple TV 4K（A19）** 11/13 正式发售，HomePod mini 2 国行 1099 元已开售，Siri 借家庭屏切入 AI 入口。高层建议：**家庭屏是鸿蒙家庭场景的对照样本，华为应以擎云+鸿蒙座舱式体验抢办公与家庭双场景。**",
       "l": "Apple 新闻室",
-      "u": "https://apple.com/tw/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://apple.com/tw/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home"
-      }
+      "u": "https://apple.com/tw/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment"
     },
     {
-      "t": "鸿蒙 11 月下旬将破亿，微信鸿蒙版安装超 9000 万",
-      "s": "核心观点：何刚 11/5 武汉峰会披露原生鸿蒙（HarmonyOS 6+7）设备 **预计 11 月下旬破 1 亿**，目前终端超 9000 万、覆盖 140 余款、原生应用与服务超 45 万；**微信鸿蒙版安装量破 9000 万**。结论：**三足鼎立从预测变为事实**，生态拐点临近。高层建议：**华为须抢在破亿节点锁固原生体验**，把装机红利转化为开发者收益正循环。",
+      "t": "原生鸿蒙 11 月下旬将破亿，微信鸿蒙版安装超 9000 万",
+      "s": "核心观点：何刚披露原生鸿蒙（HarmonyOS 6+7）设备 **预计 11 月下旬破 1 亿**，目前终端超 9000 万、微信鸿蒙版安装超 9000 万、覆盖 140 余款设备。高层建议：**亿级生态是华为终端护城河，应加速 TOP 应用原生适配并借破亿节点放大品牌势能。**",
       "l": "腾讯新闻",
-      "u": "https://news.qq.com/rain/a/20261109A08XV100",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://news.qq.com/rain/a/20261109A08XV100"
-      }
+      "u": "https://news.qq.com/rain/a/20261109A08XV100"
     },
     {
       "t": "荣耀成 2026 APEC 官方赞助商，Robot Phone 预订破 40 万",
-      "s": "核心观点：荣耀 11/11 官宣成为 **2026 深圳 APEC（11/18-19）官方赞助商**，展示全球首款机器人手机 **Robot Phone（9999 元起、预订破 40 万部）**、Magic9 与闪电机器人。结论：**深圳 AI 终端生态首登国际主场**，品牌全球化从产品出海走向平台输出。高层建议：**华为须借主场势能强化鸿蒙与全场景全球叙事**，避免被荣耀抢先定义 AI 终端。",
+      "s": "核心观点：荣耀 11/11 官宣成为 **2026 深圳 APEC（11/18-19）官方赞助商**，展示全球首款机器人手机 **Robot Phone（9999 元起、预订破 40 万部）** 与闪电机器人。高层建议：**AI 终端全球化需借主场外交抢定义权，华为应以 Mate 系列+鸿蒙生态对标 Robot Phone 叙事。**",
       "l": "深圳新闻网",
-      "u": "https://www.sznews.com/news/content/mb/2026-11/11/content_32212848.htm",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.sznews.com/news/content/mb/2026-11/11/content_32212848.htm"
-      }
+      "u": "https://www.sznews.com/news/content/mb/2026-11/11/content_32212848.htm"
     },
     {
       "t": "小米 18 Pro 系列定档 11/17 巴黎，国产旗舰首出海",
-      "s": "核心观点：小米 11/10 定档 **18 Pro 系列 11/17 巴黎全球发布**，Pro 系列首次登陆海外，妙享背屏走向全球（延续国行核心配置）。结论：**国产旗舰从国内内卷转向海外高端试探**，对华为海外高端形成压强。高层建议：**华为须加速 Mate/Pura 海外旗舰节奏**，避免高端出海窗口被小米抢占。",
+      "s": "核心观点：小米 11/10 定档 **18 Pro 系列 11/17 巴黎全球发布**，Pro 系列首次登陆海外，妙享背屏走向全球。高层建议：**国产旗舰从国内内卷转向全球抢高端，华为须以 Mate80/X8 欧洲与东南亚节奏对冲。**",
       "l": "网易",
-      "u": "https://www.163.com/dy/article/LBBVIG8E051191D6.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.163.com/dy/article/LBBVIG8E051191D6.html"
-      }
+      "u": "https://www.163.com/dy/article/LBBVIG8E051191D6.html"
     },
     {
-      "t": "华为 Mate X7 全系直降 1000 元，预示 Mate X8 下旬登场",
-      "s": "核心观点：华为 11/10 起对 **Mate X7 全系至高直降 1000 元并赠 698 元手写笔**（至 12/31），起售价降至 11999 元。结论：**老折叠以价换量清库存**，明确预示 **Mate X8 将于 11 月下旬搭载麒麟 9050 Pro 登场**。高层建议：**华为须把控两代折叠价差与节奏**，避免 X7 降价冲击 X8 首销预期。",
-      "l": "中华网数码",
-      "u": "https://digi.china.com/digi/20261110/202611101976047.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://digi.china.com/digi/20261110/202611101976047.html"
-      }
-    },
-    {
-      "t": "华为 Mate80 双11 渠道价跌至 3599，旗舰配置下放中端",
-      "s": "核心观点：双11 华为 **Mate 80 渠道价跌至 3599 元**、以旧换新最高立省 2000 元，官方标价仍 5499 元，价差达 1900 元。结论：**麒麟 9020/卫星通信/昆仑玻璃等旗舰配置下放中端，以价换量守基本盘**。高层建议：**华为须以 Mate80 低价盘+星芒补位**，对冲 Mate90 不降价带来的份额流失。",
-      "l": "今日头条",
-      "u": "https://www.toutiao.com/article/7706071157715304998/",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.toutiao.com/article/7706071157715304998/"
-      }
-    },
-    {
-      "t": "iPhone Duo 开售 10 天破 26.4 万，256/512 已破发",
-      "s": "核心观点：iPhone Duo 开售 10 天 **累计破 26.4 万台**、256/512 版本已破发，内屏故障占比极小、苹果确认免费换机无召回，发货仍排至 2027/1 下旬。结论：**折叠品类仍受供给与质量拖累**，苹果以品牌力兜底。高层建议：**华为须抓住 Duo 质量与供给短板窗口**，以 Mate X8 抢折叠高端心智。",
-      "l": "新浪科技",
-      "u": "https://www.sina.cn/news/detail/5363599356462452.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.sina.cn/news/detail/5363599356462452.html"
-      }
-    },
-    {
-      "t": "华为 Mate 90 RS 11/6 再次开售，顶配独占麒麟 9050 Pro",
-      "s": "核心观点：华为 **Mate 90 RS 非凡大师 11/6 再次开售**，顶配独占麒麟 9050 Pro、2 亿长焦、6800mAh+100W，18999 元封顶。结论：**超高端以稀缺性+顶配独占续拉品牌势能**，对冲中端以价换量。高层建议：**华为须保持 RS 稀缺节奏**，避免频繁补货稀释非凡大师溢价。",
-      "l": "网易",
-      "u": "https://www.163.com/dy/article/LB0SK87J0531G57O.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.163.com/dy/article/LB0SK87J0531G57O.html"
-      }
+      "t": "华为 Mate80 与 Mate X7 定档 11/25，密集发布压竞品",
+      "s": "核心观点：华为官宣 **Mate 80 系列与 Mate X7 定档 11/25 14:30 发布**、11/17 起 200 元订金预订，距 Mate 90 仅 55 天密集发布压制竞品年末换机窗口。高层建议：**密集节奏考验供给与渠道，须以 Mate X8 备货与定价守住高端与折叠双线。**",
+      "l": "香港经济日报 / IT之家",
+      "u": "https://www.etnet.com.hk/www/tc/news/news-article.php"
     }
   ],
   "opinionLeaders": [
@@ -653,10 +603,9 @@
       "role": "数码博主 / 供应链爆料",
       "items": [
         {
-          "hl": "11/6 星芒 OSTA O1 / O1 Pro 双机型：O1 Pro 阔直板 6.39 英寸、O1 四曲屏，同场折叠电脑+手表",
-          "detail": "① 结论：华为中端补位进入双形态+多品类密集期。\n② 数据：博主称 **O1 Pro 为 6.39 英寸 1.5K LTPS 阔直板**（16:9.5、1.05mm 四等边），**O1 为四曲屏直板+大圆 Deco**，同场还有小尺寸折叠电脑与超薄手表 WATCH Air，预计 11 月发布。\n③ 启示：**阔直板与四曲屏双线并进**，中端形态窗口须抢先铺满。",
-          "l": "腾讯新闻 / CNMO",
-          "u": "https://news.qq.com/rain/a/20261106A047AK00"
+          "hl": "11/13 规模验证：Pura X View 上市 66 天激活破百万，下半年唯一百万国产旗舰",
+          "detail": "① 结论：华为阔直板已成高端爆款，单品规模首破百万。\n② 数据：博主称 **Pura X View 上市 66 天激活破 100 万台**，仅 iPhone 18 Pro Max/18 Pro 与之并列，实销均价约 **7000 元**、约 **30%** 用户来自苹果。",
+          "l": "IT之家"
         },
         {
           "hl": "11/7 华为 Mate80 双11 渠道价跌至 3599，官方标价仍 5499，旗舰配置下放中端",
@@ -787,7 +736,7 @@
       }
     }
   ],
-  "leadersSummary": "① **荣耀双线突破**：700 系列今日发布（背屏+9000mAh 下放中端）、并成 2026 APEC 官方赞助商，AI 终端全球化抢先定义。\n② **华为以价换量守基本盘**：Mate80 双11 渠道价跌至 3599，旗舰配置下放中端，星芒补位密集。\n③ **小米 18 Pro 巴黎出海**：Pro 系列首次登陆海外，妙享背屏走向全球，对华为海外高端形成压强。\n④ **一加/OPPO 守中端**：Ace 风冷、Reno 大电池，腰部混战华为须以星芒拉开身位。",
+  "leadersSummary": "① **华为双线推进**：Pura X View 激活破百万成下半年唯一百万国产旗舰，Mate80 与 X7 定档 11/25 压竞品换机窗口。\n② **荣耀双突破**：700 系列发布（背屏+9000mAh 下放中端）、并成 2026 APEC 官方赞助商，Robot Phone 抢 AI 终端定义权。\n③ **小米出海加速**：18 Pro 系列 11/17 巴黎首发，国产旗舰从内卷转向全球抢高端。\n④ **苹果反抢**：以旧换新首纳三星折叠屏挖安卓存量，华为须以 Mate X8 守住折叠心智。",
   "institutionViews": [
     {
       "name": "Counterpoint",
@@ -1105,107 +1054,57 @@
   "instsSummary": "① **苹果增长全靠中国**：Counterpoint 口径 iPhone 18 Pro 前三周全球 **+3.1%**、中国 **+29%**，美日下滑。\n② **IDC Q3 中国定调量跌价升**：**5806 万台、-15.2%**，跌幅较上半年 4% 翻倍扩大。\n③ **华为 21.1% 领跑且唯一双位数增长**，荣耀 **13.0%** 是唯一环比正增长品牌。\n④ **价格带迁移**：200 美元以下 **-13.9 个点**，600 美元以上 **+7.1 个点**。\n⑤ **折叠屏连跌四季**：177 万台 **-32.7%**，华为份额 **超 70%**。",
   "topNews": [
     {
-      "t": "11/13 荣耀 700 系列今日发布，全系 9000mAh+原生背屏",
+      "t": "11/13 华为 Pura X View 上市 66 天激活破百万，下半年唯一百万国产旗舰",
+      "l": "IT之家",
+      "u": "https://www.ithome.com/1/026/869.htm"
+    },
+    {
+      "t": "11/13 RD观测 W45 份额：苹果 29.3%、华为 20.8%（+1.4pp），两强合计 50.1%",
+      "l": "网易 / CNMO",
+      "u": "https://www.163.com/dy/article/LBKHPPG3051191D6.html"
+    },
+    {
+      "t": "11/13 苹果以旧换新首次纳入三星六款折叠屏，抢安卓折叠存量",
+      "l": "东方财富 / 界面新闻",
+      "u": "https://finance.eastmoney.com/a/202611133930933565.html"
+    },
+    {
+      "t": "11/13 荣耀 700 系列发布，全系 9000mAh+原生背屏",
       "l": "凤凰网科技",
-      "u": "https://original.ifeng.com/c/8xzeJF3XpWT",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://original.ifeng.com/c/8xzeJF3XpWT"
-      }
+      "u": "https://original.ifeng.com/c/8xzeJF3XpWT"
     },
     {
-      "t": "11/13 苹果 HomeView 与 Apple TV 4K 今日正式发售，Siri AI 入局家庭屏",
+      "t": "11/13 苹果 HomeView 与 Apple TV 4K 发售，Siri 入局家庭屏",
       "l": "Apple 新闻室",
-      "u": "https://apple.com/tw/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://apple.com/tw/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home"
-      }
+      "u": "https://apple.com/tw/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment"
     },
     {
-      "t": "11/12 双11 全周期收官：苹果销售额第一、华为第二，华为以旧换新+300%",
+      "t": "11/12 双11 全周期收官：苹果销售额第一、华为第二，以旧换新+300%",
       "l": "中国经济新闻网",
-      "u": "https://www.cet.com.cn/wzsy/cyzx/10661411.shtml",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.cet.com.cn/wzsy/cyzx/10661411.shtml"
-      }
+      "u": "https://www.cet.com.cn/wzsy/cyzx/10661411.shtml"
     },
     {
       "t": "11/11 鸿蒙装机破 9900 万，微信鸿蒙版安装超 9000 万，下旬破亿",
       "l": "腾讯新闻",
-      "u": "https://news.qq.com/rain/a/20261109A08XV100",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://news.qq.com/rain/a/20261109A08XV100"
-      }
+      "u": "https://news.qq.com/rain/a/20261109A08XV100"
     },
     {
       "t": "11/11 荣耀成 2026 APEC 官方赞助商，展示 Robot Phone",
       "l": "深圳新闻网",
-      "u": "https://www.sznews.com/news/content/mb/2026-11/11/content_32212848.htm",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.sznews.com/news/content/mb/2026-11/11/content_32212848.htm"
-      }
+      "u": "https://www.sznews.com/news/content/mb/2026-11/11/content_32212848.htm"
     },
     {
       "t": "11/11 荣耀 Magic9 系列上市月余销量破 50 万台",
       "l": "手机中国",
-      "u": "https://mobile.zol.com.cn/1271/12717540.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://mobile.zol.com.cn/1271/12717540.html"
-      }
+      "u": "https://mobile.zol.com.cn/1271/12717540.html"
     },
     {
       "t": "11/10 小米 18 Pro 系列定档 11/17 巴黎全球发布",
       "l": "网易",
-      "u": "https://www.163.com/dy/article/LBBVIG8E051191D6.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.163.com/dy/article/LBBVIG8E051191D6.html"
-      }
-    },
-    {
-      "t": "11/10 iPhone Duo 开售 10 天破 26.4 万、256/512 已破发",
-      "l": "新浪科技",
-      "u": "https://www.sina.cn/news/detail/5363599356462452.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.sina.cn/news/detail/5363599356462452.html"
-      }
-    },
-    {
-      "t": "11/10 OPPO Reno 17 系列定档 11/16 发布，抢双11尾盘",
-      "l": "天极网",
-      "u": "https://wap.yesky.com/mobile/338/381838.shtml",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://wap.yesky.com/mobile/338/381838.shtml"
-      }
-    },
-    {
-      "t": "11/6 华为 Mate 90 RS 非凡大师再次开售",
-      "l": "网易",
-      "u": "https://www.163.com/dy/article/LB0SK87J0531G57O.html",
-      "prov": {
-        "src": "公开报道(L4)",
-        "conf": "中",
-        "url": "https://www.163.com/dy/article/LB0SK87J0531G57O.html"
-      }
+      "u": "https://www.163.com/dy/article/LBBVIG8E051191D6.html"
     }
   ],
-  "newsSummary": "① **双11 全周期收官**：苹果销售额第一、华为第二，华为以旧换新+300%，5000-6000 档国产旗舰被涨价挤出。\n② **W44 份额**：苹果 28.7% 居首、华为 19.4% 第二，腰部四家挤在 11.6%-13.4%。\n③ **荣耀 Magic9 破 50 万**：上市月余销量破 50 万台，李健称影像旗舰获市场热捧。\n④ **荣耀 700 系列今日发布**：全系 9000mAh+原生背屏，中端差异化抢量。",
+  "newsSummary": "① **Pura X View 激活破百万**：上市 66 天破 100 万台，下半年唯一百万国产旗舰，实销均价约 7000 元。\n② **W45 份额**：苹果 29.3% 逼近三成、华为 20.8%（+1.4pp），两强合计 50.1% 超半壁。\n③ **双11 全周期**：苹果销售额第一、华为第二，华为以旧换新同比 +300%。\n④ **苹果抢折叠存量**：以旧换新首纳三星六款折叠屏，挖安卓折叠用户转 iOS。",
   "launchCalendar": [
     {
       "d": "11/6",
