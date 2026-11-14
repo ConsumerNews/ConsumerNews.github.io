@@ -1,15 +1,20 @@
 {
-  "updateTime": "2026-11-14 06:20",
+  "updateTime": "2026-11-15 06:20",
   "headlineViewpoints": [
     {
       "t": "**融资 150 亿**：OpenAI 估值 1.25 万亿、备 2027 IPO",
-      "s": "核心观点：OpenAI 新一轮私募融资 **150 亿$**、投前估值 **1.25 万亿$**，为 2027 年 IPO 备弹；Q3 营收破 **100 亿$**、环比近五成，运营亏损 **109 亿$**。① 调整后营业利润率从 **-150%** 改善至 **-109%**。② 对手 Anthropic 拟 11/19 以 ANT 挂牌、估值约 **1.4 万亿$**。高层建议：**跟踪私营与公开 AI 估值价差收敛**。",
+      "s": "核心观点：OpenAI **150 亿$** 私募、估值 **1.25 万亿$**，为 2027 IPO 备弹；Q3 营收破 **100 亿$**、亏损 **109 亿$**。① 营业利润率从 **-150%** 改善至 **-109%**。② 对手 Anthropic 拟 11/19 以 ANT 挂牌、估值 **1.4 万亿$**。高层建议：**跟踪公私 AI 估值价差收敛**。",
       "u": "https://news.qq.com/rain/a/20261113A04AG200"
     },
     {
-      "t": "**Gemini Decision 1**：谷歌不写字、只打分",
-      "s": "核心观点：谷歌 Gemini Decision 1 与 Decisions API 不逐 token 生成文本，而是对候选选项**单次前向直接打分**，主打范围明确的决策场景。① 支持判断/多选/评分三类，多模态输入。② 定价 **0.1$/M token**、输出不计费。高层建议：**决策类 API 或成高毛利入口，重塑调用结构**。",
-      "u": "https://www.ai-news-brief.info/ai-news-brief-roundup-2026-11-13-morning"
+      "t": "**解散机器人团队**：GPT-6 Astra 直接控机器人",
+      "s": "核心观点：OpenAI **解散独立机器人团队**，并入通用模型主线；GPT-6 Astra 直接控机器人、成功率 **66.3%**、叠加智能体 **74.8%**。① 通用模型侵蚀专用「大脑」。高层建议：**具身智能竞争转向通用模型下游应用**。",
+      "u": "https://www.cls.cn/detail/2534550"
+    },
+    {
+      "t": "**ChatGPT Wallet**：OpenAI 让 agents 代用户购物",
+      "s": "核心观点：OpenAI 推出 **ChatGPT Wallet**，允许 agents 在用户授权下代下单购物，是迄今最明确的 **Agent 商业** 落子，覆盖 12 亿周活买卖两侧。① 一次性卡令牌+逐单审批控风险。高层建议：**入口之争从问答转向交易闭环**。",
+      "u": "https://aibriefing.dev/story/20a0a0a5a7ea"
     },
     {
       "t": "**Gemini 4 Hydrogen**：谷歌效率旗舰全量上线搜索",
@@ -33,23 +38,18 @@
     },
     {
       "t": "**ANT 倒计时**：Anthropic 11/19 挂牌、Claude 月访问 12.53 亿",
-      "s": "核心观点：Anthropic 将于 **11/19** 以代码 ANT 登陆纳斯达克，发行 **8.25 亿**股、定价 **70–78 美元/股**、估值约 **1.4 万亿$**。① 前九月收入 **332 亿$**、同比增约 **1200%**；Claude 十月月访问 **12.53 亿**、环比 **+24%**。② 总承诺支出 **8954 亿$**。高层建议：**IPO 定价将重设 AI 实验室估值锚**。",
+      "s": "核心观点：Anthropic 将于 **11/19** 以代码 ANT 登陆纳斯达克，发行 **8.25 亿**股、定价 **70–78 美元/股**、估值约 **1.4 万亿$**。① 前九月收入 **332 亿$**、同比增约 **1200%**；Claude 月访问 **12.53 亿**。② 总承诺支出 **8954 亿$**。高层建议：**IPO 定价将重设 AI 实验室估值锚**。",
       "u": "https://m.163.com/news/article/LBJM94060511A6N9.html"
     },
     {
       "t": "**腾讯定调 AI**：一半提效、一半做 AI 原生",
-      "s": "核心观点：腾讯 28 周年定调组织变革，明确「**一半人提效、一半人做 AI 原生**」，否认裁员五成传闻；同日混元图像 **3.5 预览版**上线、API **0.15 元/张**。① 变革面向 AI 时代主动转型，落点将在编制与考核。② 混元多模态持续补齐。高层建议：**大厂组织重构是 AI 落地前置动作，跟踪编制信号**。",
+      "s": "核心观点：腾讯近日定调组织变革，明确「**一半人提效、一半人做 AI 原生**」；混元图像 **3.5** 上线、API **0.15 元/张**。① 变革面向 AI 时代转型。② 混元多模态补齐。高层建议：**大厂组织重构是 AI 落地动作，跟踪编制信号**。",
       "u": "https://mp.weixin.qq.com/s?__biz=MzU2NzgzMTA3Nw==&mid=2247485490&idx=1&sn=24dd883a4089c91bcf37412045a4d561"
     },
     {
-      "t": "**Runway 开源 Praxis-1**：270 亿世界动作模型、Apache 2.0",
-      "s": "核心观点：Runway 开源世界动作模型 **Praxis-1**（**270 亿**参数、Apache 2.0，商用可行），将视频预测与动作预测联合训练，基于日常真人视频而非昂贵遥操作数据。① 适配多种机器人硬件，权威榜单曾登顶。② 降低具身智能数据门槛。高层建议：**开源世界模型加速机器人落地，关注国产替代**。",
-      "u": "https://mp.weixin.qq.com/s?__biz=MzkzODM3ODQzMQ==&mid=2247485178&idx=1&sn=a560a543a23cab1f57faf21b426cf963"
-    },
-    {
-      "t": "**Agent Framework 1.0**：微软开源生产级运行时",
-      "s": "核心观点：微软开源 **Agent Framework 1.0**，合并 Semantic Kernel 与 AutoGen，提供生产级多智能体编排运行时。① 支持任务图、记忆、工具调用与可观测。② 降低企业级 Agent 落地门槛。高层建议：**编排层开源化将加速 Agent 从 Demo 走向流水线**。",
-      "u": "https://github.blog/"
+      "t": "**llama.cpp v1.0**：本地推理首个稳定版",
+      "s": "核心观点：本地推理引擎 **llama.cpp 发布 v1.0.0**，首次承诺稳定 API/ABI，HF 同步推桌面应用。① 降低端侧与私有化部署门槛。② 社区生态进一步繁荣。高层建议：**端侧推理标准化利好隐私与离线场景**。",
+      "u": "https://github.com/ggml-org/llama.cpp"
     }
   ],
   "opinionLeaders": [
@@ -59,7 +59,7 @@
       "items": [
         {
           "hl": "以 GPT-6.2 Astra 重启旗舰，并预告下一代 GPT 将发布",
-          "detail": "① 披露 2026Q3 营收破 100 亿$、环比近五成，企业客户贡献升至多数。\n② 推出认证 Business Agents，把 ChatGPT 变为消费发现引擎并开放品牌曝光数据。\n③ 发布 Images 2.6 图像模型，生成提速 50%、周产 40 亿张。\n④ 推 GPT-6 Cyber 专用安全模型并建 Control Room 安全中枢。\n⑤ Brockman 称 2027 具备 IPO 条件，数据中心承诺 100% 担成本。\n⑥ 11/13 完成新一轮私募融资 150 亿美元，投前估值 1.25 万亿美元，为 2027 年 IPO 备弹。",
+          "detail": "① 披露 2026Q3 营收破 100 亿$、环比近五成，企业客户贡献升至多数。\n② 推出认证 Business Agents，把 ChatGPT 变为消费发现引擎并开放品牌曝光数据。\n③ 发布 Images 2.6 图像模型，生成提速 50%、周产 40 亿张。\n④ 推 GPT-6 Cyber 专用安全模型并建 Control Room 安全中枢。\n⑤ Brockman 称 2027 具备 IPO 条件，数据中心承诺 100% 担成本。\n⑥ 11/13 完成新一轮私募融资 150 亿美元，投前估值 1.25 万亿美元，为 2027 年 IPO 备弹。\n⑦ 11/14 确认解散独立机器人团队、研究并入通用模型主线；同步推 ChatGPT Wallet 试水 Agent 商业。",
           "u": "https://aibriefing.dev/story/3e93342c42d6",
           "l": "The Verge / AI 日报"
         }
@@ -76,7 +76,7 @@
       "items": [
         {
           "hl": "以 Fable 5.2/Mythos 5.2 密集发新品，IPO 定价 70–78 美元/股",
-          "detail": "① 11/10 路演敲定发行价 70–78 美元/股、估值约 1.4 万亿$，谷歌/微软/英伟达等私募认购 260 亿$。\n② 年化营收约 810 亿$、年付费超 10 万$ 客户 11900 家，11/18 当周定价、代码 ANT。\n③ 发布 Claude Fable 5.2/Mythos 5.2，Fable 降价 20%、FrontierCode 49.1% 登顶。\n④ 推 Claude Meetings 会议助手与 AI 办公套件，直击微软腹地。\n⑥ ANT 将于 11/19 登陆纳斯达克，前九月收入 332 亿美元，Claude 十月月访问 12.53 亿。",
+          "detail": "① 11/10 路演敲定发行价 70–78 美元/股、估值约 1.4 万亿$，谷歌/微软/英伟达等私募认购 260 亿$。\n② 年化营收约 810 亿$、年付费超 10 万$ 客户 11900 家，11/18 当周定价、代码 ANT。\n③ 发布 Claude Fable 5.2/Mythos 5.2，Fable 降价 20%、FrontierCode 49.1% 登顶。\n④ 推 Claude Meetings 会议助手与 AI 办公套件，直击微软腹地。\n⑥ ANT 将于 11/19 登陆纳斯达克，前九月收入 332 亿美元，Claude 十月月访问 12.53 亿。\n⑦ Cursor 中毒 Claude Code 扩展事件波及约 5000 用户，凸显 Agent 工具供应链安全。",
           "u": "https://www.163.com/dy/article/LBDHPSL00514R9P4.html",
           "l": "澎湃 / 网易"
         }
@@ -224,7 +224,7 @@
       }
     }
   ],
-  "leadersSummary": "① **奥特曼**完成 150 亿$ 私募、为 2027 IPO 备弹，OpenAI 营收破百亿仍深亏。\n② **阿莫迪** ANT 11/19 挂牌、Claude 月访问 12.53 亿，IPO 前流量冲顶。\n③ **皮查伊**推 Gemini 4 Hydrogen 效率旗舰，全量驱动全球搜索。\n④ **黄仁勋**陷 CEO 更替风波，英伟达治理不确定性上升。",
+  "leadersSummary": "① **奥特曼**完成 150 亿$ 私募、解散机器人团队，ChatGPT Wallet 试水 Agent 商业。\n② **阿莫迪** ANT 11/19 挂牌、Claude 月访问 12.53 亿。\n③ **皮查伊**推 Gemini 4 Hydrogen 效率旗舰，全量驱动全球搜索。\n④ **黄仁勋**陷 CEO 更替风波，英伟达治理不确定性上升。",
   "institutionViews": [
     {
       "name": "标普全球 / 摩根大通",
@@ -325,9 +325,14 @@
       "u": "https://news.qq.com/rain/a/20261113A04AG200"
     },
     {
-      "t": "**Gemini Decision 1**：谷歌不写字、只打分",
-      "l": "AI 早报",
-      "u": "https://www.ai-news-brief.info/ai-news-brief-roundup-2026-11-13-morning"
+      "t": "**解散机器人团队**：GPT-6 Astra 直接控机器人",
+      "l": "科创板日报",
+      "u": "https://www.cls.cn/detail/2534550"
+    },
+    {
+      "t": "**ChatGPT Wallet**：OpenAI 试水 Agent 商业",
+      "l": "AI 日报",
+      "u": "https://aibriefing.dev/story/20a0a0a5a7ea"
     },
     {
       "t": "**Gemini 4 Hydrogen**：谷歌效率旗舰全量上线搜索",
@@ -360,18 +365,41 @@
       "u": "https://mp.weixin.qq.com/s?__biz=MzU2NzgzMTA3Nw==&mid=2247485490&idx=1&sn=24dd883a4089c91bcf37412045a4d561"
     },
     {
-      "t": "**Runway 开源 Praxis-1**：270 亿世界动作模型",
-      "l": "微信·AI 日报",
-      "u": "https://mp.weixin.qq.com/s?__biz=MzkzODM3ODQzMQ==&mid=2247485178&idx=1&sn=a560a543a23cab1f57faf21b426cf963"
-    },
-    {
-      "t": "**Agent Framework 1.0**：微软开源生产级运行时",
-      "l": "GitHub Blog",
-      "u": "https://github.blog/"
+      "t": "**llama.cpp v1.0**：本地推理稳定版发布",
+      "l": "GitHub",
+      "u": "https://github.com/ggml-org/llama.cpp"
     }
   ],
-  "newsSummary": "① **模型侧**：Gemini 4 Hydrogen 全量上线搜索、2.5 倍快；百度词元所日均 token 超 7000 亿。\n② **入口侧**：豆包工作接入 Kimi/GLM/DeepSeek 按价签挑；微软必应加 AI 答案开关。\n③ **资本侧**：OpenAI 融资 150 亿$、Anthropic ANT 11/19 挂牌、英伟达 CEO 生变。\n④ **开源侧**：Runway 开源 Praxis-1 世界动作模型；火山 Seedance 2.5 降价 34%。",
+  "newsSummary": "① **模型侧**：Gemini 4 Hydrogen 全量上线搜索、2.5 倍快；百度词元所日均 token 超 7000 亿。\n② **入口侧**：豆包工作接入 Kimi/GLM/DeepSeek 按价签挑；ChatGPT Wallet 试水 Agent 购物。\n③ **资本侧**：OpenAI 融资 150 亿$、Anthropic ANT 11/19 挂牌、英伟达 CEO 生变。\n④ **开源侧**：Runway 开源 Praxis-1；llama.cpp v1.0 首发稳定版。",
   "launchCalendar": [
+    {
+      "d": "11/14",
+      "brand": "OpenAI",
+      "evt": "解散独立机器人团队",
+      "product": "解散机器人团队",
+      "point": "**GPT-6 Astra** 直接控机器人、成功率 66%"
+    },
+    {
+      "d": "11/13",
+      "brand": "OpenAI",
+      "evt": "ChatGPT Wallet 上线",
+      "product": "ChatGPT Wallet",
+      "point": "agents **代用户购物**、生物识别授权"
+    },
+    {
+      "d": "11/14",
+      "brand": "llama.cpp",
+      "evt": "llama.cpp v1.0.0 发布",
+      "product": "llama.cpp v1.0",
+      "point": "本地推理**首个稳定版**、API/ABI 承诺"
+    },
+    {
+      "d": "11/13",
+      "brand": "Cursor",
+      "evt": "中毒 Claude Code 扩展事件",
+      "product": "中毒扩展事件",
+      "point": "泄露密钥致 **约 5000 用户** 中招"
+    },
     {
       "d": "11/13",
       "brand": "Google",
@@ -458,13 +486,6 @@
     },
     {
       "d": "11/11",
-      "brand": "Anthropic",
-      "evt": "AI 办公套件发布",
-      "product": "Claude 办公套件",
-      "point": "文档表格邮件、**对标微软 365**"
-    },
-    {
-      "d": "11/11",
       "brand": "OpenAI",
       "evt": "Business Agents 上线",
       "product": "Business Agents",
@@ -476,27 +497,6 @@
       "evt": "Gemini Robotics 2.5 发布",
       "product": "Gemini Robotics 2.5",
       "point": "物理任务**近翻倍**、开放越狱基准"
-    },
-    {
-      "d": "11/11",
-      "brand": "Google",
-      "evt": "Gemini for Healthcare",
-      "product": "Gemini 医疗版",
-      "point": "统一临床数据、**自动化行政减负**"
-    },
-    {
-      "d": "11/11",
-      "brand": "MiniMax",
-      "evt": "开源 4K 图像模型",
-      "product": "MiniMax 4K 图像",
-      "point": "**4K** 直出、面向设计电商"
-    },
-    {
-      "d": "11/11",
-      "brand": "小红书",
-      "evt": "发布「蜜薯」AI 产品",
-      "product": "小红书蜜薯",
-      "point": "内容平台**首发 AI 新品**"
     },
     {
       "d": "11/12",
@@ -522,9 +522,9 @@
     {
       "d": "11/30",
       "brand": "Anthropic",
-      "evt": "月底前上市概率定价",
-      "product": "ANT 上市",
-      "point": "市场定价 **88%** 概率"
+      "evt": "ANT 后市观察",
+      "product": "ANT 后市",
+      "point": "挂牌后**估值锚待验证**、关注破发风险"
     },
     {
       "d": "12/2",
@@ -627,8 +627,92 @@
       "insight": "安全能力正成为前沿模型首个独立产品线，拉开安全模型赛道"
     }
   ],
-  "productsSummary": "① **效率旗舰**：Google Gemini 4 Hydrogen 全量上线、2.5 倍快，压低推理成本。\n② **交易基础设施**：百度词元所做模型验真征信，日均超 7000 亿 Token。\n③ **聚合入口**：豆包工作接入三家模型按价签挑，腾讯混元图像 3.5 低价 API。\n④ **开源与 Agent**：Runway Praxis-1 开源、Grok Bot 主动协作、必应交还选择权。",
+  "productsSummary": "① **效率旗舰**：Google Gemini 4 Hydrogen 全量上线、2.5 倍快，压低推理成本。\n② **交易基础设施**：百度词元所做模型验真征信，日均超 7000 亿 Token。\n③ **聚合入口**：豆包工作接入三家模型按价签挑；ChatGPT Wallet 切入交易闭环。\n④ **开源与端侧**：Runway Praxis-1 开源、llama.cpp v1.0 稳定版、Grok Bot 协作。",
   "newProducts": [
+    {
+      "brand": "OpenAI",
+      "color": "#10a37f",
+      "tag": "战略/具身智能",
+      "date": "11/14",
+      "summary": "OpenAI 确认**解散独立机器人团队**，人员并入核心研究与应用部门；GPT-6 Astra 已能直接生成机器人动作，RoboLab-120 基准成功率 **66.3%**、叠加 Codex 智能体达 **74.8%**，超最强专用策略 51%。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "面向 Figure 等此前合作方，能力转向通用模型下游"
+          },
+          {
+            "k": "核心能力",
+            "v": "通用模型直接输出机械臂位姿、据反馈纠错"
+          },
+          {
+            "k": "用户评价",
+            "v": "业界视为「机器人不再需要专属大脑」信号"
+          },
+          {
+            "k": "商业化",
+            "v": "Physical Intelligence 等靠 API 微调托管变现"
+          }
+        ]
+      },
+      "analysis": "① **范式转移**：通用前沿模型接管部分机器人策略，专用团队价值受挑战。\n② **数据仍是护城河**：工厂实测经验与场景数据属独立机器人公司独有优势。\n③ **产业含义**：具身智能竞争从专属模型转向通用模型下游应用，关注模型厂与硬件厂分工重构。"
+    },
+    {
+      "brand": "OpenAI",
+      "color": "#10a37f",
+      "tag": "Agent 商业",
+      "date": "11/13",
+      "summary": "OpenAI 推出 **ChatGPT Wallet**，允许 Dots agents 在用户生物识别授权下代下单购物，是迄今最明确的 **Agent 商业（agentic commerce）** 落子，覆盖 12 亿周活用户买卖两侧。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "面向美国 Pro 订阅用户，逐步开放至 12 亿周活"
+          },
+          {
+            "k": "核心能力",
+            "v": "一次性卡令牌+逐单审批，agents 自动比价下单"
+          },
+          {
+            "k": "用户评价",
+            "v": "被视为 ChatGPT 从问答走向交易闭环的关键一步"
+          },
+          {
+            "k": "商业化",
+            "v": "打通商家档案与 Business Agents，建购物双边市场"
+          }
+        ]
+      },
+      "analysis": "① **入口跃迁**：从信息分发到交易闭环，ChatGPT 直接切入电商导流。\n② **信任基建**：逐单生物识别+令牌化卡信息，把支付风险留在用户侧。\n③ **竞争格局**：对搜索引擎与电商平台的流量分配构成长期挑战。"
+    },
+    {
+      "brand": "llama.cpp",
+      "color": "#7c3aed",
+      "tag": "开源/端侧推理",
+      "date": "11/14",
+      "summary": "本地推理引擎 **llama.cpp 发布 v1.0.0**，首次承诺稳定 API/ABI，Hugging Face 同步推出基于它的桌面应用，降低端侧与私有化部署门槛。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "面向开发者与私有化部署者，社区模型生态广泛"
+          },
+          {
+            "k": "核心能力",
+            "v": "GGUF 量化、跨硬件本地推理，v1.0 锁 API/ABI"
+          },
+          {
+            "k": "用户评价",
+            "v": "被视为本地 AI 生态「更稳定底座」"
+          },
+          {
+            "k": "商业化",
+            "v": "Apache-2.0，企业可自托管免授权费"
+          }
+        ]
+      },
+      "analysis": "① **标准化信号**：稳定 ABI 让端侧应用可放心依赖，加速落地。\n② **隐私与离线**：本地推理天然适配数据不出域场景。\n③ **国产机会**：关注国产端侧模型与推理引擎的兼容与跟进。"
+    },
     {
       "brand": "Google",
       "color": "#1a73e8",
@@ -910,62 +994,6 @@
       "analysis": "① **编排收敛**：把并行两年的 SK 与 AutoGen 合流，降低多智能体开发碎片化。\n② **生产特性**：检查点、可重启、human-in-the-loop 直击部署痛点。\n③ **竞争卡位**：与 LangGraph/CrewAI/Claude Agent SDK 争抢 Agent 运行时标准。"
     },
     {
-      "brand": "Anthropic",
-      "color": "#d97757",
-      "tag": "生产力/办公",
-      "date": "11/11",
-      "summary": "Anthropic 11/11 推出 **Claude Meetings** 会议助手与自有 **AI 办公套件**，把 Claude 从对话入口扩为生产力工作台，直击微软 365 Copilot。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "Claude 付费用户超百万、年化营收约 **810 亿$**"
-          },
-          {
-            "k": "核心能力",
-            "v": "Meetings 听会起草计划、白板排期、**直连协作应用**"
-          },
-          {
-            "k": "用户评价",
-            "v": "企业称会议转计划提速显著、**减少人工整理**"
-          },
-          {
-            "k": "商业化",
-            "v": "办公套件含文档/表格/邮件、**对标微软订阅**"
-          }
-        ]
-      },
-      "analysis": "① **入口扩张**：从聊天助手走向生产力套件，正面竞争微软 365 Copilot 与谷歌 Workspace。\n② **会议场景**：Meetings 实时听会、起草计划并拉取协作数据，切中高频办公痛点。\n③ **渠道博弈**：微软同步在英国 Copilot 默认放开 Claude，竞合关系加深。"
-    },
-    {
-      "brand": "OpenAI",
-      "color": "#10a37f",
-      "tag": "商业化/Agent",
-      "date": "11/11",
-      "summary": "OpenAI 11/11 推出认证 **Business Agents**，让用户直接在 ChatGPT 内与品牌对话、比价下单，把 ChatGPT 变为消费发现引擎。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "ChatGPT 周活 **12 亿**、付费超 **5000 万**"
-          },
-          {
-            "k": "核心能力",
-            "v": "品牌认证 Agent、**消费比价与下单**、开放曝光数据"
-          },
-          {
-            "k": "用户评价",
-            "v": "商家称获新流量入口、**降低搜索依赖**"
-          },
-          {
-            "k": "商业化",
-            "v": "向品牌开放部分曝光数据、**探索广告变现**"
-          }
-        ]
-      },
-      "analysis": "① **入口之争**：把 ChatGPT 变成消费发现入口，正面竞争谷歌搜索与购物。\n② **商家侧**：企业可管理自身在 ChatGPT 中的展现，获得新分发渠道。\n③ **安全配套**：同步建 Control Room 安全中枢与 35 秒模型关停开关。"
-    },
-    {
       "brand": "Google",
       "color": "#4285f4",
       "tag": "垂直行业",
@@ -992,34 +1020,6 @@
         ]
       },
       "analysis": "① **机器人进击**：Robotics 2.5 物理成功率近翻倍，并开放越狱安全基准供外部审计。\n② **医疗落地**：Gemini for Healthcare 统一临床数据、自动化行政，切入高监管行业。\n③ **云协同**：Meta 的 Muse 模型亦上架 Google Cloud，rivals 联盟成形。"
-    },
-    {
-      "brand": "Anthropic",
-      "color": "#d97757",
-      "tag": "前沿模型",
-      "date": "11/10",
-      "summary": "Anthropic 11/10 发布 **Claude Fable 5.2** 与 **Mythos 5.2**（同底层），Fable 面向编程推理、API 降价 **20%**、生成提速 **30%**，FrontierCode 2.0 以 **49.1%** 登顶。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "AWS Bedrock 已上线，面向所有付费用户；Mythos 限审核机构"
-          },
-          {
-            "k": "核心能力",
-            "v": "FrontierCode **49.1%** 居首、Chartography 44.8%→73.4%、RoboDojo 64.9%"
-          },
-          {
-            "k": "用户评价",
-            "v": "核心代码库 **90%+** 变更由 Claude 编写；企业称审计提速显著"
-          },
-          {
-            "k": "商业化",
-            "v": "标准价 输入 **8$/百万**、输出 **40$/百万**；快速模式 2.5 倍速"
-          }
-        ]
-      },
-      "analysis": "① **编程登顶**：Fable 5.2 在 FrontierCode 2.0 以 49.1% 超过 GPT-6 Astra 与 Gemini Carbon，成本约为 Opus 5.5 一半。\n② **长程协作**：协调千余子智能体 8 天搭出可启动操作系统，验证多智能体工程能力。\n③ **分层发售**：Mythos 5.2 解除限制仅向网络安全与生命科学机构开放，IPO 前巩固企业信任。"
     }
   ],
   "earningsCalendar": [
@@ -1364,7 +1364,7 @@
       }
     }
   ],
-  "marketView": "① **融资与 IPO 校准估值**：OpenAI 150 亿$ 私募、估值 1.25 万亿；Anthropic ANT 11/19 挂牌约 1.4 万亿$，公开市场定价重设估值锚。\n② **入口之争转向聚合调度**：豆包工作接入 Kimi/GLM/DeepSeek 按价签挑，微软必应交还 AI 答案开关，护城河从自研转向编排。\n③ **效率压低单位成本**：Gemini 4 Hydrogen 全量驱动搜索且 2.5 倍快，火山 Seedance 降价 34%，价格战向视频与推理蔓延。",
+  "marketView": "① **融资与 IPO 校准估值**：OpenAI 150 亿$ 私募、估值 1.25 万亿；Anthropic ANT 11/19 挂牌 1.4 万亿$，公开重设估值锚。\n② **入口之争转向交易聚合**：豆包接入 Kimi/GLM/DeepSeek 按价签挑，ChatGPT Wallet 试水 Agent 购物，护城河从自研转向编排闭环。\n③ **效率压低单位成本**：Gemini 4 Hydrogen 全量驱动搜索 2.5 倍快，火山 Seedance 降价 34%，价格战向推理蔓延。",
   "market": {
     "type": "internet",
     "capex": {
