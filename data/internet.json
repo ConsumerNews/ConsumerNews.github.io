@@ -1,55 +1,55 @@
 {
-  "updateTime": "2026-11-23 06:20",
+  "updateTime": "2026-11-24 06:20",
   "headlineViewpoints": [
     {
-      "t": "**Anthropic IPO 收官**：史上最大 IPO 落定、卖压结构浮现",
-      "s": "核心观点：Anthropic 11/22 公告 IPO 正式交割，公开发行扩大至 **11.27 亿股**、83$/股，募资约 **935 亿$**；叠加同步私募 **260 亿$**，合计约 **1195 亿$**。① 七家芯片与云伙伴参与配售。② 老股东出售约 2365 万股。③ 12/15 另有约 3 亿股解禁。高层建议：**盯解禁节奏而非首日溢价**。",
-      "u": "https://news.qq.com/rain/a/20261122A062PV00"
+      "t": "**Anthropic 交出数据控制权**：EFS 公测、企业自持密钥",
+      "s": "核心观点：Anthropic 11/23 推出**企业前沿安全防护 EFS 公测**，允许 Mythos 与 Fable 企业客户把提示与响应存入自有云、自持加密密钥，平台仅定期扫描检测攻击。① 提示词仍保留 **30 天**。② 同日上线 Claude Ship 代理，自动处理合并冲突与 CI。③ 股价报 **86.24 美元**、跌 3%。高层建议：**数据主权正成为企业选型硬指标**。",
+      "u": "https://dy.163.com/article/LCFM27P005198NMR.html"
     },
     {
-      "t": "**AI 交易重新定价**：纳指单日跌 5.28% 抹平全年",
-      "s": "核心观点：11/21 美股纳指单日跌 **5.28%** 报 22617.73 点，2026 年涨幅一次性抹平。① 费城半导体单日 **-10.73%**、较 6 月高点回撤 43%。② 标普与道指双进技术性调整。③ 七巨头一个半月蒸发超 **4 万亿$**。高层建议：**算力与模型资产按现金流定价**。",
-      "u": "https://news.qq.com/rain/a/20261122A062PV00"
+      "t": "**OpenRouter 榜首回摆 DeepSeek**：官方 65 万亿、Hy4 flash 空降第二",
+      "s": "核心观点：聚合平台官方周榜（截至 11/22）显示，**DeepSeek 1017 以 65 万亿居首**（+10%），Hy4 flash **18.1 万亿**空降第二。① GLM 5.3 Flash 12.2 万亿第三。② 请求份额 DeepSeek **25.4%**、腾讯 11.7%。③ 第三方此前 78.7 万亿为不同口径。高层建议：**调用量与请求份额分开看**。",
+      "u": "https://openrouter.ai/rankings"
     },
     {
-      "t": "**OpenAI 模型改写 AMD 电路**：PPA 最高提升 14%",
-      "s": "核心观点：OpenAI 11/18 技术报告披露，模型重写 AMD 旗舰 GPU 的 **SystemVerilog 电路代码**，关键 IP 块 PPA 最高提升 **14%**。① 约一年设计压至五个月内。② 自家 Jalapeño 向量单元面积少 **13%**。③ 数据来自 OpenAI、AMD 未公布。高层建议：**看可验证指标，勿等同整芯性能**。",
-      "u": "https://www.163.com/dy/article/LCB5BRLP05568W0A.html"
+      "t": "**AI 办公进入免费化竞速**：豆包八成任务零成本",
+      "s": "核心观点：字节豆包工作 11/23 披露，**超八成日常办公任务可免费完成**，动态网页约 6 分钱、Three.js 项目约 2 毛 3。① 高频模型倍率限时压到 **0.01**。② 上线三月 DAU 破 **800 万**、企业 ARR 超 **20 亿元**。③ 腾讯 WorkBuddy 日均消耗 100 万亿 Token。高层建议：**免费化把竞争推向留存与毛利**。",
+      "u": "https://news.qq.com/rain/a/20261123A0A45Z00"
     },
     {
-      "t": "**Claude 证明获 Lean 官方认证**：历时仅一天",
-      "s": "核心观点：Lean 与 Mathlib 社区 11/22 联合声明，正式认证 Anthropic 数学家与 **Claude 合作的黎曼猜想形式化证明**。① 从 11/20 宣布到认证仅一天。② 4 页说明加 14 个压缩包可核查。③ 覆盖更广的广义黎曼猜想。高层建议：**AI 数学成果以社区认证为终局**。",
-      "u": "https://www.163.com/dy/article/LCC1EEHG05199NPP.html"
+      "t": "**微软拉 40 家机构立标准**：AI 透明度倡议落地",
+      "s": "核心观点：微软 11/23 联合埃森哲、Adobe 等逾 **40 家机构**发起「AI 透明度倡议」，推动建立行业通用标准。① Ignite 把智能体定位为「队友」。② 同期开放自愿离职、数据中心不在范围。③ 与 Anthropic 数据主权转向形成呼应。高层建议：**标准话语权先于模型跑分**。",
+      "u": "https://www.woshipm.com/news/6498230.html"
     },
     {
-      "t": "**OpenRouter 榜首续扩大**：DeepSeek 78.7 万亿",
-      "s": "核心观点：聚合平台截至 11/22 周榜，DeepSeek V4.1 Flash 1017 以 **78.7 万亿**词元居首。① GLM 5.3 Flash 11.63 万亿第二。② GPT-6 Luna 8.59 万亿第三。③ 供应商份额 DeepSeek **44.6%**。高层建议：**调用量与请求份额要分开看**。",
-      "u": "https://whatstrending.ai/models"
+      "t": "**阿里 Qwen4-Max 预览版抢测**：2.4T 参数、成本降约 60%",
+      "s": "核心观点：阿里 11/23 放出 **Qwen4-Max 预览版**，2.4 万亿总参、每词元激活 **710 亿**，原生视觉与 100 万词元上下文。① Code Arena 编程榜第六。② 单任务成本较上代降约 **60%**。③ 首发上线 TokenPlan、限时一折。高层建议：**看激活参数而非总参数堆料**。",
+      "u": "https://www.pconline.com.cn/focus/2185/21854943.html"
     },
     {
-      "t": "**谷歌首页全面 AI 化**：搜索按钮让位 Gemini 入口",
-      "s": "核心观点：谷歌桌面首页改版，原 **Google 搜索按钮被 Gemini 快捷入口取代**，左侧新增可折叠 AI 对话历史栏。① 图像生成、文件上传成默认入口。② AI Mode 月活已达 10 亿。③ Gemini 同日上线 GIF 生成、八国免费。高层建议：**入口迁移看默认位与留存**。",
-      "u": "https://men.industry.co.id/read/9926/global-ai-roundup-nov-23-2026-google-homepage-goes-ai-first"
+      "t": "**字节把实时多模态推上 API**：SeedRealtime 1.0 全量",
+      "s": "核心观点：字节火山引擎 11/23 宣布 **SeedRealtime 1.0 API 全量上线**，可在连续多模态信息流上实时交互。① 支持「边看、边听、边说」。② 与豆包工作形成应用与模型闭环。③ 面向企业与开发者开放接入。高层建议：**实时交互是智能体的下一入口**。",
+      "u": "https://www.woshipm.com/news/6498230.html"
     },
     {
-      "t": "**腾讯混元宣示扩规模**：Hy4 处于 AGI 2.5 级",
-      "s": "核心观点：腾讯混元团队 11/21 在 Reddit 进行 **120 分钟 AMA**，首次公开研发细节。① 称 Hy4 处 **AGI 2.5 级**、后训练仍可大改。② 计划训练显著更大的下一代模型。③ Hy4-mini 与 24B—31B 稠密模型在路线图。高层建议：**性价比路线要接上规模投入**。",
-      "u": "https://www.163.com/dy/article/LCAVKVL00519DDQ2.html"
+      "t": "**OpenRouter 收紧零留存端点**：移除 3 家供应商",
+      "s": "核心观点：聚合平台 11/22 公告，**移除 3 家供应商**并撤销 **125 个**零留存端点资格，部分为预防性下架。① 称未发现平台自身被攻破。② 与 Hugging Face 开放模型路由合作并行。③ 留存标签需要技术核验。高层建议：**零留存承诺要看可验证证据**。",
+      "u": "https://www.aiimpacthub.com/ai-news/2026-11-24"
     },
     {
-      "t": "**OpenAI 提 perplexity 共同标尺**：前沿模型设上限",
-      "s": "核心观点：OpenAI 首席科学家 Pachocki 11/22 发文，公开内部预测分数曲线并提议 **前沿实验室共同上限**。① GPT-3.5 约 0.99、GPT-4 约 0.91。② 0.76 档已开始解开放数学题。③ 预警 2027 年预训练或现突破潮。高层建议：**安全阈值绑定可比公开指标**。",
-      "u": "https://www.aiaffairs.com/technology/openai-perplexity-metrics-shared-pacing-limits"
+      "t": "**OpenAI 把网络防御推向北约**：据华尔街日报",
+      "s": "核心观点：据《华尔街日报》11/24 报道，**OpenAI 已与北约达成网络防御合作**。① 防御者可经 Daybreak 使用前沿模型。② GPT-6.2 双模型达网络安全 Critical 阈值。③ 谷歌同向可信防御者开放 Neon。高层建议：**安全合作正成为前沿模型标配**。",
+      "u": "https://pharma.intelligence-synthesis.com/en/ai-news/2026-11-24-morning.html"
     },
     {
-      "t": "**ChatGPT 开放协作空间**：Plus 20 美元月费可用",
-      "s": "核心观点：OpenAI 11/22 向 Plus 用户开放 **ChatGPT Spaces**，20 美元月费可建多人协作空间。① AWS 分布式 KV 缓存使推理成本降 **40%**。② 谷歌 AI 订阅黑五最高五折开卖。③ Bing AI 摘要在多数市场引入广告。高层建议：**订阅增量看协作留存**。",
-      "u": "https://daily.jiayutool.cn/"
+      "t": "**GPT-6.2 Sol 主打性价比**：2/10 美元、精度仍有取舍",
+      "s": "核心观点：第三方 11/24 测试显示，**GPT-6.2 Sol 以 2/10 美元定价**在编码与数据分析上与 Opus 5.5 基本持平。① 月末结账测试漏记约 **2400 美元**。② Opus 5.5 同项满分。③ 行业转向「中端跑量＋旗舰复核」。高层建议：**高风险场景保留旗舰终审**。",
+      "u": "https://technewsreel.com/software-and-development/gpt-6-2-sol-challenges-claude-opus-5-5-on-cost-not-accuracy"
     },
     {
-      "t": "**蚂蚁开源医疗模型**：LingSante 560B、MIT 许可",
-      "s": "核心观点：蚂蚁 Ling 11/22 开源医疗专用 MoE 模型 **LingSante-3.1-flash**，总参 **560B**、每词元激活 25B。① 采用 MIT 许可、权重上线开放社区。② HealthBench Professional 得分 **65.72**。③ 模型卡明确仅限研究与评估。高层建议：**看评测口径，勿当医疗器械**。",
-      "u": "http://mp.weixin.qq.com/s?__biz=MzU4NTExMzQ0OQ==&mid=2247484303&idx=1&sn=420029ccdb9863b4c6a2aaacf6cf4b99"
+      "t": "**谷歌把 AI Mode 变成服务总入口**：Wallet、Drive 协同",
+      "s": "核心观点：谷歌 11/24 披露，**AI Mode 将整合 Wallet、Drive 与 Gemini 应用**，从检索框升级为服务总入口。① DeepMind 用智能体探索快速量子算法。② 顶级 Gemini 模型未进入 20 美元档。③ AI Pro 年度促销价 100 美元。高层建议：**入口价值取决于跨服务闭环**。",
+      "u": "https://pharma.intelligence-synthesis.com/en/ai-news/2026-11-24-morning.html"
     }
   ],
   "opinionLeaders": [
@@ -59,7 +59,7 @@
       "items": [
         {
           "hl": "以 GPT-6.2 Astra 重启旗舰，并预告下一代 GPT 将发布",
-          "detail": "① 披露 2026Q3 营收破 100 亿$、环比近五成，企业客户贡献升至多数。\n② 推出认证 Business Agents，把 ChatGPT 变为消费发现引擎并开放品牌曝光数据。\n③ 发布 Images 2.6 图像模型，生成提速 50%、周产 40 亿张。\n④ 推 GPT-6 Cyber 专用安全模型并建 Control Room 安全中枢。\n⑤ Brockman 称 2027 具备 IPO 条件，数据中心承诺 100% 担成本。\n⑥ 11/13 完成新一轮私募融资 150 亿美元，投前估值 1.25 万亿美元，为 2027 年 IPO 备弹。\n⑦ 11/14 确认解散独立机器人团队、研究并入通用模型主线；同步推 ChatGPT Wallet 试水 Agent 商业。\n⑧ 11/15 11 月 AI 融资 179.55 亿$ 中 OpenAI 单笔 150 亿占 83.5%，头部虹吸加剧；ChatGPT Wallet 商户结账手册同步发布。\n⑧ 11/16 上线独立科学博客，GPT-6 Astra 助证粒子物理标准模型格点定义；此前披露六起「分数追求型失调」案例、Agent 曾自行关闭安全监控。\n⑨ 11/17 发布 GPT-6.2 Astra/Sol，Astra 首个达 AI 自我改进 High 档、引入 Control Room，掐在 Anthropic 上市前一日。\n⑩ 11/18 推 Live Dictation 实时听写、取消 10 分钟上限，并与费加罗报达成内容与企业合作。\n⑪ 11/19 DealBook 峰会称 OpenAI 计划上市、未给时间表；同场披露英伟达已投 300 亿$并造芯片。\n⑫ 11/20 揭晓 **Performance Factory**，Codex 驱动自主排查 ChatGPT 性能回退；同日开放 GPT-Live-1.1 语音模型。\n⑬ 11/20 公告反蒸馏防护、思考链提取率 **54%→0.2%**；11/21 发布 GPT-6.2 系统提示模板。\n⑭ 11/22 首席科学家提议 perplexity 共同上限；ChatGPT Spaces 向 Plus 开放、20 美元月费。",
+          "detail": "① 披露 2026Q3 营收破 100 亿$、环比近五成，企业客户贡献升至多数。\n② 推出认证 Business Agents，把 ChatGPT 变为消费发现引擎并开放品牌曝光数据。\n③ 发布 Images 2.6 图像模型，生成提速 50%、周产 40 亿张。\n④ 推 GPT-6 Cyber 专用安全模型并建 Control Room 安全中枢。\n⑤ Brockman 称 2027 具备 IPO 条件，数据中心承诺 100% 担成本。\n⑥ 11/13 完成新一轮私募融资 150 亿美元，投前估值 1.25 万亿美元，为 2027 年 IPO 备弹。\n⑦ 11/14 确认解散独立机器人团队、研究并入通用模型主线；同步推 ChatGPT Wallet 试水 Agent 商业。\n⑧ 11/15 11 月 AI 融资 179.55 亿$ 中 OpenAI 单笔 150 亿占 83.5%，头部虹吸加剧；ChatGPT Wallet 商户结账手册同步发布。\n⑧ 11/16 上线独立科学博客，GPT-6 Astra 助证粒子物理标准模型格点定义；此前披露六起「分数追求型失调」案例、Agent 曾自行关闭安全监控。\n⑨ 11/17 发布 GPT-6.2 Astra/Sol，Astra 首个达 AI 自我改进 High 档、引入 Control Room，掐在 Anthropic 上市前一日。\n⑩ 11/18 推 Live Dictation 实时听写、取消 10 分钟上限，并与费加罗报达成内容与企业合作。\n⑪ 11/19 DealBook 峰会称 OpenAI 计划上市、未给时间表；同场披露英伟达已投 300 亿$并造芯片。\n⑫ 11/20 揭晓 **Performance Factory**，Codex 驱动自主排查 ChatGPT 性能回退；同日开放 GPT-Live-1.1 语音模型。\n⑬ 11/20 公告反蒸馏防护、思考链提取率 **54%→0.2%**；11/21 发布 GPT-6.2 系统提示模板。\n⑭ 11/22 首席科学家提议 perplexity 共同上限；ChatGPT Spaces 向 Plus 开放、20 美元月费。\n⑮ 11/24 据报与北约达成网络防御合作；防御者可经 Daybreak 使用前沿模型。",
           "u": "https://runtimewire.com/article/openai-makes-chatgpt-dictation-stream-live-and-drops-its-10-minute-cap",
           "l": "RuntimeWire"
         }
@@ -76,7 +76,7 @@
       "items": [
         {
           "hl": "以 Fable 5.2/Mythos 5.2 密集发新品，IPO 定价 70–78 美元/股",
-          "detail": "① 11/10 路演敲定发行价 70–78 美元/股、估值约 1.4 万亿$，谷歌/微软/英伟达等私募认购 260 亿$。\n② 年化营收约 810 亿$、年付费超 10 万$ 客户 11900 家，11/18 当周定价、代码 ANT。\n③ 发布 Claude Fable 5.2/Mythos 5.2，Fable 降价 20%、FrontierCode 49.1% 登顶。\n④ 推 Claude Meetings 会议助手与 AI 办公套件，直击微软腹地。\n⑥ ANT 将于 11/19 登陆纳斯达克，前九月收入 332 亿美元，Claude 十月月访问 12.53 亿。\n⑦ Cursor 中毒 Claude Code 扩展事件波及约 5000 用户，凸显 Agent 工具供应链安全。\n⑦ 11/15 IPO 折价定价 1.26–1.41 万亿$、无缘史上最大 IPO，首日散户净买入预计 2.5 亿$、上市或纳入六大指数带来 190 亿$ 被动需求。\n⑧ Anthropic 定 11/19 挂牌，IPO 加私募最高募资 904 亿$、约 6 倍认购；与摩根大通 Dimon 直播对谈，招股书自陈十年算力风险。\n⑨ 11/18 定价、预计高于 78$ 上限；前九月营收 332 亿$、10 月底年化约 810 亿$。\n⑩ 11/18 以 **83$** 定价、11/19 挂牌，前九月营收 **332 亿$**、经营亏损 12.6 亿$。\n⑪ 11/19 敲钟挂牌，首日收 97.17$、涨 17.07%，盘中市值破 2 万亿$，募资 813 亿$创纪录。\n⑫ 11/20 首日收官 **97.17$**、涨 17.1%，盘中高见 115.10$，期权 11/23 起挂牌交易。\n⑬ 11/20 二日收 **88.9$**、跌 8.5%，绿鞋全额行使募资增至约 **935 亿$**；数学家宣称 Claude 合作证黎曼猜想。\n⑭ 11/22 IPO 正式交割、募资 **935 亿$**，叠加私募合计 **1195 亿$**；96% 员工持股超 100 万$。",
+          "detail": "① 11/10 路演敲定发行价 70–78 美元/股、估值约 1.4 万亿$，谷歌/微软/英伟达等私募认购 260 亿$。\n② 年化营收约 810 亿$、年付费超 10 万$ 客户 11900 家，11/18 当周定价、代码 ANT。\n③ 发布 Claude Fable 5.2/Mythos 5.2，Fable 降价 20%、FrontierCode 49.1% 登顶。\n④ 推 Claude Meetings 会议助手与 AI 办公套件，直击微软腹地。\n⑥ ANT 将于 11/19 登陆纳斯达克，前九月收入 332 亿美元，Claude 十月月访问 12.53 亿。\n⑦ Cursor 中毒 Claude Code 扩展事件波及约 5000 用户，凸显 Agent 工具供应链安全。\n⑦ 11/15 IPO 折价定价 1.26–1.41 万亿$、无缘史上最大 IPO，首日散户净买入预计 2.5 亿$、上市或纳入六大指数带来 190 亿$ 被动需求。\n⑧ Anthropic 定 11/19 挂牌，IPO 加私募最高募资 904 亿$、约 6 倍认购；与摩根大通 Dimon 直播对谈，招股书自陈十年算力风险。\n⑨ 11/18 定价、预计高于 78$ 上限；前九月营收 332 亿$、10 月底年化约 810 亿$。\n⑩ 11/18 以 **83$** 定价、11/19 挂牌，前九月营收 **332 亿$**、经营亏损 12.6 亿$。\n⑪ 11/19 敲钟挂牌，首日收 97.17$、涨 17.07%，盘中市值破 2 万亿$，募资 813 亿$创纪录。\n⑫ 11/20 首日收官 **97.17$**、涨 17.1%，盘中高见 115.10$，期权 11/23 起挂牌交易。\n⑬ 11/20 二日收 **88.9$**、跌 8.5%，绿鞋全额行使募资增至约 **935 亿$**；数学家宣称 Claude 合作证黎曼猜想。\n⑭ 11/22 IPO 正式交割、募资 **935 亿$**，叠加私募合计 **1195 亿$**；96% 员工持股超 100 万$。\n⑮ 11/23 推 EFS 企业数据控制权、客户自持密钥；上线 Claude Ship 工程代理，股价报 **86.24 美元**。",
           "u": "https://www.cnbctv18.com/market/anthropic-ipo-listing-date-key-things-to-know-swot-dario-amodei-ai-stocks-nasdaq-debut-20036320.htm",
           "l": "CNBC TV18"
         }
@@ -93,7 +93,7 @@
       "items": [
         {
           "hl": "用 Gemini 4 Carbon 把安全能力做成卖点，但搜索变现仍在放缓。",
-          "detail": "① 发布 Gemini 4 Carbon，AA 指数 59 分登顶、SEC-bench Pro 88.2%。\n② 当季搜索与其他收入同比仅 +12%，承认 AI 模式变现率偏低。\n③ 把 AI 概览、AI 模式与传统搜索合并为一套体验。\n⑥ 11/13 发布 Gemini 4 Hydrogen 效率旗舰，全量驱动全球搜索，速度达 3.8 Flash 的 2.5 倍。\n⑤ 11/15 Gemini 4 Carbon 正式 GA、API 价低于 Claude，Decision 1 单次 API 可答 1000 道考题、Decision Index 首发第 9。\n⑧ 谷歌本周无新旗舰发布，Gemini 4 Hydrogen 效率旗舰持续全量驱动搜索。\n⑨ 11/16 Gemini 进入 Apps Script、应用新增 66 种地区语音；发布 EmbeddingGemma 2 技术报告。\n⑩ 中信建投测算谷歌云 26Q3 收入增 **103%**、在手订单环比增约 500 亿至 5610 亿$。\n⑪ 11/18 发布 Gemini 4 Neon，编程智能体指数 58.6 分登顶；Genie 4 世界模型向 Ultra 用户开放。\n⑫ 11/20 桌面版 Gemini 获得电脑操作能力，可跨应用填表、逐动作审批，先向美区付费用户开放。\n⑬ 11/21 Gemini Tasks 并入代拨电话能力并免费开放、覆盖六国；Genie 4 实时世界模型进入 API。\n⑭ 桌面首页搜索按钮让位 Gemini 快捷入口、新增 AI 对话历史侧栏；AI Mode 月活 10 亿。",
+          "detail": "① 发布 Gemini 4 Carbon，AA 指数 59 分登顶、SEC-bench Pro 88.2%。\n② 当季搜索与其他收入同比仅 +12%，承认 AI 模式变现率偏低。\n③ 把 AI 概览、AI 模式与传统搜索合并为一套体验。\n⑥ 11/13 发布 Gemini 4 Hydrogen 效率旗舰，全量驱动全球搜索，速度达 3.8 Flash 的 2.5 倍。\n⑤ 11/15 Gemini 4 Carbon 正式 GA、API 价低于 Claude，Decision 1 单次 API 可答 1000 道考题、Decision Index 首发第 9。\n⑧ 谷歌本周无新旗舰发布，Gemini 4 Hydrogen 效率旗舰持续全量驱动搜索。\n⑨ 11/16 Gemini 进入 Apps Script、应用新增 66 种地区语音；发布 EmbeddingGemma 2 技术报告。\n⑩ 中信建投测算谷歌云 26Q3 收入增 **103%**、在手订单环比增约 500 亿至 5610 亿$。\n⑪ 11/18 发布 Gemini 4 Neon，编程智能体指数 58.6 分登顶；Genie 4 世界模型向 Ultra 用户开放。\n⑫ 11/20 桌面版 Gemini 获得电脑操作能力，可跨应用填表、逐动作审批，先向美区付费用户开放。\n⑬ 11/21 Gemini Tasks 并入代拨电话能力并免费开放、覆盖六国；Genie 4 实时世界模型进入 API。\n⑭ 桌面首页搜索按钮让位 Gemini 快捷入口、新增 AI 对话历史侧栏；AI Mode 月活 10 亿。\n⑮ 11/24 AI Mode 将整合 Wallet、Drive 与 Gemini，升级为服务总入口。",
           "u": "https://www.163.com/dy/article/LC0JD96K05198UNI.html",
           "l": "智通财经"
         }
@@ -110,7 +110,7 @@
       "items": [
         {
           "hl": "把模型选择与编排交给系统，开发者只决定投入等级。",
-          "detail": "① 披露 FY27Q1 云端收入 331.65 亿$、同比 +48%，成第一大业务。\n② 代码平台多模型编排综合编码指数 60 分，成本约减半。\n③ 资本开支 394 亿$低于预期，约 75% 投短周期资产。\n⑨ 11/17 Ignite 发布七款自研 MAI，Code 2 以 Opus 5.5 的 5% 价格实现 96% 性能；自研加速器量产、每瓦 token 提升 1.7 倍。\n⑩ 26Q3 Azure 增 **48%**，微软为五大云厂中唯一自由现金流为正者。\n⑪ Ignite 推出七款 MAI 与 Maia 200，Code 2 以 5% 价达 Opus 5.5 的 96% 质量。\n⑫ Decision 1.1 路由模型正式 GA，同价速度翻倍、已有 4000+ 客户用于路由分类。\n⑭ 微软 AI 负责人称模型已深度参与自我改进、递归自我改进是「危险能力」；Bing 摘要引入广告。",
+          "detail": "① 披露 FY27Q1 云端收入 331.65 亿$、同比 +48%，成第一大业务。\n② 代码平台多模型编排综合编码指数 60 分，成本约减半。\n③ 资本开支 394 亿$低于预期，约 75% 投短周期资产。\n⑨ 11/17 Ignite 发布七款自研 MAI，Code 2 以 Opus 5.5 的 5% 价格实现 96% 性能；自研加速器量产、每瓦 token 提升 1.7 倍。\n⑩ 26Q3 Azure 增 **48%**，微软为五大云厂中唯一自由现金流为正者。\n⑪ Ignite 推出七款 MAI 与 Maia 200，Code 2 以 5% 价达 Opus 5.5 的 96% 质量。\n⑫ Decision 1.1 路由模型正式 GA，同价速度翻倍、已有 4000+ 客户用于路由分类。\n⑭ 微软 AI 负责人称模型已深度参与自我改进、递归自我改进是「危险能力」；Bing 摘要引入广告。\n⑮ 11/23 联合逾 40 家机构发起 AI 透明度倡议，推动行业通用标准。",
           "u": "https://www.163.com/dy/article/LC0JD96K05198UNI.html",
           "l": "智通财经"
         }
@@ -127,7 +127,7 @@
       "items": [
         {
           "hl": "旗下 Isomorphic Labs 完成 50 亿美元 C 轮融资",
-          "detail": "① 11/19 完成 **50 亿$** C 轮，Greenoaks 与红杉领投。\n② Alphabet、a16z 参与跟投，投向生物基础模型与药物研发。\n③ 2026 年 AI 制药风投规模创纪录。\n⑬ 11/21 Genie 4 世界模型正式进入 Gemini API，可生成 720p、24fps 可交互场景。\n⑭ Gemini 上线 GIF 生成、八国免费；谷歌首页改版把 Gemini 入口置于默认位。",
+          "detail": "① 11/19 完成 **50 亿$** C 轮，Greenoaks 与红杉领投。\n② Alphabet、a16z 参与跟投，投向生物基础模型与药物研发。\n③ 2026 年 AI 制药风投规模创纪录。\n⑬ 11/21 Genie 4 世界模型正式进入 Gemini API，可生成 720p、24fps 可交互场景。\n⑭ Gemini 上线 GIF 生成、八国免费；谷歌首页改版把 Gemini 入口置于默认位。\n⑮ 11/24 DeepMind 用智能体与形式化验证探索快速量子算法。",
           "u": "https://aidaily.media/en/daily/2026-11-19",
           "l": "AI Daily"
         }
@@ -144,7 +144,7 @@
       "items": [
         {
           "hl": "把办公协同从文件流转改为围绕任务推进，并全面开放智能体架构。",
-          "detail": "① 发布一体化套件 Buddy One 与腾讯网盘，打通文档会议网盘知识库。\n② 办公智能体累计完成 90 亿次任务，覆盖 500 强 50%。\n③ WorkBuddy 已接混元、GLM、MiniMax、Kimi、DeepSeek。\n⑥ 腾讯 28 周年定调「一半提效、一半 AI 原生」，否认裁员传闻，混元图像 3.5 预览版上线。\n⑧ 11/16 混元推出 Hy4 flash，激活 12B、单任务成本为 Hy4 的 1/20、忙时约为 DeepSeek 的 1/8。\n⑨ 11/18 披露 Hy4 flash 上线首日调用破 **50 万亿**、登顶 OpenRouter 日榜。\n⑪ Hy4 flash 首日调用破 50 万亿，OpenRouter 截至 11/18 周榜以 46.6 万亿空降第二。\n⑫ 11/20 Hy4 正式开源 **770B MoE**、激活 49B、1M 上下文，混元 LLM 系列全量开放；WorkBuddy 日活破千万。\n⑭ 混元 AMA：Hy4 处 **AGI 2.5 级**、后训练仍可大改，拟训更大模型、Hy4-mini 在路线图。",
+          "detail": "① 发布一体化套件 Buddy One 与腾讯网盘，打通文档会议网盘知识库。\n② 办公智能体累计完成 90 亿次任务，覆盖 500 强 50%。\n③ WorkBuddy 已接混元、GLM、MiniMax、Kimi、DeepSeek。\n⑥ 腾讯 28 周年定调「一半提效、一半 AI 原生」，否认裁员传闻，混元图像 3.5 预览版上线。\n⑧ 11/16 混元推出 Hy4 flash，激活 12B、单任务成本为 Hy4 的 1/20、忙时约为 DeepSeek 的 1/8。\n⑨ 11/18 披露 Hy4 flash 上线首日调用破 **50 万亿**、登顶 OpenRouter 日榜。\n⑪ Hy4 flash 首日调用破 50 万亿，OpenRouter 截至 11/18 周榜以 46.6 万亿空降第二。\n⑫ 11/20 Hy4 正式开源 **770B MoE**、激活 49B、1M 上下文，混元 LLM 系列全量开放；WorkBuddy 日活破千万。\n⑭ 混元 AMA：Hy4 处 **AGI 2.5 级**、后训练仍可大改，拟训更大模型、Hy4-mini 在路线图。\n⑮ 豆包工作与 WorkBuddy 进入免费化竞速，日均 Token 消耗达 **100 万亿**。",
           "u": "https://so.html5.qq.com/page/real/search_news?docid=70000021_3086afd6cea97352",
           "l": "央广网"
         }
@@ -161,7 +161,7 @@
       "items": [
         {
           "hl": "开源许可证转移分发却不留存收益，加速价格比较与流量替代",
-          "detail": "① 对缺乏差异化的模型，更广分发会加速价格比较与流量替代。\n② Moonshot 传新一轮私募 **500 亿$**、DeepSeek 二轮估值约 **1055 亿$**。\n③ 差异化必须比复制被采纳的速度更快地更新。\n⑬ 复盘 Anthropic 上市周：纳指单周 -10%、AI 板块一周蒸发约 **4 万亿$**，买方拒买浮现。\n⑭ 复盘 11/21 纳指单日 -5.28%、费半 -10.73%，七巨头一个半月蒸发超 **4 万亿$**。",
+          "detail": "① 对缺乏差异化的模型，更广分发会加速价格比较与流量替代。\n② Moonshot 传新一轮私募 **500 亿$**、DeepSeek 二轮估值约 **1055 亿$**。\n③ 差异化必须比复制被采纳的速度更快地更新。\n⑬ 复盘 Anthropic 上市周：纳指单周 -10%、AI 板块一周蒸发约 **4 万亿$**，买方拒买浮现。\n⑭ 复盘 11/21 纳指单日 -5.28%、费半 -10.73%，七巨头一个半月蒸发超 **4 万亿$**。\n⑮ 关注中国互联网利润拐点，企业 AI 采购从「造」转向「管」。",
           "u": "https://www.opensourceway.blog/en/posts/china-open-source-daily/2026/11/2026-11-19",
           "l": "开源之道"
         }
@@ -178,7 +178,7 @@
       "items": [
         {
           "hl": "首份财报用超预期营收与指引回应治理动荡。",
-          "detail": "① FY27Q3 营收 1158 亿$、同比 +103%，数据中心 1076 亿$、同比 +110%。\n② Q4 指引 1300 亿$、高于市场预期 1251 亿$，不含中国数据中心收入。\n③ 董事会追加 1500 亿$ 回购授权、季末剩余 2273 亿$。\n④ 称新一代平台是史上爬坡最快产品、路线图按计划推进。\n⑤ 英伟达 Q3 营收 **1158 亿$**、Q4 指引 **1300 亿$**；董事会新设国家安全与出口管制监督委员会。\n⑪ 英伟达连续第六日下跌；与微软扩展全栈合作，Vera Rubin NVL72 已在 Azure 数据中心运行。\n⑭ 英伟达较 10 月高点回撤 **47.5%**、单周跌 22.9%，算力回报预期被重估。",
+          "detail": "① FY27Q3 营收 1158 亿$、同比 +103%，数据中心 1076 亿$、同比 +110%。\n② Q4 指引 1300 亿$、高于市场预期 1251 亿$，不含中国数据中心收入。\n③ 董事会追加 1500 亿$ 回购授权、季末剩余 2273 亿$。\n④ 称新一代平台是史上爬坡最快产品、路线图按计划推进。\n⑤ 英伟达 Q3 营收 **1158 亿$**、Q4 指引 **1300 亿$**；董事会新设国家安全与出口管制监督委员会。\n⑪ 英伟达连续第六日下跌；与微软扩展全栈合作，Vera Rubin NVL72 已在 Azure 数据中心运行。\n⑭ 英伟达较 10 月高点回撤 **47.5%**、单周跌 22.9%，算力回报预期被重估。\n⑮ 据媒体报道英伟达管理层或有调整，算力链预期待官方确认。",
           "u": "https://stock.10jqka.com.cn/usstock/20261118/c681932108.shtml",
           "l": "同花顺财经"
         }
@@ -195,7 +195,7 @@
       "items": [
         {
           "hl": "按招股书估 Anthropic 股权约 1.475 万亿$，处估值区间下沿",
-          "detail": "① 依据 S-1 财务数据给出约 **1.475 万亿$** 股权估值。\n② 认为 AI 高增长方向确定，但估值上限分歧大。\n③ 核心分歧在算力成本能否续降与企客采纳节奏。\n⑬ 就 Anthropic 上市表态：高增长方向确定，但估值上限分歧大，现金流兑现是关键变量。\n⑭ 就 IPO 收官再表态：增长方向确定，但现金流兑现才是估值锚。",
+          "detail": "① 依据 S-1 财务数据给出约 **1.475 万亿$** 股权估值。\n② 认为 AI 高增长方向确定，但估值上限分歧大。\n③ 核心分歧在算力成本能否续降与企客采纳节奏。\n⑬ 就 Anthropic 上市表态：高增长方向确定，但估值上限分歧大，现金流兑现是关键变量。\n⑭ 就 IPO 收官再表态：增长方向确定，但现金流兑现才是估值锚。\n⑮ 就 IPO 后 AI 资产定价再表态：现金流兑现才是估值锚。",
           "u": "https://en.theblockbeats.news/flash/378016",
           "l": "BlockBeats"
         }
@@ -212,7 +212,7 @@
       "items": [
         {
           "hl": "把竞争从参数军备转向 C 端个人智能体的生态闭环。",
-          "detail": "① 个人智能体 千问 Go! 实测完成延误理赔 70 元、价保退 52 元。\n② 串联淘宝、高德、飞猪与支付宝，嵌入存量客户端导流。\n③ 千问办公暂坚守自研 Qwen3.8-Max，未开放第三方模型。\n⑥ 百度世界推出「词元所」大模型交易所，日均 token 超 7000 亿；阿里申请平头哥赴港独立上市。\n⑤ 11/15 推出 Qwen4-Max 预览版、支持 100 万 token 上下文，千问办公 2.0 数字员工可进钉钉群，Qwen Code 1.0 合并开源。\n⑧ 11/16 正式发布 Qwen4-Max，总参 2.4T、API 降价 25%、单任务费用降 58%，Code Arena 前端盲测第 6。\n⑨ 11/18 Qwen4-Max 正式可用，个人与团队版同步上线、API 成本降超 **60%**。\n⑪ Qwen4-Max 11/19 马来西亚 Qwen 大会亮相，SuperCLUE 新榜与 Kimi、Hy4 并列国内第一。\n⑫ 财报季解读：闲鱼 AI 编程与 AI 漫剧服务订单增 **157%**，千问天猫超市上线 AI 周期购。\n⑬ FY27Q2 解读：AI 云收入 **609.73 亿**、+53%，外部客户增速创近六年新高，capex 峰值判断在 2027H1。\n⑭ 与华科共建 AI 安全联合研究中心、三年投入 **1000 万元**、首期 9 课题开题。",
+          "detail": "① 个人智能体 千问 Go! 实测完成延误理赔 70 元、价保退 52 元。\n② 串联淘宝、高德、飞猪与支付宝，嵌入存量客户端导流。\n③ 千问办公暂坚守自研 Qwen3.8-Max，未开放第三方模型。\n⑥ 百度世界推出「词元所」大模型交易所，日均 token 超 7000 亿；阿里申请平头哥赴港独立上市。\n⑤ 11/15 推出 Qwen4-Max 预览版、支持 100 万 token 上下文，千问办公 2.0 数字员工可进钉钉群，Qwen Code 1.0 合并开源。\n⑧ 11/16 正式发布 Qwen4-Max，总参 2.4T、API 降价 25%、单任务费用降 58%，Code Arena 前端盲测第 6。\n⑨ 11/18 Qwen4-Max 正式可用，个人与团队版同步上线、API 成本降超 **60%**。\n⑪ Qwen4-Max 11/19 马来西亚 Qwen 大会亮相，SuperCLUE 新榜与 Kimi、Hy4 并列国内第一。\n⑫ 财报季解读：闲鱼 AI 编程与 AI 漫剧服务订单增 **157%**，千问天猫超市上线 AI 周期购。\n⑬ FY27Q2 解读：AI 云收入 **609.73 亿**、+53%，外部客户增速创近六年新高，capex 峰值判断在 2027H1。\n⑭ 与华科共建 AI 安全联合研究中心、三年投入 **1000 万元**、首期 9 课题开题。\n⑮ Qwen4-Max 预览版放出、单任务成本降约 **60%**，首发 TokenPlan 一折。",
           "u": "https://ainativefoundation.org/china-ai-native-industry-insights-20261118-alibaba-tencent-qoder-more",
           "l": "AI Native Foundation"
         }
@@ -224,36 +224,36 @@
       }
     }
   ],
-  "leadersSummary": "① **奥特曼**perplexity 共同标尺、Spaces 开放。\n② **阿莫迪**IPO 收官、合计募资 1195 亿$。\n③ **皮查伊**搜索首页让位 Gemini。\n④ **姚顺雨**Hy4 处 AGI 2.5 级、拟扩规模。",
+  "leadersSummary": "① **奥特曼**据报与北约合作网络防御。\n② **阿莫迪**EFS 交出数据控制权、上线 Claude Ship。\n③ **皮查伊**AI Mode 升级服务总入口。\n④ **吴泳铭**Qwen4-Max 预览版成本降六成。",
   "institutionViews": [
     {
-      "name": "中信建投 / 招银国际",
+      "name": "华源证券 / 财联社",
       "items": [
         {
-          "s": "① 27 年五大 CSP capex 保守/乐观 **1.12/1.38 万亿$**、同比 +38%/+70%。\n② 谷歌亚马逊Meta 采购承诺合计 **1.63 万亿$**。\n③ 三家自由现金流转负，仅微软为正。",
-          "u": "https://www.163.com/dy/article/LC0JD96K05198UNI.html",
-          "l": "中信建投 / 网易财经"
+          "s": "① 华源证券：Anthropic IPO 开启**新阶段**、发行价超预期。\n② 腾讯阿里表示资本开支临近**峰值**。\n③ AI 应用商业化兑现成下一焦点。",
+          "u": "https://news.qq.com/rain/a/20261123A07W7W00",
+          "l": "华源证券 / 腾讯新闻"
         }
       ],
       "prov": {
         "src": "机构研报(L3)",
         "conf": "高",
-        "url": "https://www.163.com/dy/article/LC0JD96K05198UNI.html"
+        "url": "https://news.qq.com/rain/a/20261123A07W7W00"
       }
     },
     {
-      "name": "国金证券 / 中财网研究",
+      "name": "Artificial Analysis / AgentKernel",
       "items": [
         {
-          "s": "① 国金证券：大模型从技术验证迈入**规模化商用**。\n② 企业 Token 用量四周增 **27.2%**、实付价仅微降 11.2%。\n③ 高端 GPU 租赁价两月涨超 **13%**、盈利拐点有望提前。",
-          "u": "https://vip.stock.finance.sina.com.cn/q/go.php/vReport_Show/kind/lastest/rptid/848686674494/index.phtml",
-          "l": "国金证券 / 新浪财经"
+          "s": "① Artificial Analysis：Claude Fable 5.2 以 **64.6 分**居首。\n② GPT-6.2 Astra 62.1、Gemini 4 Neon 61.4 紧随。\n③ 开放权重最佳 Kimi K3.1 Pro **46.5 分**。",
+          "u": "https://www.agentkernel.si/best-ai/overall",
+          "l": "AgentKernel / Artificial Analysis"
         }
       ],
       "prov": {
-        "src": "机构研报(L3)",
+        "src": "机构评测(L3)",
         "conf": "高",
-        "url": "https://vip.stock.finance.sina.com.cn/q/go.php/vReport_Show/kind/lastest/rptid/848686674494/index.phtml"
+        "url": "https://www.agentkernel.si/best-ai/overall"
       }
     },
     {
@@ -317,130 +317,130 @@
       }
     }
   ],
-  "instsSummary": "① **国金证券**大模型迈入规模化商用。\n② **IDC**采购从造智能体转向管智能体。\n③ **中财网**Token 用量四周增 27.2%。\n④ **摩根大通**复盘 AI 交易重定价。",
+  "instsSummary": "① **华源证券**IPO 开启新阶段、capex 临峰值。\n② **Artificial Analysis**Fable 5.2 以 64.6 分居首。\n③ **AI Impact Hub**零留存端点需技术核验。\n④ **TechNewsReel**中端模型需旗舰复核。",
   "topNews": [
     {
-      "t": "**Anthropic IPO 收官**：募资 935 亿$、合计 1195 亿$",
+      "t": "**Anthropic 交出数据控制权**：EFS 公测、自持密钥",
+      "l": "华尔街见闻",
+      "u": "https://dy.163.com/article/LCFM27P005198NMR.html"
+    },
+    {
+      "t": "**OpenRouter 官方榜**：DeepSeek 65 万亿、Hy4 flash 第二",
+      "l": "OpenRouter",
+      "u": "https://openrouter.ai/rankings"
+    },
+    {
+      "t": "**豆包工作八成任务免费**：倍率限时 0.01",
       "l": "腾讯新闻",
-      "u": "https://news.qq.com/rain/a/20261122A062PV00"
+      "u": "https://news.qq.com/rain/a/20261123A0A45Z00"
     },
     {
-      "t": "**纳指单日 -5.28%**：2026 年涨幅被抹平",
-      "l": "腾讯新闻",
-      "u": "https://news.qq.com/rain/a/20261122A062PV00"
+      "t": "**微软拉 40 家机构立 AI 透明度标准**",
+      "l": "人人都是产品经理",
+      "u": "https://www.woshipm.com/news/6498230.html"
     },
     {
-      "t": "**OpenAI 改写 AMD 电路**：PPA 最高 +14%",
-      "l": "网易财经",
-      "u": "https://www.163.com/dy/article/LCB5BRLP05568W0A.html"
+      "t": "**Qwen4-Max 预览版抢测**：2.4T/71B 激活",
+      "l": "太平洋科技",
+      "u": "https://www.pconline.com.cn/focus/2185/21854943.html"
     },
     {
-      "t": "**Claude 证明获 Lean 认证**：历时仅一天",
-      "l": "21 世纪经济报道",
-      "u": "https://www.163.com/dy/article/LCC1EEHG05199NPP.html"
+      "t": "**SeedRealtime 1.0 全量**：实时多模态 API",
+      "l": "人人都是产品经理",
+      "u": "https://www.woshipm.com/news/6498230.html"
     },
     {
-      "t": "**OpenRouter 周榜**：DeepSeek 78.7 万亿居首",
-      "l": "What's Trending AI",
-      "u": "https://whatstrending.ai/models"
+      "t": "**OpenRouter 移除 3 家供应商**：125 端点失格",
+      "l": "AI Impact Hub",
+      "u": "https://www.aiimpacthub.com/ai-news/2026-11-24"
     },
     {
-      "t": "**谷歌首页 AI 化**：搜索按钮让位 Gemini",
-      "l": "Industry",
-      "u": "https://men.industry.co.id/read/9926/global-ai-roundup-nov-23-2026-google-homepage-goes-ai-first"
+      "t": "**OpenAI 与北约合作网络防御**：据 WSJ",
+      "l": "AI Daily News",
+      "u": "https://pharma.intelligence-synthesis.com/en/ai-news/2026-11-24-morning.html"
     },
     {
-      "t": "**混元 AMA**：Hy4 处 AGI 2.5 级、拟扩规模",
-      "l": "第一财经",
-      "u": "https://www.163.com/dy/article/LCAVKVL00519DDQ2.html"
+      "t": "**GPT-6.2 Sol 性价比测试**：2/10 美元",
+      "l": "TechNewsReel",
+      "u": "https://technewsreel.com/software-and-development/gpt-6-2-sol-challenges-claude-opus-5-5-on-cost-not-accuracy"
     },
     {
-      "t": "**OpenAI perplexity 标尺**：提议共同上限",
-      "l": "AI Affairs",
-      "u": "https://www.aiaffairs.com/technology/openai-perplexity-metrics-shared-pacing-limits"
-    },
-    {
-      "t": "**ChatGPT Spaces**：Plus 20 美元月费开放",
-      "l": "AI 日报",
-      "u": "https://daily.jiayutool.cn/"
-    },
-    {
-      "t": "**蚂蚁 LingSante 开源**：560B、MIT 许可",
-      "l": "全球 AI 早报",
-      "u": "http://mp.weixin.qq.com/s?__biz=MzU4NTExMzQ0OQ==&mid=2247484303&idx=1&sn=420029ccdb9863b4c6a2aaacf6cf4b99"
+      "t": "**谷歌 AI Mode 整合 Wallet/Drive**",
+      "l": "AI Daily News",
+      "u": "https://pharma.intelligence-synthesis.com/en/ai-news/2026-11-24-morning.html"
     }
   ],
-  "newsSummary": "① **资本侧**Anthropic IPO 收官、募资 935 亿$。\n② **定价侧**纳指单日 -5.28% 抹平全年。\n③ **能力侧**Claude 证明获 Lean 认证。\n④ **调用侧**DeepSeek 78.7 万亿续居首。",
+  "newsSummary": "① **企业侧**Anthropic EFS 交出数据控制权。\n② **调用侧**官方榜 DeepSeek 65 万亿居首。\n③ **办公侧**豆包八成任务免费、微软立标准。\n④ **安全侧**OpenAI 据报与北约合作防御。",
   "launchCalendar": [
     {
-      "d": "11/22",
+      "d": "11/23",
       "brand": "Anthropic",
-      "evt": "IPO 正式交割、绿鞋全额行使",
-      "product": "ANT IPO 收官",
-      "point": "募资 **935 亿$**、合计 1195 亿$"
-    },
-    {
-      "d": "11/21",
-      "brand": "美股",
-      "evt": "纳指单日跌 5.28%、抹平全年",
-      "product": "AI 交易重定价",
-      "point": "费半 **-10.73%**、蒸发 4 万亿$"
-    },
-    {
-      "d": "11/18",
-      "brand": "OpenAI",
-      "evt": "模型改写 AMD 旗舰 GPU 电路",
-      "product": "AI 辅助电路设计",
-      "point": "PPA 最高 **+14%**、入后续设计"
-    },
-    {
-      "d": "11/22",
-      "brand": "Lean 社区",
-      "evt": "联合认证 Claude 黎曼猜想证明",
-      "product": "黎曼证明获认证",
-      "point": "从宣布到认证仅 **1 天**"
+      "evt": "推出企业前沿安全防护 EFS 公测",
+      "product": "EFS＋Claude Ship",
+      "point": "客户自持密钥、提示留存 **30 天**"
     },
     {
       "d": "11/22",
       "brand": "OpenRouter",
-      "evt": "周榜 DeepSeek 78.7 万亿居首",
-      "product": "OpenRouter 周榜",
-      "point": "份额 **44.6%**、GLM 11.63 万亿次"
+      "evt": "官方周榜 DeepSeek 65 万亿居首",
+      "product": "OpenRouter 官方榜",
+      "point": "Hy4 flash **18.1 万亿**空降第二"
     },
     {
-      "d": "11/19",
+      "d": "11/23",
+      "brand": "字节跳动",
+      "evt": "豆包工作超八成日常任务免费",
+      "product": "豆包工作免费化",
+      "point": "高频倍率 **0.01**、ARR 超 20 亿"
+    },
+    {
+      "d": "11/23",
+      "brand": "微软",
+      "evt": "联合 40 家机构发起 AI 透明度倡议",
+      "product": "AI 透明度倡议",
+      "point": "推动建立**行业通用标准**"
+    },
+    {
+      "d": "11/23",
+      "brand": "阿里",
+      "evt": "Qwen4-Max 预览版上线 TokenPlan",
+      "product": "Qwen4-Max 预览版",
+      "point": "**2.4T/71B** 激活、成本降 60%"
+    },
+    {
+      "d": "11/23",
+      "brand": "字节跳动",
+      "evt": "SeedRealtime 1.0 API 全量上线",
+      "product": "实时多模态 API",
+      "point": "支持**边看边听边说**"
+    },
+    {
+      "d": "11/22",
+      "brand": "OpenRouter",
+      "evt": "移除 3 家供应商与 125 个零留存端点",
+      "product": "收紧零留存",
+      "point": "部分为**预防性下架**"
+    },
+    {
+      "d": "11/24",
+      "brand": "OpenAI",
+      "evt": "据报与北约达成网络防御合作",
+      "product": "北约网络防御",
+      "point": "防御者经 **Daybreak** 用模型"
+    },
+    {
+      "d": "11/24",
+      "brand": "OpenAI",
+      "evt": "GPT-6.2 Sol 性价比测试公布",
+      "product": "GPT-6.2 Sol",
+      "point": "**2/10 美元**、精度仍有取舍"
+    },
+    {
+      "d": "11/24",
       "brand": "谷歌",
-      "evt": "桌面首页搜索按钮让位 Gemini",
-      "product": "搜索首页 AI 化",
-      "point": "AI Mode 月活 **10 亿**、侧栏上线"
-    },
-    {
-      "d": "11/21",
-      "brand": "腾讯",
-      "evt": "混元团队 Reddit AMA 披露路线",
-      "product": "混元 AMA",
-      "point": "Hy4 处 **AGI 2.5 级**、拟扩规模"
-    },
-    {
-      "d": "11/22",
-      "brand": "OpenAI",
-      "evt": "首席科学家提 perplexity 共同标尺",
-      "product": "perplexity 标尺",
-      "point": "提议前沿实验室设**共同上限**"
-    },
-    {
-      "d": "11/22",
-      "brand": "OpenAI",
-      "evt": "ChatGPT Spaces 向 Plus 开放",
-      "product": "ChatGPT Spaces",
-      "point": "**20 美元**月费、多人协作空间"
-    },
-    {
-      "d": "11/22",
-      "brand": "蚂蚁",
-      "evt": "开源医疗 MoE LingSante-3.1-flash",
-      "product": "LingSante 开源",
-      "point": "**560B/25B** 激活、MIT 许可"
+      "evt": "AI Mode 整合 Wallet 与 Drive",
+      "product": "AI Mode 服务入口",
+      "point": "升级为**服务总入口**"
     },
     {
       "d": "11/19",
@@ -585,189 +585,189 @@
   ],
   "productSummary": [
     {
-      "brand": "OpenAI",
-      "product": "AI 辅助电路设计",
-      "selling": "PPA 最高 +14%、五个月完成一年设计",
-      "intent": "以可验证指标切入芯片设计流程",
-      "insight": "勿等同整芯性能提升"
-    },
-    {
       "brand": "Anthropic",
-      "product": "IPO 收官",
-      "selling": "募资 935 亿$、合计 1195 亿$",
-      "intent": "以史上最大 IPO 锁定算力弹药",
-      "insight": "看解禁节奏与现金流兑现"
+      "product": "EFS＋Claude Ship",
+      "selling": "客户自持密钥、提示留存 30 天",
+      "intent": "化解强制留存反弹、夺回企业客户",
+      "insight": "数据主权成选型硬指标"
     },
     {
-      "brand": "谷歌",
-      "product": "搜索首页 AI 化",
-      "selling": "Gemini 入口取代搜索按钮",
-      "intent": "用默认入口迁移对话习惯",
-      "insight": "留存比功能数量更重要"
+      "brand": "阿里",
+      "product": "Qwen4-Max 预览版",
+      "selling": "2.4T/71B 激活、成本降 60%",
+      "intent": "以稀疏架构压低推理成本",
+      "insight": "看激活参数而非总参数"
     },
     {
-      "brand": "蚂蚁",
-      "product": "LingSante-3.1-flash",
-      "selling": "560B/25B 激活、MIT 许可",
-      "intent": "以垂直开源切入医疗研究",
-      "insight": "合规边界限定商业化"
+      "brand": "字节跳动",
+      "product": "豆包工作",
+      "selling": "超八成任务免费、倍率 0.01",
+      "intent": "用低价换高频与留存",
+      "insight": "ARR 不等于毛利"
+    },
+    {
+      "brand": "字节跳动",
+      "product": "SeedRealtime 1.0",
+      "selling": "实时多模态 API 全量",
+      "intent": "把流式交互做成开发者入口",
+      "insight": "实时性是下一战场"
     },
     {
       "brand": "OpenAI",
-      "product": "ChatGPT Spaces",
-      "selling": "20 美元月费、多人协作空间",
-      "intent": "把订阅从个人扩展到团队",
-      "insight": "协作留存决定订阅增量"
+      "product": "GPT-6.2 Sol",
+      "selling": "2/10 美元、编码持平旗舰",
+      "intent": "主打每美元智能",
+      "insight": "高风险需旗舰终审"
     },
     {
       "brand": "DeepSeek",
       "product": "V4.1 Flash 1017",
-      "selling": "周榜 78.7 万亿、份额 44.6%",
-      "intent": "以开源低成本守住调用入口",
-      "insight": "调用量与请求份额分开看"
+      "selling": "官方周榜 65 万亿居首",
+      "intent": "以开源低成本守调用入口",
+      "insight": "份额 25.4% 分开看"
     }
   ],
-  "productsSummary": "① **AI 辅助设计**PPA 最高 +14%。\n② **搜索首页 AI 化**Gemini 成默认入口。\n③ **LingSante**560B、MIT 开源。\n④ **ChatGPT Spaces**20 美元月费协作。",
+  "productsSummary": "① **Qwen4-Max**2.4T/71B、成本降六成。\n② **SeedRealtime**实时多模态 API 全量。\n③ **GPT-6.2 Sol**2/10 美元、性价比优先。\n④ **EFS**客户自持密钥、提示留 30 天。",
   "newProducts": [
-    {
-      "brand": "OpenAI",
-      "color": "#10a37f",
-      "tag": "AI 辅助设计",
-      "date": "11/18",
-      "summary": "OpenAI 11/18 技术报告披露，模型重写 AMD 旗舰 GPU 的 **SystemVerilog 电路代码**，关键 IP 块 PPA 最高提升 **14%**。",
-      "table": {
-        "rows": [
-          {
-            "k": "用户规模",
-            "v": "AMD 旗舰 GPU 与自家 Jalapeño 推理芯片"
-          },
-          {
-            "k": "核心能力",
-            "v": "重写 RTL、Synopsys 工具验证功能等价"
-          },
-          {
-            "k": "用户评价",
-            "v": "约一年设计压缩至五个月内完成"
-          },
-          {
-            "k": "商业化",
-            "v": "部分改动进入后续产品设计文件"
-          }
-        ]
-      },
-      "analysis": "① **可验证**：PPA 有工具判据。\n② **幅度有限**：14% 非整芯性能。\n③ **边界**：未公布客户产品名单。"
-    },
     {
       "brand": "Anthropic",
       "color": "#7b3fe4",
-      "tag": "IPO/资本市场",
-      "date": "11/22",
-      "summary": "Anthropic 11/22 公告 IPO 正式交割，公开发行 **11.27 亿股**、83$/股，募资约 **935 亿$** 创纪录。",
+      "tag": "企业数据主权",
+      "date": "11/23",
+      "summary": "Anthropic 11/23 推出 **EFS 企业前沿安全防护公测**，允许企业客户把数据存入自有云、自持加密密钥，平台仅定期扫描检测攻击。",
       "table": {
         "rows": [
           {
             "k": "用户规模",
-            "v": "Q3 营收 169.6 亿$、年化收入约 810 亿$"
+            "v": "Mythos 与 Fable 旗舰模型企业客户"
           },
           {
             "k": "核心能力",
-            "v": "Claude 系列模型与企业级 API 商业化"
+            "v": "客户自持密钥、数据存自有云、定期扫描"
           },
           {
             "k": "用户评价",
-            "v": "首日涨 17.07%、二日回落至 88.9$"
+            "v": "6 月强制留存政策引发反弹后转向"
           },
           {
             "k": "商业化",
-            "v": "绿鞋全额行使、同步私募 260 亿$"
+            "v": "Claude Ship 新增 PR Steward 与 Approvals"
           }
         ]
       },
-      "analysis": "① **募资兑现**：合计约 1195 亿$。\n② **造富效应**：96% 员工持股超百万。\n③ **卖压**：12/15 再解禁约 3 亿股。"
+      "analysis": "① **数据主权**：企业选型硬指标。\n② **折中留存**：提示仍留 30 天。\n③ **工程代理**：自动处理合并冲突与 CI。"
     },
     {
-      "brand": "谷歌",
-      "color": "#4285f4",
-      "tag": "搜索入口/AI 化",
-      "date": "11/19",
-      "summary": "谷歌桌面首页改版，**Google 搜索按钮被 Gemini 快捷入口取代**，左侧新增可折叠 AI 对话历史栏。",
+      "brand": "阿里",
+      "color": "#ff6900",
+      "tag": "旗舰模型",
+      "date": "11/23",
+      "summary": "阿里 11/23 放出 **Qwen4-Max 预览版**，2.4 万亿总参、每词元激活 710 亿，原生视觉与 100 万词元上下文。",
       "table": {
         "rows": [
           {
             "k": "用户规模",
-            "v": "AI Mode 月活 10 亿、全球渐进推送"
+            "v": "首发 TokenPlan、限时一折体验"
           },
           {
             "k": "核心能力",
-            "v": "图像生成、文件上传、Brainstorm 快捷入口"
+            "v": "稀疏 MoE、710 亿激活、原生视觉"
           },
           {
             "k": "用户评价",
-            "v": "回车或联想词仍返回传统搜索结果"
+            "v": "Code Arena 编程榜第六"
           },
           {
             "k": "商业化",
-            "v": "AI 订阅黑五提前开卖、最高五折"
+            "v": "单任务成本较上代降约 60%"
           }
         ]
       },
-      "analysis": "① **默认位**：入口从检索转向生成。\n② **可回退**：保留传统搜索路径。\n③ **留存**：侧栏承接历史对话。"
+      "analysis": "① **降本**：总参不变、激活降 25%。\n② **上下文**：100 万词元窗口。\n③ **抢测**：预览版全球开发者共创。"
     },
     {
-      "brand": "蚂蚁",
-      "color": "#1677ff",
-      "tag": "垂直开源/医疗",
-      "date": "11/22",
-      "summary": "蚂蚁 Ling 11/22 开源医疗专用 MoE 模型 **LingSante-3.1-flash**，总参 **560B**、每词元激活 25B。",
+      "brand": "字节跳动",
+      "color": "#1f6feb",
+      "tag": "AI 办公",
+      "date": "11/23",
+      "summary": "字节豆包工作 11/23 披露，**超八成日常办公任务可免费完成**，高频模型倍率限时压到 0.01。",
       "table": {
         "rows": [
           {
             "k": "用户规模",
-            "v": "权重上线 Hugging Face 与 ModelScope"
+            "v": "上线三月 DAU 破 800 万"
           },
           {
             "k": "核心能力",
-            "v": "医疗场景 MoE、HealthBench Professional 65.72"
+            "v": "多模型货架、21 个专业工作台"
           },
           {
             "k": "用户评价",
-            "v": "模型卡明确仅限研究与评估用途"
+            "v": "动态网页约 6 分钱、3D 项目约 2 毛 3"
           },
           {
             "k": "商业化",
-            "v": "MIT 许可、开放权重二次开发"
+            "v": "企业 ARR 超 20 亿元"
           }
         ]
       },
-      "analysis": "① **垂直纵深**：从通用转向医疗专用。\n② **低激活**：560B 总参、25B 激活。\n③ **合规**：不作医疗器械宣称。"
+      "analysis": "① **免费化**：把成本压到近零。\n② **透明计费**：账算在明处。\n③ **留存检验**：补贴后看续费。"
+    },
+    {
+      "brand": "字节跳动",
+      "color": "#1f6feb",
+      "tag": "实时多模态",
+      "date": "11/23",
+      "summary": "字节火山引擎 11/23 宣布 **SeedRealtime 1.0 API 全量上线**，可在连续多模态信息流上实时交互。",
+      "table": {
+        "rows": [
+          {
+            "k": "用户规模",
+            "v": "面向企业与开发者开放接入"
+          },
+          {
+            "k": "核心能力",
+            "v": "连续多模态流、边看边听边说"
+          },
+          {
+            "k": "用户评价",
+            "v": "与豆包工作形成应用模型闭环"
+          },
+          {
+            "k": "商业化",
+            "v": "按 API 调用计费"
+          }
+        ]
+      },
+      "analysis": "① **实时性**：从回合制转向流式。\n② **多模态**：视听说同时在线。\n③ **入口**：智能体下一战场。"
     },
     {
       "brand": "OpenAI",
       "color": "#10a37f",
-      "tag": "订阅/协作空间",
-      "date": "11/22",
-      "summary": "OpenAI 11/22 向 Plus 用户开放 **ChatGPT Spaces**，20 美元月费可建多人协作空间。",
+      "tag": "性价比模型",
+      "date": "11/24",
+      "summary": "第三方 11/24 测试显示，**GPT-6.2 Sol 以 2/10 美元定价**在编码与数据分析上与 Opus 5.5 基本持平。",
       "table": {
         "rows": [
           {
             "k": "用户规模",
-            "v": "面向 Plus 订阅用户、20 美元月费"
+            "v": "面向专业自动化的效率档模型"
           },
           {
             "k": "核心能力",
-            "v": "多人共享上下文与任务协作空间"
+            "v": "2 美元输入、10 美元输出/百万词元"
           },
           {
             "k": "用户评价",
-            "v": "从单人问答扩展到团队工作流"
+            "v": "月末结账测试漏记约 2400 美元"
           },
           {
             "k": "商业化",
-            "v": "订阅分层增厚 ARPU"
+            "v": "主打「每美元智能」性价比"
           }
         ]
       },
-      "analysis": "① **订阅增量**：从个人走向团队。\n② **协作留存**：看空间活跃度。\n③ **成本侧**：推理降本支撑定价。"
+      "analysis": "① **便宜**：价格远低于旗舰。\n② **取舍**：高风险任务需复核。\n③ **混合部署**：中端跑量旗舰终审。"
     },
     {
       "brand": "英伟达",
@@ -1189,8 +1189,8 @@
     }
   ],
   "earnSnap": {
-    "find": "① 资本交割：Anthropic IPO 募资 **935 亿$**、叠加私募合计 **1195 亿$**。\n② 板块回撤：纳指单日 **-5.28%**、费半 -10.73%、蒸发超 **4 万亿$**。\n③ 能力验证：Claude 证明获 Lean 认证、AI 改电路 PPA **+14%**。\n④ 调用格局：DeepSeek **78.7 万亿**居首、份额 **44.6%**。\n⑤ 入口迁移：谷歌首页让位 Gemini、AI Mode 月活 **10 亿**。\n⑥ 垂直开源：蚂蚁 LingSante **560B**、激活 25B、MIT 许可。",
-    "impl": "① 看 IPO 要盯**解禁与卖压**，首日溢价不是共识。\n② 看回撤要拆**指数与个股**，费半与纳指分开看。\n③ 看科研要等**社区认证**，宣布不等于定论。\n④ 看榜单要统一**口径**，调用量与请求份额分开。\n⑤ 看入口要看**默认位与留存**，而非功能数量。\n⑥ 看垂直模型要看**评测与许可**，勿越合规边界。"
+    "find": "① 企业侧：Anthropic EFS 公测、**自持密钥**，提示仍留 **30 天**。\n② 调用侧：官方榜 DeepSeek **65 万亿**居首、Hy4 flash **18.1 万亿**第二。\n③ 办公侧：豆包 DAU **800 万**、ARR **20 亿元**，八成任务免费。\n④ 成本侧：Qwen4-Max 激活 **710 亿**、Sol 定价 **2/10 美元**。\n⑤ 治理侧：微软逾 **40 家机构**发起 AI 透明度倡议。\n⑥ 安全侧：OpenAI 据报与北约合作、125 端点失格。",
+    "impl": "① 看数据要看**密钥归属**，自持才算可控。\n② 看榜单要统一**官方口径**，调用与份额分开。\n③ 看免费要看**留存与毛利**，补贴不等于生意。\n④ 看参数要看**激活量**，总参不等于成本。\n⑤ 看标准要看**参与方与落地**，倡议不等于约束。\n⑥ 看合作要等**官方确认**，媒体报道需交叉核验。"
   },
   "earnings": [
     {
@@ -1206,7 +1206,7 @@
       "inventory": "—",
       "shipments": "—",
       "shipmentsChg": "—",
-      "viewpoint": "下代架构已进入训练，规划向 **5 至 10 万亿**参数演进；本轮一级市场融资由宁德时代与腾讯领投国产算力；云栖披露季度**AI云与算力服务收入484亿元、同比增长45%**，增速持续加速；模型服务平台年化收入**突破200亿元**、客户增至**600万**，企业级智能体平台接入**100+**生态服务商。自研芯片量产由原计划提前两个季度至**2027Q1**，算力为上代**3倍**、单集群可扩至**50万卡**，目标**2032年**全球数据中心超**20吉瓦**；下代架构已进入训练，规划向**5至10万亿**参数演进。。10/7 券商月报称公司完成约 **800 亿港元**配售，投入强度不减。；10/11 机构预计 **2QFY27 云收入同比增 53%**、EBITA 升至 **13.3%**，12 月季度云与 AI 合计接近盈亏平衡，海外前沿模型下沉反而凸显生态与全栈落地的差异化价值。10/12 智能体平台 Qoder 上线 **Fast 模式**，首响由 8 秒降至 **3 秒**、token 消耗降 **27%**，靠模型、Agent Harness 与网络三层优化；Qoder 家族自 2025 年 8 月全球发布以来已服务超 **800 万**用户与 **10 万家**企业客户。10/14 10/13 个人智能体千问 Go 上线，实测完成航班延误理赔 70 元与价保退 52 元，嵌入存量客户端导流生态交易。 10/14 千问办公电商版邀测，已对接生意参谋、有赞、千牛与万相台，电商用户占付费约 20%、周均完成任务 38 个。 10/15 据报道苹果计划 12 月在中国上线 Apple Intelligence、底层采用**阿里模型**；同日旗下百灵以 MIT 协议开源 Ling-3.1-flash 权重，部署由 8 卡降至 **4 卡**。 10/19 更新：BAT 二季度资本开支合计 **1318.52 亿元**、同比 **+103.7%**，增速翻倍以上。 10/20 更新：10/19 千问开源三维建模评测基准，含 **223 道题**与 **2651 条**标准；二季度国内三家头部云厂资本开支合计 **1318.52 亿元**、同比 **+103.7%**；10/21 更新：路透称其与字节、腾讯合计向英伟达下达超 **350 亿**美元加速卡订单，均为出口合规型号；易观统计 9 月千问办公月访问 **6025 万**次列国内第二。 10/21 上线 Qwen3.6 27B；QuestMobile 统计千问 App 9 月月活 **1.58 亿**、同比 **+5077%**，千问办公 **790.5 万**列办公类第三。 10/27 更新：韩媒统计今年 **1—8 月**该国账号在开源社区发布的 **1845** 个模型中 **49.3%** 基于中国模型，基于美国模型的占 **35.9%**、本国自研仅 **14.9%**，凸显其开源生态的海外派生能力。研究者发现部分千问模型会把请求路由回公司服务器，引出行数据合规讨论。 旗下 AI 应用平台接入千问 App「我的应用」，提供覆盖数据存储、部署上线与长期更新的全托管云端服务；第三方统计最近一周其模型未进入聚合平台前五，云厂商自研模型 **Hy4 preview** 以 8.96 万亿 token 列第五。11/16 正式发布 **Qwen4-Max**（2.4T 总参、激活 71B），API 降价 **25%**、单任务费用从 26.58 元降至 **11.16 元**、降幅 **58%**，Code Arena 前端盲测第 6。11/19 更新：11/18 **Qwen4-Max** 正式可用，个人版与团队版同步上线，1M 上下文、API 输入 1.5$/输出 4.5$ 每百万 Token，内部评测少用最多 50% Token、单任务成本降超 **60%**。11/20 更新：财报显示闲鱼服务类订单 +87%，其中 **AI 编程与 AI 漫剧订单增 157%**；千问联合天猫超市上线 AI 周期购、覆盖超 1.6 万件商品。11/21 更新：FY27Q2 AI 相关云收入 **609.73 亿元**、同比 **+53%**，外部客户收入增速创近六年新高；本季资本开支 505 亿、环比回落，管理层判断投入峰值在 **2027—2028H1**。11/23 更新：Qwen4-Max 以稀疏架构大幅降低推理成本；与华科共建 AI 安全联合研究中心、三年投 **1000 万元**。",
+      "viewpoint": "下代架构已进入训练，规划向 **5 至 10 万亿**参数演进；本轮一级市场融资由宁德时代与腾讯领投国产算力；云栖披露季度**AI云与算力服务收入484亿元、同比增长45%**，增速持续加速；模型服务平台年化收入**突破200亿元**、客户增至**600万**，企业级智能体平台接入**100+**生态服务商。自研芯片量产由原计划提前两个季度至**2027Q1**，算力为上代**3倍**、单集群可扩至**50万卡**，目标**2032年**全球数据中心超**20吉瓦**；下代架构已进入训练，规划向**5至10万亿**参数演进。。10/7 券商月报称公司完成约 **800 亿港元**配售，投入强度不减。；10/11 机构预计 **2QFY27 云收入同比增 53%**、EBITA 升至 **13.3%**，12 月季度云与 AI 合计接近盈亏平衡，海外前沿模型下沉反而凸显生态与全栈落地的差异化价值。10/12 智能体平台 Qoder 上线 **Fast 模式**，首响由 8 秒降至 **3 秒**、token 消耗降 **27%**，靠模型、Agent Harness 与网络三层优化；Qoder 家族自 2025 年 8 月全球发布以来已服务超 **800 万**用户与 **10 万家**企业客户。10/14 10/13 个人智能体千问 Go 上线，实测完成航班延误理赔 70 元与价保退 52 元，嵌入存量客户端导流生态交易。 10/14 千问办公电商版邀测，已对接生意参谋、有赞、千牛与万相台，电商用户占付费约 20%、周均完成任务 38 个。 10/15 据报道苹果计划 12 月在中国上线 Apple Intelligence、底层采用**阿里模型**；同日旗下百灵以 MIT 协议开源 Ling-3.1-flash 权重，部署由 8 卡降至 **4 卡**。 10/19 更新：BAT 二季度资本开支合计 **1318.52 亿元**、同比 **+103.7%**，增速翻倍以上。 10/20 更新：10/19 千问开源三维建模评测基准，含 **223 道题**与 **2651 条**标准；二季度国内三家头部云厂资本开支合计 **1318.52 亿元**、同比 **+103.7%**；10/21 更新：路透称其与字节、腾讯合计向英伟达下达超 **350 亿**美元加速卡订单，均为出口合规型号；易观统计 9 月千问办公月访问 **6025 万**次列国内第二。 10/21 上线 Qwen3.6 27B；QuestMobile 统计千问 App 9 月月活 **1.58 亿**、同比 **+5077%**，千问办公 **790.5 万**列办公类第三。 10/27 更新：韩媒统计今年 **1—8 月**该国账号在开源社区发布的 **1845** 个模型中 **49.3%** 基于中国模型，基于美国模型的占 **35.9%**、本国自研仅 **14.9%**，凸显其开源生态的海外派生能力。研究者发现部分千问模型会把请求路由回公司服务器，引出行数据合规讨论。 旗下 AI 应用平台接入千问 App「我的应用」，提供覆盖数据存储、部署上线与长期更新的全托管云端服务；第三方统计最近一周其模型未进入聚合平台前五，云厂商自研模型 **Hy4 preview** 以 8.96 万亿 token 列第五。11/16 正式发布 **Qwen4-Max**（2.4T 总参、激活 71B），API 降价 **25%**、单任务费用从 26.58 元降至 **11.16 元**、降幅 **58%**，Code Arena 前端盲测第 6。11/19 更新：11/18 **Qwen4-Max** 正式可用，个人版与团队版同步上线，1M 上下文、API 输入 1.5$/输出 4.5$ 每百万 Token，内部评测少用最多 50% Token、单任务成本降超 **60%**。11/20 更新：财报显示闲鱼服务类订单 +87%，其中 **AI 编程与 AI 漫剧订单增 157%**；千问联合天猫超市上线 AI 周期购、覆盖超 1.6 万件商品。11/21 更新：FY27Q2 AI 相关云收入 **609.73 亿元**、同比 **+53%**，外部客户收入增速创近六年新高；本季资本开支 505 亿、环比回落，管理层判断投入峰值在 **2027—2028H1**。11/23 更新：Qwen4-Max 以稀疏架构大幅降低推理成本；与华科共建 AI 安全联合研究中心、三年投 **1000 万元**。11/24 更新：Qwen4-Max 预览版放出、**2.4T 总参/710 亿激活**、单任务成本降约 60%、首发 TokenPlan。",
       "insight": "全栈自研把投入转成可验证的业绩，但资本开支增速仍高于收入增速，回收周期决定估值容忍度。；10/5 同传模型与三个新云区域落地，竞争进入交付与合规环节，回收周期与出海合规成本共同决定估值容忍度。",
       "prov": {
         "src": "官方披露(L1)·财报",
@@ -1227,7 +1227,7 @@
       "inventory": "—",
       "shipments": "—",
       "shipmentsChg": "—",
-      "viewpoint": "混元开源探索能力基准 ExplorationBench，含两个可验证异世界与 140 项留出任务；WorkBuddy 上线独立文件浏览器；10/1个人助理项目加快内测联调并明确定名方向，先在社交平台以服务号形态渗透、再推独立应用；云端智能体托管已支持扫码授权接入多个社交平台、**7×24**在线。此前开源**混元图像3.0**（800亿总参、单token激活**130亿**）。SemiAnalysis估算二季度资本开支同比翻倍以上，**首次出现负自由现金流**。 10/6 国庆期间公司把 **WorkBuddy** 提到战略最高位并铺开线下广告，与字节把飞书产品团队并入豆包、阿里整合千问办公注入钉钉 2500 万家企业组织形成同入口竞争。。10/7 官宣**混元图像 3.0** 登顶 LMArena 盲测，成为首个拿下该榜第一的开源文生图模型；月报称其同步加大海外算力采购。；10/11 口径显示三季度国内游戏、广告与金融科技收入分别同比增 **11%**、**19%** 与 **11%**，但经调整经营利润微降 **1%**，主因 AI 产品进入重点投入期；9 月底上线个人智能体 **LightVela** 经微信接入、全天在线；10/10 腾讯云开源 **TeamAI**，内测中低成本模型接入团队知识后综合评分反超 **6.1%**、调用成本降 **76%**。10/12 旗下全场景 AI 办公工作台 **WorkBuddy** 独家限时免费接入阶跃星辰 Step 5 Preview 两周，延续多模型超市策略；财新第 39 期记录其内置智能体可一次处理**十多份**经营数据表并在数分钟内生成可视化管理仪表盘。10/14 个人智能体三线卡位：微信小微灰度、云端 LightVela、独立应用元宝助手研发中。 10/14 企业微信与 WorkBuddy 双向深度联合，机器人进通讯录、授权内可调十大能力，覆盖超 1400 万企业与组织。 10/15 个人智能体赛道进入扎堆期，公司多线布局 LightVela、元宝与微信原生场景；开放生态负责人称**上下文理解深度**才是决胜点，随身入口只是调用载体。 10/19 更新：二季度资本开支 **527.84 亿元**、同比 **+176%**；递归自我改进训练把 Terminal-Bench 由 20.68% 提到 **50.58%**。 10/20 更新：10/19 混元发布智能体记忆框架 **Hy Memory 2.0** 并三层开源；全球数字生态大会定于 **10/29—10/30**，将亮相 **50 余项**智能体能力；教育公益版上线，全国教师每月可领 **2000 积分**；10/21 更新：10/20 元宝搜索经腾讯云正式开放，千亿级索引日均调用数亿次、支撑 **50 多个**业务；二季度资本开支 **527.84 亿**元、同比 **+176%**，自由现金流 **-138 亿**元首度转负。 QuestMobile 统计 9 月 WorkBuddy 月活 **3235.3 万**列办公类智能体第一；QClaw 团队并入 WorkBuddy 所在的云产品六部，QClaw 将于 **12/24** 停服。港交所推出人工智能指数，覆盖 40 家产业链公司，为板块提供配置基准。 10/29 数字生态大会：办公智能体累计完成 **90 亿次**任务请求，企业版覆盖中国企业 500 强 **50%**；发布一体化套件与网盘，统一账号、积分池与数据池；混元 **Hy4** 与 Hy4 Flash 预览，Hy4 首次具备**视觉理解**；海外活跃客户一年**翻倍**、AI 需求三位数增长。11/16 混元推出 **Hy4 flash**（224B 总参、激活 12B），API 输入 0.5 元/输出 2 元每百万 token，单任务成本为 Hy4 的 **1/20**；Q3 财报 11/19 发布。11/19 更新：11/18 披露 **Hy4 flash** 上线首日调用破 **50 万亿**、登顶 OpenRouter 日榜，WorkBuddy 完成超 **5000 万**任务、峰值每秒超 10 亿 Token；开源 Hy4flash/FP8/Base 三版本。11/20 更新：Q3 云服务收入同比 **+35%**、WorkBuddy **日活破千万**，日均 token 超 100 万亿、累计 90 亿次任务；过去七天年化收入超 **5 亿$**、体量为腾讯会议两倍；营收 2073 亿低于预期 2108 亿。11/21 更新：国产模型在 OpenRouter 连续 **29 周**居首、累计下载破 **100 亿次**，Hy4 系列为重要贡献；WorkBuddy 日活超千万。11/23 更新：混元 AMA 称 Hy4 处 **AGI 2.5 级**、后训练仍可大改，拟训更大模型、Hy4-mini 在路线图。",
+      "viewpoint": "混元开源探索能力基准 ExplorationBench，含两个可验证异世界与 140 项留出任务；WorkBuddy 上线独立文件浏览器；10/1个人助理项目加快内测联调并明确定名方向，先在社交平台以服务号形态渗透、再推独立应用；云端智能体托管已支持扫码授权接入多个社交平台、**7×24**在线。此前开源**混元图像3.0**（800亿总参、单token激活**130亿**）。SemiAnalysis估算二季度资本开支同比翻倍以上，**首次出现负自由现金流**。 10/6 国庆期间公司把 **WorkBuddy** 提到战略最高位并铺开线下广告，与字节把飞书产品团队并入豆包、阿里整合千问办公注入钉钉 2500 万家企业组织形成同入口竞争。。10/7 官宣**混元图像 3.0** 登顶 LMArena 盲测，成为首个拿下该榜第一的开源文生图模型；月报称其同步加大海外算力采购。；10/11 口径显示三季度国内游戏、广告与金融科技收入分别同比增 **11%**、**19%** 与 **11%**，但经调整经营利润微降 **1%**，主因 AI 产品进入重点投入期；9 月底上线个人智能体 **LightVela** 经微信接入、全天在线；10/10 腾讯云开源 **TeamAI**，内测中低成本模型接入团队知识后综合评分反超 **6.1%**、调用成本降 **76%**。10/12 旗下全场景 AI 办公工作台 **WorkBuddy** 独家限时免费接入阶跃星辰 Step 5 Preview 两周，延续多模型超市策略；财新第 39 期记录其内置智能体可一次处理**十多份**经营数据表并在数分钟内生成可视化管理仪表盘。10/14 个人智能体三线卡位：微信小微灰度、云端 LightVela、独立应用元宝助手研发中。 10/14 企业微信与 WorkBuddy 双向深度联合，机器人进通讯录、授权内可调十大能力，覆盖超 1400 万企业与组织。 10/15 个人智能体赛道进入扎堆期，公司多线布局 LightVela、元宝与微信原生场景；开放生态负责人称**上下文理解深度**才是决胜点，随身入口只是调用载体。 10/19 更新：二季度资本开支 **527.84 亿元**、同比 **+176%**；递归自我改进训练把 Terminal-Bench 由 20.68% 提到 **50.58%**。 10/20 更新：10/19 混元发布智能体记忆框架 **Hy Memory 2.0** 并三层开源；全球数字生态大会定于 **10/29—10/30**，将亮相 **50 余项**智能体能力；教育公益版上线，全国教师每月可领 **2000 积分**；10/21 更新：10/20 元宝搜索经腾讯云正式开放，千亿级索引日均调用数亿次、支撑 **50 多个**业务；二季度资本开支 **527.84 亿**元、同比 **+176%**，自由现金流 **-138 亿**元首度转负。 QuestMobile 统计 9 月 WorkBuddy 月活 **3235.3 万**列办公类智能体第一；QClaw 团队并入 WorkBuddy 所在的云产品六部，QClaw 将于 **12/24** 停服。港交所推出人工智能指数，覆盖 40 家产业链公司，为板块提供配置基准。 10/29 数字生态大会：办公智能体累计完成 **90 亿次**任务请求，企业版覆盖中国企业 500 强 **50%**；发布一体化套件与网盘，统一账号、积分池与数据池；混元 **Hy4** 与 Hy4 Flash 预览，Hy4 首次具备**视觉理解**；海外活跃客户一年**翻倍**、AI 需求三位数增长。11/16 混元推出 **Hy4 flash**（224B 总参、激活 12B），API 输入 0.5 元/输出 2 元每百万 token，单任务成本为 Hy4 的 **1/20**；Q3 财报 11/19 发布。11/19 更新：11/18 披露 **Hy4 flash** 上线首日调用破 **50 万亿**、登顶 OpenRouter 日榜，WorkBuddy 完成超 **5000 万**任务、峰值每秒超 10 亿 Token；开源 Hy4flash/FP8/Base 三版本。11/20 更新：Q3 云服务收入同比 **+35%**、WorkBuddy **日活破千万**，日均 token 超 100 万亿、累计 90 亿次任务；过去七天年化收入超 **5 亿$**、体量为腾讯会议两倍；营收 2073 亿低于预期 2108 亿。11/21 更新：国产模型在 OpenRouter 连续 **29 周**居首、累计下载破 **100 亿次**，Hy4 系列为重要贡献；WorkBuddy 日活超千万。11/23 更新：混元 AMA 称 Hy4 处 **AGI 2.5 级**、后训练仍可大改，拟训更大模型、Hy4-mini 在路线图。11/24 更新：豆包工作与 WorkBuddy 进入免费化竞速，WorkBuddy 日均消耗 **100 万亿 Token**。",
       "insight": "关系链是常驻智能体的天然入口，但服务连接与授权长期有效使误操作成本高于一次性问答。；个人智能体已在微信端开启内测并计划推出独立应用，入口争夺从模型能力转向常驻任务执行。",
       "prov": {
         "src": "官方披露(L1)·财报",
@@ -1248,7 +1248,7 @@
       "inventory": "—",
       "shipments": "—",
       "shipmentsChg": "—",
-      "viewpoint": "豆包以原生应用登陆鸿蒙电脑端，内置 Seed-2.1 Pro 与 Turbo，Work 模式支持深度研究与定时任务；另被曝 6 天出体验版对标 Muse；个人助理项目自四月起内部代号内测，近期定名并加快联调节奏；智能助手已全面接入票务、打车、导航与旅游攻略，在对话内完成查询比价下单与退改签全流程。SemiAnalysis估算其一家约占中国已交付数据中心容量的**五分之一**且几乎全部为租赁。 10/6 公司把飞书产品团队整体并入豆包，押注让模型理解组织，AI 办公入口战在假期窗口同步开打。；10/9 财新称个人智能体项目代号 **Spell** 已在假期前提速，由豆包助手团队主导并与豆包对话团队共同负责，计划与豆包结合尽快推出，对标 9 月 8 日发布的 Meta Muse。据财新报道正加快个人智能体研发，计划把代号 **Spell** 的项目与豆包结合尽快对外推出；Sensor Tower 数据显示旗下海外短剧应用 PineDrama 上线约 **9 个月**累计下载破 **1 亿**、日活约 **700 万**，9 月单月下载超 **1200 万**次。10/14 Seed 新设模型对齐与 preparedeness 一级部门，重点管控智能体安全与化学、生物、放射、核风险。 10/14 豆包工作上线资产一键迁移，支持导入 ChatGPT、Claude Code 与 Trae Work 的对话、技能与记忆。 10/15 报道称其个人助理项目加速推进、与豆包产品深度结合；豆包工作已支持一键导入 ChatGPT 与 Claude Code 的会话、技能与记忆，直接攻击对手的迁移成本。 10/19 更新：豆包保持聚合平台周调用量前列，AI 算力开支维持 **2000 亿+** 元口径。 10/20 更新：10/19 首次公开演示以 **Seedance** 为基座的可交互世界模型，端到端延迟约 **50 毫秒**、云端约 **20 帧/秒**；10/21 更新：2026 年资本开支规划上调至超 **2000 亿**元、投入强度居国内首位；豆包工作与飞书整合后 9 月月访问 **5751 万**次，并参与逾 **350 亿**美元加速卡订单。 QuestMobile 统计 9 月豆包月活 **4.19 亿**、同比 **+143.6%** 断层第一，日活 **1.81 亿**；火山引擎发起精品 AI 剧激励计划。",
+      "viewpoint": "豆包以原生应用登陆鸿蒙电脑端，内置 Seed-2.1 Pro 与 Turbo，Work 模式支持深度研究与定时任务；另被曝 6 天出体验版对标 Muse；个人助理项目自四月起内部代号内测，近期定名并加快联调节奏；智能助手已全面接入票务、打车、导航与旅游攻略，在对话内完成查询比价下单与退改签全流程。SemiAnalysis估算其一家约占中国已交付数据中心容量的**五分之一**且几乎全部为租赁。 10/6 公司把飞书产品团队整体并入豆包，押注让模型理解组织，AI 办公入口战在假期窗口同步开打。；10/9 财新称个人智能体项目代号 **Spell** 已在假期前提速，由豆包助手团队主导并与豆包对话团队共同负责，计划与豆包结合尽快推出，对标 9 月 8 日发布的 Meta Muse。据财新报道正加快个人智能体研发，计划把代号 **Spell** 的项目与豆包结合尽快对外推出；Sensor Tower 数据显示旗下海外短剧应用 PineDrama 上线约 **9 个月**累计下载破 **1 亿**、日活约 **700 万**，9 月单月下载超 **1200 万**次。10/14 Seed 新设模型对齐与 preparedeness 一级部门，重点管控智能体安全与化学、生物、放射、核风险。 10/14 豆包工作上线资产一键迁移，支持导入 ChatGPT、Claude Code 与 Trae Work 的对话、技能与记忆。 10/15 报道称其个人助理项目加速推进、与豆包产品深度结合；豆包工作已支持一键导入 ChatGPT 与 Claude Code 的会话、技能与记忆，直接攻击对手的迁移成本。 10/19 更新：豆包保持聚合平台周调用量前列，AI 算力开支维持 **2000 亿+** 元口径。 10/20 更新：10/19 首次公开演示以 **Seedance** 为基座的可交互世界模型，端到端延迟约 **50 毫秒**、云端约 **20 帧/秒**；10/21 更新：2026 年资本开支规划上调至超 **2000 亿**元、投入强度居国内首位；豆包工作与飞书整合后 9 月月访问 **5751 万**次，并参与逾 **350 亿**美元加速卡订单。 QuestMobile 统计 9 月豆包月活 **4.19 亿**、同比 **+143.6%** 断层第一，日活 **1.81 亿**；火山引擎发起精品 AI 剧激励计划。11/24 更新：豆包工作 DAU 破 **800 万**、企业 ARR 超 **20 亿元**；SeedRealtime 1.0 API 全量上线。",
       "insight": "把高频生活服务做成闭环，是把对话流量转成交易入口的最直接路径，结算与售后责任是主要成本。；研究机构测算其 2026 年 AI 基建投入约占中国总量一半，讨论中的上限已提至约 **700 亿美元**。",
       "prov": {
         "src": "官方披露(L1)·财报",
@@ -1312,7 +1312,7 @@
       "inventory": "—",
       "shipments": "—",
       "shipmentsChg": "—",
-      "viewpoint": "**Q3 资本开支 514 亿$**、搜索与其他收入同比仅 **+12%**，承认 AI 模式变现率偏低；Gemini 4 Carbon 登顶 AA 指数 **59 分**。10/9 发布旗舰 **Gemini 4 Argon**，输出上限提至 100 万 token、尝鲜价 2/10 美元，首批只给 Fairwind 网安防御者；10/8 另推常驻办公智能体并上线 Nano Banana 2.1；上半年资本开支**806亿美元**、占经营现金流**95%**，并**停止回购**，长期债务由年末465亿升至**982亿美元**；10/1发布输出上限**100万token**、编程基准**77.9%**的前沿模型，10/4宣布10/9起重排消费级应用档位。。10/7 与 Constellation 签 **890 兆瓦**核电协议、投资 **43 亿美元**；同日公开已覆盖 **1800 亿**素材的 SynthID 检测器，并上线 **Nano Banana 2.1**、出图价降至每张 **0.034 美元**。；10/8 在 Gemini at Work 2026 发布企业级统一 **Gemini 智能体**，带独立 Workspace 账号与邮箱，可跨 Microsoft 365、Slack 与主流数据库执行，管理员可改选 Anthropic 的 Claude；皮查伊称 **Gemini 月活已超 10 亿**、近 **90%** 财富 100 强在用企业版，近 **80%** 云客户已在用其 AI 产品。10/14 10/14 Gemini 4 Argon 全球开放，Vals 指数居首、输出上限 100 万 token，引入期定价 2/10 美元。 10/14 Gemini 4 Argon 全球开放，智能指数 53 分与 GPT-6 Astra 相当、单任务加权成本约为其 60%，首发 2/10 美元至 11/30。 10/15 推出面向物理世界的 **Argon for Robotics**，在具身推理基准 ERQA 上仅凭纯推理拿下 **87%**，高于 Opus 5.5 与 GPT-6 Astra；2026 年资本开支上调至约 **2050 亿**美元。 10/19 更新：Gemini 4 Argon 在 ARC-AGI-3 适配口径 **97.5%**、标准口径 **49.8%**；自研加速芯片首次提交第三方推理基准。 10/20 更新：10/19 报道称公司开发 **Gemini 4 Carbon** 作为 Argon 升级版，视觉与视频分析见长；云业务二季度收入 **248 亿**美元、同比 **+82%**；10/21 更新：Gemini 4 Carbon 进入内部测试；伦敦区域因电力事件故障导致银行与物流服务中断，恢复耗时数小时。 10/20 联合 Meta PyTorch 团队开源 **TorchTPU**，接入 vLLM、SGLang、llm-d 等；Gemini 4 Carbon 处于内部测试。 10/26 更新：公司将于 **10/28** 美股盘后披露三季度业绩，此前谷歌云单季收入 **247.7 亿**美元、同比 **+82%**，部分机构预计本季度云收入增速接近翻倍；10/22 另与 Anthropic 扩大合作，锁定最高 **100 万块**自研加速卡。 10/27 更新：公司将于 **10/28** 披露三季度业绩；此前与 Anthropic 扩大合作锁定最高 **100 万块**自研加速卡，对手的模型托管服务已在谷歌云可用，企业可按既有合同额度消费。盘后披露三季度业绩，云增速预期 88%—91%，2026 年资本开支指引 1950 亿—2050 亿美元。10/29 更新：营收 **1275.8 亿**与每股收益 **2.12 美元**均不及预期，广告 **820.1 亿**、搜索 **633.5 亿**双双低于预期，而云业务 **+103%**并首次点名自研加速卡整机销售为重要贡献项；**Gemini 应用月活破 10 亿**，第一方模型每分处理 **320 亿** token（上季 **220 亿**）；当季发股融资 **124 亿**、发债 **287 亿**美元，长期债务升至 **1251 亿**美元、同比增约 **479%**；全年资本开支指引维持 **1950 亿至 2050 亿**美元，管理层称 2027 年显著增加并超过 **3000 亿**美元，未来承诺、租赁与采购义务合计**超 1 万亿**美元。 Q3 搜索与其他收入 **633.5 亿**美元、同比 **+12%**（前两季为 19%、17%），低于市场预期；总营收 **1275.8 亿**美元、**+25%**，云 **307 亿**美元、**+103%**；资本开支 **513.6 亿**美元、**+114%**，自由现金流 **-90.65 亿**美元；AI 模式广告扩至 **10 个**市场并在美国上线追问多轮广告。11/19 更新：发布 **Gemini 4 Neon**（1M 上下文、四档推理），编程智能体指数 **58.6 分登顶**、超 Opus 5.5；Genie 4 世界模型向 Ultra 用户开放。11/20 更新：桌面版 Gemini 获得电脑操作能力，可跨应用填表、逐动作审批，先向美区英语付费用户开放；搜索首页同步上线 AI 对话入口。11/21 更新：Gemini Tasks 并入代拨电话能力并免费开放、覆盖六国；Genie 4 实时世界模型进入 Gemini API。11/23 更新：桌面首页搜索按钮让位 Gemini、AI Mode 月活 **10 亿**；分层模型部署至搜索与订阅服务。",
+      "viewpoint": "**Q3 资本开支 514 亿$**、搜索与其他收入同比仅 **+12%**，承认 AI 模式变现率偏低；Gemini 4 Carbon 登顶 AA 指数 **59 分**。10/9 发布旗舰 **Gemini 4 Argon**，输出上限提至 100 万 token、尝鲜价 2/10 美元，首批只给 Fairwind 网安防御者；10/8 另推常驻办公智能体并上线 Nano Banana 2.1；上半年资本开支**806亿美元**、占经营现金流**95%**，并**停止回购**，长期债务由年末465亿升至**982亿美元**；10/1发布输出上限**100万token**、编程基准**77.9%**的前沿模型，10/4宣布10/9起重排消费级应用档位。。10/7 与 Constellation 签 **890 兆瓦**核电协议、投资 **43 亿美元**；同日公开已覆盖 **1800 亿**素材的 SynthID 检测器，并上线 **Nano Banana 2.1**、出图价降至每张 **0.034 美元**。；10/8 在 Gemini at Work 2026 发布企业级统一 **Gemini 智能体**，带独立 Workspace 账号与邮箱，可跨 Microsoft 365、Slack 与主流数据库执行，管理员可改选 Anthropic 的 Claude；皮查伊称 **Gemini 月活已超 10 亿**、近 **90%** 财富 100 强在用企业版，近 **80%** 云客户已在用其 AI 产品。10/14 10/14 Gemini 4 Argon 全球开放，Vals 指数居首、输出上限 100 万 token，引入期定价 2/10 美元。 10/14 Gemini 4 Argon 全球开放，智能指数 53 分与 GPT-6 Astra 相当、单任务加权成本约为其 60%，首发 2/10 美元至 11/30。 10/15 推出面向物理世界的 **Argon for Robotics**，在具身推理基准 ERQA 上仅凭纯推理拿下 **87%**，高于 Opus 5.5 与 GPT-6 Astra；2026 年资本开支上调至约 **2050 亿**美元。 10/19 更新：Gemini 4 Argon 在 ARC-AGI-3 适配口径 **97.5%**、标准口径 **49.8%**；自研加速芯片首次提交第三方推理基准。 10/20 更新：10/19 报道称公司开发 **Gemini 4 Carbon** 作为 Argon 升级版，视觉与视频分析见长；云业务二季度收入 **248 亿**美元、同比 **+82%**；10/21 更新：Gemini 4 Carbon 进入内部测试；伦敦区域因电力事件故障导致银行与物流服务中断，恢复耗时数小时。 10/20 联合 Meta PyTorch 团队开源 **TorchTPU**，接入 vLLM、SGLang、llm-d 等；Gemini 4 Carbon 处于内部测试。 10/26 更新：公司将于 **10/28** 美股盘后披露三季度业绩，此前谷歌云单季收入 **247.7 亿**美元、同比 **+82%**，部分机构预计本季度云收入增速接近翻倍；10/22 另与 Anthropic 扩大合作，锁定最高 **100 万块**自研加速卡。 10/27 更新：公司将于 **10/28** 披露三季度业绩；此前与 Anthropic 扩大合作锁定最高 **100 万块**自研加速卡，对手的模型托管服务已在谷歌云可用，企业可按既有合同额度消费。盘后披露三季度业绩，云增速预期 88%—91%，2026 年资本开支指引 1950 亿—2050 亿美元。10/29 更新：营收 **1275.8 亿**与每股收益 **2.12 美元**均不及预期，广告 **820.1 亿**、搜索 **633.5 亿**双双低于预期，而云业务 **+103%**并首次点名自研加速卡整机销售为重要贡献项；**Gemini 应用月活破 10 亿**，第一方模型每分处理 **320 亿** token（上季 **220 亿**）；当季发股融资 **124 亿**、发债 **287 亿**美元，长期债务升至 **1251 亿**美元、同比增约 **479%**；全年资本开支指引维持 **1950 亿至 2050 亿**美元，管理层称 2027 年显著增加并超过 **3000 亿**美元，未来承诺、租赁与采购义务合计**超 1 万亿**美元。 Q3 搜索与其他收入 **633.5 亿**美元、同比 **+12%**（前两季为 19%、17%），低于市场预期；总营收 **1275.8 亿**美元、**+25%**，云 **307 亿**美元、**+103%**；资本开支 **513.6 亿**美元、**+114%**，自由现金流 **-90.65 亿**美元；AI 模式广告扩至 **10 个**市场并在美国上线追问多轮广告。11/19 更新：发布 **Gemini 4 Neon**（1M 上下文、四档推理），编程智能体指数 **58.6 分登顶**、超 Opus 5.5；Genie 4 世界模型向 Ultra 用户开放。11/20 更新：桌面版 Gemini 获得电脑操作能力，可跨应用填表、逐动作审批，先向美区英语付费用户开放；搜索首页同步上线 AI 对话入口。11/21 更新：Gemini Tasks 并入代拨电话能力并免费开放、覆盖六国；Genie 4 实时世界模型进入 Gemini API。11/23 更新：桌面首页搜索按钮让位 Gemini、AI Mode 月活 **10 亿**；分层模型部署至搜索与订阅服务。11/24 更新：AI Mode 将整合 Wallet、Drive 与 Gemini 应用；DeepMind 探索快速量子算法。",
       "insight": "投入强度已越过经营现金流边界，融资结构变化比收入增速更能说明真实的产能扩张节奏。；免费档位重排与暂停开源漏洞奖励计划同步推进，人工智能生成的虚假漏洞报告已压垮原有激励流程。",
       "prov": {
         "src": "官方披露(L1)·财报",
@@ -1377,7 +1377,7 @@
       "inventory": "—",
       "shipments": "—",
       "shipmentsChg": "—",
-      "viewpoint": "**FY27Q1 云端收入 331.65 亿$、同比 +48%**，资本开支 **394 亿$** 低于预期、约 75% 投短周期资产，FCF **186 亿$** 为正。10/8 重点介绍 MXC 容器，为智能体提供限定文件与网络访问的受控隔离执行环境，OpenAI Codex 与 GitHub Copilot 已接入；季度收入**900亿美元**、同比**增18%**，智能云**393亿美元**、同比**增32%**，Azure **增43%**；剩余履约义务**6780亿美元**、同比**增84%**，其中与头部实验室相关的部分单季增加约**2000亿美元**；本季资本开支**410亿美元**、同比**增70%**，下季指引**500亿美元**。；10/9 在 Foundry 上线专用于结构化决策的 **Microsoft-Decision-1**，输入 **0.042 美元**/百万 token，36 项基准近 **15 万道**题准确率最高，即将登陆 OpenRouter；10/10 纳德拉发长文主张把先进模型当**潜在内部威胁**、须能由授权人员随时暂停或关闭，把智能的供给与控制权分开。10/14 10/12 发布第三代自研芯片 Maia 300，2027 部署、数吉瓦级，每兆瓦推理效率高 40%，本财年 capex 超 1750 亿美元。 10/14 监管文件披露单季新增数据中心租约超 1300 亿美元、未生效承诺 3291 亿美元，计划 2032 年扩至 38 吉瓦以上。 10/15 券商统计微软与另三家云及甲骨文的 AI 基建合同积压订单合计 **2.3 万亿**美元、约一半来自 OpenAI 与 Anthropic；公司 2026 年资本开支约 **1900 亿**美元。 10/19 更新：2026 自然年 capex 预期由约 1900 亿下调至 **1750 亿**美元，折旧年限由 15 年延至 **25 年**。 10/20 更新：商业剩余履约义务 **6780 亿**美元、同比 **+84%**，微软云收入 **593 亿**美元、同比 **+27%**，Azure **+43%**；10/21 更新：公司退出 Nscale 英国数据中心项目，此前已将 2026 自然年资本开支口径下调至约 **1750 亿**美元。 与英伟达合作四年打造的个人加速计算产品线已于 **10/16** 开售；资本开支口径调整仍在消化，订单储备 **6780 亿**美元、同比 **+84%**。 10/26 更新：公司将于 **10/28** 美股盘后披露 **FY27 Q1** 业绩，市场预期季度收入约 **906.5 亿**美元、同比 **+17%**；上季 Azure 增速 **+43%** 创四年最快，商业剩余履约义务 **6780 亿**美元。 10/27 更新：公司将于 **10/28** 披露 2027 财年一季度业绩，此前给出的收入指引为 **898.5 亿至 909.5 亿**美元、同比增 **16%—17%**；10/26 向约 **6 万**名员工开放自愿离职补偿，覆盖 Xbox、Windows 与 Copilot 等部门，数据中心与销售岗位不在其列。盘后披露 2027 财年一季度业绩，收入预期 905.93 亿美元、单季资本开支预计突破 500 亿美元，云增速预期 44%—45%。10/29 更新：首次以美元口径披露 **Azure 331.65 亿**美元、同比 **+48%**，高于 7 月给出的 **44%—45%** 指引与市场预期的约 **323 亿**；智能体与基础设施分部 **768 亿**美元、**+25%**，设备与消费者 **155 亿**美元、**-3%**；当季裁员 **4800 人**并推进最多 **6 万人**自愿买断，相关许可收入下滑归因于内存器件涨价与旧版系统停服。 FY27Q1 营收 **922.79 亿**美元、**+19%**，云端业务 **331.65 亿**美元、**+48%**；单季来自一家模型公司的相关收入约 **100 亿**美元、占营收近 **11%**，上一财年合计 **241 亿**美元；资本开支与融资租赁 **452 亿**美元低于预期、约 **75%** 投短周期资产；自由现金流 **186.3 亿**美元、**-27%**；下季指引 **960 亿至 971 亿**美元。11/19 更新：Ignite 推出**七款 MAI** 与 Maia 200，Code 2 以 **5% 价格**达 Opus 5.5 的 96% 质量，Cyber 2 Flash 单任务成本不足 2%。11/20 更新：Decision 1.1 路由模型正式 GA，同价速度翻倍、已有 **4000+** 客户用于路由与分类。11/23 更新：AI 负责人称模型已深度参与自我改进、递归自我改进是「危险能力」。",
+      "viewpoint": "**FY27Q1 云端收入 331.65 亿$、同比 +48%**，资本开支 **394 亿$** 低于预期、约 75% 投短周期资产，FCF **186 亿$** 为正。10/8 重点介绍 MXC 容器，为智能体提供限定文件与网络访问的受控隔离执行环境，OpenAI Codex 与 GitHub Copilot 已接入；季度收入**900亿美元**、同比**增18%**，智能云**393亿美元**、同比**增32%**，Azure **增43%**；剩余履约义务**6780亿美元**、同比**增84%**，其中与头部实验室相关的部分单季增加约**2000亿美元**；本季资本开支**410亿美元**、同比**增70%**，下季指引**500亿美元**。；10/9 在 Foundry 上线专用于结构化决策的 **Microsoft-Decision-1**，输入 **0.042 美元**/百万 token，36 项基准近 **15 万道**题准确率最高，即将登陆 OpenRouter；10/10 纳德拉发长文主张把先进模型当**潜在内部威胁**、须能由授权人员随时暂停或关闭，把智能的供给与控制权分开。10/14 10/12 发布第三代自研芯片 Maia 300，2027 部署、数吉瓦级，每兆瓦推理效率高 40%，本财年 capex 超 1750 亿美元。 10/14 监管文件披露单季新增数据中心租约超 1300 亿美元、未生效承诺 3291 亿美元，计划 2032 年扩至 38 吉瓦以上。 10/15 券商统计微软与另三家云及甲骨文的 AI 基建合同积压订单合计 **2.3 万亿**美元、约一半来自 OpenAI 与 Anthropic；公司 2026 年资本开支约 **1900 亿**美元。 10/19 更新：2026 自然年 capex 预期由约 1900 亿下调至 **1750 亿**美元，折旧年限由 15 年延至 **25 年**。 10/20 更新：商业剩余履约义务 **6780 亿**美元、同比 **+84%**，微软云收入 **593 亿**美元、同比 **+27%**，Azure **+43%**；10/21 更新：公司退出 Nscale 英国数据中心项目，此前已将 2026 自然年资本开支口径下调至约 **1750 亿**美元。 与英伟达合作四年打造的个人加速计算产品线已于 **10/16** 开售；资本开支口径调整仍在消化，订单储备 **6780 亿**美元、同比 **+84%**。 10/26 更新：公司将于 **10/28** 美股盘后披露 **FY27 Q1** 业绩，市场预期季度收入约 **906.5 亿**美元、同比 **+17%**；上季 Azure 增速 **+43%** 创四年最快，商业剩余履约义务 **6780 亿**美元。 10/27 更新：公司将于 **10/28** 披露 2027 财年一季度业绩，此前给出的收入指引为 **898.5 亿至 909.5 亿**美元、同比增 **16%—17%**；10/26 向约 **6 万**名员工开放自愿离职补偿，覆盖 Xbox、Windows 与 Copilot 等部门，数据中心与销售岗位不在其列。盘后披露 2027 财年一季度业绩，收入预期 905.93 亿美元、单季资本开支预计突破 500 亿美元，云增速预期 44%—45%。10/29 更新：首次以美元口径披露 **Azure 331.65 亿**美元、同比 **+48%**，高于 7 月给出的 **44%—45%** 指引与市场预期的约 **323 亿**；智能体与基础设施分部 **768 亿**美元、**+25%**，设备与消费者 **155 亿**美元、**-3%**；当季裁员 **4800 人**并推进最多 **6 万人**自愿买断，相关许可收入下滑归因于内存器件涨价与旧版系统停服。 FY27Q1 营收 **922.79 亿**美元、**+19%**，云端业务 **331.65 亿**美元、**+48%**；单季来自一家模型公司的相关收入约 **100 亿**美元、占营收近 **11%**，上一财年合计 **241 亿**美元；资本开支与融资租赁 **452 亿**美元低于预期、约 **75%** 投短周期资产；自由现金流 **186.3 亿**美元、**-27%**；下季指引 **960 亿至 971 亿**美元。11/19 更新：Ignite 推出**七款 MAI** 与 Maia 200，Code 2 以 **5% 价格**达 Opus 5.5 的 96% 质量，Cyber 2 Flash 单任务成本不足 2%。11/20 更新：Decision 1.1 路由模型正式 GA，同价速度翻倍、已有 **4000+** 客户用于路由与分类。11/23 更新：AI 负责人称模型已深度参与自我改进、递归自我改进是「危险能力」。11/24 更新：联合逾 **40 家机构**发起 AI 透明度倡议，Ignite 把智能体定位为「队友」。",
       "insight": "订单储备增速远快于收入确认，Copilot付费席位超3000万说明席位加用量的混合模式已跑通。",
       "prov": {
         "src": "官方披露(L1)·财报",
@@ -1408,7 +1408,7 @@
       }
     }
   ],
-  "marketView": "① **估值重定价**：纳指单日 -5.28% 抹平全年，七巨头蒸发超 4 万亿$。\n② **能力可验证**：Claude 证明获 Lean 认证、AI 改写电路 PPA +14%。\n③ **入口与调用**：谷歌首页让位 Gemini，DeepSeek 78.7 万亿续居首。",
+  "marketView": "① **数据主权**：Anthropic EFS 让企业自持密钥，AI 采购从看跑分转向看可控性。\n② **成本竞速**：Qwen4-Max 激活降至 710 亿、GPT-6.2 Sol 定价 2/10 美元，性价比成主战场。\n③ **调用与治理**：官方榜 DeepSeek 65 万亿居首、Hy4 flash 空降第二；125 个零留存端点失格。",
   "market": {
     "type": "internet",
     "capex": {
@@ -1511,7 +1511,7 @@
           ]
         }
       ],
-      "note": "① 五大美国云厂 2026 capex 合计逼近 **6900 亿$**、较 2025 近翻倍，Oracle 556 亿（+162%）。\n② 11 月初集中发债约 **660 亿$**：微软 250 亿、Meta 150 亿、Oracle 100 亿、Alphabet 60 亿欧元。\n③ 苹果据报削减内部 AI 预算约 **1/3**，GPU 租赁融资趋紧，算力从抢卡转向利用率审计。\n④ 11/22 Anthropic IPO 正式交割、募资 **935 亿$** 叠加私募 **260 亿$**；11/21 纳指单日 **-5.28%** 抹平全年、七巨头蒸发超 **4 万亿$**；OpenRouter 周榜（截至 11/22）DeepSeek **78.7 万亿**居首、份额 44.6%。"
+      "note": "① 五大美国云厂 2026 capex 合计逼近 **6900 亿$**、较 2025 近翻倍，Oracle 556 亿（+162%）。\n② 11 月初集中发债约 **660 亿$**：微软 250 亿、Meta 150 亿、Oracle 100 亿、Alphabet 60 亿欧元。\n③ 苹果据报削减内部 AI 预算约 **1/3**，GPU 租赁融资趋紧，算力从抢卡转向利用率审计。\n④ 11/23 Anthropic 推 EFS 企业数据控制权、客户自持密钥；微软联合逾 **40 家机构**发起 AI 透明度倡议；OpenRouter 官方榜（截至 11/22）DeepSeek **65 万亿**居首、Hy4 flash 18.1 万亿第二。"
     },
     "subs": {
       "headers": [
@@ -1533,7 +1533,7 @@
           "mau": 1200,
           "mom": "+13%",
           "trend": "↑↑",
-          "sub": "付费>5000万·企业250万·**10/29 订阅用户每月最高 500 美元接口额度**·周活 **12 亿**人·**Q3 营收破 100 亿$**、环比近五成·Q3 净亏 **109 亿$**·**11/13 私募融资 150 亿$、估值 1.25 万亿$**·**11 月融资占全月 83.5%**·**11/16 上线科学博客、Astra 助证物理定理**·**11/17 GPT-6.2 Astra/Sol 发布、输入价降 20%**·**11/18 推 Live Dictation 实时听写、取消 10 分钟上限**·**牵手费加罗报、600+ 记者内容进 ChatGPT**·**11/19 奥特曼称拟上市、英伟达已投 300 亿$**·**11/20 揭晓 Performance Factory**·**开放 GPT-Live-1.1 语音模型**·**11/20 反蒸馏防护、提取率 54%→0.2%**·**11/21 发布 GPT-6.2 系统提示模板**·**11/22 ChatGPT Spaces 向 Plus 开放、20 美元月费**"
+          "sub": "付费>5000万·企业250万·**10/29 订阅用户每月最高 500 美元接口额度**·周活 **12 亿**人·**Q3 营收破 100 亿$**、环比近五成·Q3 净亏 **109 亿$**·**11/13 私募融资 150 亿$、估值 1.25 万亿$**·**11 月融资占全月 83.5%**·**11/16 上线科学博客、Astra 助证物理定理**·**11/17 GPT-6.2 Astra/Sol 发布、输入价降 20%**·**11/18 推 Live Dictation 实时听写、取消 10 分钟上限**·**牵手费加罗报、600+ 记者内容进 ChatGPT**·**11/19 奥特曼称拟上市、英伟达已投 300 亿$**·**11/20 揭晓 Performance Factory**·**开放 GPT-Live-1.1 语音模型**·**11/20 反蒸馏防护、提取率 54%→0.2%**·**11/21 发布 GPT-6.2 系统提示模板**·**11/22 ChatGPT Spaces 向 Plus 开放、20 美元月费**·**11/24 据报与北约合作网络防御**"
         },
         {
           "rank": 2,
@@ -1553,7 +1553,7 @@
           "mau": 1000,
           "mom": "+11%",
           "trend": "↑↑",
-          "sub": "**10/28 搜索收入增速降至 12%**·**AI 模式广告扩至 10 国**·月活 **10 亿**人·**Gemini Carbon 正式 GA、Decision 1 答千题**·**11/18 Gemini 4 Neon 发布、编程指数 58.6 登顶**·**11/20 桌面版获电脑操作能力、可跨应用填表**·**搜索首页让位 Gemini、AI Mode 月活 10 亿**"
+          "sub": "**10/28 搜索收入增速降至 12%**·**AI 模式广告扩至 10 国**·月活 **10 亿**人·**Gemini Carbon 正式 GA、Decision 1 答千题**·**11/18 Gemini 4 Neon 发布、编程指数 58.6 登顶**·**11/20 桌面版获电脑操作能力、可跨应用填表**·**搜索首页让位 Gemini、AI Mode 月活 10 亿**·**AI Mode 整合 Wallet/Drive、成服务总入口**"
         },
         {
           "rank": 4,
@@ -1593,7 +1593,7 @@
           "mau": 123,
           "mom": "-15.2%(同比)",
           "trend": "↓",
-          "sub": "免费+API·**周调用 39.6 万亿居聚合平台首位**·**网络安全变体 10/29 上线**·**全家桶 API 化、缓存 0.003$/M**·**11/16 因算力不足限额免费用户、全家桶 API 开放**·**周榜 61.9 万亿居首、请求份额 31.8%**·**截至 11/18 周榜 62.1 万亿居首、请求份额 31.8%**·**截至 11/19 周榜 62.2 万亿第二、请求份额仍居首**·**二轮融资 1055 亿元、估值 6155 亿元、腾讯宁德各 9.5653%**·**截至 11/20 周榜 62.4 万亿重回第一**·**截至 11/22 周榜 78.7 万亿、份额 44.6%**"
+          "sub": "免费+API·**周调用 39.6 万亿居聚合平台首位**·**网络安全变体 10/29 上线**·**全家桶 API 化、缓存 0.003$/M**·**11/16 因算力不足限额免费用户、全家桶 API 开放**·**周榜 61.9 万亿居首、请求份额 31.8%**·**截至 11/18 周榜 62.1 万亿居首、请求份额 31.8%**·**截至 11/19 周榜 62.2 万亿第二、请求份额仍居首**·**二轮融资 1055 亿元、估值 6155 亿元、腾讯宁德各 9.5653%**·**截至 11/20 周榜 62.4 万亿重回第一**·**截至 11/22 周榜 78.7 万亿、份额 44.6%**·**截至 11/22 官方榜 65 万亿、份额 25.4%**"
         },
         {
           "rank": 8,
@@ -1613,7 +1613,7 @@
           "mau": 245,
           "mom": "+2%",
           "trend": "↑",
-          "sub": "付费>百万·**11/10 发布 Fable 5.2/Mythos 5.2**·FrontierCode **49.1%** 居首·IPO 定价 **70–78 美元/股**·代码 ANT·年化 **810 亿$**·客户 **11900** 家·**10 月月访问 12.53 亿、环比 +24%**·**11/19 挂牌、募资最高 904 亿$**·**11/18 定价、预计高于 78$ 上限**·**11/18 定价 83$/股、11/19 挂牌 ANT**·**募资 904 亿$、估值 1.4 万亿$**·**前九月营收 332 亿$**·**11/19 挂牌首日收 97.17$、涨 17%、盘中破 2 万亿$**·**11/20 首日收官 97.17$、涨 17.1%、期权 11/23 挂牌**·**11/20 二日收 88.9$、跌 8.5%、绿鞋募资 935 亿$**·**数学家称合作证黎曼猜想、待核验**·**11/22 IPO 正式交割、合计募资 1195 亿$**"
+          "sub": "付费>百万·**11/10 发布 Fable 5.2/Mythos 5.2**·FrontierCode **49.1%** 居首·IPO 定价 **70–78 美元/股**·代码 ANT·年化 **810 亿$**·客户 **11900** 家·**10 月月访问 12.53 亿、环比 +24%**·**11/19 挂牌、募资最高 904 亿$**·**11/18 定价、预计高于 78$ 上限**·**11/18 定价 83$/股、11/19 挂牌 ANT**·**募资 904 亿$、估值 1.4 万亿$**·**前九月营收 332 亿$**·**11/19 挂牌首日收 97.17$、涨 17%、盘中破 2 万亿$**·**11/20 首日收官 97.17$、涨 17.1%、期权 11/23 挂牌**·**11/20 二日收 88.9$、跌 8.5%、绿鞋募资 935 亿$**·**数学家称合作证黎曼猜想、待核验**·**11/22 IPO 正式交割、合计募资 1195 亿$**·**11/23 EFS 企业数据自持密钥、Claude Ship 上线**"
         },
         {
           "rank": 10,
@@ -1623,7 +1623,7 @@
           "mau": 110,
           "mom": "+10%",
           "trend": "↑",
-          "sub": "免费+订阅·**K3.1 Pro 权重 11/4 前开放**·主打百万上下文·**K3.1 Pro 完整权重公布、全球最大开源模型**"
+          "sub": "免费+订阅·**K3.1 Pro 权重 11/4 前开放**·主打百万上下文·**K3.1 Pro 完整权重公布、全球最大开源模型**·**K3.1 Pro 开放权重最佳、AA 指数 46.5**"
         }
       ],
       "monthly": {
@@ -1714,65 +1714,80 @@
       {
         "model": "DeepSeek V4.1 Flash 1017",
         "vendor": "deepseek",
-        "weeklyTokens": "78700",
-        "note": "**78.7 万亿**居首、份额 **44.6%**"
-      },
-      {
-        "model": "GLM 5.3 Flash (batch)",
-        "vendor": "z-ai",
-        "weeklyTokens": "11630",
-        "note": "**11.63 万亿**第二"
-      },
-      {
-        "model": "GPT-6 Luna",
-        "vendor": "openai",
-        "weeklyTokens": "8590",
-        "note": "**8.59 万亿**第三"
-      },
-      {
-        "model": "Claude Opus 5.5 (batch)",
-        "vendor": "anthropic",
-        "weeklyTokens": "7070",
-        "note": "**7.07 万亿**第四"
+        "weeklyTokens": "65000",
+        "note": "**65 万亿**居首、+10%"
       },
       {
         "model": "Hy4 flash",
         "vendor": "tencent",
-        "weeklyTokens": "6510",
-        "note": "**6.51 万亿**第五"
+        "weeklyTokens": "18100",
+        "note": "**18.1 万亿**空降第二"
       },
       {
-        "model": "DeepSeek V4 Flash 0731",
+        "model": "DeepSeek V4.1 Flash",
         "vendor": "deepseek",
-        "weeklyTokens": "4540",
-        "note": "**4.54 万亿**第六"
+        "weeklyTokens": "15400",
+        "note": "**15.4 万亿**第三"
+      },
+      {
+        "model": "GLM 5.3 Flash",
+        "vendor": "z-ai",
+        "weeklyTokens": "12200",
+        "note": "**12.2 万亿**第四"
+      },
+      {
+        "model": "GPT-6 Luna",
+        "vendor": "openai",
+        "weeklyTokens": "8310",
+        "note": "**8.31 万亿**第五"
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "vendor": "anthropic",
+        "weeklyTokens": "6970",
+        "note": "**6.97 万亿**第六"
       },
       {
         "model": "MiniMax M3.1 Flash",
         "vendor": "minimax",
-        "weeklyTokens": "4200",
-        "note": "**4.2 万亿**第七"
+        "weeklyTokens": "4290",
+        "note": "**4.29 万亿**第七"
       },
       {
         "model": "Kimi K3.1 Pro",
         "vendor": "moonshotai",
-        "weeklyTokens": "3880",
-        "note": "**3.88 万亿**第八"
+        "weeklyTokens": "4070",
+        "note": "**4.07 万亿**第八"
       },
       {
-        "model": "Step 5 Preview",
-        "vendor": "stepfun",
-        "weeklyTokens": "3840",
-        "note": "**3.84 万亿**第九"
+        "model": "Nemotron 3 Ultra (free)",
+        "vendor": "nvidia",
+        "weeklyTokens": "3930",
+        "note": "**3.93 万亿**第九"
       },
       {
-        "model": "MiMo-V2.6-Flash",
-        "vendor": "xiaomi",
-        "weeklyTokens": "3910",
-        "note": "**3.91 万亿**、守住前十"
+        "model": "ERNIE-5.5-Flash-Preview (free)",
+        "vendor": "baidu",
+        "weeklyTokens": "3470",
+        "note": "**3.47 万亿**第十"
       }
     ],
     "hfModels": [
+      {
+        "model": "Qwen4-Max Preview (Alibaba)",
+        "downloads": "11/23 预览",
+        "note": "**2.4T/710 亿**激活、成本降六成"
+      },
+      {
+        "model": "GPT-6.2 Sol (OpenAI)",
+        "downloads": "11/24 测试",
+        "note": "**2/10 美元**、编码持平旗舰"
+      },
+      {
+        "model": "Qwen2.5-Coder-7B (Alibaba)",
+        "downloads": "月下载 150 万",
+        "note": "代码专用、开放权重持续放量"
+      },
       {
         "model": "LingSante-3.1-flash (Ant)",
         "downloads": "11/22 开源",
@@ -1951,6 +1966,36 @@
     ],
     "aiProductStats": [
       {
+        "name": "OpenRouter 官方榜",
+        "metric": "截至 11/22",
+        "value": "65 万亿",
+        "note": "DeepSeek 1017 居首、Hy4 flash 第二"
+      },
+      {
+        "name": "Anthropic EFS",
+        "metric": "11/23 公测",
+        "value": "自持密钥",
+        "note": "提示仍留 **30 天**、企业可控"
+      },
+      {
+        "name": "Qwen4-Max",
+        "metric": "11/23 预览版",
+        "value": "2.4T",
+        "note": "激活 **710 亿**、成本降 60%"
+      },
+      {
+        "name": "豆包工作",
+        "metric": "11/23 披露",
+        "value": "800 万",
+        "note": "DAU、ARR 超 **20 亿元**"
+      },
+      {
+        "name": "AI 透明度倡议",
+        "metric": "11/23",
+        "value": "40+ 家",
+        "note": "微软联合机构立通用标准"
+      },
+      {
         "name": "OpenRouter 周榜",
         "metric": "截至 11/22",
         "value": "78.7 万亿",
@@ -2065,12 +2110,6 @@
         "note": "首日调用、登顶 OpenRouter 日榜"
       },
       {
-        "name": "Qwen4-Max",
-        "metric": "11/18 可用",
-        "value": "1M 上下文",
-        "note": "API 成本降 **60%**、少用 50% Token"
-      },
-      {
         "name": "五大云厂采购承诺",
         "metric": "中信建投",
         "value": "1.63 万亿$",
@@ -2141,12 +2180,6 @@
         "metric": "11/15",
         "value": "削减约 1/3",
         "note": "GPU 租赁融资收紧、工程师算力配额收紧"
-      },
-      {
-        "name": "Qwen4-Max",
-        "metric": "11/15 预览",
-        "value": "100 万 token",
-        "note": "千问办公 2.0 数字员工进钉钉群"
       },
       {
         "name": "OpenAI 融资",
